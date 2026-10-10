@@ -30,3 +30,10 @@ Desarrollar una marca propia de joyería artesanal en Chile y definir su propues
 
 ## Registro de decisiones
 Añadir aquí las decisiones importantes con fecha, contexto y estado. No registrar una hipótesis como decisión confirmada sin validación explícita.
+
+- **2026-10-10 — Prototipo de probador virtual (en desarrollo).** Se empezó una app web que
+  muestra con la cámara cómo se ve la persona con una joya puesta, pensada primero para una
+  tablet en un punto de venta y después para la tienda en línea. Hay dos joyas de prueba (un
+  choker y un anillo). Es un prototipo: no está probado en una tablet y el realismo aún no es
+  el definitivo. Detalle en `docs/probador-virtual.md`.
+

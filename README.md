@@ -6,6 +6,7 @@ Repositorio compartido para desarrollar una marca propia de joyería artesanal e
 - [Contexto de la marca y fabricación](marca-joyas.md)
 - [Instrucciones para Codex y asistentes](AGENTS.md)
 - [Estado y próximas decisiones](docs/estado-proyecto.md)
+- [Probador virtual de joyas (realidad aumentada)](docs/probador-virtual.md)
 
 ## Flujo entre ChatGPT y Codex
 Este repositorio es la fuente central de información compartida. Las conversaciones no comparten necesariamente el mismo historial o memoria, por lo que los acuerdos importantes deben registrarse aquí.
