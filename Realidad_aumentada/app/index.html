@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#14110d">
+  <title>Probador virtual de joyas</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div id="escena">
+    <video id="video" playsinline muted></video>
+    <canvas id="cuadro"></canvas>
+    <img id="foto" alt="" hidden>
+    <canvas id="lienzo"></canvas>
+  </div>
+
+  <header class="barra">
+    <span class="titulo">Probador virtual</span>
+    <button id="btn-ajustes" class="icono" aria-label="Ajustes" hidden>Ajustar</button>
+  </header>
+
+  <p id="aviso" class="aviso" hidden></p>
+
+  <section id="ajustes" class="panel" hidden>
+    <label>Tamaño <input id="aj-tamano" type="range" min="0.6" max="1.6" step="0.01"></label>
+    <label data-tipo="choker_rigido">Altura <input id="aj-altura" type="range" min="-60" max="60" step="1"></label>
+    <label data-tipo="choker_rigido">Inclinación <input id="aj-inclinacion" type="range" min="-25" max="25" step="1"></label>
+    <label data-tipo="anillo_sello">Dedo
+      <select id="aj-dedo">
+        <option value="indice">Índice</option>
+        <option value="medio">Medio</option>
+        <option value="anular">Anular</option>
+        <option value="menique">Meñique</option>
+      </select>
+    </label>
+    <button id="aj-reiniciar" type="button">Restablecer</button>
+  </section>
+
+  <nav id="bandeja" class="bandeja" hidden></nav>
+
+  <section id="inicio" class="inicio">
+    <h1>Pruébate la joya</h1>
+    <p>Ponte frente a la cámara, con la cara y el cuello a la vista.</p>
+    <button id="btn-iniciar" type="button">Activar cámara</button>
+    <small>El video se procesa en este dispositivo. No se graba ni se envía.</small>
+  </section>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

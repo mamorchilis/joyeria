@@ -1,0 +1,31 @@
+[
+  {
+    "id": "choker_pantera",
+    "nombre": "Choker Panteras",
+    "tipo": "choker_rigido",
+    "holgura": 1.11,
+    "bajada": 0.37,
+    "inclinacion_grados": 32
+  },
+  {
+    "id": "anillo_onix",
+    "nombre": "Anillo Ónix",
+    "tipo": "anillo_sello",
+    "dedo": "anular",
+    "posicion": 0.62,
+    "diametro_interior_mm": 17.5,
+    "placa_mm": [
+      30,
+      22,
+      2.7
+    ],
+    "cuerpo_ancho_mm": 19.4,
+    "cuerpo_alto_mm": 12,
+    "largo_abajo_mm": 12,
+    "metal": [
+      255,
+      198,
+      96
+    ]
+  }
+]

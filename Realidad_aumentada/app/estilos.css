@@ -1,0 +1,181 @@
+:root {
+  --fondo: #14110d;
+  --tinta: #f4efe6;
+  --tenue: rgba(244, 239, 230, 0.62);
+  --oro: #c9a45c;
+  --velo: rgba(20, 17, 13, 0.58);
+  --linea: rgba(244, 239, 230, 0.18);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* La escena cubre la pantalla manteniendo la proporción del video; app.js fija su tamaño. */
+#escena {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#escena.espejo { transform: translate(-50%, -50%) scaleX(-1); }
+#escena > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+#escena > [hidden] { display: none; }
+/* El video solo alimenta al lienzo que se muestra; sigue reproduciéndose sin verse. */
+#video { opacity: 0; }
+
+.barra {
+  position: fixed;
+  inset: 0 0 auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(14px + env(safe-area-inset-top)) 18px 26px;
+  background: linear-gradient(var(--velo), transparent);
+  pointer-events: none;
+}
+.barra > * { pointer-events: auto; }
+.titulo {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 1px solid var(--linea);
+  background: var(--velo);
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  backdrop-filter: blur(10px);
+}
+button:active { transform: scale(0.97); }
+
+.aviso {
+  position: fixed;
+  left: 50%;
+  top: 22%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 10px 18px;
+  max-width: 82vw;
+  text-align: center;
+  font-size: 14px;
+  background: var(--velo);
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+}
+
+.panel {
+  position: fixed;
+  right: 14px;
+  top: calc(62px + env(safe-area-inset-top));
+  width: min(280px, calc(100vw - 28px));
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  background: var(--velo);
+  border: 1px solid var(--linea);
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tenue);
+}
+.panel label { display: grid; gap: 6px; }
+.panel input { width: 100%; accent-color: var(--oro); }
+.panel select {
+  font: inherit;
+  color: var(--tinta);
+  background: var(--velo);
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+.panel label[hidden] { display: none; }
+.panel[hidden], .bandeja[hidden], .inicio[hidden], .aviso[hidden] { display: none; }
+
+.bandeja {
+  position: fixed;
+  inset: auto 0 0 0;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 34px 18px calc(18px + env(safe-area-inset-bottom));
+  background: linear-gradient(transparent, var(--velo) 55%);
+  scrollbar-width: none;
+}
+.joya {
+  flex: 0 0 auto;
+  width: 92px;
+  padding: 8px 6px 9px;
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  border-radius: 16px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-align: center;
+}
+.joya img, .joya .vacio {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: rgba(244, 239, 230, 0.92);
+  padding: 7px;
+}
+.joya .vacio {
+  background: none;
+  border: 1px dashed var(--linea);
+}
+.joya[aria-pressed="true"] { border-color: var(--oro); color: var(--oro); }
+
+.inicio {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 16px;
+  padding: 24px;
+  text-align: center;
+  background: var(--fondo);
+}
+.inicio h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-size: clamp(30px, 6vw, 46px);
+  letter-spacing: 0.02em;
+}
+.inicio p { margin: 0; max-width: 34ch; color: var(--tenue); line-height: 1.5; }
+.inicio button {
+  margin-top: 10px;
+  padding: 14px 30px;
+  font-size: 15px;
+  background: var(--oro);
+  border-color: var(--oro);
+  color: var(--fondo);
+}
+.inicio small { color: var(--tenue); font-size: 12px; max-width: 36ch; }
