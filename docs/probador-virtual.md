@@ -36,11 +36,13 @@ Abrir `http://localhost:8123/app/`. Parámetros útiles en la dirección:
 - `?depurar`: dibuja lo que midió el seguimiento del cuello (verde: bordes del cuello;
   rojo: su base; celeste: fondo del escote).
 
-Versión publicada: https://mamorchilis.github.io/joyeria/ (rama `gh-pages`, solo el contenido
-de `app/`). Para actualizarla después de subir cambios a `main`:
+Versión publicada, para abrir desde cualquier dispositivo: https://barreirovaldajos.github.io/probador-joyas/
+
+Sale de un repositorio aparte, `barreirovaldajos/probador-joyas`, que contiene solo lo que hay
+en `Realidad_aumentada/app/`. Para actualizarla después de subir cambios a `main`:
 
 ```bash
-git subtree push --prefix Realidad_aumentada/app origin gh-pages
+git push https://github.com/barreirovaldajos/probador-joyas.git "$(git subtree split --prefix Realidad_aumentada/app main)":refs/heads/main
 ```
 
 ## Cómo está armada la app
@@ -128,6 +130,8 @@ basta con preparar sus imágenes y agregar su ficha.
 
 ## Publicación
 
-La versión en línea sale de la rama `gh-pages`, que contiene solo `Realidad_aumentada/app/`.
-GitHub Pages se activa una sola vez desde la configuración del repositorio (Settings → Pages →
-rama `gh-pages`, carpeta raíz), con una cuenta que lo administre.
+La versión en línea se publica con GitHub Pages desde `barreirovaldajos/probador-joyas`. Está
+en ese repositorio y no en el compartido porque activar Pages requiere permiso de
+administración, que en el repositorio compartido solo tiene la cuenta compartida. Si algún día
+se prefiere publicarla desde el repositorio compartido, basta con activar Pages ahí y cambiar
+el destino del comando de arriba.
