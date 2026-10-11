@@ -37,14 +37,11 @@ const SALTO_POSICION = 0.08, SALTO_ANCHO = 0.1, CUADROS_PARA_CREER = 5;
 const QUIETO_POSICION = 0.012, QUIETO_ANCHO = 0.015;
 // Sin medir el cuello durante este tiempo, se deja de mostrar la joya.
 const SEGUNDOS_A_CIEGAS = 1.5;
-// El modelo trabaja a 256 px. Se le entrega la imagen ya reducida a este ancho: así el grano
-// de la cámara se promedia en vez de colarse, y leer la máscara cuesta menos.
-const ANCHO_ANALISIS = 512;
 // ?depurar dibuja sobre la imagen lo que midió el seguimiento.
 const DEPURAR = new URLSearchParams(location.search).has("depurar");
-// ?cpu hace que el modelo del cuello corra sin la tarjeta gráfica: más lento, pero sirve para
-// descartar que la falla esté en la gráfica de un dispositivo.
-const SIN_GPU = new URLSearchParams(location.search).has("cpu");
+// ?motor=N obliga al modelo del cuello a partir de la forma N de la lista MOTORES (0 es la
+// más rápida), para probar una en particular. ?cpu equivale a la última: sin tarjeta gráfica.
+const PRIMER_MOTOR = new URLSearchParams(location.search).has("cpu") ? -1 : Number(new URLSearchParams(location.search).get("motor") ?? 0);
 
 const SEGMENTOS = 288;
 const ARCO_GRADOS = 180; // el aro completo: de la nuca a la nuca pasando por el frente
@@ -85,7 +82,7 @@ in vec2 vFx;
 in vec3 vTubo;
 in vec2 vPantalla;
 uniform sampler2D uTex;
-uniform sampler2D uOclusor; // 1 donde no se ve lo que pasa por detrás del cuello
+uniform sampler2D uOclusor; // qué tapa al aro en cada punto: ver armarOclusor
 uniform float uSombra; // 0 = joya, >0 = opacidad de la sombra
 uniform float uDesenfoque;
 out vec4 color;
@@ -94,8 +91,8 @@ void main() {
   vec4 c = texture(uTex, vUv, uDesenfoque);
   // El tramo del aro que va por detrás solo se ve donde no lo tapa la persona.
   float detras = smoothstep(0.04, -0.04, vFx.x);
-  float tapado = smoothstep(0.3, 0.7, texture(uOclusor, vPantalla).r);
-  float visible = 1.0 - detras * tapado;
+  float tapa = texture(uOclusor, vPantalla).r;
+  float visible = (1.0 - detras * smoothstep(0.15, 0.35, tapa)) * (1.0 - smoothstep(0.65, 0.85, tapa));
   if (uSombra > 0.0) {
     color = vec4(0.0, 0.0, 0.0, c.a * visible * uSombra);
   } else {
@@ -356,33 +353,64 @@ async function cargarCatalogo() {
 
 // ---------------------------------------------------------------- Seguimiento
 
-// Con qué corre el modelo del cuello; lo muestra ?depurar.
-let motorDelCuello = "";
+// Formas de correr el modelo del cuello, de la más rápida a la más segura. En algunos
+// teléfonos la tarjeta gráfica no da error pero responde que toda la imagen es fondo, así que
+// cada forma se pone a prueba con una foto de una persona y se usa la primera que la ve.
+//   porConfianza  pide al modelo cuánto cree en cada categoría, en vez de la categoría ya
+//                 elegida; es el paso que falla en esas gráficas
+//   ancho         ancho al que se reduce la imagen antes de analizarla. El modelo trabaja a
+//                 256 px: más ancho solo afina los bordes, y sin gráfica cuesta caro
+const MOTORES = [
+  { nombre: "con gráfica", delegado: "GPU", porConfianza: false, ancho: 512 },
+  { nombre: "con gráfica, por confianza", delegado: "GPU", porConfianza: true, ancho: 256 },
+  { nombre: "sin gráfica", delegado: "CPU", porConfianza: false, ancho: 256 },
+];
+let motor = MOTORES[0];
 
-// En algunos teléfonos el modelo corre en la tarjeta gráfica sin dar error, pero responde que
-// toda la imagen es fondo. Por eso, antes de usarlo, se le muestra una foto con una persona:
-// si no la ve, se vuelve a crear sin la gráfica, que es más lento pero funciona en todos.
 async function crearDetector(modo) {
   const { FilesetResolver, ImageSegmenter } = await import(`${MEDIAPIPE}/vision_bundle.mjs`);
   const archivos = await FilesetResolver.forVisionTasks(`${MEDIAPIPE}/wasm`);
-  const crear = (motor) => {
-    motorDelCuello = motor === "GPU" ? "con gráfica" : "sin gráfica";
-    return ImageSegmenter.createFromOptions(archivos, {
-      baseOptions: { modelAssetPath: MODELO_SEGMENTOS, delegate: motor },
+  const crear = () =>
+    ImageSegmenter.createFromOptions(archivos, {
+      baseOptions: { modelAssetPath: MODELO_SEGMENTOS, delegate: motor.delegado },
       runningMode: modo,
-      outputCategoryMask: true,
-      outputConfidenceMasks: false,
+      outputCategoryMask: !motor.porConfianza,
+      outputConfidenceMasks: motor.porConfianza,
     });
-  };
-  if (SIN_GPU) return crear("CPU");
-  try {
-    const detector = await crear("GPU");
-    if (await veAUnaPersona(detector, modo)) return detector;
-    detector.close();
-  } catch (error) {
-    console.warn("El modelo del cuello no pudo usar la gráfica:", error);
+  const candidatos = MOTORES.slice(PRIMER_MOTOR);
+  for (motor of candidatos.slice(0, -1)) {
+    try {
+      const detector = await crear();
+      if (await veAUnaPersona(detector, modo)) return detector;
+      detector.close();
+    } catch (error) {
+      console.warn(`El modelo del cuello no funcionó ${motor.nombre}:`, error);
+    }
   }
-  return crear("CPU");
+  motor = candidatos.at(-1);
+  return crear();
+}
+
+// La categoría de cada píxel, como { datos, width, height }, venga como venga del modelo.
+function categoriasDe(resultado) {
+  const elegida = resultado.categoryMask;
+  if (elegida) {
+    const categorias = { datos: elegida.getAsUint8Array().slice(), width: elegida.width, height: elegida.height };
+    elegida.close();
+    return categorias;
+  }
+  // Una máscara de confianza por categoría: gana la mayor en cada píxel.
+  const mascaras = resultado.confidenceMasks;
+  const confianzas = mascaras.map((m) => m.getAsFloat32Array());
+  const datos = new Uint8Array(confianzas[0].length);
+  for (let i = 0; i < datos.length; i++) {
+    let mejor = 0;
+    for (let c = 1; c < confianzas.length; c++) if (confianzas[c][i] > confianzas[mejor][i]) mejor = c;
+    datos[i] = mejor;
+  }
+  const categorias = { datos, width: mascaras[0].width, height: mascaras[0].height };
+  mascaras.forEach((m) => m.close());
+  return categorias;
 }
 
 async function veAUnaPersona(detector, modo) {
@@ -390,18 +418,16 @@ async function veAUnaPersona(detector, modo) {
   persona.src = "persona_de_prueba.jpg";
   await persona.decode();
   // En modo video cada imagen lleva su instante; este queda antes que cualquier cuadro real.
-  const mascara = (modo === "VIDEO" ? detector.segmentForVideo(persona, 1) : detector.segment(persona)).categoryMask;
-  const categorias = mascara.getAsUint8Array();
+  const { datos } = categoriasDe(modo === "VIDEO" ? detector.segmentForVideo(persona, 1) : detector.segment(persona));
   let noFondo = 0;
-  for (const categoria of categorias) if (categoria !== 0) noFondo++;
-  mascara.close();
-  return noFondo > categorias.length * 0.05;
+  for (const categoria of datos) if (categoria !== 0) noFondo++;
+  return noFondo > datos.length * 0.05;
 }
 
 const reducida = document.createElement("canvas");
 
 function reducir(fuente, ancho, alto) {
-  const k = Math.min(ANCHO_ANALISIS / ancho, 1);
+  const k = Math.min(motor.ancho / ancho, 1);
   const w = Math.round(ancho * k), h = Math.round(alto * k);
   if (reducida.width !== w || reducida.height !== h) Object.assign(reducida, { width: w, height: h });
   const ctx = reducida.getContext("2d");
@@ -460,7 +486,7 @@ function sinCuello(motivo) {
 //   fondo   altura del borde inferior del escote, si lo cierra una polera
 // o null si no hay un cuello a la vista.
 function medirCuello(mascara) {
-  const cat = mascara.getAsUint8Array();
+  const cat = mascara.datos;
   const w = mascara.width, h = mascara.height;
   const paso = Math.max(Math.round(h / 360), 1);
   // Un collar que la persona ya lleva puesto se clasifica como accesorio: cuenta como cuello.
@@ -550,27 +576,29 @@ function medirCuello(mascara) {
   };
 }
 
-// Dónde no se ve lo que pasa por detrás del cuello. El tramo trasero del aro solo asoma
-// sobre la ropa de los hombros: lo tapan la piel, la cara y el pelo, y sobre el fondo no
-// puede estar.
+// Qué tapa al aro en cada punto de la imagen, para el sombreador de la cinta:
+//   255  la cara, que tapa todo el aro: un choker nunca queda por delante del mentón
+//   128  piel del cuerpo, pelo y fondo, que tapan solo el tramo que pasa por detrás del cuello
+//     0  la ropa (y otros accesorios), sobre la que el aro se ve entero
 function armarOclusor(mascara) {
-  const cat = mascara.getAsUint8Array();
+  const cat = mascara.datos;
   const datos = new Uint8Array(cat.length);
   for (let i = 0; i < cat.length; i++) {
-    if (cat[i] !== ROPA && cat[i] !== ACCESORIO) datos[i] = 255;
+    if (cat[i] === PIEL_CARA) datos[i] = 255;
+    else if (cat[i] !== ROPA && cat[i] !== ACCESORIO) datos[i] = 128;
   }
   return { datos, ancho: mascara.width, alto: mascara.height };
 }
 
 // Texto para ?depurar: qué vio el modelo en la imagen y si se pudo medir el cuello.
 function diagnosticar(mascara, medida) {
-  const cat = mascara.getAsUint8Array();
+  const cat = mascara.datos;
   const cuenta = new Array(6).fill(0);
   for (let i = 0; i < cat.length; i += 7) cuenta[cat[i]]++;
   const total = cuenta.reduce((a, b) => a + b);
   const partes = ["fondo", "pelo", "piel cuerpo", "piel cara", "ropa", "accesorio"].map((n, i) => `${n} ${Math.round((100 * cuenta[i]) / total)}%`);
   return [
-    `imagen ${lienzo.width}×${lienzo.height}, máscara ${mascara.width}×${mascara.height}, ${motorDelCuello}`,
+    `imagen ${lienzo.width}×${lienzo.height}, máscara ${mascara.width}×${mascara.height}, ${motor.nombre}`,
     partes.join(" · "),
     medida ? `cuello medido: ancho ${Math.round(medida.ancho)}, base ${Math.round(medida.y)}` : `sin cuello: ${motivoSinCuello}`,
   ].join("\n");
@@ -609,13 +637,10 @@ function seguirCuello(mascara, ancho, alto, t) {
   };
 }
 
-// La máscara vive en memoria de MediaPipe y hay que liberarla en cada cuadro.
 function leerResultado(resultado, ancho, alto, t) {
-  const mascara = resultado.categoryMask;
-  const pose = seguirCuello(mascara, ancho, alto, t);
+  const mascara = categoriasDe(resultado);
   estado.oclusor = armarOclusor(mascara);
-  mascara.close();
-  return pose;
+  return seguirCuello(mascara, ancho, alto, t);
 }
 
 // ---------------------------------------------------------------- Estado e interfaz
@@ -806,6 +831,8 @@ const SEGUIMIENTOS = {
     },
     olvidar: olvidarPersona,
     aviso: "Ponte frente a la cámara, con el cuello a la vista",
+    // El cuello se mueve poco: si medirlo es lento, se mide menos seguido y la imagen no se frena.
+    cadaCuadro: false,
   },
   anillo_sello: {
     crear: crearDetectorManos,
@@ -815,6 +842,8 @@ const SEGUIMIENTOS = {
     },
     olvidar: olvidarManos,
     aviso: "Muestra tu mano a la cámara",
+    // La mano se mueve rápido: la joya tiene que salir del mismo cuadro que se muestra.
+    cadaCuadro: true,
   },
 };
 
@@ -874,7 +903,7 @@ async function conCamara() {
   // Cada cuadro del video se copia a un lienzo, y de ese mismo lienzo salen tanto lo que se
   // muestra como lo que se analiza: así la joya nunca va atrasada respecto de la imagen.
   const pincel = cuadro.getContext("2d");
-  let ultimoCuadro = -1, cuadros = 0;
+  let ultimoCuadro = -1, cuadros = 0, descansoHasta = 0;
   const seguir = (ahora) => {
     pincel.drawImage(video, 0, 0, cuadro.width, cuadro.height);
     if (cuadros++ % 6 === 0) mirarEscena(cuadro, 0.25);
@@ -885,7 +914,10 @@ async function conCamara() {
       estado.diagnostico = "cargando el modelo de seguimiento…";
       return decir("Preparando…");
     }
+    if (!seguimiento.cadaCuadro && ahora < descansoHasta) return;
     const pose = seguimiento.leer(detector, cuadro, lienzo.width, lienzo.height, ahora / 1000, true);
+    // Analizar ocupa, como mucho, un tercio del tiempo; el resto es para mostrar la imagen.
+    descansoHasta = ahora + 3 * (performance.now() - ahora);
     if (pose) {
       estado.pose = pose;
       estado.vistaEn = ahora;

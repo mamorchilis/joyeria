@@ -36,8 +36,9 @@ Abrir `http://localhost:8123/app/`. Parámetros útiles en la dirección:
 - `?depurar`: dibuja lo que midió el seguimiento del cuello (verde: bordes del cuello;
   rojo: su base; celeste: fondo del escote) y muestra un recuadro con el tamaño de la imagen,
   qué reconoció el modelo (piel, ropa, pelo) y, si no midió el cuello, por qué.
-- `?cpu`: el modelo del cuello corre sin la tarjeta gráfica. Es más lento; sirve para
-  descartar que una falla esté en la gráfica de un dispositivo.
+- `?motor=N`: obliga al modelo del cuello a partir de la forma N de correrlo (0: con gráfica;
+  1: con gráfica, por confianza; 2: sin gráfica). `?cpu` equivale a la última. Sirve para
+  probar una forma en particular o descartar una falla de la gráfica de un dispositivo.
 
 Versión publicada, para abrir desde cualquier dispositivo: https://barreirovaldajos.github.io/probador-joyas/
 
@@ -102,9 +103,16 @@ basta con preparar sus imágenes y agregar su ficha.
 - **Los ajustes del panel no se guardan entre recargas.** Guardarlos dejó valores viejos
   pegados que arruinaban versiones nuevas.
 - **En algunos teléfonos el modelo del cuello falla en la tarjeta gráfica sin avisar.** En un
-  Samsung S25 FE con Chrome respondía que toda la imagen era fondo. Por eso, al crearlo, se le
-  muestra una foto con una persona (`app/persona_de_prueba.jpg`); si no la ve, se vuelve a
-  crear sin la gráfica. El detector de manos no tuvo ese problema.
+  Samsung S25 FE con Chrome respondía que toda la imagen era fondo. Por eso hay tres formas de
+  correrlo (lista `MOTORES` en `app.js`) y, al crearlo, cada una se pone a prueba con una foto
+  de una persona (`app/persona_de_prueba.jpg`); se usa la primera que la ve. Sin gráfica
+  funciona en todos lados pero es varias veces más lento. El detector de manos no tuvo ese
+  problema.
+- **El video no puede depender de lo que tarda el análisis del cuello.** Cuando el análisis es
+  lento, la imagen se sigue mostrando a su ritmo y el cuello se mide menos seguido (a lo más un
+  tercio del tiempo). La mano sí se analiza en cada cuadro, porque se mueve rápido.
+- **La cara tapa al choker.** Con la cámara cerca y desde abajo, el mentón queda por delante
+  del cuello; sin eso el aro se dibujaba sobre la mandíbula.
 - **La profundidad de los hombros del detector de pose es ruido**: se intentó girar el aro
   con ella y lo hacía temblar.
 
