@@ -35,12 +35,16 @@ const SALTO_POSICION = 0.08, SALTO_ANCHO = 0.1, CUADROS_PARA_CREER = 5;
 // Zona muerta, en anchos de cuello: mientras la medida no se aleje más que esto de lo que
 // se está mostrando, la joya no se mueve nada.
 const QUIETO_POSICION = 0.012, QUIETO_ANCHO = 0.015;
+// Con la cara ocupando más que esta fracción de la imagen, la cámara está demasiado cerca:
+// casi no se ve cuello y el mentón lo tapa.
+const CARA_MUY_CERCA = 0.24;
 // Sin medir el cuello durante este tiempo, se deja de mostrar la joya.
 const SEGUNDOS_A_CIEGAS = 1.5;
 // ?depurar dibuja sobre la imagen lo que midió el seguimiento.
 const DEPURAR = new URLSearchParams(location.search).has("depurar");
-// ?motor=N obliga al modelo del cuello a partir de la forma N de la lista MOTORES (0 es la
-// más rápida), para probar una en particular. ?cpu equivale a la última: sin tarjeta gráfica.
+// ?motor=N obliga al modelo del cuello a partir de la forma N de correrlo (ver MOTORES en
+// cuello_trabajador.js; 0 es la más rápida), para probar una en particular. ?cpu equivale a
+// la última: sin tarjeta gráfica.
 const PRIMER_MOTOR = new URLSearchParams(location.search).has("cpu") ? -1 : Number(new URLSearchParams(location.search).get("motor") ?? 0);
 
 const SEGMENTOS = 288;
@@ -353,81 +357,59 @@ async function cargarCatalogo() {
 
 // ---------------------------------------------------------------- Seguimiento
 
-// Formas de correr el modelo del cuello, de la más rápida a la más segura. En algunos
-// teléfonos la tarjeta gráfica no da error pero responde que toda la imagen es fondo, así que
-// cada forma se pone a prueba con una foto de una persona y se usa la primera que la ve.
-//   porConfianza  pide al modelo cuánto cree en cada categoría, en vez de la categoría ya
-//                 elegida; es el paso que falla en esas gráficas
-//   ancho         ancho al que se reduce la imagen antes de analizarla. El modelo trabaja a
-//                 256 px: más ancho solo afina los bordes, y sin gráfica cuesta caro
-const MOTORES = [
-  { nombre: "con gráfica", delegado: "GPU", porConfianza: false, ancho: 512 },
-  { nombre: "con gráfica, por confianza", delegado: "GPU", porConfianza: true, ancho: 256 },
-  { nombre: "sin gráfica", delegado: "CPU", porConfianza: false, ancho: 256 },
-];
-let motor = MOTORES[0];
+// El modelo del cuello corre en un trabajador (otro hilo): analizar una imagen puede tardar
+// más que un cuadro de video, y en el hilo principal eso congelaría la cámara. Aquí se le
+// mandan imágenes cuando está libre y se guarda lo último que respondió.
+let motorDelCuello = ""; // cómo terminó corriendo el modelo; lo muestra ?depurar
 
-async function crearDetector(modo) {
-  const { FilesetResolver, ImageSegmenter } = await import(`${MEDIAPIPE}/vision_bundle.mjs`);
-  const archivos = await FilesetResolver.forVisionTasks(`${MEDIAPIPE}/wasm`);
-  const crear = () =>
-    ImageSegmenter.createFromOptions(archivos, {
-      baseOptions: { modelAssetPath: MODELO_SEGMENTOS, delegate: motor.delegado },
-      runningMode: modo,
-      outputCategoryMask: !motor.porConfianza,
-      outputConfidenceMasks: motor.porConfianza,
+class CuelloEnSegundoPlano {
+  trabajador = new Worker("cuello_trabajador.js");
+  ocupado = false; // hay una imagen analizándose
+  categorias = null; // la última respuesta, todavía sin leer
+  pose = null; // dónde va la joya según la última respuesta leída
+  ancho = 256; // ancho al que conviene reducir la imagen; lo decide el trabajador
+
+  async iniciar() {
+    const persona = await createImageBitmap(await (await fetch("persona_de_prueba.jpg")).blob());
+    const listo = new Promise((resolver, rechazar) => {
+      this.trabajador.onerror = (evento) => rechazar(new Error(evento.message));
+      this.trabajador.onmessage = ({ data }) => {
+        if (data.tipo === "listo") {
+          motorDelCuello = data.motor;
+          this.ancho = data.ancho;
+          resolver(this);
+        } else if (data.tipo === "categorias") {
+          this.categorias = data;
+          this.ocupado = false;
+        } else {
+          console.error("Modelo del cuello:", data.mensaje);
+          this.ocupado = false;
+          rechazar(new Error(data.mensaje));
+        }
+      };
     });
-  const candidatos = MOTORES.slice(PRIMER_MOTOR);
-  for (motor of candidatos.slice(0, -1)) {
-    try {
-      const detector = await crear();
-      if (await veAUnaPersona(detector, modo)) return detector;
-      detector.close();
-    } catch (error) {
-      console.warn(`El modelo del cuello no funcionó ${motor.nombre}:`, error);
-    }
+    this.trabajador.postMessage(
+      { tipo: "crear", mediapipe: MEDIAPIPE, modelo: MODELO_SEGMENTOS, primerMotor: PRIMER_MOTOR, persona },
+      [persona],
+    );
+    return listo;
   }
-  motor = candidatos.at(-1);
-  return crear();
-}
 
-// La categoría de cada píxel, como { datos, width, height }, venga como venga del modelo.
-function categoriasDe(resultado) {
-  const elegida = resultado.categoryMask;
-  if (elegida) {
-    const categorias = { datos: elegida.getAsUint8Array().slice(), width: elegida.width, height: elegida.height };
-    elegida.close();
-    return categorias;
+  // Manda la imagen a analizar, si el trabajador ya terminó con la anterior.
+  analizar(fuente, ancho, alto) {
+    if (this.ocupado) return;
+    this.ocupado = true;
+    createImageBitmap(reducir(fuente, ancho, alto, this.ancho)).then(
+      (imagen) => this.trabajador.postMessage({ tipo: "cuadro", imagen }, [imagen]),
+      () => (this.ocupado = false),
+    );
   }
-  // Una máscara de confianza por categoría: gana la mayor en cada píxel.
-  const mascaras = resultado.confidenceMasks;
-  const confianzas = mascaras.map((m) => m.getAsFloat32Array());
-  const datos = new Uint8Array(confianzas[0].length);
-  for (let i = 0; i < datos.length; i++) {
-    let mejor = 0;
-    for (let c = 1; c < confianzas.length; c++) if (confianzas[c][i] > confianzas[mejor][i]) mejor = c;
-    datos[i] = mejor;
-  }
-  const categorias = { datos, width: mascaras[0].width, height: mascaras[0].height };
-  mascaras.forEach((m) => m.close());
-  return categorias;
-}
-
-async function veAUnaPersona(detector, modo) {
-  const persona = new Image();
-  persona.src = "persona_de_prueba.jpg";
-  await persona.decode();
-  // En modo video cada imagen lleva su instante; este queda antes que cualquier cuadro real.
-  const { datos } = categoriasDe(modo === "VIDEO" ? detector.segmentForVideo(persona, 1) : detector.segment(persona));
-  let noFondo = 0;
-  for (const categoria of datos) if (categoria !== 0) noFondo++;
-  return noFondo > datos.length * 0.05;
 }
 
 const reducida = document.createElement("canvas");
 
-function reducir(fuente, ancho, alto) {
-  const k = Math.min(motor.ancho / ancho, 1);
+function reducir(fuente, ancho, alto, anchoReducido) {
+  const k = Math.min(anchoReducido / ancho, 1);
   const w = Math.round(ancho * k), h = Math.round(alto * k);
   if (reducida.width !== w || reducida.height !== h) Object.assign(reducida, { width: w, height: h });
   const ctx = reducida.getContext("2d");
@@ -496,13 +478,15 @@ function medirCuello(mascara) {
   };
 
   // El cuello se busca bajo la cara: entre sus columnas, la del medio de la piel del cuerpo.
-  let caraIzq = w, caraDer = -1;
+  let caraIzq = w, caraDer = -1, caras = 0, muestras = 0;
   const porColumna = new Map();
   let total = 0;
   for (let y = 0; y < h; y += 2 * paso) {
     for (let x = 0; x < w; x += 4) {
       const c = cat[y * w + x];
+      muestras++;
       if (c === PIEL_CARA) {
+        caras++;
         caraIzq = Math.min(caraIzq, x);
         caraDer = Math.max(caraDer, x);
       } else if (c === PIEL_CUERPO) {
@@ -572,6 +556,7 @@ function medirCuello(mascara) {
     ancho,
     // Si la piel se acaba hacia abajo es el borde de una polera: hasta ahí llega el escote.
     fondo: cerrado ? filas.at(-1).y + paso / 2 : null,
+    cara: caras / muestras, // fracción de la imagen que ocupa la cara
     filas,
   };
 }
@@ -598,14 +583,15 @@ function diagnosticar(mascara, medida) {
   const total = cuenta.reduce((a, b) => a + b);
   const partes = ["fondo", "pelo", "piel cuerpo", "piel cara", "ropa", "accesorio"].map((n, i) => `${n} ${Math.round((100 * cuenta[i]) / total)}%`);
   return [
-    `imagen ${lienzo.width}×${lienzo.height}, máscara ${mascara.width}×${mascara.height}, ${motor.nombre}`,
+    `imagen ${lienzo.width}×${lienzo.height}, máscara ${mascara.width}×${mascara.height}, ${motorDelCuello}`,
     partes.join(" · "),
     medida ? `cuello medido: ancho ${Math.round(medida.ancho)}, base ${Math.round(medida.y)}` : `sin cuello: ${motivoSinCuello}`,
   ].join("\n");
 }
 
 // Sigue el cuello cuadro a cuadro. Devuelve, en píxeles de la imagen,
-// { base, anchoCuello, fondo (o null si no hay polera que cierre el escote) }, o null.
+// { base, anchoCuello, fondo (o null si no hay polera que cierre el escote), sugerencia
+// (un consejo de encuadre, o null) }, o null.
 function seguirCuello(mascara, ancho, alto, t) {
   const kx = ancho / mascara.width, ky = alto / mascara.height;
   const medida = medirCuello(mascara);
@@ -634,13 +620,8 @@ function seguirCuello(mascara, ancho, alto, t) {
     },
     anchoCuello: anchoCuello * kx,
     fondo: ultimo.fondo ? asentar("fondo", filtros.fondo.filtrar(ultimo.fondo, t), quieto) * ky : null,
+    sugerencia: ultimo.cara > CARA_MUY_CERCA ? "Aleja la cámara hasta que se vean tus hombros" : null,
   };
-}
-
-function leerResultado(resultado, ancho, alto, t) {
-  const mascara = categoriasDe(resultado);
-  estado.oclusor = armarOclusor(mascara);
-  return seguirCuello(mascara, ancho, alto, t);
 }
 
 // ---------------------------------------------------------------- Estado e interfaz
@@ -823,27 +804,30 @@ function pintarDepuracion() {
 // leer() devuelve dónde va la joya en este cuadro, o null si no se ve a la persona.
 const SEGUIMIENTOS = {
   choker_rigido: {
-    crear: crearDetector,
-    leer(detector, fuente, ancho, alto, t, enVivo) {
-      const imagen = reducir(fuente, ancho, alto);
-      const resultado = enVivo ? detector.segmentForVideo(imagen, t * 1000) : detector.segment(imagen);
-      return leerResultado(resultado, ancho, alto, t);
+    crear: () => new CuelloEnSegundoPlano().iniciar(),
+    // El análisis va en segundo plano: se lee lo último que haya llegado y se manda la imagen
+    // actual a analizar. El cuello se mueve poco, así que ir un instante atrás no se nota.
+    leer(detector, fuente, ancho, alto, t) {
+      if (detector.categorias) {
+        estado.oclusor = armarOclusor(detector.categorias);
+        detector.pose = seguirCuello(detector.categorias, ancho, alto, t);
+        detector.categorias = null;
+      }
+      detector.analizar(fuente, ancho, alto);
+      return detector.pose;
     },
     olvidar: olvidarPersona,
     aviso: "Ponte frente a la cámara, con el cuello a la vista",
-    // El cuello se mueve poco: si medirlo es lento, se mide menos seguido y la imagen no se frena.
-    cadaCuadro: false,
   },
   anillo_sello: {
     crear: crearDetectorManos,
+    // La mano se mueve rápido: se analiza el mismo cuadro que se muestra.
     leer(detector, fuente, ancho, alto, t, enVivo) {
       const resultado = enVivo ? detector.detectForVideo(fuente, t * 1000) : detector.detect(fuente);
       return seguirManos(resultado, ancho, alto, t, ajustesDe(estado.joya).dedo, estado.joya.posicion);
     },
     olvidar: olvidarManos,
     aviso: "Muestra tu mano a la cámara",
-    // La mano se mueve rápido: la joya tiene que salir del mismo cuadro que se muestra.
-    cadaCuadro: true,
   },
 };
 
@@ -903,7 +887,7 @@ async function conCamara() {
   // Cada cuadro del video se copia a un lienzo, y de ese mismo lienzo salen tanto lo que se
   // muestra como lo que se analiza: así la joya nunca va atrasada respecto de la imagen.
   const pincel = cuadro.getContext("2d");
-  let ultimoCuadro = -1, cuadros = 0, descansoHasta = 0;
+  let ultimoCuadro = -1, cuadros = 0;
   const seguir = (ahora) => {
     pincel.drawImage(video, 0, 0, cuadro.width, cuadro.height);
     if (cuadros++ % 6 === 0) mirarEscena(cuadro, 0.25);
@@ -914,10 +898,7 @@ async function conCamara() {
       estado.diagnostico = "cargando el modelo de seguimiento…";
       return decir("Preparando…");
     }
-    if (!seguimiento.cadaCuadro && ahora < descansoHasta) return;
     const pose = seguimiento.leer(detector, cuadro, lienzo.width, lienzo.height, ahora / 1000, true);
-    // Analizar ocupa, como mucho, un tercio del tiempo; el resto es para mostrar la imagen.
-    descansoHasta = ahora + 3 * (performance.now() - ahora);
     if (pose) {
       estado.pose = pose;
       estado.vistaEn = ahora;
@@ -925,7 +906,7 @@ async function conCamara() {
       estado.pose = null;
       seguimiento.olvidar();
     }
-    decir(estado.pose ? null : seguimiento.aviso);
+    decir(estado.pose ? estado.pose.sugerencia ?? null : seguimiento.aviso);
   };
   const ciclo = () => {
     if (video.currentTime !== ultimoCuadro) {
@@ -939,8 +920,7 @@ async function conCamara() {
 }
 
 // Modo de prueba: ?foto=<ruta> coloca la joya sobre una foto fija en vez de la cámara
-// (con ?joya=<id> se elige cuál). Si no se encuentra el cuello, el choker se puede arrastrar
-// y escalar con la rueda.
+// (con ?joya=<id> se elige cuál).
 async function conFoto(ruta) {
   video.hidden = cuadro.hidden = true;
   foto.hidden = false;
@@ -948,39 +928,11 @@ async function conFoto(ruta) {
   await foto.decode();
   encuadrar(foto.naturalWidth, foto.naturalHeight);
   mirarEscena(foto, 1);
-  const { joya } = estado;
-  const seguimiento = SEGUIMIENTOS[joya.tipo];
+  const seguimiento = SEGUIMIENTOS[estado.joya.tipo];
   const detector = await seguimiento.crear("IMAGE");
-  estado.pose = seguimiento.leer(detector, foto, lienzo.width, lienzo.height, 0, false);
-  if (!estado.pose && joya.tipo === "choker_rigido") {
-    estado.pose = { base: { x: lienzo.width / 2, y: lienzo.height * 0.4 }, anchoCuello: lienzo.width * 0.25, fondo: null };
-    decir("No se encontró el cuello: arrastra la joya para ubicarla");
-  } else if (!estado.pose) {
-    decir(seguimiento.aviso);
-  }
-
-  const aLienzo = (e) => {
-    const caja = lienzo.getBoundingClientRect();
-    return {
-      x: ((e.clientX - caja.left) / caja.width) * lienzo.width,
-      y: ((e.clientY - caja.top) / caja.height) * lienzo.height,
-    };
-  };
-  let arrastre = null;
-  lienzo.addEventListener("pointerdown", (e) => (arrastre = aLienzo(e)));
-  addEventListener("pointerup", () => (arrastre = null));
-  lienzo.addEventListener("pointermove", (e) => {
-    if (!arrastre || !estado.pose?.base) return;
-    const p = aLienzo(e);
-    estado.pose.base.x += p.x - arrastre.x;
-    estado.pose.base.y += p.y - arrastre.y;
-    arrastre = p;
-  });
-  lienzo.addEventListener("wheel", (e) => {
-    if (estado.pose?.base) estado.pose.anchoCuello *= e.deltaY < 0 ? 1.03 : 0.97;
-  });
-
   const ciclo = () => {
+    estado.pose = seguimiento.leer(detector, foto, lienzo.width, lienzo.height, performance.now() / 1000, false);
+    decir(estado.pose ? estado.pose.sugerencia ?? null : seguimiento.aviso);
     pintar();
     requestAnimationFrame(ciclo);
   };

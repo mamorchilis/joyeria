@@ -56,6 +56,7 @@ las joyas; el campo `tipo` decide cuál se usa. Para sumar una joya de un tipo q
 basta con preparar sus imágenes y agregar su ficha.
 
 - `app.js`: interfaz, ciclo de video y todo lo del **choker rígido**.
+- `cuello_trabajador.js`: el modelo del cuello, que corre en un hilo aparte (un *worker*).
 - `anillo.js`: todo lo del **anillo de sello**.
 - `comun.js`: filtros de suavizado y el trozo de sombreador `FUNDIR`, que iguala el dibujo a
   la imagen de la cámara (negro y blanco de la escena, luz, grano).
@@ -103,14 +104,19 @@ basta con preparar sus imágenes y agregar su ficha.
 - **Los ajustes del panel no se guardan entre recargas.** Guardarlos dejó valores viejos
   pegados que arruinaban versiones nuevas.
 - **En algunos teléfonos el modelo del cuello falla en la tarjeta gráfica sin avisar.** En un
-  Samsung S25 FE con Chrome respondía que toda la imagen era fondo. Por eso hay tres formas de
-  correrlo (lista `MOTORES` en `app.js`) y, al crearlo, cada una se pone a prueba con una foto
-  de una persona (`app/persona_de_prueba.jpg`); se usa la primera que la ve. Sin gráfica
-  funciona en todos lados pero es varias veces más lento. El detector de manos no tuvo ese
-  problema.
-- **El video no puede depender de lo que tarda el análisis del cuello.** Cuando el análisis es
-  lento, la imagen se sigue mostrando a su ritmo y el cuello se mide menos seguido (a lo más un
-  tercio del tiempo). La mano sí se analiza en cada cuadro, porque se mueve rápido.
+  Samsung S25 FE con Chrome respondía que toda la imagen era fondo, de las dos formas en que
+  se le puede pedir el resultado. Por eso hay tres formas de correrlo (lista `MOTORES` en
+  `cuello_trabajador.js`) y, al crearlo, cada una se pone a prueba con una foto de una persona
+  (`app/persona_de_prueba.jpg`); se usa la primera que la ve. Sin gráfica funciona en todos
+  lados pero es varias veces más lento. El detector de manos no tuvo ese problema.
+- **El modelo del cuello no puede correr en el hilo que dibuja.** Sin gráfica, cada análisis
+  congelaba la cámara un instante. Ahora corre en un trabajador: el hilo principal le manda
+  una imagen cuando está libre y usa lo último que respondió. La imagen se ve fluida aunque el
+  cuello se mida pocas veces por segundo. La mano sí se analiza en el hilo principal y en cada
+  cuadro, porque se mueve rápido y su modelo es liviano.
+- **Con la cámara muy cerca no hay cuello que mostrar.** En una selfie de celular la cara llena
+  la imagen y el mentón tapa el cuello. La app avisa que hay que alejarse cuando la cara ocupa
+  más de un cuarto de la imagen.
 - **La cara tapa al choker.** Con la cámara cerca y desde abajo, el mentón queda por delante
   del cuello; sin eso el aro se dibujaba sobre la mandíbula.
 - **La profundidad de los hombros del detector de pose es ruido**: se intentó girar el aro
