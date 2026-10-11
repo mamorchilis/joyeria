@@ -411,6 +411,14 @@ function asentar(clave, valor, radio) {
   return (cuelloVisto.mostrado[clave] = valor - limitar(valor - previo, -radio, radio));
 }
 
+// Por qué no se pudo medir el cuello en el último cuadro; lo muestra ?depurar.
+let motivoSinCuello = "";
+
+function sinCuello(motivo) {
+  motivoSinCuello = motivo;
+  return null;
+}
+
 // Mide el cuello sobre la máscara de categorías: la piel que queda bajo la cara, entre el
 // mentón y la ropa. Devuelve, en píxeles de la máscara:
 //   x, y    eje del cuello y altura de su base (donde se junta con los hombros o la ropa)
@@ -446,7 +454,7 @@ function medirCuello(mascara) {
   const hayCara = caraDer > caraIzq;
   const columnas = [...porColumna].filter(([x]) => !hayCara || (x >= caraIzq && x <= caraDer)).sort((a, b) => a[0] - b[0]);
   const enRango = columnas.reduce((suma, [, n]) => suma + n, 0);
-  if (enRango < 20) return null;
+  if (enRango < 20) return sinCuello("no hay piel bajo la cara");
   let acumulado = 0;
   const semilla = columnas.find(([, n]) => (acumulado += n) >= enRango / 2)[0];
   // En esa columna el cuello empieza bajo el mentón: la primera piel del cuerpo tras la cara.
@@ -469,7 +477,7 @@ function medirCuello(mascara) {
     crudas.push({ y, izq, der });
     eje = Math.round((izq + der) / 2);
   }
-  if (crudas.length < 10) return null;
+  if (crudas.length < 10) return sinCuello("el tramo de cuello visible es muy corto");
 
   // Cada borde se limpia con una mediana (quita dientes de la máscara) y luego un promedio.
   const ventana = (filas, i, lado) =>
@@ -495,9 +503,9 @@ function medirCuello(mascara) {
       break;
     }
   }
-  if (ancho < CUELLO_EN_IMAGEN[0] * w || ancho > CUELLO_EN_IMAGEN[1] * w) return null;
+  if (ancho < CUELLO_EN_IMAGEN[0] * w || ancho > CUELLO_EN_IMAGEN[1] * w) return sinCuello("el ancho medido no es el de un cuello");
   const rectas = filas.slice(0, base).filter((f) => Math.abs(f.der - f.izq - ancho) <= ancho * FIN_DEL_CUELLO);
-  if (rectas.length < 3) return null;
+  if (rectas.length < 3) return sinCuello("el cuello no tiene un tramo de ancho parejo");
   return {
     x: promedio(rectas.map((f) => (f.izq + f.der) / 2)),
     y: filas[base].y,
@@ -520,12 +528,29 @@ function armarOclusor(mascara) {
   return { datos, ancho: mascara.width, alto: mascara.height };
 }
 
+// Texto para ?depurar: qué vio el modelo en la imagen y si se pudo medir el cuello.
+function diagnosticar(mascara, medida) {
+  const cat = mascara.getAsUint8Array();
+  const cuenta = new Array(6).fill(0);
+  for (let i = 0; i < cat.length; i += 7) cuenta[cat[i]]++;
+  const total = cuenta.reduce((a, b) => a + b);
+  const partes = ["fondo", "pelo", "piel cuerpo", "piel cara", "ropa", "accesorio"].map((n, i) => `${n} ${Math.round((100 * cuenta[i]) / total)}%`);
+  return [
+    `imagen ${lienzo.width}×${lienzo.height}, máscara ${mascara.width}×${mascara.height}`,
+    partes.join(" · "),
+    medida ? `cuello medido: ancho ${Math.round(medida.ancho)}, base ${Math.round(medida.y)}` : `sin cuello: ${motivoSinCuello}`,
+  ].join("\n");
+}
+
 // Sigue el cuello cuadro a cuadro. Devuelve, en píxeles de la imagen,
 // { base, anchoCuello, fondo (o null si no hay polera que cierre el escote) }, o null.
 function seguirCuello(mascara, ancho, alto, t) {
   const kx = ancho / mascara.width, ky = alto / mascara.height;
   const medida = medirCuello(mascara);
-  if (DEPURAR) estado.depuracion = medida && { ...medida, kx, ky };
+  if (DEPURAR) {
+    estado.depuracion = medida && { ...medida, kx, ky };
+    estado.diagnostico = diagnosticar(mascara, medida);
+  }
 
   if (medida && esCreible(medida)) {
     const previo = cuelloVisto.ancho ?? medida.ancho;
@@ -570,6 +595,7 @@ const estado = {
   ajustes: {},
   panelAbierto: true,
   depuracion: null,
+  diagnostico: null,
   oclusor: null,
   // Cómo es la imagen de la cámara, para que las joyas se fundan con ella (ver FUNDIR).
   escena: { luz: 1, negro: 0.03, blanco: 0.97, tiempo: 0 },
@@ -703,6 +729,14 @@ function pintarDepuracion() {
   capa.width = lienzo.width;
   capa.height = lienzo.height;
   const ctx = capa.getContext("2d");
+  // El texto va fuera de la escena, que en modo cámara está espejada.
+  let texto = $("diagnostico");
+  if (!texto) {
+    texto = Object.assign(document.createElement("pre"), { id: "diagnostico" });
+    texto.style.cssText = "position:fixed;left:12px;top:56px;margin:0;padding:8px 10px;font:12px/1.4 monospace;color:#fff;background:rgba(0,0,0,.6);border-radius:8px;white-space:pre-wrap;max-width:90vw";
+    document.body.append(texto);
+  }
+  texto.textContent = estado.diagnostico ?? "";
   const cuello = estado.depuracion;
   if (!cuello) return;
   const { kx, ky } = cuello;
