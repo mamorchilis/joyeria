@@ -34,7 +34,10 @@ Abrir `http://localhost:8123/app/`. Parámetros útiles en la dirección:
   `?foto=../pruebas/referencia_choker_puesto.webp` y
   `?joya=anillo_onix&foto=../Imagenes_joyas_para_empezar_desarrollo/Anillo_cuadrado_onix/anillo_onix_bronce_carrusel.webp`
 - `?depurar`: dibuja lo que midió el seguimiento del cuello (verde: bordes del cuello;
-  rojo: su base; celeste: fondo del escote).
+  rojo: su base; celeste: fondo del escote) y muestra un recuadro con el tamaño de la imagen,
+  qué reconoció el modelo (piel, ropa, pelo) y, si no midió el cuello, por qué.
+- `?cpu`: el modelo del cuello corre sin la tarjeta gráfica. Es más lento; sirve para
+  descartar que una falla esté en la gráfica de un dispositivo.
 
 Versión publicada, para abrir desde cualquier dispositivo: https://barreirovaldajos.github.io/probador-joyas/
 

@@ -72,10 +72,13 @@ button:active { transform: scale(0.97); }
 .aviso {
   position: fixed;
   left: 50%;
-  top: 22%;
+  /* Sobre la bandeja de joyas y por encima del panel, para que nada lo tape. */
+  bottom: calc(170px + env(safe-area-inset-bottom));
+  z-index: 2;
   transform: translateX(-50%);
   margin: 0;
   padding: 10px 18px;
+  width: max-content;
   max-width: 82vw;
   text-align: center;
   font-size: 14px;

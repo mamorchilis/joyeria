@@ -42,6 +42,9 @@ const SEGUNDOS_A_CIEGAS = 1.5;
 const ANCHO_ANALISIS = 512;
 // ?depurar dibuja sobre la imagen lo que midió el seguimiento.
 const DEPURAR = new URLSearchParams(location.search).has("depurar");
+// ?cpu hace que el modelo del cuello corra sin la tarjeta gráfica: más lento, pero sirve para
+// descartar que la falla esté en la gráfica de un dispositivo.
+const SIN_GPU = new URLSearchParams(location.search).has("cpu");
 
 const SEGMENTOS = 288;
 const ARCO_GRADOS = 180; // el aro completo: de la nuca a la nuca pasando por el frente
@@ -357,7 +360,7 @@ async function crearDetector(modo) {
   const { FilesetResolver, ImageSegmenter } = await import(`${MEDIAPIPE}/vision_bundle.mjs`);
   const archivos = await FilesetResolver.forVisionTasks(`${MEDIAPIPE}/wasm`);
   return ImageSegmenter.createFromOptions(archivos, {
-    baseOptions: { modelAssetPath: MODELO_SEGMENTOS, delegate: "GPU" },
+    baseOptions: { modelAssetPath: MODELO_SEGMENTOS, delegate: SIN_GPU ? "CPU" : "GPU" },
     runningMode: modo,
     outputCategoryMask: true,
     outputConfidenceMasks: false,
@@ -536,7 +539,7 @@ function diagnosticar(mascara, medida) {
   const total = cuenta.reduce((a, b) => a + b);
   const partes = ["fondo", "pelo", "piel cuerpo", "piel cara", "ropa", "accesorio"].map((n, i) => `${n} ${Math.round((100 * cuenta[i]) / total)}%`);
   return [
-    `imagen ${lienzo.width}×${lienzo.height}, máscara ${mascara.width}×${mascara.height}`,
+    `imagen ${lienzo.width}×${lienzo.height}, máscara ${mascara.width}×${mascara.height}, ${SIN_GPU ? "sin" : "con"} gráfica`,
     partes.join(" · "),
     medida ? `cuello medido: ancho ${Math.round(medida.ancho)}, base ${Math.round(medida.y)}` : `sin cuello: ${motivoSinCuello}`,
   ].join("\n");
@@ -593,7 +596,8 @@ const estado = {
   vistaEn: -Infinity,
   pintores: null,
   ajustes: {},
-  panelAbierto: true,
+  // El panel parte abierto, salvo en pantallas angostas, donde taparía a la persona.
+  panelAbierto: innerWidth >= 700,
   depuracion: null,
   diagnostico: null,
   oclusor: null,
@@ -733,7 +737,7 @@ function pintarDepuracion() {
   let texto = $("diagnostico");
   if (!texto) {
     texto = Object.assign(document.createElement("pre"), { id: "diagnostico" });
-    texto.style.cssText = "position:fixed;left:12px;top:56px;margin:0;padding:8px 10px;font:12px/1.4 monospace;color:#fff;background:rgba(0,0,0,.6);border-radius:8px;white-space:pre-wrap;max-width:90vw";
+    texto.style.cssText = "position:fixed;left:12px;bottom:230px;z-index:3;margin:0;padding:8px 10px;font:12px/1.4 monospace;color:#fff;background:rgba(0,0,0,.7);border-radius:8px;white-space:pre-wrap;max-width:calc(100vw - 24px)";
     document.body.append(texto);
   }
   texto.textContent = estado.diagnostico ?? "";
@@ -846,7 +850,10 @@ async function conCamara() {
     const { joya } = estado;
     if (!joya) return decir(null);
     const seguimiento = SEGUIMIENTOS[joya.tipo], detector = detectorDe(joya.tipo);
-    if (!detector) return decir("Preparando…");
+    if (!detector) {
+      estado.diagnostico = "cargando el modelo de seguimiento…";
+      return decir("Preparando…");
+    }
     const pose = seguimiento.leer(detector, cuadro, lienzo.width, lienzo.height, ahora / 1000, true);
     if (pose) {
       estado.pose = pose;
