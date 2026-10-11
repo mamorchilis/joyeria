@@ -356,15 +356,46 @@ async function cargarCatalogo() {
 
 // ---------------------------------------------------------------- Seguimiento
 
+// Con qué corre el modelo del cuello; lo muestra ?depurar.
+let motorDelCuello = "";
+
+// En algunos teléfonos el modelo corre en la tarjeta gráfica sin dar error, pero responde que
+// toda la imagen es fondo. Por eso, antes de usarlo, se le muestra una foto con una persona:
+// si no la ve, se vuelve a crear sin la gráfica, que es más lento pero funciona en todos.
 async function crearDetector(modo) {
   const { FilesetResolver, ImageSegmenter } = await import(`${MEDIAPIPE}/vision_bundle.mjs`);
   const archivos = await FilesetResolver.forVisionTasks(`${MEDIAPIPE}/wasm`);
-  return ImageSegmenter.createFromOptions(archivos, {
-    baseOptions: { modelAssetPath: MODELO_SEGMENTOS, delegate: SIN_GPU ? "CPU" : "GPU" },
-    runningMode: modo,
-    outputCategoryMask: true,
-    outputConfidenceMasks: false,
-  });
+  const crear = (motor) => {
+    motorDelCuello = motor === "GPU" ? "con gráfica" : "sin gráfica";
+    return ImageSegmenter.createFromOptions(archivos, {
+      baseOptions: { modelAssetPath: MODELO_SEGMENTOS, delegate: motor },
+      runningMode: modo,
+      outputCategoryMask: true,
+      outputConfidenceMasks: false,
+    });
+  };
+  if (SIN_GPU) return crear("CPU");
+  try {
+    const detector = await crear("GPU");
+    if (await veAUnaPersona(detector, modo)) return detector;
+    detector.close();
+  } catch (error) {
+    console.warn("El modelo del cuello no pudo usar la gráfica:", error);
+  }
+  return crear("CPU");
+}
+
+async function veAUnaPersona(detector, modo) {
+  const persona = new Image();
+  persona.src = "persona_de_prueba.jpg";
+  await persona.decode();
+  // En modo video cada imagen lleva su instante; este queda antes que cualquier cuadro real.
+  const mascara = (modo === "VIDEO" ? detector.segmentForVideo(persona, 1) : detector.segment(persona)).categoryMask;
+  const categorias = mascara.getAsUint8Array();
+  let noFondo = 0;
+  for (const categoria of categorias) if (categoria !== 0) noFondo++;
+  mascara.close();
+  return noFondo > categorias.length * 0.05;
 }
 
 const reducida = document.createElement("canvas");
@@ -539,7 +570,7 @@ function diagnosticar(mascara, medida) {
   const total = cuenta.reduce((a, b) => a + b);
   const partes = ["fondo", "pelo", "piel cuerpo", "piel cara", "ropa", "accesorio"].map((n, i) => `${n} ${Math.round((100 * cuenta[i]) / total)}%`);
   return [
-    `imagen ${lienzo.width}×${lienzo.height}, máscara ${mascara.width}×${mascara.height}, ${SIN_GPU ? "sin" : "con"} gráfica`,
+    `imagen ${lienzo.width}×${lienzo.height}, máscara ${mascara.width}×${mascara.height}, ${motorDelCuello}`,
     partes.join(" · "),
     medida ? `cuello medido: ancho ${Math.round(medida.ancho)}, base ${Math.round(medida.y)}` : `sin cuello: ${motivoSinCuello}`,
   ].join("\n");

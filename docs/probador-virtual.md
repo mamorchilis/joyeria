@@ -101,6 +101,10 @@ basta con preparar sus imágenes y agregar su ficha.
   filtro lento, descarte de saltos y zona muerta. La mano necesita respuesta inmediata.
 - **Los ajustes del panel no se guardan entre recargas.** Guardarlos dejó valores viejos
   pegados que arruinaban versiones nuevas.
+- **En algunos teléfonos el modelo del cuello falla en la tarjeta gráfica sin avisar.** En un
+  Samsung S25 FE con Chrome respondía que toda la imagen era fondo. Por eso, al crearlo, se le
+  muestra una foto con una persona (`app/persona_de_prueba.jpg`); si no la ve, se vuelve a
+  crear sin la gráfica. El detector de manos no tuvo ese problema.
 - **La profundidad de los hombros del detector de pose es ruido**: se intentó girar el aro
   con ella y lo hacía temblar.
 
