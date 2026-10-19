@@ -31,7 +31,7 @@ Resumen del contexto disponible sobre el emprendimiento de joyería artesanal.
 
 ## Información que falta
 
-- Nombre de la marca (siguiente paso; de él depende constituir la empresa)
+- Nombre de la marca (siguiente paso; de él depende constituir la empresa). Candidatos: del Pilar Joyas, Pili Trespalacios, San Salvatore, Parpaglione y Trespalacios; los socios prefieren los dos primeros. Análisis en `docs/marca/nombres.md`.
 - Constitución de la empresa
 - Marca, web y redes sociales
 - Packaging: caja, bolsa, decoración, carta con mensaje y cuidados, aroma

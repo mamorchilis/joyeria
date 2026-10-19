@@ -13,7 +13,7 @@ Desarrollar una marca propia de joyería artesanal en Chile y definir su propues
 - CLAF Goldsmith es el proveedor más probable para partir (ya hubo reuniones), pero todavía no hay confirmación formal ni contrato. Lo que ofrece, según las reuniones, está en `marca-joyas.md`.
 
 ## Decisiones pendientes
-1. Nombre e identidad de marca. **Siguiente paso:** definir el nombre; de él depende constituir la empresa.
+1. Nombre e identidad de marca. **Siguiente paso:** definir el nombre; de él depende constituir la empresa. Hay 5 candidatos analizados en `docs/marca/nombres.md`.
 2. Público objetivo y posicionamiento.
 3. Catálogo inicial y materiales. **En curso:** los socios están definiendo los 6 diseños de partida.
 4. Búsqueda, evaluación y selección de fabricante. **En curso:** CLAF es el más probable; falta formalizar.
@@ -80,4 +80,10 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   5. También pendiente: definir el **packaging** (caja, bolsa, decoración, carta con mensaje
      y cuidados de la joya, y aroma).
   El orden importa: nombre, luego empresa, luego marca, web y redes.
+
+- **2026-10-19 — Candidatos de nombre analizados (sin decisión).** Candidatos: del Pilar
+  Joyas, Pili Trespalacios, San Salvatore (pueblo del nonno de Pili), Parpaglione y
+  Trespalacios (apellidos de Pili). Los socios prefieren los dos primeros. Se revisaron
+  dominios, uso visible en la web y encaje con el segmento; faltan INAPI, Instagram y una
+  prueba con clientes. Análisis y pendientes en `docs/marca/nombres.md`.
 
