@@ -8,7 +8,7 @@ Para ver los gráficos, abrir la hoja "Igna Valverde" del [tablero general](../d
 
 ## Por qué la estudiamos
 
-Es la segunda referencia del proyecto: gustan sus joyas, pero no del todo su marca. En una conversación con CLAF Goldsmith se mencionó que este taller fabrica para la marca. **No está verificado**: el propio sitio habla de "nuestro taller".
+Es la segunda referencia del proyecto: gustan sus joyas, pero no del todo su marca. Según contó CLAF Goldsmith en la reunión con el taller, es una de las marcas para las que fabrica (el propio sitio habla de "nuestro taller").
 
 ## Catálogo (captura del 18-10-2026)
 

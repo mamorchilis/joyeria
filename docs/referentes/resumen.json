@@ -3,22 +3,108 @@
   "bajada": "Co Rivera, Igna Valverde, CBC Jewelry y Milagritos de María venden plata (y tres de ellas, bronce) al sector oriente de Santiago. Sus medianas van de $78 mil a $150 mil. Se diferencian en especialización, tamaño del catálogo, forma de operar y en cómo cuentan su marca.",
   "nota": "Son lecturas de catálogos públicos para formular hipótesis. No hay datos de ventas, costos ni márgenes de ninguna de las cuatro marcas.",
   "conclusiones": [
-    {"tag": "Precio", "titulo": "El centro está entre $80 y $220 mil", "texto": "Ahí cae más de la mitad de los catálogos de Co Rivera, Igna y CBC. Milagritos juega más abajo: la mitad de sus piezas cuesta entre $50 y $79 mil."},
-    {"tag": "Escalera", "titulo": "El bronce es la puerta de entrada", "texto": "El mismo diseño en plata cuesta unas 2,1 veces lo que en bronce en Co Rivera y CBC, y 1,5 veces en Milagritos. Permite tener precio de entrada y precio alto sin diseñar el doble."},
-    {"tag": "Símbolos", "titulo": "Lo religioso está saturado", "texto": "Vírgenes, San Benito y cruces aparecen en Co Rivera, CBC y en el 91% de Milagritos. Usarlos sin una mirada propia nos pone a competir por precio."},
-    {"tag": "Operación", "titulo": "Lo mejor es la mezcla", "texto": "Co Rivera trabaja a pedido (15 a 20 días); Igna, con stock. CBC combina las dos cosas, con retiro en tienda en horas para lo que está en stock y 15 días para lo que se fabrica. Depende de lo que ofrezca el taller."},
-    {"tag": "Fabricación", "titulo": "Encargar afuera funciona", "texto": "CBC diseña y fabrica con orfebres nacionales, a baja escala. Es la referencia más cercana al modelo que buscamos con un taller aliado."},
-    {"tag": "Espacio libre", "titulo": "Nadie ofrece oro en serio", "texto": "Ninguna vende oro macizo. Solo hay unas pocas piezas con baño de oro (8 en Igna y 2 en CBC). Sigue siendo una hipótesis abierta, pendiente de costos."}
+    {
+      "tag": "Precio",
+      "titulo": "El centro está entre $80 y $220 mil",
+      "texto": "Ahí cae más de la mitad de los catálogos de Co Rivera, Igna y CBC. Milagritos juega más abajo: la mitad de sus piezas cuesta entre $50 y $79 mil."
+    },
+    {
+      "tag": "Escalera",
+      "titulo": "El bronce es la puerta de entrada",
+      "texto": "El mismo diseño en plata cuesta unas 2,1 veces lo que en bronce en Co Rivera y CBC, y 1,5 veces en Milagritos. Permite tener precio de entrada y precio alto sin diseñar el doble."
+    },
+    {
+      "tag": "Símbolos",
+      "titulo": "Lo religioso está saturado",
+      "texto": "Vírgenes, San Benito y cruces aparecen en Co Rivera, CBC y en el 91% de Milagritos. Usarlos sin una mirada propia nos pone a competir por precio."
+    },
+    {
+      "tag": "Operación",
+      "titulo": "Lo mejor es la mezcla",
+      "texto": "Co Rivera trabaja a pedido (15 a 20 días); Igna, con stock. CBC combina las dos cosas, con retiro en tienda en horas para lo que está en stock y 15 días para lo que se fabrica. Depende de lo que ofrezca el taller."
+    },
+    {
+      "tag": "Fabricación",
+      "titulo": "Mismo taller, distinta marca",
+      "texto": "Según CLAF, fabrica para Co Rivera, Igna Valverde y Milagritos de María, sin repetir diseños: los ajusta. CBC encarga a orfebres nacionales. Encargar la fabricación es lo normal en este mercado; la diferencia la hacen el ajuste de diseño y la marca."
+    },
+    {
+      "tag": "Espacio libre",
+      "titulo": "Nadie ofrece oro en serio",
+      "texto": "Ninguna vende oro macizo. Solo hay unas pocas piezas con baño de oro (8 en Igna y 2 en CBC). Sigue siendo una hipótesis abierta, pendiente de costos."
+    }
+  ],
+  "proximos_pasos": [
+    {
+      "titulo": "Preguntas para el taller (CLAF)",
+      "bajada": "Para la próxima reunión. CLAF ya contó que fabrica para varias marcas y que no repite diseños: los ajusta.",
+      "items": [
+        "¿Qué diseños base nos puede mostrar para partir? Elegir piezas que nos gusten y ajustarlas puede acortar el lanzamiento y bajar el costo de diseño.",
+        "¿Cuánto cambia un diseño cuando lo “ajusta” para otra marca? ¿Quién decide que el nuestro no se parece demasiado al de Co Rivera, Igna o Milagritos?",
+        "Los ajustes que hagamos, ¿quedan como nuestros? ¿De quién es el modelo 3D y se compromete a no repetirlos para otra marca?",
+        "¿Le fabrica también a CBC Jewelry? (No recordamos si la nombró.)",
+        "¿Trabajaría con un esquema mixto como el de CBC: algo de stock para entrega inmediata y el resto a pedido? ¿En cuántos días entrega un pedido? (Como referencia: CBC tarda 15 días hábiles, Co Rivera de 15 a 20 y Milagritos cerca de una semana).",
+        "¿Cuánto cuesta una misma pieza en bronce, en plata 950 y en oro 14k o 18k? ¿Cuál es el mínimo por diseño? Con eso validamos si la escalera de “la plata cuesta el doble” nos sirve."
+      ]
+    },
+    {
+      "titulo": "Lo que falta validar",
+      "bajada": "Sin esto, las conclusiones del tablero siguen siendo hipótesis.",
+      "items": [
+        "Costos y márgenes propios: con los precios del taller, ver si podemos vender en el tramo de $80 a $220 mil con un margen sano.",
+        "Demanda real: no tenemos ventas de ningún competidor. Hay que probar con clientes (conversaciones, Instagram, una preventa pequeña).",
+        "Oro: si el costo permite un precio que el público ABC1 esté dispuesto a pagar por piezas chicas de oro macizo.",
+        "Historia propia: si compartimos taller con tres competidores, el producto se va a parecer. Hay que definir qué hace distinta a la marca más allá de la pieza."
+      ]
+    },
+    {
+      "titulo": "Decisiones por tomar",
+      "bajada": "Ya figuran como pendientes en el estado del proyecto; el tablero entrega insumos.",
+      "items": [
+        "Punto de partida del diseño: ajustar diseños base de CLAF, diseñar desde cero o una mezcla de ambas cosas.",
+        "Operación: a pedido, con stock o mixta, según lo que ofrezca el taller.",
+        "Surtido inicial: una colección acotada (foco) o un catálogo amplio. Los competidores tienen entre 118 y 543 piezas.",
+        "Venta física: tienda propia (como Co Rivera y CBC), tiendas de diseño multimarca (como Igna en Alto Diseño y MUT) o solo online.",
+        "Materiales de partida: bronce y plata, y si se suma oro."
+      ]
+    }
   ],
   "temas_modelo": [
-    ["produccion", "Producción"],
-    ["plazo_entrega", "Plazo de entrega"],
-    ["despacho", "Despacho"],
-    ["envio_gratis", "Envío gratis"],
-    ["cambios", "Cambios"],
-    ["garantia", "Garantía"],
-    ["venta_fisica", "Venta física"],
-    ["captacion", "Captación"],
-    ["plataforma", "Plataforma"]
+    [
+      "produccion",
+      "Producción"
+    ],
+    [
+      "plazo_entrega",
+      "Plazo de entrega"
+    ],
+    [
+      "despacho",
+      "Despacho"
+    ],
+    [
+      "envio_gratis",
+      "Envío gratis"
+    ],
+    [
+      "cambios",
+      "Cambios"
+    ],
+    [
+      "garantia",
+      "Garantía"
+    ],
+    [
+      "venta_fisica",
+      "Venta física"
+    ],
+    [
+      "captacion",
+      "Captación"
+    ],
+    [
+      "plataforma",
+      "Plataforma"
+    ]
   ]
 }

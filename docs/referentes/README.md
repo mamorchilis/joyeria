@@ -29,7 +29,7 @@ Los temas de la sección "Cómo opera" (`modelo` en `ficha.json`) son siempre lo
 1. Crear o actualizar la carpeta con los cuatro archivos. Se puede copiar `igna-valverde/ficha.json` como plantilla.
 2. Desde la raíz del repositorio, ejecutar `python docs/referentes/generar_datos.py`. Esto actualiza los datos que van dentro de `dashboard.html`.
 3. Abrir `dashboard.html` y revisar la nueva hoja.
-4. Si cambian las conclusiones generales, editar `resumen.json`.
+4. Si cambian las conclusiones generales o los próximos pasos (preguntas para el taller, validaciones y decisiones), editar `resumen.json` y volver a ejecutar el script.
 
 Los datos quedan dentro del mismo `dashboard.html`, así que el archivo se puede mandar solo (por WhatsApp o correo) y abre igual. El bloque entre `DATOS:INICIO` y `DATOS:FIN` lo escribe el script: no hay que editarlo a mano.
 

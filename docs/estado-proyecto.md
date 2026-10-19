@@ -46,3 +46,11 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   hipótesis: no hay datos de ventas ni costos de los competidores. Detalle en
   `docs/referentes/README.md`.
 
+- **2026-10-19 — Lo que contó CLAF sobre sus clientes (información de la reunión, no un
+  acuerdo).** CLAF dijo que fabrica para varias marcas y que no repite diseños: los ajusta,
+  pero nunca hace uno igual. Según recuerdan los socios, entre esas marcas están Milagritos
+  de María, Igna Valverde y Co Rivera; no recuerdan si nombró a CBC Jewelry. Los socios lo ven
+  como algo positivo: CLAF puede mostrar diseños base que la marca ajuste. Falta confirmar con
+  CLAF cuánto cambia un diseño ajustado, de quién quedan los ajustes y si se compromete a no
+  repetirlos (preguntas en la sección "Próximos pasos" del tablero). CLAF sigue en evaluación.
+

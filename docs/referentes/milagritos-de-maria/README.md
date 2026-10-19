@@ -8,7 +8,7 @@ Para ver los gráficos, abrir la hoja "Milagritos de María" del [tablero genera
 
 ## Por qué la estudiamos
 
-Su producto se parece al de Co Rivera, pero en septiembre su marca y su web se veían débiles. Se mencionó que CLAF Goldsmith fabrica para ella. **No está verificado**: el sitio habla de un "taller propio en Chile".
+Su producto se parece al de Co Rivera, pero en septiembre su marca y su web se veían débiles. Según contó CLAF Goldsmith en la reunión con el taller, es una de las marcas para las que fabrica, aunque el sitio habla de un "taller propio en Chile".
 
 ## Catálogo (captura del 19-10-2026)
 
