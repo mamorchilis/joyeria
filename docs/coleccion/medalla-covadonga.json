@@ -1,0 +1,121 @@
+{
+  "slug": "medalla-covadonga",
+  "nombre": "Medalla de Covadonga",
+  "orden": 1,
+  "actualizado": "2026-10-19",
+  "estado": "en-analisis",
+  "titular": "La Santina, nuestra puerta de entrada al círculo asturiano.",
+  "bajada": "Una de las 6 piezas de partida, en bronce y plata. Cinco caminos de diseño, precios de referencia de la competencia y una recomendación para conversar entre los socios y llevar a CLAF.",
+  "nota_titulo": "Estado: en análisis",
+  "nota": "Son propuestas: no hay diseño elegido ni costos del taller. Los bocetos son esquemas para comparar formas, no el diseño final. Detalle y fuentes en docs/coleccion/medalla-covadonga.md.",
+  "contexto": [
+    {"tipo": "Hecho", "texto": "En Asturias la medalla de la Santina es común en las joyerías. Los socios tienen mucho contacto con el círculo del Estadio Español y quieren usarla para darse a conocer y generar caja."},
+    {"tipo": "Hecho", "texto": "El Estadio Español de Las Condes tiene una capilla dedicada a la Virgen de Covadonga (fuente de 2016; conviene confirmar que siga activa)."},
+    {"tipo": "Hecho", "texto": "El 8 de septiembre es el Día de Asturias y la fiesta de la Virgen de Covadonga: una fecha natural para lanzar o reponer la pieza."},
+    {"tipo": "Hipótesis", "texto": "En Chile casi nadie la vende con diseño de autor: no aparece en los cuatro competidores estudiados. Una tienda de medallas religiosas la vende como pieza estándar."}
+  ],
+  "rasgos": [
+    "Silueta triangular: la Virgen de pie con el manto abierto. Es lo que más se reconoce, incluso en tamaño chico.",
+    "El Niño en el brazo izquierdo y una flor de oro en la mano derecha.",
+    "La corona: la imagen fue coronada en 1918.",
+    "La Santa Cueva sobre la cascada, donde está la imagen.",
+    "La Cruz de la Victoria, símbolo de Asturias; suele ir en el reverso.",
+    "Leyendas: \"Nuestra Señora de Covadonga\", \"Asturias\", \"Covadonga\"."
+  ],
+  "opciones": [
+    {
+      "n": 1, "nombre": "La Clásica de Asturias", "boceto": "clasica", "recomendada": true,
+      "como": "Óvalo con orla, la Virgen con el Niño al centro, corona arriba y la leyenda en el borde. Con cinta de terciopelo azul o con cadena.",
+      "tamano": "Unos 2,5 × 3,5 cm, más la corona",
+      "publico": "La colonia asturiana y española del Estadio Español; regalo para mamás y abuelas.",
+      "favor": ["Es la que la gente ya conoce.", "Es el ejemplo que trajeron los socios."],
+      "contra": ["Hay muchas casi iguales en España.", "Hay que redibujar corona, orla y leyenda para que no sea una copia ni compita por precio."]
+    },
+    {
+      "n": 2, "nombre": "Santina de Silueta", "boceto": "silueta",
+      "como": "Solo la figura recortada (manto triangular, corona y Niño), sin marco, con textura de fundición.",
+      "tamano": "1,5 a 2,5 cm",
+      "publico": "Mujeres jóvenes, para uso diario y para combinar con otras cadenas.",
+      "favor": ["Moderna y liviana: más barata en plata.", "Fácil de llevar todos los días."],
+      "contra": ["Santina Joyas, en Oviedo, ya vende este concepto.", "Hay que distinguirla con la textura artesanal."]
+    },
+    {
+      "n": 3, "nombre": "Doble Faz Covadonga", "boceto": "doblefaz",
+      "como": "Medalla redonda: por delante la Santina, por detrás la Cruz de la Victoria.",
+      "tamano": "2 a 2,5 cm",
+      "publico": "Hombres y mujeres; también bautizos y regalos de familia.",
+      "favor": ["Junta la devoción con el orgullo asturiano.", "Sirve para hombre, algo poco común en la competencia."],
+      "contra": ["La forma redonda es la más común.", "La diferencia está en el dibujo y el acabado."]
+    },
+    {
+      "n": 4, "nombre": "La Santa Cueva", "boceto": "cueva",
+      "como": "Borde irregular, como una moneda antigua, con el arco de la cueva y la Santina adentro. Por detrás, espacio para grabar un nombre o una fecha.",
+      "tamano": "2,5 a 3 cm",
+      "publico": "Quien busca una pieza de autor con historia: bautizo, matrimonio, viaje a Asturias.",
+      "favor": ["La más propia y la que mejor cuenta la historia.", "El grabado justifica un precio más alto."],
+      "contra": ["La Virgen sale más pequeña: hay que cuidar que se reconozca.", "El borde irregular ya lo usan Milagritos y Co Rivera."]
+    },
+    {
+      "n": 5, "nombre": "Bicolor", "boceto": "bicolor",
+      "como": "Base de bronce con la Santina en plata, o al revés. Se puede aplicar a la forma de la opción 1, 3 o 4.",
+      "tamano": "2,5 a 3 cm",
+      "publico": "Regalo de mayor precio.",
+      "favor": ["La que más llama la atención en vitrina y en fotos."],
+      "contra": ["Más cara y más difícil de fabricar (dos metales).", "Co Rivera ya vende una medalla de bronce con borde de plata a $175.000."]
+    }
+  ],
+  "precios_competencia": [
+    {"marca": "Milagritos de María", "pieza": "Medallas de vírgenes, 3 cm", "bronce": "$52.000–58.000", "plata": "$69.000–79.000"},
+    {"marca": "Milagritos de María", "pieza": "Medalla de 4 cm", "bronce": "$58.000", "plata": "$95.000"},
+    {"marca": "Milagritos de María", "pieza": "Medalla de 2 cm", "bronce": "$32.000", "plata": "$58.000"},
+    {"marca": "Milagritos de María", "pieza": "Medalla 3 cm con cinta de terciopelo", "bronce": "$75.000", "plata": "—"},
+    {"marca": "CBC Jewelry", "pieza": "Medalla Sagrado Corazón", "bronce": "$77.000", "plata": "$150.000"},
+    {"marca": "CBC Jewelry", "pieza": "Medalla Virgen de los Rayos M, con borde", "bronce": "$199.000", "plata": "$255.000 (con piedra)"},
+    {"marca": "Co Rivera", "pieza": "Medalla Virgen", "bronce": "$110.000", "plata": "$225.000–310.000"},
+    {"marca": "Co Rivera", "pieza": "Medalla de bronce con borde de plata", "bronce": "$175.000 (bicolor)", "plata": ""},
+    {"marca": "medallasreligiosas.cl", "pieza": "Medalla de Covadonga estándar, 14 a 23 mm", "bronce": "—", "plata": "$48.990 (oferta)"}
+  ],
+  "precio_sugerido": [
+    {"version": "Mini, 1,5–2 cm (opción 2)", "bronce": "$35.000–42.000", "plata": "$55.000–65.000"},
+    {"version": "Clásica, 2,5–3 cm (opciones 1, 3 y 4)", "bronce": "$55.000–65.000", "plata": "$85.000–99.000"},
+    {"version": "Con cinta de terciopelo en vez de cadena", "bronce": "+$10.000–15.000", "plata": "+$10.000–15.000"},
+    {"version": "Bicolor (opción 5)", "bronce": "$110.000–130.000", "plata": ""}
+  ],
+  "notas_precio": [
+    "Se busca darse a conocer y generar caja: la pieza debería ser de entrada, sobre Milagritos y bajo CBC y Co Rivera.",
+    "En plata, la clásica cuesta 1,5 a 1,6 veces lo mismo en bronce, como en Milagritos. En CBC y Co Rivera es el doble. Depende del costo del gramo en CLAF.",
+    "La plata debe justificar estar sobre los $48.990 de la medalla estándar: diseño propio, acabado, packaging e historia de la marca.",
+    "No validado: faltan los costos de CLAF y el peso real de cada pieza."
+  ],
+  "recomendacion": [
+    "Partir con una sola forma, en bronce y plata: la Clásica de Asturias redibujada, con la Cruz de la Victoria en el reverso (lo mejor de la opción 3).",
+    "Ofrecerla con cadena o con cinta de terciopelo azul, para que la cinta sea un sello de la marca.",
+    "Si se quiere llegar a un público más joven, sumar después la Santina de Silueta en versión mini. Con 6 piezas de partida, conviene no gastar dos espacios en el mismo motivo."
+  ],
+  "preguntas_claf": [
+    "¿Tiene un diseño base de medalla de Virgen ovalada o redonda que podamos ajustar, o hay que modelarla desde cero? ¿Cuánto cuesta y tarda el modelo 3D?",
+    "¿Cuánto pesaría la medalla en cada tamaño y cuánto cuesta en bronce y en plata 950?",
+    "¿Puede hacer el relieve con detalle suficiente para que la Virgen se reconozca en 2 cm?",
+    "¿Hace acabado envejecido (oxidado) para que resalte el relieve?",
+    "¿Fabrica piezas bicolores? ¿Graba nombres o fechas?",
+    "¿Cuál es el mínimo por diseño y el plazo de entrega?",
+    "¿Consigue la cinta de terciopelo y los terminales, o hay que comprarlos aparte?"
+  ],
+  "pendientes": [
+    "Elegir la opción (o combinación) entre los socios.",
+    "Preguntar en el círculo asturiano qué modelo usan y si la cinta azul es tradición (no encontré fuentes que lo confirmen).",
+    "Revisar en INAPI si \"Santina\" está registrada como marca en joyería antes de usarla en el nombre del producto.",
+    "Confirmar que la capilla de Covadonga del Estadio Español sigue activa y si hay celebración el 8 de septiembre.",
+    "Con los costos de CLAF, cerrar el precio."
+  ],
+  "referencias": [
+    {"tipo": "Ovalada con orla, corona y leyenda", "nombre": "Relojería Ceballos, R-664", "url": "https://www.relojeriaceballos.com/medalla-de-covadonga/479-medalla-virgen-de-covadonga-de-plata-r-664.html", "aporta": "El modelo tradicional, como el ejemplo de los socios."},
+    {"tipo": "Doble faz con Cruz de la Victoria", "nombre": "Universo Celta, reversible 6132", "url": "https://www.universocelta.com/med-de-covadonga/2147-medalla-de-covadonga-de-plata-reversible-6132.html", "aporta": "Une devoción e identidad asturiana."},
+    {"tipo": "Doble faz pequeña", "nombre": "Roibas, 1 gramo", "url": "https://roibas.com/joyas-plata/1636-medalla-plata-de-la-virgen-de-covadonga-1-gramo.html", "aporta": "La versión mínima: 1,3 × 1 cm."},
+    {"tipo": "Calada", "nombre": "Com-Forsa, calada 20 mm", "url": "https://com-forsa.com/es/virgenes-y-santos/19982-medalla-virgen-de-covadonga-calada-20-mm-plata-925.html", "aporta": "Más liviana y fina."},
+    {"tipo": "Silueta sin marco", "nombre": "Santina Joyas (Oviedo)", "url": "https://www.santinajoyas.com/producto/collar-santina-original-mini-de-plata-925-con-cadena-virgen-covadonga-joyas-asturias-la-santina/", "aporta": "La versión moderna, de uso diario."},
+    {"tipo": "Pieza de autor: la cueva", "nombre": "Mónica Aparicio, medallón del centenario", "url": "https://monicaapariciojoyeria.es/producto/medallon-centenario-covadonga/", "aporta": "Cuenta la historia con la cueva y la cascada."},
+    {"tipo": "Catálogo amplio", "nombre": "Roibas, 70 medallas de Covadonga", "url": "https://roibas.com/129-medallas-covadonga", "aporta": "Variedad y precios en España (18 a 75 euros en plata)."},
+    {"tipo": "En Chile", "nombre": "medallasreligiosas.cl", "url": "https://medallasreligiosas.cl/products/medalla-nuestra-senora-de-covadonga", "aporta": "La competencia directa estándar: plata 950, $48.990."}
+  ]
+}

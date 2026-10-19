@@ -7,21 +7,23 @@
 Resumen para retomar el trabajo en una sesión nueva. Al final de cada sesión, actualizar esta sección.
 
 **Dónde quedó cada cosa**
-- **Tablero del proyecto:** `docs/dashboard.html`. Es un solo archivo, con los datos adentro: se abre con doble clic o se manda por WhatsApp, y tiene modo claro y modo oscuro propio. Tiene dos secciones:
+- **Tablero del proyecto:** `docs/dashboard.html`. Es un solo archivo, con los datos adentro: se abre con doble clic o se manda por WhatsApp, y tiene modo claro y modo oscuro propio. Tiene tres secciones:
   - *Análisis de competencia:* resumen comparativo y una hoja por cada uno de los 4 competidores (Co Rivera, Igna Valverde, CBC Jewelry y Milagritos de María).
   - *Definiciones de marca:* hoja de ruta (lo acordado, en curso y por definir) y nombre de la marca.
+  - *Colección inicial:* una hoja por diseño. Por ahora, la medalla de la Virgen de Covadonga.
 - **Competencia:** `docs/referentes/`, con una carpeta por marca (`ficha.json`, `catalogo_publico.csv`, `README.md` y `fuentes-y-limites.md`), las conclusiones comparativas en `resumen.json` y el formato estándar explicado en `docs/referentes/README.md`.
 - **Definiciones de marca:** `docs/marca/definiciones.json` (hoja de ruta) y `docs/marca/nombres.json` (datos del análisis de nombres; el texto completo está en `docs/marca/nombres.md`).
 - **Contexto de negocio y CLAF:** `marca-joyas.md`.
+- **Colección inicial:** `docs/coleccion/`, un `.md` y un `.json` por diseño. La medalla de Covadonga tiene 5 opciones, precios de referencia y una recomendación (sin decisión).
 
 **Próximos pasos concretos**
 1. **Elegir el nombre.** Antes, revisar en Instagram (desde una cuenta) si están libres `@pilitrespalacios`, `@delpilarjoyas`, `@joyasdelpilar` y `@parpaglione`; precisar de cuál San Salvatore es el nonno; y probar los 2 o 3 finalistas con 5 a 10 personas del público objetivo. Con el nombre elegido, confirmarlo con un abogado de marcas y registrar los dominios.
 2. **Constituir la empresa**, con el nombre definido.
 3. **Crear la marca, la web y las redes sociales**, después de la empresa.
-4. **En paralelo:** cerrar los 6 diseños de partida, definir el packaging y llevar a CLAF las preguntas pendientes (condiciones por escrito, costos por material, mínimos, plazos, esquema mixto de stock y pedidos, y si también fabrica para CBC).
+4. **En paralelo:** cerrar los 6 diseños de partida (elegir la opción de la medalla de Covadonga y llevar sus preguntas a CLAF), definir el packaging y llevar a CLAF las preguntas pendientes (condiciones por escrito, costos por material, mínimos, plazos, esquema mixto de stock y pedidos, y si también fabrica para CBC).
 
 **Cómo mantener el tablero**
-- Si cambia una decisión, actualizar este documento y `marca-joyas.md`, después los JSON de `docs/marca/` o de `docs/referentes/`, y regenerar con `python docs/generar_dashboard.py` (desde la raíz del repositorio).
+- Si cambia una decisión, actualizar este documento y `marca-joyas.md`, después los JSON de `docs/marca/`, `docs/coleccion/` o `docs/referentes/`, y regenerar con `python docs/generar_dashboard.py` (desde la raíz del repositorio).
 - Para sumar un competidor, seguir `docs/referentes/README.md`.
 - Para verlo en el navegador: `python -m http.server 8124 --directory docs` y abrir `http://localhost:8124/dashboard.html`, o simplemente abrir el archivo.
 - Antes de subir cambios, revisar que el tablero cargue sin errores en computador y en celular, en modo claro y oscuro.
@@ -40,7 +42,7 @@ Desarrollar una marca propia de joyería artesanal en Chile y definir su propues
 ## Decisiones pendientes
 1. Nombre e identidad de marca. **Siguiente paso:** definir el nombre; de él depende constituir la empresa. Hay 5 candidatos analizados en `docs/marca/nombres.md`.
 2. Público objetivo y posicionamiento.
-3. Catálogo inicial y materiales. **En curso:** los socios están definiendo los 6 diseños de partida.
+3. Catálogo inicial y materiales. **En curso:** los socios están definiendo los 6 diseños de partida. Uno será la medalla de la Virgen de Covadonga en bronce y plata (opciones en `docs/coleccion/medalla-covadonga.md`).
 4. Búsqueda, evaluación y selección de fabricante. **En curso:** CLAF es el más probable; falta formalizar.
 5. Costos, precios, márgenes y presupuesto.
 6. Canales de venta y distribución.
@@ -127,3 +129,14 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   el navegador oscurecía la página a su manera y los colores de las barras dejaban de
   coincidir con la leyenda. El tablero ahora trae su propia paleta oscura y aclara los colores
   de cada marca sobre fondo oscuro; el modo claro no cambió.
+
+- **2026-10-19 — Medalla de la Virgen de Covadonga (material decidido; diseño en análisis).**
+  Una de las 6 piezas de partida será una medalla de la Santina, en **bronce y plata**
+  (decidido por los socios). La idea es darse a conocer en el círculo del Estadio Español y
+  generar caja. Se investigaron los modelos que se venden en España y Chile y se proponen 5
+  opciones: Clásica de Asturias, Santina de Silueta, Doble Faz con la Cruz de la Victoria,
+  La Santa Cueva y Bicolor. La recomendación (no decidida) es la Clásica redibujada, con la
+  Cruz de la Victoria en el reverso y con cadena o cinta de terciopelo azul. El precio
+  sugerido es una hipótesis tomada de la competencia (clásica: $55–65 mil en bronce y $85–99
+  mil en plata) y espera los costos de CLAF. Detalle en `docs/coleccion/medalla-covadonga.md`
+  y en la hoja *Colección inicial* del tablero.

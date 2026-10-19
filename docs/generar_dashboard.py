@@ -1,7 +1,7 @@
 """Mete los datos del proyecto dentro de docs/dashboard.html.
 
 Los datos quedan en el mismo archivo del tablero, para que funcione aunque se
-envíe solo (por ejemplo, por WhatsApp o correo). El tablero tiene dos secciones:
+envíe solo (por ejemplo, por WhatsApp o correo). El tablero tiene tres secciones:
 
 Análisis de competencia (docs/referentes/):
   - resumen.json: conclusiones comparativas.
@@ -11,6 +11,10 @@ Análisis de competencia (docs/referentes/):
 Definiciones de marca (docs/marca/):
   - definiciones.json: hoja de ruta, temas por definir y lo acordado con el taller.
   - nombres.json: candidatos de nombre y su análisis.
+
+Colección inicial (docs/coleccion/):
+  - un JSON por diseño (por ejemplo medalla-covadonga.json) con sus opciones,
+    precios de referencia y pendientes. Cada uno es una hoja del tablero.
 
 Uso, desde la raíz del repositorio:
   python docs/generar_dashboard.py
@@ -26,6 +30,7 @@ from pathlib import Path
 DOCS = Path(__file__).resolve().parent
 BASE = DOCS / "referentes"
 MARCA = DOCS / "marca"
+COLECCION = DOCS / "coleccion"
 
 
 def norm(texto):
@@ -156,8 +161,10 @@ def main():
     resumen = json.loads((BASE / "resumen.json").read_text(encoding="utf-8"))
     definiciones = json.loads((MARCA / "definiciones.json").read_text(encoding="utf-8"))
     nombres = json.loads((MARCA / "nombres.json").read_text(encoding="utf-8"))
+    coleccion = [json.loads(f.read_text(encoding="utf-8")) for f in sorted(COLECCION.glob("*.json"))]
+    coleccion.sort(key=lambda d: d.get("orden", 99))
     datos = {"generado": date.today().isoformat(), "resumen": resumen, "competidores": competidores,
-             "definiciones": definiciones, "nombres": nombres}
+             "definiciones": definiciones, "nombres": nombres, "coleccion": coleccion}
     salida = DOCS / "dashboard.html"
     html = salida.read_text(encoding="utf-8")
     # "<\/" evita que un texto con "</script>" cierre el bloque antes de tiempo.
@@ -174,6 +181,8 @@ def main():
     for c in competidores:
         incluidos = sum(p["incluido"] for p in c["productos"])
         print(f"{c['nombre']}: {len(c['productos'])} filas, {incluidos} incluidas en el análisis")
+    for d in coleccion:
+        print(f"Colección: {d['nombre']} ({len(d['opciones'])} opciones)")
     print(f"Listo: {salida}")
 
 

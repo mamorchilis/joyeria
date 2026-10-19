@@ -26,6 +26,7 @@ Resumen del contexto disponible sobre el emprendimiento de joyería artesanal.
 ## Acuerdos de partida (2026-10-19)
 
 - Colección inicial: **6 diseños**, que los socios están definiendo.
+  - Uno será una **medalla de la Virgen de Covadonga** (la Santina), en **bronce y plata**, pensada para el círculo del Estadio Español y para darse a conocer y generar caja. El modelo aún no se elige: hay 5 opciones en `docs/coleccion/medalla-covadonga.md`.
 - Orden de los próximos pasos: primero el **nombre de la marca**; con él, **constituir la empresa**; después, **crear la marca, la web y las redes sociales**.
 - También pendiente: definir el **packaging** (caja, bolsa, decoración, carta con mensaje y cuidados de la joya, y aroma).
 
