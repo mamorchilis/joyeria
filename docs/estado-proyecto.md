@@ -84,6 +84,8 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
 - **2026-10-19 — Candidatos de nombre analizados (sin decisión).** Candidatos: del Pilar
   Joyas, Pili Trespalacios, San Salvatore (pueblo del nonno de Pili), Parpaglione y
   Trespalacios (apellidos de Pili). Los socios prefieren los dos primeros. Se revisaron
-  dominios, uso visible en la web y encaje con el segmento; faltan INAPI, Instagram y una
-  prueba con clientes. Análisis y pendientes en `docs/marca/nombres.md`.
+  dominios, uso visible en la web, encaje con el segmento y registro en INAPI. En INAPI,
+  Parpaglione y Pili Trespalacios están despejados en joyería; del Pilar choca con "Maria
+  Pilar" y "EL PILAR", y San Salvatore con "Salvatore Ferragamo" (clase 14). Faltan
+  Instagram y una prueba con clientes. Análisis y pendientes en `docs/marca/nombres.md`.
 
