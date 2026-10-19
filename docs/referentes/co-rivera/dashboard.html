@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Co Rivera | Lectura estratégica de competencia</title>
+  <style>
+    :root {
+      --paper: #eef0ec;
+      --surface: #fbfcfa;
+      --ink: #1d2c27;
+      --muted: #69756f;
+      --line: #d8ded9;
+      --forest: #203a31;
+      --forest-2: #355448;
+      --moss: #a9b9ad;
+      --bronze: #a66543;
+      --gold: #b4935a;
+      --silver: #d9dfdc;
+      --rose: #c08a77;
+      --shadow: 0 14px 40px rgba(27, 43, 36, .07);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Aptos", "Segoe UI", system-ui, sans-serif;
+      --mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 14px; line-height: 1.5; }
+    button, input, select { font: inherit; }
+    button, select, input[type="file"] { color: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--bronze); outline-offset: 3px; }
+    .shell { min-height: 100vh; display: grid; grid-template-columns: 228px minmax(0,1fr); }
+    .rail { position: sticky; top: 0; height: 100vh; padding: 25px 17px; display: flex; flex-direction: column; background: var(--forest); color: #f3f5f1; }
+    .brand { display: flex; gap: 11px; align-items: center; padding: 4px 9px 27px; border-bottom: 1px solid rgba(255,255,255,.17); }
+    .seal { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(225,235,227,.65); border-radius: 50%; color: #d8c9a9; font-family: var(--serif); font-size: 18px; }
+    .brand strong { display: block; font-family: var(--serif); font-size: 17px; font-weight: 500; letter-spacing: .02em; }
+    .brand small { display: block; margin-top: 1px; color: #aebdb4; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+    .rail-label { margin: 27px 10px 9px; color: #91a69b; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .rail nav { display: grid; gap: 4px; }
+    .nav-link { display: flex; align-items: center; gap: 11px; padding: 10px 11px; border-radius: 7px; color: #d6dfd9; text-decoration: none; font-size: 13px; transition: background .18s ease, color .18s ease; }
+    .nav-link:hover, .nav-link.active { background: rgba(255,255,255,.11); color: white; }
+    .nav-mark { width: 7px; height: 7px; border: 1px solid #b8c6bc; border-radius: 50%; }
+    .nav-link.active .nav-mark { border: 0; background: #d3b882; box-shadow: 0 0 0 3px rgba(211,184,130,.18); }
+    .rail-bottom { margin-top: auto; padding: 15px 10px 4px; border-top: 1px solid rgba(255,255,255,.16); color: #b4c2ba; font-size: 11px; }
+    .local-dot { display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: #b8c887; }
+    main { min-width: 0; max-width: 1600px; padding: 28px clamp(22px, 4vw, 58px) 62px; }
+    .topline { display: flex; justify-content: space-between; gap: 20px; align-items: center; margin-bottom: 28px; }
+    .crumb { color: var(--muted); font-size: 12px; }
+    .crumb b { color: var(--ink); font-weight: 600; }
+    .top-actions { display: flex; gap: 9px; align-items: center; }
+    .date-pill { padding: 7px 10px; border: 1px solid var(--line); border-radius: 99px; background: rgba(255,255,255,.48); color: #56645d; font-family: var(--mono); font-size: 10px; }
+    .button { min-height: 38px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 13px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--ink); font-size: 12px; font-weight: 650; transition: transform .18s ease, background .18s ease; }
+    .button:hover { transform: translateY(-1px); background: white; }
+    .button.primary { border-color: var(--forest); background: var(--forest); color: white; }
+    .button.primary:hover { background: var(--forest-2); }
+    .button.subtle { min-height: 32px; padding: 5px 9px; background: transparent; font-size: 11px; }
+    .eyebrow { color: var(--bronze); font-size: 10px; font-weight: 750; letter-spacing: .18em; text-transform: uppercase; }
+    .hero { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0,1.4fr) minmax(240px,.6fr); gap: 32px; align-items: end; padding: clamp(24px,4vw,43px); border-radius: 8px; background: var(--forest); color: #f4f5f0; box-shadow: var(--shadow); }
+    .hero:after { content: ""; position: absolute; width: 300px; height: 300px; right: 18%; top: -240px; border: 1px solid rgba(229,220,198,.2); border-radius: 50%; box-shadow: 0 0 0 35px rgba(255,255,255,.025),0 0 0 70px rgba(255,255,255,.025); pointer-events: none; }
+    .hero h1 { position: relative; z-index: 1; max-width: 710px; margin: 11px 0 12px; font-family: var(--serif); font-size: clamp(30px,4vw,49px); font-weight: 400; line-height: 1.07; letter-spacing: -.035em; text-wrap: pretty; }
+    .hero p { position: relative; z-index: 1; max-width: 670px; margin: 0; color: #c9d3cc; font-size: 13px; }
+    .hero-note { position: relative; z-index: 1; padding: 16px 17px 16px 19px; border-left: 1px solid #b4935a; background: rgba(255,255,255,.055); color: #dce4dd; font-size: 12px; }
+    .hero-note strong { display: block; margin-bottom: 5px; color: #d9c28f; font-size: 10px; letter-spacing: .13em; text-transform: uppercase; }
+    .kpis { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); margin: 18px 0 30px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); }
+    .kpi { min-height: 99px; padding: 18px 22px; border-right: 1px solid var(--line); }
+    .kpi:last-child { border-right: 0; }
+    .kpi-label { color: var(--muted); font-size: 11px; }
+    .kpi-value { margin-top: 7px; color: var(--ink); font-family: var(--serif); font-size: 28px; line-height: 1; }
+    .kpi-detail { margin-top: 7px; color: #85918a; font-size: 10px; }
+    .section { margin-top: 34px; scroll-margin-top: 24px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 18px; margin-bottom: 14px; }
+    .section-head h2 { margin: 4px 0 0; font-family: var(--serif); font-size: 27px; font-weight: 400; letter-spacing: -.02em; }
+    .section-head p { max-width: 480px; margin: 0; color: var(--muted); font-size: 11px; text-align: right; }
+    .grid-two { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(310px,.9fr); gap: 15px; }
+    .panel { min-width: 0; padding: 20px 21px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); }
+    .panel-head { display: flex; justify-content: space-between; gap: 12px; align-items: start; margin-bottom: 17px; }
+    .panel-head h3 { margin: 0; font-size: 13px; font-weight: 700; }
+    .panel-head p { margin: 4px 0 0; color: var(--muted); font-size: 10px; }
+    .panel-kicker { color: #8d9992; font-family: var(--mono); font-size: 10px; }
+    .price-band-list { display: grid; gap: 11px; }
+    .band-row { display: grid; grid-template-columns: 92px minmax(60px,1fr) 25px; gap: 10px; align-items: center; color: #58675f; font-size: 10px; }
+    .band-track { height: 13px; overflow: hidden; border-radius: 2px; background: #edf0ed; }
+    .band-fill { height: 100%; min-width: 2px; background: var(--forest-2); transition: width .35s ease; }
+    .band-row:nth-child(2) .band-fill { background: #587667; }
+    .band-row:nth-child(3) .band-fill { background: #789180; }
+    .band-row:nth-child(4) .band-fill { background: var(--gold); }
+    .band-row:nth-child(5) .band-fill { background: var(--bronze); }
+    .band-row:nth-child(6) .band-fill { background: #85564b; }
+    .band-count { color: var(--ink); font-family: var(--mono); text-align: right; }
+    .chart-foot { display: flex; justify-content: space-between; gap: 8px; margin-top: 17px; padding-top: 11px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    .mix-list { display: grid; gap: 13px; }
+    .mix-row { display: grid; grid-template-columns: minmax(102px, .8fr) minmax(70px,1.4fr) 30px; gap: 9px; align-items: center; }
+    .mix-name { overflow: hidden; color: #596860; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+    .mix-track { height: 9px; border-radius: 99px; background: #edf0ed; }
+    .mix-fill { height: 100%; border-radius: inherit; background: var(--bronze); }
+    .mix-row:nth-child(2) .mix-fill { background: var(--forest-2); }
+    .mix-row:nth-child(3) .mix-fill { background: #8e9c91; }
+    .mix-row:nth-child(4) .mix-fill { background: var(--gold); }
+    .mix-row:nth-child(5) .mix-fill { background: #be998a; }
+    .mix-row:nth-child(6) .mix-fill { background: #738d85; }
+    .mix-value { color: #67746d; font-family: var(--mono); font-size: 10px; text-align: right; }
+    .decision-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: 7px; background: var(--line); }
+    .decision { min-height: 124px; padding: 19px 21px; background: var(--surface); }
+    .decision .tag { display: inline-flex; padding: 3px 7px; border-radius: 99px; background: #edf2ed; color: #466254; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .decision:nth-child(2) .tag { background: #f4ece6; color: #905638; }
+    .decision:nth-child(3) .tag { background: #f2f0e8; color: #8a7448; }
+    .decision h3 { margin: 9px 0 5px; font-family: var(--serif); font-size: 18px; font-weight: 400; }
+    .decision p { margin: 0; color: var(--muted); font-size: 11px; }
+    .callout { display: flex; gap: 13px; align-items: start; margin-top: 15px; padding: 14px 16px; border: 1px dashed #bdc7bf; border-radius: 6px; color: #596860; font-size: 11px; }
+    .callout-mark { flex: 0 0 auto; width: 21px; height: 21px; display: grid; place-items: center; border: 1px solid #c4cfc7; border-radius: 50%; color: var(--forest-2); font-family: var(--serif); }
+    .material-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+    .material-card { padding: 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+    .material-swatch { width: 21px; height: 21px; margin-bottom: 11px; border-radius: 50%; background: linear-gradient(145deg,#a66b49,#6f4936); }
+    .material-card:nth-child(2) .material-swatch { background: linear-gradient(145deg,#e2e6e3,#a8b1ad); }
+    .material-card:nth-child(3) .material-swatch { background: linear-gradient(135deg,#ac714d 0 48%,#dce1de 49%); }
+    .material-card:nth-child(4) .material-swatch { background: repeating-linear-gradient(135deg,#dfe4e0 0 3px,#aeb8b2 3px 5px); }
+    .material-card strong { display: block; font-size: 11px; }
+    .material-card .material-count { display: block; margin-top: 4px; color: var(--forest); font-family: var(--serif); font-size: 23px; }
+    .material-card small { color: var(--muted); font-size: 9px; }
+    .premium-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 8px; }
+    .premium-list { display: grid; }
+    .premium-item { display: grid; grid-template-columns: 28px minmax(0,1fr) auto; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+    .premium-item:first-child { border-top: 0; }
+    .premium-index { color: #9aa59e; font-family: var(--mono); font-size: 10px; }
+    .premium-name { font-size: 11px; }
+    .premium-url { display: block; overflow: hidden; max-width: 260px; margin-top: 2px; color: #8a958e; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+    .premium-price { color: var(--bronze); font-family: var(--serif); font-size: 17px; white-space: nowrap; }
+    .rank-box { min-height: 145px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 18px; border: 1px dashed #bac5bd; border-radius: 6px; background: #f7f9f6; text-align: center; }
+    .rank-box strong { max-width: 300px; font-family: var(--serif); font-size: 20px; font-weight: 400; }
+    .rank-box p { max-width: 360px; margin: 6px 0 12px; color: var(--muted); font-size: 10px; }
+    .table-panel { padding: 0; overflow: hidden; }
+    .table-tools { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 11px; padding: 15px 17px; border-bottom: 1px solid var(--line); }
+    .filters { display: flex; flex: 1 1 auto; flex-wrap: wrap; gap: 7px; }
+    .control { min-height: 34px; padding: 6px 9px; border: 1px solid var(--line); border-radius: 4px; background: white; color: #43534a; font-size: 11px; }
+    .control.search { width: min(245px,100%); }
+    .table-wrap { overflow: auto; max-height: 580px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th { position: sticky; top: 0; z-index: 1; padding: 10px 15px; background: #f4f6f3; color: #758079; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    td { padding: 10px 15px; border-top: 1px solid #e9ede9; font-size: 11px; }
+    tbody tr:hover { background: #f7f9f6; }
+    td.price { font-family: var(--mono); font-size: 10px; white-space: nowrap; }
+    td.name { min-width: 210px; }
+    td a { color: var(--forest-2); text-decoration-color: #9bb0a3; text-underline-offset: 2px; }
+    .pill { display: inline-flex; padding: 3px 7px; border-radius: 99px; background: #eef3ee; color: #4e6e5a; font-size: 9px; }
+    .pill.out { background: #f4e9e6; color: #925a4c; }
+    .table-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    .empty { padding: 35px 15px; color: var(--muted); text-align: center; }
+    .method-note { margin-top: 21px; padding-top: 13px; border-top: 1px solid var(--line); color: #7a867f; font-size: 10px; }
+    .toast { position: fixed; right: 22px; bottom: 20px; z-index: 9; max-width: 340px; padding: 12px 15px; border-radius: 5px; background: var(--ink); color: white; box-shadow: var(--shadow); font-size: 12px; opacity: 0; transform: translateY(8px); pointer-events: none; transition: .2s ease; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .mobile-brand { display: none; }
+    @media (max-width: 1050px) {
+      .shell { grid-template-columns: 190px minmax(0,1fr); }
+      .hero { grid-template-columns: 1fr; gap: 16px; }
+      .hero-note { max-width: 580px; }
+      .grid-two { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .shell { display: block; }
+      .rail { position: static; width: 100%; height: auto; padding: 12px 16px; }
+      .brand { padding: 0 3px 11px; border: 0; }
+      .rail-label, .rail-bottom { display: none; }
+      .rail nav { display: flex; gap: 4px; overflow-x: auto; padding-top: 8px; }
+      .nav-link { flex: 0 0 auto; padding: 8px 9px; font-size: 11px; }
+      .nav-mark { display: none; }
+      main { padding: 18px 15px 42px; }
+      .topline { align-items: start; flex-direction: column; margin-bottom: 18px; }
+      .top-actions { width: 100%; flex-wrap: wrap; }
+      .hero { padding: 23px 20px; }
+      .hero h1 { font-size: 34px; }
+      .kpis { grid-template-columns: repeat(2,1fr); }
+      .kpi:nth-child(2) { border-right: 0; }
+      .kpi:nth-child(n+3) { border-top: 1px solid var(--line); }
+      .section-head { align-items: start; flex-direction: column; }
+      .section-head p { text-align: left; }
+      .decision-strip { grid-template-columns: 1fr; }
+      .decision { min-height: 0; }
+      .material-grid { grid-template-columns: repeat(2,1fr); }
+      .table-tools { align-items: stretch; }
+      .filters { display: grid; grid-template-columns: 1fr 1fr; }
+      .control.search { width: 100%; grid-column: 1 / -1; }
+      .table-tools > .button { width: 100%; }
+      th, td { padding: 9px 11px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *:before, *:after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+    @media print {
+      body { background: white; }
+      .shell { display: block; }
+      .rail, .top-actions, .table-tools, .toast { display: none !important; }
+      main { max-width: none; padding: 0; }
+      .hero, .panel, .kpis, .decision-strip { box-shadow: none; break-inside: avoid; }
+      .table-wrap { max-height: none; overflow: visible; }
+      th { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="rail" aria-label="Navegación del dashboard">
+      <div class="brand"><span class="seal" aria-hidden="true">C</span><div><strong>Lectura de competencia</strong><small>Joyería · Chile</small></div></div>
+      <div class="rail-label">Co Rivera</div>
+      <nav>
+        <a class="nav-link active" href="#panorama"><span class="nav-mark"></span>Panorama</a>
+        <a class="nav-link" href="#mix"><span class="nav-mark"></span>Mix de catálogo</a>
+        <a class="nav-link" href="#precios"><span class="nav-mark"></span>Precios y escalones</a>
+        <a class="nav-link" href="#productos"><span class="nav-mark"></span>Productos</a>
+      </nav>
+      <div class="rail-bottom"><span class="local-dot"></span>Datos procesados en este navegador<br>Captura de referencia · 11 oct 2026</div>
+    </aside>
+    <main>
+      <div class="topline">
+        <div class="crumb">Investigación de referentes <span aria-hidden="true">/</span> <b>Co Rivera</b></div>
+        <div class="top-actions">
+          <span class="date-pill">CAPTURA · 11.10.2026</span>
+          <label class="button" for="catalog-file">Cargar catálogo CSV</label>
+          <input id="catalog-file" type="file" accept=".csv,text/csv" hidden>
+          <button class="button subtle" id="reset-data" type="button" hidden>Volver al catálogo base</button>
+        </div>
+      </div>
+
+      <section id="panorama" class="hero">
+        <div>
+          <div class="eyebrow">Benchmark de surtido y precio</div>
+          <h1>La densidad está en el tramo medio; la diferencia se juega en la propuesta.</h1>
+          <p>El catálogo público observado concentra muchas piezas entre $80.000 y $219.999. La tienda trabaja principalmente plata y bronce, con numerosos productos hechos a pedido.</p>
+        </div>
+        <div class="hero-note"><strong>Lectura para decidir</strong>Usa este rango como referencia competitiva, no como validación de demanda o margen. La captura no incluye ventas ni costos.</div>
+      </section>
+
+      <section class="kpis" aria-label="Indicadores principales">
+        <div class="kpi"><div class="kpi-label">Productos públicos</div><div class="kpi-value" id="kpi-products">—</div><div class="kpi-detail">filas únicas del catálogo</div></div>
+        <div class="kpi"><div class="kpi-label">Mediana de precio</div><div class="kpi-value" id="kpi-median">—</div><div class="kpi-detail">sin la ficha con precio $0</div></div>
+        <div class="kpi"><div class="kpi-label">A pedido</div><div class="kpi-value" id="kpi-made">—</div><div class="kpi-detail">estado publicado en la tienda</div></div>
+        <div class="kpi"><div class="kpi-label">Agotados</div><div class="kpi-value" id="kpi-soldout">—</div><div class="kpi-detail">no equivale a ventas altas</div></div>
+      </section>
+
+      <section id="precios" class="section">
+        <div class="section-head"><div><div class="eyebrow">Posicionamiento</div><h2>El mapa de precios</h2></div><p>Qué parte del surtido ocupa cada escalón. Cada barra es cantidad de productos, no volumen vendido.</p></div>
+        <div class="grid-two">
+          <article class="panel">
+            <div class="panel-head"><div><h3>Distribución del catálogo</h3><p>Precios visibles en CLP · excluye la fila con precio $0</p></div><span class="panel-kicker" id="price-count">—</span></div>
+            <div class="price-band-list" id="price-bands"></div>
+            <div class="chart-foot"><span id="quartiles">—</span><span id="price-range">—</span></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><div><h3>Mix de categorías</h3><p>Clasificación aproximada a partir del nombre de cada producto</p></div><span class="panel-kicker">SKU</span></div>
+            <div class="mix-list" id="category-mix"></div>
+            <div class="chart-foot"><span id="category-note">Categorías inferidas, revisables</span><button class="button subtle" type="button" data-jump-filter="category">Explorar mix</button></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="mix" class="section">
+        <div class="section-head"><div><div class="eyebrow">Construcción del surtido</div><h2>Materiales y motivos</h2></div><p>Lectura de títulos; no reemplaza la ficha técnica ni confirma composición.</p></div>
+        <div class="grid-two">
+          <article class="panel">
+            <div class="panel-head"><div><h3>Material mencionado</h3><p>“Bicolor” cuenta títulos que nombran plata y bronce</p></div><span class="panel-kicker">INFERIDO</span></div>
+            <div class="material-grid" id="material-mix"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><div><h3>Familias de motivo</h3><p>Etiquetas automáticas no excluyentes en la práctica</p></div><span class="panel-kicker">POR TÍTULO</span></div>
+            <div class="mix-list" id="motif-mix"></div>
+            <div class="chart-foot"><span>Íconos religiosos, animales y formas naturales aparecen como señales de diseño.</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><div><div class="eyebrow">Implicancias estratégicas</div><h2>Qué puede orientar una decisión</h2></div><p>Lecturas para formular hipótesis; valida con clientes, costos y datos comerciales propios.</p></div>
+        <div class="decision-strip">
+          <article class="decision"><span class="tag">Mix</span><h3>Probar foco antes de amplitud</h3><p>El referente mantiene cerca de 200 fichas. Para un lanzamiento pequeño, un surtido acotado puede reducir inventario y complejidad de fabricación.</p></article>
+          <article class="decision"><span class="tag">Precio</span><h3>Comparar dentro del tramo central</h3><p>Dos tercios del catálogo con precio se ubican entre $80.000 y $219.999. Compara valor percibido y costo unitario antes de fijar tu escalera.</p></article>
+          <article class="decision"><span class="tag">Diferenciación</span><h3>Elegir códigos propios</h3><p>Plata, bronce y símbolos son códigos compartidos. La oportunidad es decidir una historia, forma o experiencia que la marca pueda sostener.</p></article>
+        </div>
+        <div class="callout"><span class="callout-mark">i</span><div><strong>Lo que todavía no podemos llamar “ganadores”.</strong> No hay ventas, conversión ni unidades por producto. Los 3 agotados solo muestran estado publicado. Carga un CSV de ventas para activar el ranking por unidades.</div></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><div><div class="eyebrow">Escalones altos</div><h2>La cola premium</h2></div><p>Los precios más altos pueden servir para mapear techo de posicionamiento; no son best sellers.</p></div>
+        <div class="grid-two">
+          <article class="panel"><div class="premium-head"><div class="panel-head" style="margin:0"><div><h3>Productos de mayor precio publicado</h3><p>Top 6 por precio en la captura</p></div></div><span class="panel-kicker">NO ES RANKING DE VENTAS</span></div><div class="premium-list" id="premium-list"></div></article>
+          <article class="panel"><div class="panel-head"><div><h3>Ranking de ventas</h3><p>La métrica que falta para identificar ganadores</p></div><span class="panel-kicker">OPCIONAL</span></div><div id="sales-area" class="rank-box"><strong>Ventas no incluidas</strong><p>Carga un CSV con columnas <code>producto</code> y <code>unidades</code>. Los datos se cruzarán por nombre en tu navegador.</p><label class="button" for="sales-file">Cargar datos de ventas</label></div><input id="sales-file" type="file" accept=".csv,text/csv" hidden></article>
+        </div>
+      </section>
+
+      <section id="productos" class="section">
+        <div class="section-head"><div><div class="eyebrow">Explorador</div><h2>Catálogo producto a producto</h2></div><p>Filtra y ordena la captura. Los cambios que cargues se mantienen solo durante esta sesión del navegador.</p></div>
+        <div class="panel table-panel">
+          <div class="table-tools">
+            <div class="filters">
+              <input class="control search" id="search" type="search" placeholder="Buscar producto o motivo" aria-label="Buscar producto">
+              <select class="control" id="category-filter" aria-label="Filtrar por categoría"><option value="">Todas las categorías</option></select>
+              <select class="control" id="material-filter" aria-label="Filtrar por material"><option value="">Todos los materiales</option></select>
+              <select class="control" id="status-filter" aria-label="Filtrar por estado"><option value="">Todos los estados</option></select>
+              <select class="control" id="sort-filter" aria-label="Ordenar catálogo"><option value="name">Nombre A–Z</option><option value="price-asc">Precio menor a mayor</option><option value="price-desc">Precio mayor a menor</option><option value="status">Disponibilidad</option></select>
+            </div>
+            <button class="button" id="export-filtered" type="button">Exportar selección CSV</button>
+          </div>
+          <div class="table-wrap"><table><thead><tr><th>Producto</th><th>Categoría</th><th>Material en título</th><th>Estado</th><th>Precio</th><th>Fuente</th></tr></thead><tbody id="product-rows"></tbody></table></div>
+          <div class="table-foot"><span id="table-count">—</span><span>Precios y disponibilidad pueden cambiar.</span></div>
+        </div>
+      </section>
+      <div class="method-note"><strong>Base analítica:</strong> catálogo público de Co Rivera, captura del 11-10-2026. Categorías, materiales y motivos se infieren del título; se excluye una ficha de $0 del análisis de precios. Sin datos de ventas ni costos. El archivo CSV cargado no se envía a ningún servidor.</div>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const DEFAULT_DATA = [{"product":"Anillo abeja plata","price":310000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-abeja-plata"},{"product":"Anillo águila plata ajustable","price":110000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-aguila-plata"},{"product":"Anillo Alas Bronce","price":90000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-alas-bronce"},{"product":"Anillo alas plata","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-alas-plata"},{"product":"Anillo argolla flor bronce","price":85000,"status":"A PEDIDO","url":"https://corivera.cl/products/rosa-bronce"},{"product":"Anillo argolla puma plata","price":110000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-puma-plata-1"},{"product":"Anillo bombé estrella bronce:","price":90000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-bombe-estrella-bronce"},{"product":"Anillo bombé plata ajustable","price":210000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-bombe-plata"},{"product":"Anillo bronce estrella plata chevalier","price":90000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-puma-tubular-plata-machacado-copia"},{"product":"Anillo carnero bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-carnero"},{"product":"Anillo carnero plata","price":220000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-carnero-plata"},{"product":"Anillo chevalier flor de lis plata","price":165000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-detente-plata-copia"},{"product":"Anillo chevalier San Benito bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/chevalier-san-benito"},{"product":"Anillo Chevalier San Benito plata","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/chevalier-san-benito-copia"},{"product":"Anillo chevalier Virgen de los rayos","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-chevalier-virgen-de-los-rayos"},{"product":"Anillo Co Bronce estrella plata","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-co-bronce-estrella-plata"},{"product":"Anillo Co Plata estrella bronce","price":220000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-co-plata-estrella-bronce"},{"product":"Anillo Co plata estrella plata","price":210000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-co-estrella-plata"},{"product":"Anillo de onix rectangular bronce","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-de-onix-bronce"},{"product":"Anillo detente bronce","price":75000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-plata-estrella-bronce-chevalier-copia"},{"product":"Anillo detente plata","price":160000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-detente-bronce-copia"},{"product":"Anillo flor de Lis bronce","price":85000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-flor-de-lis-bronce"},{"product":"Anillo hoja bronce ajustable","price":65000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-hoja-bronce-ajustable"},{"product":"Anillo Leon bronce","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-leon"},{"product":"Anillo leon plata","price":220000,"status":"A PEDIDO","url":"https://corivera.cl/products/copia-de-anillo-leon-bronce"},{"product":"Anillo machacado bronce L","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-machacado-bronce"},{"product":"Anillo Machacado plata L","price":220000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-machacado-plata-l"},{"product":"Anillo machacado puma bronce","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-machacado-puma-bronce"},{"product":"Anillo meñique bronce estrella bronce","price":85000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-estrella-s-bronce"},{"product":"Anillo meñique Leon bronce","price":75000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-menique-leon-plata-copia"},{"product":"Anillo meñique Leon plata","price":140000,"status":"A PEDIDO","url":"https://corivera.cl/products/chevalier-leon-plata"},{"product":"Anillo nudo bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-nudo"},{"product":"Anillo nudo plata","price":220000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-nudo-bronce-copia"},{"product":"Anillo onix cuadrado bronce","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-onix-cuadrado"},{"product":"Anillo onix cuadrado plata","price":385000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-onix-cuadrado-copia"},{"product":"Anillo plata estrella bronce chevalier","price":135000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-bronce-estrella-plata-chevalier-copia"},{"product":"Anillo puma bronce","price":90000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-puma-bronce-1"},{"product":"Anillo puma tubular bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-bronce-tubular"},{"product":"Anillo puma tubular plata machacado","price":280000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-puma-tubular-bronce-machacado-copia"},{"product":"Anillo San Benito Bronce","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-san-benito-bronce"},{"product":"Anillo San Benito Plata","price":250000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-san-benito-plata"},{"product":"Anillo sello - Letras plata","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-sello-letras"},{"product":"Anillo sello bronce estrella plata","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-sello-bronce-estrella-plata"},{"product":"Anillo sello búfalo","price":220000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-sello-bufalo"},{"product":"Anillo sello estrella plata","price":220000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-sello-estrella-plata"},{"product":"anillo tachas bronce","price":75000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-tuerca-bronce"},{"product":"Anillo tachas plata","price":175000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-tuerca"},{"product":"Anillo tres vueltas plata","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-tres-vueltas-plata"},{"product":"Anillo tubular bronce liso","price":110000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-puma-tubular-bronce-copia"},{"product":"Anillo tubular flor bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/copia-de-anillo-bronce-tubular"},{"product":"Anillo Virgen de Guadalupe S","price":130000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-virgen-de-guadalupe-s"},{"product":"Anillo virgen de los rayos bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-de-virgen-bronce"},{"product":"Anillo Virgen de los rayos plata","price":280000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-virgen-de-guadalupe-xl"},{"product":"Anillo Virgen de los rayos Plata","price":160000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-virgen-de-los-rayos-plata"},{"product":"Anillos puma ajustables","price":85000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-puma-bronce"},{"product":"Argolla lisa bronce","price":55000,"status":"A PEDIDO","url":"https://corivera.cl/products/anillo-liso-bronce"},{"product":"Argolla lisa plata","price":115000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-tubular"},{"product":"Aros Abeja","price":75000,"status":"A PEDIDO","url":"https://corivera.cl/products/aros-abeja"},{"product":"Aros flor bronce","price":75000,"status":"A PEDIDO","url":"https://corivera.cl/products/aros-flor-bronce"},{"product":"Aros flor plata","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/aros-flor-plata"},{"product":"Aros León bronce","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/aros-bronce-leon"},{"product":"Aros León plata","price":180000,"status":"A PEDIDO","url":"https://corivera.cl/products/aros-plata-leon"},{"product":"Aros órbita bronce","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/aros-orbita-bronce"},{"product":"Aros plata media luna","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/aros-plata-media-luna"},{"product":"Aros puma argolla plata","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/jaguar-loop"},{"product":"Aros puma bronce","price":75000,"status":"A PEDIDO","url":"https://corivera.cl/products/aros-puma-bronce"},{"product":"Aros puma bronce argolla","price":110000,"status":"A PEDIDO","url":"https://corivera.cl/products/aros-puma-bronce-argolla"},{"product":"Aros puma bronce argolla plata","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/aros-puma-bronce-argolla-plata"},{"product":"Aros puma plata","price":110000,"status":"A PEDIDO","url":"https://corivera.cl/products/aros-puma"},{"product":"Aros triángulo plata","price":220000,"status":"A PEDIDO","url":"https://corivera.cl/products/aros-triangulo"},{"product":"Cacho de Jabalí león","price":180000,"status":"A PEDIDO","url":"https://corivera.cl/products/cacho-de-jabali-leon"},{"product":"Cadena Dominga","price":175000,"status":"A PEDIDO","url":"https://corivera.cl/products/cadena-dominga-1"},{"product":"Cadena eslabón cuadrado bronce","price":175000,"status":"A PEDIDO","url":"https://corivera.cl/products/cadena-eslabon-cuadrado-bronce"},{"product":"Cadena Eslabones Plata","price":350000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-eslabones-plata"},{"product":"Cadena grumet bronce","price":210000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-grumet-bronce"},{"product":"Cadena media caña bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/media-cana-bronce"},{"product":"Cadena media caña bronce + Colgante de Virgen","price":230000,"status":"A PEDIDO","url":"https://corivera.cl/products/cadena-media-cana-bronce-copia"},{"product":"Cadena media caña plata","price":350000,"status":"A PEDIDO","url":"https://corivera.cl/products/cadena-media-cana-plata"},{"product":"Cadena rolo bronce","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/cadena-eslabones-bronce"},{"product":"Candado CO bronce","price":110000,"status":"A PEDIDO","url":"https://corivera.cl/products/candado-co"},{"product":"Choker liso bolas bronce","price":105000,"status":"A PEDIDO","url":"https://corivera.cl/products/chocker-liso-bolas-bronce"},{"product":"Choker Plata Cabeza Puma Bronce","price":250000,"status":"A PEDIDO","url":"https://corivera.cl/products/chocker-plata-cabeza-puma-bronce"},{"product":"Choker Puma bronce","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/chocker-puma-bronce"},{"product":"Choker puma bronce cabezas plata","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/chocker-puma-plata-1"},{"product":"Choker Puma bronce liso","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/choker-puma-bronce-liso"},{"product":"Choker Puma Plata","price":270000,"status":"A PEDIDO","url":"https://corivera.cl/products/chocker-puma-plata"},{"product":"Co Rivera","price":0,"status":"A PEDIDO","url":"https://corivera.cl/products/co-rivera"},{"product":"Colgante águila bronce","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/colgante-aguila-bronce"},{"product":"Colgante águila plata","price":310000,"status":"A PEDIDO","url":"https://corivera.cl/products/colgante-aguila-plata-1"},{"product":"Colgante bronce inicial plata","price":110000,"status":"A PEDIDO","url":"https://corivera.cl/products/colgante-bronce-inicial-plata"},{"product":"Colgante caballo plata","price":110000,"status":"A PEDIDO","url":"https://corivera.cl/products/colgante-caballo-plata"},{"product":"Colgante cajón bronce","price":90000,"status":"A PEDIDO","url":"https://corivera.cl/products/colgante-cajon"},{"product":"Colgante cajon de plata","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/palo-de-plata"},{"product":"Colgante Cruz latina bronce","price":110000,"status":"A PEDIDO","url":"https://corivera.cl/products/colgante-cruz-latina-bronce"},{"product":"Colgante cruz plata M","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/colgante-cruz-plata"},{"product":"Colgante flor plata","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/colgante-flor"},{"product":"Colgante León","price":105000,"status":"A PEDIDO","url":"https://corivera.cl/products/colgante-plata-leon"},{"product":"Colgante órbita bronce","price":85000,"status":"A PEDIDO","url":"https://corivera.cl/products/colgante-orbita-bronce"},{"product":"Collar águila bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-aguila-plana"},{"product":"Collar águila bronce piedra ónix negro","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-aguila-bronce-piedra-onix-negro"},{"product":"Collar águila bronce piedras coral rojo","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-aguila-bronce-piedras-coral-rojo"},{"product":"Collar águila de plata","price":220000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-aguila-de-plata"},{"product":"Collar bronce 45 cm","price":175000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-bronce-45-cm"},{"product":"Collar colmillo jabalí bronce","price":290000,"status":"AGOTADO","url":"https://corivera.cl/products/chocker-colmillo-jabali"},{"product":"Collar de alas bronce","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-de-alas-bronce"},{"product":"Collar de alas plata","price":520000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-de-alas-plata"},{"product":"Collar de rosas en plata","price":620000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-de-rosas-en-plata"},{"product":"Collar doble colmillo Jabalí","price":250000,"status":"AGOTADO","url":"https://corivera.cl/products/chocker-cacho-jabali"},{"product":"Collar Dominga plata","price":580000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-dominga-plata"},{"product":"Collar piezas de onix terminación plata 45 cm","price":65000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-piezas-de-onix-terminacion-plata-45-cm"},{"product":"Collar plata 45 cm","price":320000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-plata-45-cm"},{"product":"Collar rosas bronce","price":380000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-rosas-bronce"},{"product":"Collar Veronica","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-veronica"},{"product":"Collar zicatela","price":65000,"status":"A PEDIDO","url":"https://corivera.cl/products/collar-zicatela"},{"product":"Colmillo jabalí cadena plata","price":450000,"status":"AGOTADO","url":"https://corivera.cl/products/cacho-jabali-cadena-plata"},{"product":"Cordón tejido de bronce","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/cordon-de-bronce"},{"product":"Cruz Co Plata XL","price":310000,"status":"A PEDIDO","url":"https://corivera.cl/products/cruz-co-plata-xl"},{"product":"Cruz Co XL Bronce","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/cruz-co-xl-bronce"},{"product":"Cruz M Bronce","price":85000,"status":"A PEDIDO","url":"https://corivera.cl/products/cruz-pequena"},{"product":"Cuarzo Búfalo plata","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/cuarzo-bufalo-plata"},{"product":"Cuarzo Estrella Plata","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/cuarzo-estrella-plata"},{"product":"Esclava aguila bronce","price":153000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-aguila-bronce"},{"product":"Esclava Ala bronce","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-ala-bronce"},{"product":"Esclava Ala plata","price":450000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-ala-plata"},{"product":"Esclava Ancha León Dorado","price":175000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-leon-bronce-xl"},{"product":"Esclava Bolas Bronce L","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-bolas-bronce"},{"product":"Esclava Bolas Bronce S","price":65000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-bolas-bronce-s"},{"product":"Esclava Bolas Plata","price":220000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-bolas-plata"},{"product":"Esclava bronce estrellas plata","price":75000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-bronce-estrellas-plata-s"},{"product":"Esclava bronce jaguar plata","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-bronce-jaguar-plata"},{"product":"Esclava bronce león plata","price":210000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-leon-bronce-2"},{"product":"Esclava Bronce Puma Liso Plata","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-bronce-puma-liso-plata"},{"product":"Esclava bronce San Benito","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-bronce-san-benito"},{"product":"Esclava bronce virgen plata","price":250000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-bronce-virgen-plata"},{"product":"Esclava caballo","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-borde-tienda"},{"product":"Esclava caballo plata","price":520000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-caballo-plata"},{"product":"Esclava cabezas de puma en Plata","price":220000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-puma-plata"},{"product":"Esclava Cabezas de pumas en bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/eslava-puma-bronce"},{"product":"Esclava carnero bronce","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-carnero-bronce"},{"product":"Esclava carnero plata","price":210000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-carnero-plata"},{"product":"Esclava de bronce con aguila","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-de-bronce-con-aguila-en-plata-copia"},{"product":"Esclava de bronce con aguila en plata","price":175000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-de-bronce-con-aguila-en-plata"},{"product":"Esclava herradura bronce","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-corte-herradura-en-bronce"},{"product":"Esclava irregular bronce","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-irregular-bronce"},{"product":"Esclava irregular plata","price":310000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-irregular-plata"},{"product":"Esclava león bronce","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-leon-bronce-1"},{"product":"Esclava León Plata","price":650000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-leon-plata"},{"product":"Esclava Lisa Bronce","price":65000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-lisa-bronce"},{"product":"Esclava Lisa Fina Bronce","price":50000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-lisa-fina-bronce"},{"product":"Esclava Machacada","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-machacada"},{"product":"Esclava Machacada Bronce","price":75000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-machacada-bronce"},{"product":"Esclava órbita bronce","price":175000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-orbita-bronce"},{"product":"Esclava Plata Lisa","price":310000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-plata-lisa"},{"product":"Esclava Puma Bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-puma-bronce"},{"product":"Esclava Puma Liso Bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-puma-liso-bronce"},{"product":"Esclava Puma Liso Plata","price":220000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-puma-liso-plata"},{"product":"Esclava punta flecha bronce","price":175000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-punta-flecha-bronce"},{"product":"Esclava satinada bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-satinada-bronce"},{"product":"Esclava Serpiente","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-serpiente"},{"product":"Esclava Serpiente Plata","price":410000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-serpiente-plata"},{"product":"Esclava tubular lisa bronce","price":90000,"status":"A PEDIDO","url":"https://corivera.cl/products/pulsera-bronce-1"},{"product":"Esclava tubular machacada bronce","price":75000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-tubular-machacada-bronce"},{"product":"Esclava Virgen bronce XL","price":175000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-virgen-xl"},{"product":"Esclava Virgen plata XL","price":650000,"status":"A PEDIDO","url":"https://corivera.cl/products/esclava-virgen-plata"},{"product":"Escudo protector bronce","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/colgante-punta-flecha-bronce"},{"product":"Herradura","price":75000,"status":"A PEDIDO","url":"https://corivera.cl/products/herradura-mediana"},{"product":"Medalla bronce estrella Belén plata","price":120000,"status":"A PEDIDO","url":"https://corivera.cl/products/medalla-estrella-de-belen-bronce-estrella-plata"},{"product":"Medalla chucao","price":90000,"status":"A PEDIDO","url":"https://corivera.cl/products/medalla-chucao"},{"product":"Medalla de bronce borde plata Virgen de los Rayos","price":175000,"status":"A PEDIDO","url":"https://corivera.cl/products/medalla-de-bronce-borde-plata-virgen-de-los-rayos"},{"product":"Medalla estrella Belén bronce","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/medalla-estrella-de-belen-bronce"},{"product":"Medalla flor bronce","price":90000,"status":"A PEDIDO","url":"https://corivera.cl/products/medalla-flor-de-lis"},{"product":"Medalla virgen bronce","price":110000,"status":"A PEDIDO","url":"https://corivera.cl/products/medalla-virgen-bronce"},{"product":"Medalla virgen plata small","price":225000,"status":"A PEDIDO","url":"https://corivera.cl/products/medalla-virgen-plata-1"},{"product":"Medalla virgen plata XL","price":310000,"status":"A PEDIDO","url":"https://corivera.cl/products/medalla-virgen-plata"},{"product":"Placa bronce estrella bronce","price":80000,"status":"A PEDIDO","url":"https://corivera.cl/products/placa-bronce-estrella-bronce"},{"product":"Placa bronce estrella plata","price":85000,"status":"A PEDIDO","url":"https://corivera.cl/products/placa-bronce-estrella-plata"},{"product":"Placa bronce puma plata","price":110000,"status":"A PEDIDO","url":"https://corivera.cl/products/placa-bronce-puma-plata"},{"product":"Placa chucao","price":95000,"status":"A PEDIDO","url":"https://corivera.cl/products/placa-chucao"},{"product":"Placa estrella de plata","price":180000,"status":"A PEDIDO","url":"https://corivera.cl/products/placa-estrella-de-plata"},{"product":"Placa plata pajaro bronce","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/placa-plata-pajaro-bronce"},{"product":"Placa plata tres estrellas bronce","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/placa-plata-tres-estrellas-bronce"},{"product":"Placa plata, estrella bronce","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/placa-plata-estrella-bronce"},{"product":"Placa tres estrellas plata","price":180000,"status":"A PEDIDO","url":"https://corivera.cl/products/placa-tres-estrellas-plata"},{"product":"Placa triple estrella plata bronce","price":85000,"status":"A PEDIDO","url":"https://corivera.cl/products/placa-triple-estrella-plata-bronce"},{"product":"Pulsera Julieta plata","price":350000,"status":"A PEDIDO","url":"https://corivera.cl/products/pulsera-eslabon-dominga"},{"product":"Pulsera Paula plata","price":350000,"status":"A PEDIDO","url":"https://corivera.cl/products/pulsera"},{"product":"Pulsera placa plata estrella bronce","price":235000,"status":"A PEDIDO","url":"https://corivera.cl/products/pulsera-placa-plata-estrella-bronce"},{"product":"Pulsera Rolo plata","price":420000,"status":"A PEDIDO","url":"https://corivera.cl/products/pulsera-rolo-plata"},{"product":"Pulsera rolo talla s plata","price":390000,"status":"A PEDIDO","url":"https://corivera.cl/products/pulsera-rolo-talla-s-plata"},{"product":"Pulsera rosas plata","price":350000,"status":"A PEDIDO","url":"https://corivera.cl/products/pulsera-rosas-plata"},{"product":"Pulsera Virgen bronce","price":110000,"status":"A PEDIDO","url":"https://corivera.cl/products/pulsera-virgen-bronce"},{"product":"Pulsera Virgen bronce y plata","price":170000,"status":"A PEDIDO","url":"https://corivera.cl/products/pulsera-virgen-bronce-y-plata"},{"product":"Pulsera Virgen plata","price":210000,"status":"A PEDIDO","url":"https://corivera.cl/products/pulsera-virgen-plata"},{"product":"Pulsera Virgen plata XL","price":260000,"status":"A PEDIDO","url":"https://corivera.cl/products/pulsera-virgen-plata-xl"},{"product":"Punta Flecha bronce","price":90000,"status":"A PEDIDO","url":"https://corivera.cl/products/punta-flecha-bronce-1"},{"product":"Punta flecha Plata","price":150000,"status":"A PEDIDO","url":"https://corivera.cl/products/punta-flecha-plata"},{"product":"Rayo bronce","price":90000,"status":"A PEDIDO","url":"https://corivera.cl/products/rayo-bronce"},{"product":"Rayo plata","price":180000,"status":"A PEDIDO","url":"https://corivera.cl/products/rayo-plata-5-cm"},{"product":"Relicario plata Virgen de Guadalupe S","price":260000,"status":"A PEDIDO","url":"https://corivera.cl/products/relicario-plata-virgen-de-guadalupe-s"}];
+    const money = value => new Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP',maximumFractionDigits:0}).format(value);
+    const norm = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+    const cleanPrice = value => { const digits = String(value ?? '').replace(/[^\d-]/g,''); return digits ? Number(digits) : 0; };
+    const categoryOf = name => { const n=norm(name); if(n.startsWith('anillo')||n.startsWith('argolla')) return 'Anillos'; if(n.startsWith('aros')) return 'Aros'; if(/^(pulsera|esclava)/.test(n)) return 'Pulseras y esclavas'; if(/^(cadena|collar|choker|chocker|cordon)/.test(n)) return 'Collares y cadenas'; if(/^(colgante|medalla|placa|punta|rayo|cruz|escudo protector|herradura)/.test(n)) return 'Colgantes y símbolos'; return 'Otros'; };
+    const materialOf = name => { const n=norm(name), b=n.includes('bronce'), p=n.includes('plata'); if(b&&p) return 'Bicolor'; if(b) return 'Bronce'; if(p) return 'Plata'; return 'No indicado'; };
+    const motifOf = name => { const n=norm(name); if(/virgen|san benito|santo|cruz|relicario|medalla/.test(n)) return 'Religioso / devocional'; if(/puma|leon|aguila|carnero|caballo|jabali|bufalo|chucao|pajaro|ave|serpiente|jaguar|abeja/.test(n)) return 'Animal'; if(/estrella|luna|orbita|rayo|sol|astro/.test(n)) return 'Celestial / simbólico'; if(/flor|rosa|hoja|ala/.test(n)) return 'Natural / orgánico'; if(/liso|argolla|eslabon|media cana|rolo|cadena|bola|nudo|tachas/.test(n)) return 'Forma / básico'; return 'Otros'; };
+    const keyOf = s => norm(s).replace(/[^a-z0-9]+/g,' ');
+    let catalog = DEFAULT_DATA.map(p=>({...p,price:cleanPrice(p.price),category:p.category||categoryOf(p.product),material:materialOf(p.product),motif:motifOf(p.product)}));
+    let sales = new Map();
+    let filtered = [];
+    let toastTimer;
+    const el = id => document.getElementById(id);
+    const showToast = message => { const t=el('toast'); t.textContent=message; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2600); };
+    const median = values => { if(!values.length) return 0; const s=[...values].sort((a,b)=>a-b), m=Math.floor(s.length/2); return s.length%2?s[m]:(s[m-1]+s[m])/2; };
+    const quantile = (values,q) => { const s=[...values].sort((a,b)=>a-b); if(!s.length)return 0; const pos=(s.length-1)*q, lo=Math.floor(pos), hi=Math.ceil(pos); return s[lo]+(s[hi]-s[lo])*(pos-lo); };
+    function barRows(container, entries, total, type='mix') {
+      const max=Math.max(1,...entries.map(x=>x.count));
+      el(container).innerHTML=entries.map(x=>`<div class="${type==='price'?'band-row':'mix-row'}"><span class="${type==='price'?'':'mix-name'}">${escapeHTML(x.name)}</span><div class="${type==='price'?'band-track':'mix-track'}"><div class="${type==='price'?'band-fill':'mix-fill'}" style="width:${Math.max(2,x.count/max*100)}%"></div></div><span class="${type==='price'?'band-count':'mix-value'}">${x.count}</span></div>`).join('');
+    }
+    function escapeHTML(value) { return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+    function percent(count,total) { return total ? `${Math.round(count/total*100)}%` : '0%'; }
+    function render() {
+      catalog=catalog.map(p=>({...p,category:p.category||categoryOf(p.product),material:materialOf(p.product),motif:motifOf(p.product)}));
+      const priced=catalog.filter(p=>p.price>0), prices=priced.map(p=>p.price), total=catalog.length;
+      const made=catalog.filter(p=>norm(p.status).includes('pedido')).length, out=catalog.filter(p=>norm(p.status).includes('agotado')).length;
+      el('kpi-products').textContent=total.toLocaleString('es-CL'); el('kpi-median').textContent=money(median(prices)); el('kpi-made').textContent=made.toLocaleString('es-CL'); el('kpi-soldout').textContent=out.toLocaleString('es-CL');
+      el('price-count').textContent=`${prices.length} CON PRECIO`;
+      const bands=[{name:'$50–79 mil',min:50000,max:79999},{name:'$80–109 mil',min:80000,max:109999},{name:'$110–149 mil',min:110000,max:149999},{name:'$150–219 mil',min:150000,max:219999},{name:'$220–399 mil',min:220000,max:399999},{name:'$400 mil o más',min:400000,max:Infinity}].map(b=>({name:b.name,count:prices.filter(p=>p>=b.min&&p<=b.max).length}));
+      barRows('price-bands',bands,prices.length,'price');
+      el('quartiles').textContent=`Rango central (P25–P75): ${money(quantile(prices,.25))}–${money(quantile(prices,.75))}`;
+      el('price-range').textContent=`${money(Math.min(...prices))}–${money(Math.max(...prices))}`;
+      const catCounts=countBy(catalog,'category'), catEntries=sortEntries(catCounts);
+      barRows('category-mix',catEntries,total); el('category-note').textContent=`${catEntries.slice(0,2).map(x=>x.name).join(' + ')}: ${catEntries.slice(0,2).reduce((a,x)=>a+x.count,0)} productos`;
+      const mats=countBy(catalog,'material'), matOrder=['Bronce','Plata','Bicolor','No indicado'];
+      el('material-mix').innerHTML=matOrder.map((m,i)=>`<div class="material-card"><span class="material-swatch" aria-hidden="true"></span><strong>${m}</strong><span class="material-count">${mats[m]||0}</span><small>${percent(mats[m]||0,total)} del catálogo</small></div>`).join('');
+      barRows('motif-mix',sortEntries(countBy(catalog,'motif')),total);
+      renderPremium(priced);
+      updateOptions(); updateTable(); renderSales();
+      const zeros=catalog.filter(p=>p.price===0).length;
+      el('price-range').title=zeros?`${zeros} precio(s) $0 excluido(s) del rango`:'Todos los productos tienen precio';
+    }
+    function countBy(items,key) { return items.reduce((o,p)=>(o[p[key]||'No indicado']=(o[p[key]||'No indicado']||0)+1,o),{}); }
+    function sortEntries(counts) { return Object.entries(counts).map(([name,count])=>({name,count})).sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name,'es')); }
+    function renderPremium(items) {
+      const top=[...items].sort((a,b)=>b.price-a.price).slice(0,6);
+      el('premium-list').innerHTML=top.map((p,i)=>`<div class="premium-item"><span class="premium-index">${String(i+1).padStart(2,'0')}</span><div class="premium-name">${escapeHTML(p.product)}<a class="premium-url" href="${escapeHTML(p.url)}" target="_blank" rel="noopener">Abrir ficha pública</a></div><span class="premium-price">${money(p.price)}</span></div>`).join('');
+    }
+    function updateOptions() {
+      const update=(id,key,label)=>{const select=el(id),selected=select.value,values=[...new Set(catalog.map(p=>p[key]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'es'));select.innerHTML=`<option value="">${label}</option>`+values.map(v=>`<option value="${escapeHTML(v)}">${escapeHTML(v)}</option>`).join('');select.value=values.includes(selected)?selected:'';};
+      update('category-filter','category','Todas las categorías'); update('material-filter','material','Todos los materiales'); update('status-filter','status','Todos los estados');
+    }
+    function updateTable() {
+      const query=keyOf(el('search').value), category=el('category-filter').value, material=el('material-filter').value, status=el('status-filter').value, sort=el('sort-filter').value;
+      let list=catalog.filter(p=>(!query||keyOf(`${p.product} ${p.motif}`).includes(query))&&(!category||p.category===category)&&(!material||p.material===material)&&(!status||p.status===status));
+      if(sort==='price-asc') list.sort((a,b)=>a.price-b.price); else if(sort==='price-desc') list.sort((a,b)=>b.price-a.price); else if(sort==='status') list.sort((a,b)=>a.status.localeCompare(b.status,'es')||a.product.localeCompare(b.product,'es')); else list.sort((a,b)=>a.product.localeCompare(b.product,'es'));
+      filtered=list;
+      el('product-rows').innerHTML=list.length?list.map(p=>`<tr><td class="name">${escapeHTML(p.product)}</td><td>${escapeHTML(p.category)}</td><td>${escapeHTML(p.material)}</td><td><span class="pill ${norm(p.status).includes('agotado')?'out':''}">${escapeHTML(p.status||'Sin estado')}</span></td><td class="price">${p.price?money(p.price):'—'}</td><td><a href="${escapeHTML(p.url)}" target="_blank" rel="noopener">Ver ficha</a></td></tr>`).join(''):`<tr><td class="empty" colspan="6">No hay productos con estos filtros.</td></tr>`;
+      el('table-count').textContent=`${list.length} de ${catalog.length} productos`;
+    }
+    function renderSales() {
+      const area=el('sales-area');
+      if(!sales.size){area.innerHTML=`<strong>Ventas no incluidas</strong><p>Carga un CSV con columnas <code>producto</code> y <code>unidades</code>. Los datos se cruzarán por nombre en tu navegador.</p><label class="button" for="sales-file">Cargar datos de ventas</label>`;return;}
+      const ranked=catalog.map(p=>({...p,units:sales.get(keyOf(p.product))||0})).filter(p=>p.units>0).sort((a,b)=>b.units-a.units).slice(0,5);
+      area.className='premium-list'; area.innerHTML=ranked.length?ranked.map((p,i)=>`<div class="premium-item"><span class="premium-index">${String(i+1).padStart(2,'0')}</span><div class="premium-name">${escapeHTML(p.product)}<span class="premium-url">unidades vendidas</span></div><span class="premium-price">${p.units.toLocaleString('es-CL')}</span></div>`).join('')+`<div style="padding-top:10px"><label class="button subtle" for="sales-file">Actualizar ventas</label></div>`:`<div class="rank-box"><strong>No hubo coincidencias</strong><p>Revisa que el CSV use nombres de producto iguales a los del catálogo.</p><label class="button" for="sales-file">Cargar otro archivo</label></div>`;
+    }
+    function parseCSV(text) {
+      const rows=[]; let row=[],cell='',quoted=false;
+      for(let i=0;i<text.length;i++){const c=text[i];if(quoted){if(c==='"'&&text[i+1]==='"'){cell+='"';i++;}else if(c==='"')quoted=false;else cell+=c;}else if(c==='"')quoted=true;else if(c===','){row.push(cell);cell='';}else if(c==='\n'){row.push(cell.replace(/\r$/,''));if(row.some(x=>x.trim()))rows.push(row);row=[];cell='';}else cell+=c;}
+      row.push(cell.replace(/\r$/,''));if(row.some(x=>x.trim()))rows.push(row);
+      if(!rows.length)return[];const headers=rows.shift().map(h=>norm(h).replace(/\s+/g,'_'));
+      return rows.map(r=>Object.fromEntries(headers.map((h,i)=>[h,r[i]??''])));
+    }
+    function normalizeCatalog(rows) {
+      return rows.map(r=>{const product=r.producto||r.product||r.titulo||r.title||r.nombre||'';const rawPrice=r.precio_clp||r.price||r.precio||'';return{product:String(product).trim(),price:cleanPrice(rawPrice),status:String(r.estado||r.status||r.disponibilidad||'').trim(),url:String(r.url||r.enlace||'').trim()||'#',category:String(r.categoria||r.category||'').trim()};}).filter(p=>p.product);
+    }
+    async function readCSV(file) { return parseCSV(await file.text()); }
+    el('catalog-file').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const rows=normalizeCatalog(await readCSV(file));if(!rows.length)throw new Error('No se encontraron filas de productos.');catalog=rows;sales.clear();el('reset-data').hidden=false;render();showToast(`Catálogo cargado: ${rows.length} productos.`);}catch(err){showToast(`No se pudo cargar: ${err.message}`);}e.target.value='';});
+    el('sales-file').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const rows=await readCSV(file),next=new Map();for(const r of rows){const name=r.producto||r.product||r.nombre||'';const units=Number(String(r.unidades||r.units||r.cantidad||'').replace(/[^\d.-]/g,''));if(name&&Number.isFinite(units))next.set(keyOf(name),units);}if(!next.size)throw new Error('Se esperan columnas producto y unidades.');sales=next;renderSales();showToast('Ranking actualizado con ventas cargadas.');}catch(err){showToast(`No se pudo cargar: ${err.message}`);}e.target.value='';});
+    el('reset-data').addEventListener('click',()=>{catalog=DEFAULT_DATA.map(p=>({...p,price:cleanPrice(p.price),category:categoryOf(p.product),material:materialOf(p.product),motif:motifOf(p.product)}));sales.clear();el('reset-data').hidden=true;render();showToast('Volviste al catálogo base.');});
+    ['search','category-filter','material-filter','status-filter','sort-filter'].forEach(id=>el(id).addEventListener(id==='search'?'input':'change',updateTable));
+    el('export-filtered').addEventListener('click',()=>{const rows=[['producto','precio_clp','estado','categoria_inferida','material_en_titulo','url'],...filtered.map(p=>[p.product,p.price,p.status,p.category,p.material,p.url])];const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(',')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='co-rivera-seleccion.csv';a.click();URL.revokeObjectURL(a.href);});
+    document.querySelectorAll('[data-jump-filter]').forEach(b=>b.addEventListener('click',()=>{location.hash='productos';el('category-filter').focus({preventScroll:true});}));
+    const navLinks=[...document.querySelectorAll('.nav-link')];const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.hash===`#${entry.target.id}`));}}),{rootMargin:'-20% 0px -70% 0px'});['panorama','mix','precios','productos'].forEach(id=>observer.observe(el(id)));
+    render();
+  </script>
+</body>
+</html>

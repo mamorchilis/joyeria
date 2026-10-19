@@ -5,9 +5,11 @@
 
 ## Estado de la recopilación
 
-La portada pública de Co Rivera fue accesible mediante el índice web. La colección general también aparece indexada, pero esa copia muestra 204 artículos y un pie de página de 2025; no se considera una captura vigente del catálogo. Los intentos de consultar directamente `robots.txt`, `products.json` y las páginas de colección devolvieron `403 Forbidden` o no estaban disponibles. Por ese motivo, esta carpeta contiene una muestra observada en la portada, no un inventario completo.
+Se recorrieron las páginas públicas de la colección general desde el navegador. El recorrido devolvió **199 productos únicos** con nombre, precio publicado, estado mostrado y enlace a la ficha. La página 10 informa que no se encontró ningún producto. El número corresponde a lo accesible en la tienda al momento de la consulta y puede cambiar.
 
-No se intentó sortear el bloqueo. Para completar la recopilación automática haría falta que el sitio permita explícitamente ese acceso o contar con autorización de Co Rivera.
+En esta captura, 196 productos aparecen “A PEDIDO” y 3 “AGOTADO”. Hay una fila llamada “Co Rivera” con precio $0, que parece ser un elemento especial del catálogo y no se debe tratar como precio representativo de una joya.
+
+Las consultas directas a `robots.txt` y a endpoints JSON devolvieron `403 Forbidden`; no se intentó eludir esa respuesta. La recopilación se hizo recorriendo las páginas de la tienda que sí se muestran en el navegador. Una copia indexada más antigua muestra 204 artículos, cifra que no coincide con los 199 productos únicos observados actualmente.
 
 ## Hallazgos verificables en la portada
 
@@ -21,6 +23,9 @@ Estos son observaciones del sitio, no conclusiones sobre sus ventas, costos, fab
 
 ## Archivos
 
-- `muestra_portada.csv`: productos y precios que aparecían en la portada consultada; no incluye fotografías.
+- `dashboard.html`: tablero estratégico local con la captura integrada, análisis de precios y mix, filtros y carga opcional de ventas.
+- `catalogo_publico.csv`: 199 productos visibles en la colección general, sin imágenes ni reseñas.
 - `fuentes-y-limites.md`: enlaces consultados, condiciones relevantes y limitaciones.
+
+El tablero clasifica categorías y motivos a partir de los títulos; son etiquetas exploratorias que conviene revisar. El precio más alto no equivale a un producto ganador. Para activar el ranking de ventas, carga un CSV con columnas `producto` y `unidades`; el cruce se hace localmente por nombre y requiere que coincida con el catálogo.
 
