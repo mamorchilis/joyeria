@@ -3,6 +3,7 @@
 Repositorio compartido para desarrollar una marca propia de joyería artesanal en Chile.
 
 ## Documentos principales
+- **[Tablero del proyecto](docs/dashboard.html)**: abrir con doble clic. Tiene dos secciones: *Análisis de competencia* y *Definiciones de marca* (hoja de ruta y nombre). Se actualiza con `python docs/generar_dashboard.py`.
 - [Contexto de la marca y fabricación](marca-joyas.md)
 - [Instrucciones para Codex y asistentes](AGENTS.md)
 - [Estado y próximas decisiones](docs/estado-proyecto.md)

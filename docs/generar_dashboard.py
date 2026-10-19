@@ -1,14 +1,19 @@
-"""Mete los datos de cada competidor dentro de docs/referentes/dashboard.html.
+"""Mete los datos del proyecto dentro de docs/dashboard.html.
 
 Los datos quedan en el mismo archivo del tablero, para que funcione aunque se
-envíe solo (por ejemplo, por WhatsApp o correo).
+envíe solo (por ejemplo, por WhatsApp o correo). El tablero tiene dos secciones:
 
-Cada carpeta (por ejemplo co-rivera/) debe tener:
-  - ficha.json: textos y datos de la marca (ver README.md de esta carpeta).
-  - catalogo_publico.csv: con al menos las columnas producto, precio_clp, estado y url.
+Análisis de competencia (docs/referentes/):
+  - resumen.json: conclusiones comparativas.
+  - una carpeta por competidor (por ejemplo co-rivera/) con ficha.json y
+    catalogo_publico.csv (columnas mínimas: producto, precio_clp, estado y url).
+
+Definiciones de marca (docs/marca/):
+  - definiciones.json: hoja de ruta, temas por definir y lo acordado con el taller.
+  - nombres.json: candidatos de nombre y su análisis.
 
 Uso, desde la raíz del repositorio:
-  python docs/referentes/generar_datos.py
+  python docs/generar_dashboard.py
 """
 
 import csv
@@ -18,7 +23,9 @@ import unicodedata
 from datetime import date
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent
+DOCS = Path(__file__).resolve().parent
+BASE = DOCS / "referentes"
+MARCA = DOCS / "marca"
 
 
 def norm(texto):
@@ -147,13 +154,16 @@ def main():
     competidores = [cargar_competidor(c) for c in sorted(BASE.iterdir()) if (c / "ficha.json").exists()]
     competidores.sort(key=lambda c: c.get("orden", 99))
     resumen = json.loads((BASE / "resumen.json").read_text(encoding="utf-8"))
-    datos = {"generado": date.today().isoformat(), "resumen": resumen, "competidores": competidores}
-    salida = BASE / "dashboard.html"
+    definiciones = json.loads((MARCA / "definiciones.json").read_text(encoding="utf-8"))
+    nombres = json.loads((MARCA / "nombres.json").read_text(encoding="utf-8"))
+    datos = {"generado": date.today().isoformat(), "resumen": resumen, "competidores": competidores,
+             "definiciones": definiciones, "nombres": nombres}
+    salida = DOCS / "dashboard.html"
     html = salida.read_text(encoding="utf-8")
     # "<\/" evita que un texto con "</script>" cierre el bloque antes de tiempo.
     json_datos = json.dumps(datos, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     bloque = (
-        "<!-- DATOS:INICIO (lo escribe generar_datos.py; no editar a mano) -->\n"
+        "<!-- DATOS:INICIO (lo escribe generar_dashboard.py; no editar a mano) -->\n"
         f"  <script>window.REFERENTES = {json_datos};</script>\n"
         "  <!-- DATOS:FIN -->"
     )

@@ -1,0 +1,104 @@
+{
+  "actualizado": "2026-10-19",
+  "estado": "En análisis: ningún nombre está elegido.",
+  "titular": "Cinco candidatos, dos favoritos: Pili Trespalacios es el más fácil de proteger; del Pilar Joyas, el más cálido.",
+  "bajada": "Se revisaron dominios (.cl y .com), uso del nombre en la web, registro en INAPI (clases 14 de joyería y 35 de venta) y encaje con el segmento. El análisis completo está en docs/marca/nombres.md.",
+  "nota": "Las notas de 1 a 5 son una opinión para comparar. La búsqueda en INAPI es preliminar y no reemplaza la revisión de un abogado de marcas.",
+  "criterios": ["Distintivo y fácil de proteger", "Disponible en dominios", "Fácil de decir y recordar en Chile", "Encaje con lujo artesanal ABC1", "Historia propia", "Se distingue de los competidores"],
+  "candidatos": [
+    {
+      "nombre": "del Pilar Joyas",
+      "favorito": true,
+      "origen": "El nombre de Pili. “Pilar” también significa columna, soporte.",
+      "comunica": "Cercanía, tradición y feminidad. Evoca además a la Virgen del Pilar.",
+      "notas": [1, 3, 5, 3, 4, 2],
+      "dominios": [
+        {"dominio": "delpilar.cl", "libre": false},
+        {"dominio": "delpilar.com", "libre": false},
+        {"dominio": "delpilarjoyas.cl", "libre": true},
+        {"dominio": "joyasdelpilar.cl", "libre": true}
+      ],
+      "inapi": {"riesgo": "medio-alto", "texto": "“Maria Pilar” está registrada en joyería (clase 14) y “EL PILAR” en todas las clases. En vestuario existen “MARÍA DEL PILAR” y “C. del Pilar”."},
+      "favor": ["Fácil de decir, escribir y recordar; cálido y familiar.", "Ya es el nombre de trabajo del proyecto.", "Historia doble: el nombre de Pili y la idea de “pilar”.", "Calza con piezas devocionales, si se decide tenerlas."],
+      "contra": ["Riesgo de objeción en INAPI por “Maria Pilar” y “EL PILAR”.", "“del Pilar” es muy común en Chile y “Joyas” solo describe el producto.", "Los dominios cortos están tomados.", "Empuja hacia lo religioso, el segmento más saturado."],
+      "conviene": "Si la marca quiere ser cercana y familiar, con una línea devocional fuerte. Antes de elegirlo, consultar a un abogado de marcas."
+    },
+    {
+      "nombre": "Pili Trespalacios",
+      "favorito": true,
+      "origen": "El nombre y primer apellido de Pili.",
+      "comunica": "Una persona real detrás de cada pieza: firma de autora, cercanía y un apellido con presencia (“tres palacios”).",
+      "notas": [5, 5, 4, 4, 5, 3],
+      "dominios": [
+        {"dominio": "pilitrespalacios.cl", "libre": true},
+        {"dominio": "pilitrespalacios.com", "libre": true},
+        {"dominio": "pilartrespalacios.cl", "libre": true},
+        {"dominio": "pilartrespalacios.com", "libre": true}
+      ],
+      "inapi": {"riesgo": "bajo", "texto": "Las marcas “Trespalacios” están caducadas. Las marcas “Pili” vigentes son de otras clases; ninguna de joyería."},
+      "favor": ["Sigue la fórmula de nombre más apellido de los referentes (Igna Valverde y Co Rivera).", "Dominios .cl y .com libres, con “Pili” y con “Pilar”.", "Muy distintivo; despejado en INAPI.", "Monograma posible (PT) y calza con mostrar a Pili y el taller en redes."],
+      "contra": ["Ata la marca a Pili: su imagen y una eventual venta del negocio.", "“Pili” es informal; “Pilar Trespalacios” suena más a lujo.", "Es largo para logo y cuenta; se apoya en el monograma.", "Para registrarlo, Pili debe ser titular o autorizarlo por escrito."],
+      "conviene": "Si Pili quiere ser la cara visible de la marca. Vale la pena probar también “Pilar Trespalacios”."
+    },
+    {
+      "nombre": "San Salvatore",
+      "favorito": false,
+      "origen": "Pueblo de Italia de donde es el nonno de Pili (falta precisar cuál: hay varios).",
+      "comunica": "Herencia italiana, sofisticación y tradición orfebre. “Salvatore” significa “salvador”.",
+      "notas": [1, 3, 4, 4, 4, 3],
+      "dominios": [
+        {"dominio": "sansalvatore.cl", "libre": true},
+        {"dominio": "sansalvatore.com", "libre": false}
+      ],
+      "inapi": {"riesgo": "alto", "texto": "“Salvatore Ferragamo” está registrada en joyería (14) y venta (35); también “Emporio Salvatore” en la clase 14. Las marcas famosas tienen protección más amplia."},
+      "favor": ["Historia familiar real y prestigio italiano en joyería.", "Fácil de decir en Chile; el .cl está libre."],
+      "contra": ["Mayor riesgo de registro de la lista, por Salvatore Ferragamo.", "“San” vuelve a lo religioso.", "Existe la bodega italiana San Salvatore 1988 y el .com está tomado.", "Se puede confundir con San Salvador."],
+      "conviene": "Como nombre de una colección con alma italiana, no como marca principal."
+    },
+    {
+      "nombre": "Parpaglione",
+      "favorito": false,
+      "origen": "Segundo apellido de Pili. En italiano significa “mariposa grande”.",
+      "comunica": "Transformación, ligereza y luz. Da un ícono natural: la mariposa.",
+      "notas": [5, 5, 2, 4, 4, 5],
+      "dominios": [
+        {"dominio": "parpaglione.cl", "libre": true},
+        {"dominio": "parpaglione.com", "libre": true}
+      ],
+      "inapi": {"riesgo": "muy bajo", "texto": "No hay ninguna marca registrada con ese nombre."},
+      "favor": ["El más distintivo: casi sin resultados en la web y nada en INAPI.", "Dominios .cl y .com libres.", "La mariposa da logo, colección insignia e historia.", "Ningún competidor usa algo parecido."],
+      "contra": ["Difícil de pronunciar y escribir en Chile (en italiano, “parpa-LLO-ne”).", "En la poesía antigua, la mariposa nocturna que se quema en la llama es una imagen ambigua.", "“Polilla” no es una buena asociación; hay que hablar de mariposa."],
+      "conviene": "Como símbolo o colección insignia (la mariposa), o como marca si se acepta enseñar a pronunciarlo."
+    },
+    {
+      "nombre": "Trespalacios",
+      "favorito": false,
+      "origen": "Primer apellido de Pili.",
+      "comunica": "Apellido con presencia; “tres palacios” sugiere elegancia y da para un símbolo.",
+      "notas": [4, 2, 4, 4, 3, 4],
+      "dominios": [
+        {"dominio": "trespalacios.cl", "libre": false},
+        {"dominio": "trespalacios.com", "libre": false},
+        {"dominio": "trespalaciosjoyas.cl", "libre": true}
+      ],
+      "inapi": {"riesgo": "bajo", "texto": "Las marcas “Trespalacios” están caducadas; la única “Tres Palacios” vigente es de vinos (clase 33)."},
+      "favor": ["Fácil de decir; suena sólido y elegante.", "Despejado en INAPI para joyería."],
+      "contra": ["trespalacios.cl lleva al grupo de cumbia Los Tres Palacios, que domina las búsquedas.", "Los dominios cortos están tomados.", "Pierde la cercanía de “Pili”."],
+      "conviene": "Como razón social de la empresa o como monograma, más que como nombre comercial."
+    }
+  ],
+  "lectura": [
+    "Pili Trespalacios es el más sólido de los dos favoritos: distintivo, con dominios libres y despejado en INAPI. Su costo es personal, porque Pili pasa a ser la marca.",
+    "del Pilar Joyas es el más cálido, pero tiene un problema concreto de registro (“Maria Pilar” y “EL PILAR”). Si lo prefieren, conviene consultarlo con un abogado de marcas antes de constituir la empresa.",
+    "San Salvatore queda casi descartado como marca principal por Salvatore Ferragamo; sirve como colección.",
+    "Parpaglione es el más “limpio”: si no es la marca, puede ser el símbolo o la colección de la mariposa.",
+    "La razón social de la empresa y la marca pueden ser distintas."
+  ],
+  "pendientes": [
+    "Revisar en Instagram, desde una cuenta, si están libres @pilitrespalacios, @delpilarjoyas, @joyasdelpilar y @parpaglione.",
+    "Precisar de cuál San Salvatore es el nonno.",
+    "Decir los 2 o 3 finalistas a 5 a 10 personas del público objetivo: cuál recuerdan y cómo lo escriben.",
+    "Con el nombre elegido, confirmar con un abogado de marcas y registrar en INAPI (clases 14 y 35).",
+    "Registrar los dominios del nombre elegido apenas se decida."
+  ]
+}

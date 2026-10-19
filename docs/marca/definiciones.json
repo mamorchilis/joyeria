@@ -1,0 +1,62 @@
+{
+  "actualizado": "2026-10-19",
+  "titular": "Primero el nombre; con él, la empresa; después, la marca, la web y las redes.",
+  "bajada": "CLAF es el proveedor más probable y los socios están definiendo los 6 diseños de partida. El siguiente paso es elegir el nombre: de él depende constituir la empresa, y de la empresa, crear la marca, la web y las redes sociales.",
+  "nota": "Esta hoja resume lo que está en docs/estado-proyecto.md y marca-joyas.md. Si una decisión cambia, hay que actualizar esos documentos y esta hoja.",
+  "ruta": [
+    {"paso": "Nombre de la marca", "estado": "en-analisis", "detalle": "5 candidatos analizados. Los socios prefieren del Pilar Joyas y Pili Trespalacios.", "hoja": "nombre"},
+    {"paso": "Constituir la empresa", "estado": "pendiente", "detalle": "Cuando el nombre esté definido. La razón social puede ser distinta de la marca."},
+    {"paso": "Marca, web y redes sociales", "estado": "pendiente", "detalle": "Después de constituir la empresa: identidad, sitio y cuentas."}
+  ],
+  "paralelo": [
+    {"paso": "Proveedor: CLAF Goldsmith", "estado": "en-curso", "detalle": "Proveedor más probable. Falta formalizar condiciones, costos y plazos."},
+    {"paso": "6 diseños de partida", "estado": "en-curso", "detalle": "En definición. Los socios ya vieron diseños base de CLAF y deciden cuánto ajustarlos."},
+    {"paso": "Packaging", "estado": "por-definir", "detalle": "Caja, bolsa, decoración, carta con mensaje y cuidados de la joya, y aroma."}
+  ],
+  "por_definir": [
+    {"tema": "Diferenciación de marca", "detalle": "Sobre todo de marca (historia, tono, identidad) y, en parte, de diseño. Compartimos taller con tres competidores.", "estado": "por-definir"},
+    {"tema": "Cuánto diseño propio", "detalle": "Ajustar diseños base de CLAF, diseñar desde cero o una mezcla.", "estado": "por-definir"},
+    {"tema": "Público objetivo y posicionamiento", "detalle": "Segmento ABC1 como punto de partida; falta precisar a quién le hablamos y cómo.", "estado": "por-definir"},
+    {"tema": "Materiales", "detalle": "Bronce y plata como base; el oro es una hipótesis abierta (ningún competidor vende oro macizo).", "estado": "por-definir"},
+    {"tema": "Precios, costos y márgenes", "detalle": "Necesita los costos de CLAF. Referencia de la competencia: el centro del mercado está entre $80 y $220 mil.", "estado": "bloqueado", "depende": "Costos de CLAF"},
+    {"tema": "Operación", "detalle": "A pedido, con stock o mixta (como CBC), según lo que ofrezca el taller.", "estado": "bloqueado", "depende": "Respuesta de CLAF"},
+    {"tema": "Canales de venta", "detalle": "Tienda propia (Co Rivera, CBC), tiendas de diseño multimarca (Igna en Alto Diseño y MUT) o solo online.", "estado": "por-definir"},
+    {"tema": "Contenido para redes", "detalle": "CLAF permite grabar la fabricación: usarlo para contar el oficio.", "estado": "por-definir"},
+    {"tema": "Capital y presupuesto inicial", "detalle": "Sin definir.", "estado": "por-definir"},
+    {"tema": "Calendario y fecha de lanzamiento", "detalle": "Sin definir.", "estado": "por-definir"},
+    {"tema": "Reparto de roles", "detalle": "Quién lleva cada tema entre los socios.", "estado": "por-definir"}
+  ],
+  "paneles": [
+    {
+      "titulo": "Lo que ya sabemos de CLAF",
+      "bajada": "Contado por CLAF en las reuniones; falta dejarlo por escrito.",
+      "items": [
+        "Fabrica para varias marcas (entre ellas Co Rivera, Igna Valverde y Milagritos de María) y permite que cada una presente el taller como propio.",
+        "Permite grabar mientras fabrican las joyas, para subir contenido a redes sociales.",
+        "Ya vimos varios de sus diseños en persona. Cuánto ajustarlos lo decidimos nosotros.",
+        "El modelo 3D de cada marca no se repite con nadie más; es parte de su valor agregado.",
+        "Por su cuenta solo vende diseños que no tiene con ninguna marca, casi siempre de alta joyería (anillos de compromiso, argollas). No compite directamente con sus clientes."
+      ]
+    },
+    {
+      "titulo": "Preguntas pendientes para CLAF",
+      "bajada": "Para la próxima reunión.",
+      "items": [
+        "¿Podemos dejar por escrito estas condiciones (taller como propio, grabación, exclusividad del modelo 3D)? ¿De quién es el modelo 3D si dejamos de trabajar juntos?",
+        "¿Cuánto cuesta una misma pieza en bronce, en plata 950 y en oro 14k o 18k? ¿Cuál es el mínimo por diseño? Con eso validamos si la escalera de “la plata cuesta el doble” nos sirve.",
+        "¿Trabajaría con un esquema mixto como el de CBC: algo de stock para entrega inmediata y el resto a pedido? ¿En cuántos días entrega un pedido? (Como referencia: CBC tarda 15 días hábiles, Co Rivera de 15 a 20 y Milagritos cerca de una semana).",
+        "¿Le fabrica también a CBC Jewelry? (No recordamos si la nombró.)"
+      ]
+    },
+    {
+      "titulo": "Lo que falta validar",
+      "bajada": "Sin esto, las conclusiones de la competencia siguen siendo hipótesis.",
+      "items": [
+        "Costos y márgenes propios: con los precios del taller, ver si podemos vender en el tramo de $80 a $220 mil con un margen sano.",
+        "Demanda real: no tenemos ventas de ningún competidor. Hay que probar con clientes (conversaciones, Instagram, una preventa pequeña).",
+        "Oro: si el costo permite un precio que el público ABC1 esté dispuesto a pagar por piezas chicas de oro macizo.",
+        "Packaging: si el aroma se usa, que sea propio de la marca y no parecido al de Milagritos, que ya vende uno para el hogar."
+      ]
+    }
+  ]
+}

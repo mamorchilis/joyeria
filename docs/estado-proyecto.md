@@ -42,7 +42,7 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
 
 - **2026-10-18 — Formato estándar para estudiar competidores (vigente).** Cada competidor
   tiene una carpeta en `docs/referentes/` con los mismos archivos, y un tablero común
-  (`docs/referentes/dashboard.html`) con una hoja de resumen comparativo y una hoja por
+  (hoy en `docs/dashboard.html`) con una hoja de resumen comparativo y una hoja por
   empresa. Están Co Rivera e Igna Valverde (desde el 18-10) y CBC Jewelry y Milagritos de
   María (desde el 19-10). El tablero es un solo archivo, con los datos adentro, que se puede
   mandar por WhatsApp o correo. Las conclusiones de ese tablero son
@@ -89,3 +89,10 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   Pilar" y "EL PILAR", y San Salvatore con "Salvatore Ferragamo" (clase 14). Faltan
   Instagram y una prueba con clientes. Análisis y pendientes en `docs/marca/nombres.md`.
 
+- **2026-10-19 — El tablero pasa a ser del proyecto completo (vigente).** Se movió a
+  `docs/dashboard.html` y tiene dos secciones: *Análisis de competencia* (resumen y una hoja
+  por competidor) y *Definiciones de marca* (hoja de ruta con lo acordado, en curso y por
+  definir, y el análisis del nombre). Los datos de la segunda sección están en
+  `docs/marca/definiciones.json` y `docs/marca/nombres.json`; si cambia una decisión, hay que
+  actualizar este documento, `marca-joyas.md` y esos archivos, y regenerar con
+  `python docs/generar_dashboard.py`.

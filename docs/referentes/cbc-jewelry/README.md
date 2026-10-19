@@ -4,7 +4,7 @@
 **Sitio:** https://cbcjewelry.cl/
 **Uso previsto:** análisis interno del proyecto. Este material no autoriza a copiar fotografías, diseños, textos de producto ni identidad visual.
 
-Para ver los gráficos, abrir la hoja "CBC Jewelry" del [tablero general](../dashboard.html).
+Para ver los gráficos, abrir la hoja "CBC Jewelry" del [tablero del proyecto](../../dashboard.html).
 
 ## Catálogo (captura del 19-10-2026)
 

@@ -34,54 +34,6 @@
       "texto": "Ninguna vende oro macizo. Solo hay unas pocas piezas con baño de oro (8 en Igna y 2 en CBC). Sigue siendo una hipótesis abierta, pendiente de costos."
     }
   ],
-  "proximos_pasos": [
-    {
-      "titulo": "Lo que ya sabemos de CLAF",
-      "bajada": "Contado por CLAF en las reuniones; falta dejarlo por escrito.",
-      "items": [
-        "Fabrica para varias marcas (entre ellas Co Rivera, Igna Valverde y Milagritos de María) y permite que cada una presente el taller como propio.",
-        "Permite grabar mientras fabrican las joyas, para subir contenido a redes sociales.",
-        "Ya vimos varios de sus diseños en persona. Cuánto ajustarlos lo decidimos nosotros.",
-        "El modelo 3D de cada marca no se repite con nadie más; es parte de su valor agregado.",
-        "Por su cuenta solo vende diseños que no tiene con ninguna marca, casi siempre de alta joyería (anillos de compromiso, argollas). No compite directamente con sus clientes."
-      ]
-    },
-    {
-      "titulo": "Preguntas pendientes para CLAF",
-      "bajada": "Para la próxima reunión.",
-      "items": [
-        "¿Podemos dejar por escrito estas condiciones (taller como propio, grabación, exclusividad del modelo 3D)? ¿De quién es el modelo 3D si dejamos de trabajar juntos?",
-        "¿Cuánto cuesta una misma pieza en bronce, en plata 950 y en oro 14k o 18k? ¿Cuál es el mínimo por diseño? Con eso validamos si la escalera de “la plata cuesta el doble” nos sirve.",
-        "¿Trabajaría con un esquema mixto como el de CBC: algo de stock para entrega inmediata y el resto a pedido? ¿En cuántos días entrega un pedido? (Como referencia: CBC tarda 15 días hábiles, Co Rivera de 15 a 20 y Milagritos cerca de una semana).",
-        "¿Le fabrica también a CBC Jewelry? (No recordamos si la nombró.)"
-      ]
-    },
-    {
-      "titulo": "Lo que falta validar",
-      "bajada": "Sin esto, las conclusiones del tablero siguen siendo hipótesis.",
-      "items": [
-        "Costos y márgenes propios: con los precios del taller, ver si podemos vender en el tramo de $80 a $220 mil con un margen sano.",
-        "Demanda real: no tenemos ventas de ningún competidor. Hay que probar con clientes (conversaciones, Instagram, una preventa pequeña).",
-        "Oro: si el costo permite un precio que el público ABC1 esté dispuesto a pagar por piezas chicas de oro macizo.",
-        "Diferenciación: compartimos taller con tres competidores, así que la diferencia tiene que venir sobre todo de la marca y, en parte, del diseño."
-      ]
-    },
-    {
-      "titulo": "Decisiones por tomar",
-      "bajada": "Ya acordado: partir con 6 diseños (en definición) y CLAF como proveedor más probable.",
-      "items": [
-        "Nombre de la marca: es el siguiente paso. Antes de elegirlo, revisar que esté libre como marca registrada (INAPI), como dominio .cl y en Instagram.",
-        "Constitución de la empresa, una vez definido el nombre.",
-        "Después de la empresa: crear la marca, la web y las redes sociales.",
-        "Packaging: caja, bolsa, decoración, carta con mensaje y cuidados de la joya, y aroma. Como referencia, Milagritos ya vende un aroma propio para el hogar.",
-        "Los 6 diseños de partida: en definición. Cuánto ajustar los diseños base de CLAF lo deciden los socios.",
-        "Diferenciación de marca: historia, tono e identidad que no se confundan con Co Rivera, Igna, Milagritos ni CBC.",
-        "Operación: a pedido, con stock o mixta, según lo que ofrezca el taller.",
-        "Venta física: tienda propia (como Co Rivera y CBC), tiendas de diseño multimarca (como Igna en Alto Diseño y MUT) o solo online.",
-        "Contenido: cómo usar la grabación en el taller para contar el oficio en redes (Co Rivera ya cuenta su origen en video)."
-      ]
-    }
-  ],
   "temas_modelo": [
     [
       "produccion",

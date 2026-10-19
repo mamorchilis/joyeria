@@ -1,6 +1,7 @@
 # Nombre de la marca: análisis de candidatos
 
 **Fecha:** 2026-10-19
+**Resumen visual:** hoja *Nombre de la marca* del [tablero del proyecto](../dashboard.html) (datos en `nombres.json`; si cambia este análisis, actualizar ambos).
 **Estado:** en evaluación. Ningún nombre está elegido. El nombre es el siguiente paso; de él depende constituir la empresa (ver `docs/estado-proyecto.md`).
 
 ## Candidatos
