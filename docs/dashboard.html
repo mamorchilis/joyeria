@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="light dark">
   <title>Tablero del proyecto</title>
   <style>
     :root {
@@ -241,6 +241,47 @@
       .todo { grid-template-columns: 1fr; gap: 6px; }
       .proscons { grid-template-columns: 1fr; }
     }
+
+    /* Modo oscuro propio: evita que el navegador del teléfono oscurezca la página a su manera
+       y aclara los colores de cada marca para que se lean sobre fondo oscuro. */
+    @media (prefers-color-scheme: dark) {
+      :root { color-scheme: dark; --paper: #101715; --surface: #18211e; --ink: #e4ebe7; --muted: #9eaca5; --line: #2b3732; --forest: #13251e; --forest-2: #8fbaa5; --bronze: #d99a74; --gold: #cfb27a; --shadow: none; }
+      .bar-fill, .dot, .month-bar { background: color-mix(in srgb, var(--c) 68%, #ffffff) !important; filter: saturate(1.35); }
+      .premium-price { color: color-mix(in srgb, var(--c) 55%, #ffffff) !important; }
+      .rail { background: #0c1915; }
+      .hero { background: #183028; }
+      .button { background: var(--surface); border-color: var(--line); }
+      .button:hover { background: #222d29; }
+      .date-pill { background: rgba(255,255,255,.04); color: var(--muted); border-color: var(--line); }
+      .bar-track, .dots i { background: #2a3530; }
+      .group { border-top-color: var(--line); }
+      .bar-row, .group, .kpi-detail, .method-note, .panel-kicker, th, .compare td:first-child { color: var(--muted); }
+      .card strong, .material-count, td a, .callout a, .path-step a, .dots i.on { color: #9cc7b2; }
+      .dots i.on { background: #8fbaa5; }
+      .card p, .notes li, .step-list li, .todo p, .cand .when, .proscons ul, .risk, .path-step p, .callout, .cand .says, .premium-name, td { color: #cdd6d1; }
+      .cand .origin, .proscons h4 { color: var(--muted); }
+      th, .risk, .score-table tr.total td { background: #1f2a26; }
+      tbody tr:hover { background: #1d2723; }
+      td { border-top-color: var(--line); }
+      .control { background: #1f2a26; color: var(--ink); border-color: var(--line); }
+      .pill { background: #22352c; color: #a3d1b8; }
+      .pill.out { background: #3a2622; color: #e7a99b; }
+      .tag { background: #22352c; color: #a3d1b8; }
+      .decision:nth-child(2) .tag { background: #3a2a21; color: #e3ad8b; }
+      .decision:nth-child(3) .tag { background: #332d1f; color: #d9c08a; }
+      .st-en-curso, .chip.ok { background: #1f3a2c; color: #9fd3b6; }
+      .st-en-analisis, .fav-tag { background: #3a3220; color: #e5c98d; }
+      .st-pendiente { background: #2a3230; color: #b9c4bf; }
+      .st-por-definir { background: #3d2a21; color: #eab091; }
+      .st-bloqueado { background: #2d2840; color: #c3b6ec; }
+      .st-acordado { background: #1f3639; color: #9fd0d8; }
+      .chip.no { background: #3a2622; color: #e7a99b; }
+      .risk.r-muy-bajo b, .risk.r-bajo b { color: #9fd3b6; }
+      .risk.r-medio-alto b { color: #eab091; }
+      .risk.r-alto b { color: #f09a8a; }
+      .cand.fav { border-color: #6f5f3c; }
+      .muted-row td { color: #6f7c76; }
+    }
     @media (prefers-reduced-motion: reduce) { *, *:before, *:after { transition-duration: .01ms !important; } }
     @media print {
       body { background: white; }
@@ -310,12 +351,12 @@
     }
 
     // Componentes
-    const bars = (entries,total,color,suffix='') => `<div class="bars">${entries.map(x=>`<div class="bar-row"><span>${esc(x.name)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(1,x.count/Math.max(1,...entries.map(e=>e.count))*100)}%;background:${color}"></div></div><span class="bar-value">${x.count}${suffix}</span></div>`).join('')}</div>`;
-    const legend = () => `<div class="legend">${DATA.competidores.map(c=>`<span><i class="dot" style="background:${c.color}"></i>${esc(c.nombre)}</span>`).join('')}</div>`;
+    const bars = (entries,total,color,suffix='') => `<div class="bars">${entries.map(x=>`<div class="bar-row"><span>${esc(x.name)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(1,x.count/Math.max(1,...entries.map(e=>e.count))*100)}%;--c:${color};background:var(--c)"></div></div><span class="bar-value">${x.count}${suffix}</span></div>`).join('')}</div>`;
+    const legend = () => `<div class="legend">${DATA.competidores.map(c=>`<span><i class="dot" style="--c:${c.color};background:var(--c)"></i>${esc(c.nombre)}</span>`).join('')}</div>`;
     function grouped(labels, valueOf) {
       const all = labels.flatMap(l=>DATA.competidores.map(c=>valueOf(c,l)));
       const max = Math.max(1,...all);
-      return legend()+labels.map(l=>`<div class="group"><span>${esc(l)}</span><div class="group-bars">${DATA.competidores.map(c=>{const v=valueOf(c,l);return `<div class="group-bar" title="${esc(c.nombre)}: ${v}%"><div class="bar-track"><div class="bar-fill" style="width:${Math.max(1,v/max*100)}%;background:${c.color}"></div></div><span class="bar-value">${v}%</span></div>`;}).join('')}</div></div>`).join('');
+      return legend()+labels.map(l=>`<div class="group"><span>${esc(l)}</span><div class="group-bars">${DATA.competidores.map(c=>{const v=valueOf(c,l);return `<div class="group-bar" title="${esc(c.nombre)}: ${v}%"><div class="bar-track"><div class="bar-fill" style="width:${Math.max(1,v/max*100)}%;--c:${c.color};background:var(--c)"></div></div><span class="bar-value">${v}%</span></div>`;}).join('')}</div></div>`).join('');
     }
     const sectionHead = (eyebrow,title,text,id='') => `<div class="section-head"${id?` id="${id}"`:''}><div><div class="eyebrow">${esc(eyebrow)}</div><h2>${esc(title)}</h2></div><p>${esc(text)}</p></div>`;
     const decisions = list => `<div class="decision-strip">${list.map(d=>`<article class="decision"><span class="tag">${esc(d.tag)}</span><h3>${esc(d.titulo)}</h3><p>${esc(d.texto)}</p></article>`).join('')}</div>`;
@@ -333,7 +374,7 @@
         <section class="section" id="s-cifras">
           ${sectionHead('Cifras lado a lado','Los catálogos comparados','Mismas reglas de clasificación para todas las marcas. Cada cifra cuenta productos publicados, no ventas.')}
           <div class="panel table-panel"><div class="table-wrap"><table class="compare">
-            <thead><tr><th>Indicador</th>${cs.map(c=>`<th><i class="dot" style="background:${c.color}"></i> ${esc(c.nombre)}</th>`).join('')}</tr></thead>
+            <thead><tr><th>Indicador</th>${cs.map(c=>`<th><i class="dot" style="--c:${c.color};background:var(--c)"></i> ${esc(c.nombre)}</th>`).join('')}</tr></thead>
             <tbody>
               ${row('Productos analizados', c=>`${c.s.total}${c.s.excluded?` <span class="pill">${c.s.excluded} ${c.s.excluded===1?'excluido':'excluidos'}</span>`:''}`)}
               ${row('Mediana de precio', c=>`<b>${money(c.s.median)}</b>`)}
@@ -366,7 +407,7 @@
         <section class="section" id="s-modelo">
           ${sectionHead('Operación','Cómo venden y entregan','Lo que declara cada sitio en sus políticas y portada.')}
           <div class="panel table-panel"><div class="table-wrap"><table class="compare">
-            <thead><tr><th>Tema</th>${cs.map(c=>`<th><i class="dot" style="background:${c.color}"></i> ${esc(c.nombre)}</th>`).join('')}</tr></thead>
+            <thead><tr><th>Tema</th>${cs.map(c=>`<th><i class="dot" style="--c:${c.color};background:var(--c)"></i> ${esc(c.nombre)}</th>`).join('')}</tr></thead>
             <tbody>${r.temas_modelo.map(([k,label])=>row(label,c=>esc((c.modelo||{})[k]||'Sin revisar'))).join('')}</tbody>
           </table></div></div>
         </section>
@@ -391,7 +432,7 @@
         for(let i=17;i>=0;i--){const d=new Date(last.getFullYear(),last.getMonth()-i,1);keys.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`);}
         const max=Math.max(1,...keys.map(k=>counts[k]||0)), older=dated.filter(p=>p.publicado.slice(0,7)<keys[0]).length;
         return `<article class="panel"><div class="panel-head"><div><h3>Publicaciones por mes</h3><p>Fichas vigentes según su fecha de publicación · últimos 18 meses</p></div><span class="panel-kicker">${older} ANTERIORES</span></div>
-          <div class="months">${keys.map(k=>`<div class="month" title="${k}: ${counts[k]||0} fichas"><div class="month-bar" style="height:${(counts[k]||0)/max*100}%;background:${color}"></div></div>`).join('')}</div>
+          <div class="months">${keys.map(k=>`<div class="month" title="${k}: ${counts[k]||0} fichas"><div class="month-bar" style="height:${(counts[k]||0)/max*100}%;--c:${color};background:var(--c)"></div></div>`).join('')}</div>
           <div class="month-axis"><span>${keys[0]}</span><span>${keys[keys.length-1]}</span></div></article>`;
       })();
       const premium = [...s.items].sort((a,b)=>b.precio-a.precio).slice(0,6);
@@ -434,7 +475,7 @@
           ${sectionHead('Más señales','Techo de precio y observaciones','Los precios más altos muestran hasta dónde llega la marca; no son los más vendidos.')}
           <div class="grid-two">
             <article class="panel"><div class="panel-head"><div><h3>Productos de mayor precio</h3><p>Top 6 por precio publicado</p></div><span class="panel-kicker">NO ES RANKING DE VENTAS</span></div>
-              ${premium.map((p,i)=>`<div class="premium-item"><span class="premium-index">${String(i+1).padStart(2,'0')}</span><div class="premium-name">${esc(p.producto)}<a href="${esc(p.url)}" target="_blank" rel="noopener">Abrir ficha pública</a></div><span class="premium-price" style="color:${color}">${money(p.precio)}</span></div>`).join('')}</article>
+              ${premium.map((p,i)=>`<div class="premium-item"><span class="premium-index">${String(i+1).padStart(2,'0')}</span><div class="premium-name">${esc(p.producto)}<a href="${esc(p.url)}" target="_blank" rel="noopener">Abrir ficha pública</a></div><span class="premium-price" style="--c:${color};color:var(--c)">${money(p.precio)}</span></div>`).join('')}</article>
             <div style="display:grid;gap:15px;align-content:start">
               ${months}
               <article class="panel"><div class="panel-head"><div><h3>Observaciones</h3><p>Datos sueltos que vale la pena recordar</p></div></div><ul class="notes">${(c.observaciones||[]).map(o=>`<li>${esc(o)}</li>`).join('')}</ul></article>
@@ -581,7 +622,7 @@
       const page = PAGES[slug];
       const current = comp ? comp.slug : page ? slug : 'resumen';
       const sections = comp ? COMPETITOR_SECTIONS : page ? page.sections : SUMMARY_SECTIONS;
-      const link = s => `<a class="nav-link ${s.slug===current?'active':''}" href="#${s.slug}"><span class="nav-mark" style="${s.slug===current?`background:${s.color};border-color:${s.color}`:''}"></span>${esc(s.nombre)}</a>${s.slug===current?`<div class="nav-sub">${sections.map(([id,label])=>`<button type="button" data-scroll="${id}">${esc(label)}</button>`).join('')}</div>`:''}`;
+      const link = s => `<a class="nav-link ${s.slug===current?'active':''}" href="#${s.slug}"><span class="nav-mark" style="${s.slug===current?`--c:${s.color};background:var(--c);border-color:var(--c)`:''}"></span>${esc(s.nombre)}</a>${s.slug===current?`<div class="nav-sub">${sections.map(([id,label])=>`<button type="button" data-scroll="${id}">${esc(label)}</button>`).join('')}</div>`:''}`;
       const competencia = [{slug:'resumen',nombre:'Resumen comparativo',color:'#d3b882'},...DATA.competidores];
       const definiciones = Object.entries(PAGES).map(([slug,p])=>({slug,nombre:p.nombre,color:p.color}));
       el('sheet-nav').innerHTML = `<div class="nav-group">Análisis de competencia</div>${competencia.map(link).join('')}<div class="nav-group">Definiciones de marca</div>${definiciones.map(link).join('')}`;
