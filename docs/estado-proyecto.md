@@ -60,6 +60,11 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   vieron varios diseños base en persona, y cuánto ajustarlos lo decide la marca. Pendiente:
   dejar estas condiciones por escrito, costos por material, mínimos y plazos (ver "Próximos
   pasos" en el tablero). La diferenciación irá sobre todo por la marca y, en parte, por el
-  diseño; cuánto diseño propio aún no se decide. El criterio de `marca-joyas.md` sobre no
-  trabajar con talleres que vendan diseños propios queda señalado para revisión.
+  diseño; cuánto diseño propio aún no se decide.
+
+- **2026-10-19 — Criterio de fabricación precisado (decidido por los socios).** No se busca
+  un taller que no venda nada propio, sino uno cuyos diseños propios no compitan directamente
+  con la marca. CLAF vende por su cuenta solo diseños que no tiene con ninguna marca cliente,
+  casi siempre de alta joyería (anillos de compromiso, argollas), así que cumple el criterio.
+  CLAF sigue en evaluación como proveedor: faltan costos, plazos y condiciones por escrito.
 
