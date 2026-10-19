@@ -26,7 +26,7 @@
     {
       "tag": "Fabricación",
       "titulo": "Mismo taller, distinta marca",
-      "texto": "Según CLAF, fabrica para Co Rivera, Igna Valverde y Milagritos de María, sin repetir diseños: los ajusta. CBC encarga a orfebres nacionales. Encargar la fabricación es lo normal en este mercado; la diferencia la hacen el ajuste de diseño y la marca."
+      "texto": "Según CLAF, fabrica para Co Rivera, Igna Valverde y Milagritos de María, y les permite presentar su taller como propio. No repite modelos 3D entre marcas. Con el mismo taller, la diferencia la hacen la marca y cuánto se ajusta cada diseño."
     },
     {
       "tag": "Espacio libre",
@@ -36,15 +36,23 @@
   ],
   "proximos_pasos": [
     {
-      "titulo": "Preguntas para el taller (CLAF)",
-      "bajada": "Para la próxima reunión. CLAF ya contó que fabrica para varias marcas y que no repite diseños: los ajusta.",
+      "titulo": "Lo que ya sabemos de CLAF",
+      "bajada": "Contado por CLAF en las reuniones; falta dejarlo por escrito.",
       "items": [
-        "¿Qué diseños base nos puede mostrar para partir? Elegir piezas que nos gusten y ajustarlas puede acortar el lanzamiento y bajar el costo de diseño.",
-        "¿Cuánto cambia un diseño cuando lo “ajusta” para otra marca? ¿Quién decide que el nuestro no se parece demasiado al de Co Rivera, Igna o Milagritos?",
-        "Los ajustes que hagamos, ¿quedan como nuestros? ¿De quién es el modelo 3D y se compromete a no repetirlos para otra marca?",
-        "¿Le fabrica también a CBC Jewelry? (No recordamos si la nombró.)",
+        "Fabrica para varias marcas (entre ellas Co Rivera, Igna Valverde y Milagritos de María) y permite que cada una presente el taller como propio.",
+        "Permite grabar mientras fabrican las joyas, para subir contenido a redes sociales.",
+        "Ya vimos varios de sus diseños en persona. Cuánto ajustarlos lo decidimos nosotros.",
+        "El modelo 3D de cada marca no se repite con nadie más; es parte de su valor agregado."
+      ]
+    },
+    {
+      "titulo": "Preguntas pendientes para CLAF",
+      "bajada": "Para la próxima reunión.",
+      "items": [
+        "¿Podemos dejar por escrito estas condiciones (taller como propio, grabación, exclusividad del modelo 3D)? ¿De quién es el modelo 3D si dejamos de trabajar juntos?",
+        "¿Cuánto cuesta una misma pieza en bronce, en plata 950 y en oro 14k o 18k? ¿Cuál es el mínimo por diseño? Con eso validamos si la escalera de “la plata cuesta el doble” nos sirve.",
         "¿Trabajaría con un esquema mixto como el de CBC: algo de stock para entrega inmediata y el resto a pedido? ¿En cuántos días entrega un pedido? (Como referencia: CBC tarda 15 días hábiles, Co Rivera de 15 a 20 y Milagritos cerca de una semana).",
-        "¿Cuánto cuesta una misma pieza en bronce, en plata 950 y en oro 14k o 18k? ¿Cuál es el mínimo por diseño? Con eso validamos si la escalera de “la plata cuesta el doble” nos sirve."
+        "¿Le fabrica también a CBC Jewelry? (No recordamos si la nombró.)"
       ]
     },
     {
@@ -54,18 +62,19 @@
         "Costos y márgenes propios: con los precios del taller, ver si podemos vender en el tramo de $80 a $220 mil con un margen sano.",
         "Demanda real: no tenemos ventas de ningún competidor. Hay que probar con clientes (conversaciones, Instagram, una preventa pequeña).",
         "Oro: si el costo permite un precio que el público ABC1 esté dispuesto a pagar por piezas chicas de oro macizo.",
-        "Historia propia: si compartimos taller con tres competidores, el producto se va a parecer. Hay que definir qué hace distinta a la marca más allá de la pieza."
+        "Diferenciación: compartimos taller con tres competidores, así que la diferencia tiene que venir sobre todo de la marca y, en parte, del diseño."
       ]
     },
     {
       "titulo": "Decisiones por tomar",
-      "bajada": "Ya figuran como pendientes en el estado del proyecto; el tablero entrega insumos.",
+      "bajada": "Figuran como pendientes en el estado del proyecto; el tablero entrega insumos.",
       "items": [
-        "Punto de partida del diseño: ajustar diseños base de CLAF, diseñar desde cero o una mezcla de ambas cosas.",
+        "Diferenciación de marca: historia, tono e identidad que no se confundan con Co Rivera, Igna, Milagritos ni CBC.",
+        "Cuánto diseño propio: partir ajustando diseños de CLAF, diseñar desde cero o una mezcla (aún no decidido).",
         "Operación: a pedido, con stock o mixta, según lo que ofrezca el taller.",
         "Surtido inicial: una colección acotada (foco) o un catálogo amplio. Los competidores tienen entre 118 y 543 piezas.",
         "Venta física: tienda propia (como Co Rivera y CBC), tiendas de diseño multimarca (como Igna en Alto Diseño y MUT) o solo online.",
-        "Materiales de partida: bronce y plata, y si se suma oro."
+        "Contenido: cómo usar la grabación en el taller para contar el oficio en redes (Co Rivera ya cuenta su origen en video)."
       ]
     }
   ],

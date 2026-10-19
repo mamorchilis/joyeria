@@ -8,7 +8,7 @@ Para ver los gráficos, abrir la hoja "Milagritos de María" del [tablero genera
 
 ## Por qué la estudiamos
 
-Su producto se parece al de Co Rivera, pero en septiembre su marca y su web se veían débiles. Según contó CLAF Goldsmith en la reunión con el taller, es una de las marcas para las que fabrica, aunque el sitio habla de un "taller propio en Chile".
+Su producto se parece al de Co Rivera, pero en septiembre su marca y su web se veían débiles. Según contó CLAF Goldsmith en la reunión con el taller, es una de las marcas para las que fabrica. CLAF permite que sus clientes presenten el taller como propio, lo que explica el "taller propio en Chile" del sitio.
 
 ## Catálogo (captura del 19-10-2026)
 
@@ -23,7 +23,7 @@ Su producto se parece al de Co Rivera, pero en septiembre su marca y su web se v
 ## Marca y operación (revisado el 19-10-2026)
 
 - **Cambio de imagen:** la portada fue rediseñada desde septiembre. Ahora se presenta como "orfebrería sacra", con estética editorial, buscador por devoción, guía "Ayúdame a elegir" y nombres poéticos para las medallas.
-- **Quién está detrás:** Silvana Amoresano, artista plástica argentina radicada en Chile, con taller propio.
+- **Quién está detrás:** Silvana Amoresano, artista plástica argentina radicada en Chile. El sitio habla de "taller propio" (según CLAF, es el de ellos).
 - **Plazos:** los encargos toman cerca de una semana y el despacho, de 3 a 7 días hábiles. Trabaja con Rappi, Starken, Chilexpress y Blue Express, y dice enviar también al extranjero.
 - **Sin tienda física.**
 - **Cambios:** la política dice 10 días y las preguntas frecuentes dicen 15. Solo compras online, el envío lo paga el cliente.

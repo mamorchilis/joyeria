@@ -1,6 +1,6 @@
 # Estado del proyecto
 
-Última revisión documental: 2026-10-10.
+Última revisión documental: 2026-10-19.
 
 ## Objetivo
 Desarrollar una marca propia de joyería artesanal en Chile y definir su propuesta de valor, fabricación y modelo comercial.
@@ -10,7 +10,7 @@ Desarrollar una marca propia de joyería artesanal en Chile y definir su propues
 - También existe interés en explorar piezas en oro.
 - Referencia de estilo por estudiar: Co Rivera.
 - Se busca un taller que fabrique a pedido para terceros y pueda actuar como aliado de producción.
-- CLAF Goldsmith es una alternativa en evaluación; no hay que tratarla como proveedor confirmado.
+- CLAF Goldsmith es una alternativa en evaluación; no hay que tratarla como proveedor confirmado. Lo que ofrece, según las reuniones, está en `marca-joyas.md`.
 
 ## Decisiones pendientes
 1. Nombre e identidad de marca.
@@ -50,7 +50,16 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   acuerdo).** CLAF dijo que fabrica para varias marcas y que no repite diseños: los ajusta,
   pero nunca hace uno igual. Según recuerdan los socios, entre esas marcas están Milagritos
   de María, Igna Valverde y Co Rivera; no recuerdan si nombró a CBC Jewelry. Los socios lo ven
-  como algo positivo: CLAF puede mostrar diseños base que la marca ajuste. Falta confirmar con
-  CLAF cuánto cambia un diseño ajustado, de quién quedan los ajustes y si se compromete a no
-  repetirlos (preguntas en la sección "Próximos pasos" del tablero). CLAF sigue en evaluación.
+  como algo positivo: CLAF puede mostrar diseños base que la marca ajuste. CLAF sigue en
+  evaluación.
+
+- **2026-10-19 — Más condiciones de CLAF (información de las reuniones, no un acuerdo
+  firmado).** CLAF permite que cada marca presente el taller como propio (eso explica que
+  Co Rivera, Igna y Milagritos digan tener "taller propio") y permite grabar la fabricación
+  para redes sociales. El modelo 3D de cada marca no se repite con nadie más. Los socios ya
+  vieron varios diseños base en persona, y cuánto ajustarlos lo decide la marca. Pendiente:
+  dejar estas condiciones por escrito, costos por material, mínimos y plazos (ver "Próximos
+  pasos" en el tablero). La diferenciación irá sobre todo por la marca y, en parte, por el
+  diseño; cuánto diseño propio aún no se decide. El criterio de `marca-joyas.md` sobre no
+  trabajar con talleres que vendan diseños propios queda señalado para revisión.
 
