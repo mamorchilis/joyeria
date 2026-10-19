@@ -2,13 +2,38 @@
 
 Última revisión documental: 2026-10-19.
 
+## Punto de retorno (2026-10-19)
+
+Resumen para retomar el trabajo en una sesión nueva. Al final de cada sesión, actualizar esta sección.
+
+**Dónde quedó cada cosa**
+- **Tablero del proyecto:** `docs/dashboard.html`. Es un solo archivo, con los datos adentro: se abre con doble clic o se manda por WhatsApp, y tiene modo claro y modo oscuro propio. Tiene dos secciones:
+  - *Análisis de competencia:* resumen comparativo y una hoja por cada uno de los 4 competidores (Co Rivera, Igna Valverde, CBC Jewelry y Milagritos de María).
+  - *Definiciones de marca:* hoja de ruta (lo acordado, en curso y por definir) y nombre de la marca.
+- **Competencia:** `docs/referentes/`, con una carpeta por marca (`ficha.json`, `catalogo_publico.csv`, `README.md` y `fuentes-y-limites.md`), las conclusiones comparativas en `resumen.json` y el formato estándar explicado en `docs/referentes/README.md`.
+- **Definiciones de marca:** `docs/marca/definiciones.json` (hoja de ruta) y `docs/marca/nombres.json` (datos del análisis de nombres; el texto completo está en `docs/marca/nombres.md`).
+- **Contexto de negocio y CLAF:** `marca-joyas.md`.
+
+**Próximos pasos concretos**
+1. **Elegir el nombre.** Antes, revisar en Instagram (desde una cuenta) si están libres `@pilitrespalacios`, `@delpilarjoyas`, `@joyasdelpilar` y `@parpaglione`; precisar de cuál San Salvatore es el nonno; y probar los 2 o 3 finalistas con 5 a 10 personas del público objetivo. Con el nombre elegido, confirmarlo con un abogado de marcas y registrar los dominios.
+2. **Constituir la empresa**, con el nombre definido.
+3. **Crear la marca, la web y las redes sociales**, después de la empresa.
+4. **En paralelo:** cerrar los 6 diseños de partida, definir el packaging y llevar a CLAF las preguntas pendientes (condiciones por escrito, costos por material, mínimos, plazos, esquema mixto de stock y pedidos, y si también fabrica para CBC).
+
+**Cómo mantener el tablero**
+- Si cambia una decisión, actualizar este documento y `marca-joyas.md`, después los JSON de `docs/marca/` o de `docs/referentes/`, y regenerar con `python docs/generar_dashboard.py` (desde la raíz del repositorio).
+- Para sumar un competidor, seguir `docs/referentes/README.md`.
+- Para verlo en el navegador: `python -m http.server 8124 --directory docs` y abrir `http://localhost:8124/dashboard.html`, o simplemente abrir el archivo.
+- Antes de subir cambios, revisar que el tablero cargue sin errores en computador y en celular, en modo claro y oscuro.
+- No guardar datos personales de terceros (por ejemplo, titulares de dominios o de marcas, o datos bancarios publicados por competidores).
+
 ## Objetivo
 Desarrollar una marca propia de joyería artesanal en Chile y definir su propuesta de valor, fabricación y modelo comercial.
 
 ## Base conocida
 - Categoría inicial: joyería artesanal en plata y bronce.
 - También existe interés en explorar piezas en oro.
-- Referencia de estilo por estudiar: Co Rivera.
+- Referencias estudiadas: Co Rivera (la principal), Igna Valverde, CBC Jewelry y Milagritos de María (ver `docs/referentes/`).
 - Se busca un taller que fabrique a pedido para terceros y pueda actuar como aliado de producción.
 - CLAF Goldsmith es el proveedor más probable para partir (ya hubo reuniones), pero todavía no hay confirmación formal ni contrato. Lo que ofrece, según las reuniones, está en `marca-joyas.md`.
 
@@ -28,6 +53,7 @@ Desarrollar una marca propia de joyería artesanal en Chile y definir su propues
 ## Lista de inicio de sesión
 - [ ] Consultar los cambios recientes del repositorio.
 - [ ] Leer `AGENTS.md`, `README.md` y `marca-joyas.md`.
+- [ ] Leer la sección **Punto de retorno** de este documento y abrir `docs/dashboard.html`.
 - [ ] Confirmar si hay decisiones nuevas que incorporar a la documentación.
 - [ ] Identificar el próximo asunto prioritario.
 
@@ -61,8 +87,8 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   Co Rivera, Igna y Milagritos digan tener "taller propio") y permite grabar la fabricación
   para redes sociales. El modelo 3D de cada marca no se repite con nadie más. Los socios ya
   vieron varios diseños base en persona, y cuánto ajustarlos lo decide la marca. Pendiente:
-  dejar estas condiciones por escrito, costos por material, mínimos y plazos (ver "Próximos
-  pasos" en el tablero). La diferenciación irá sobre todo por la marca y, en parte, por el
+  dejar estas condiciones por escrito, costos por material, mínimos y plazos (ver la hoja
+  "Hoja de ruta" del tablero). La diferenciación irá sobre todo por la marca y, en parte, por el
   diseño; cuánto diseño propio aún no se decide.
 
 - **2026-10-19 — Criterio de fabricación precisado (decidido por los socios).** No se busca
@@ -96,3 +122,8 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   `docs/marca/definiciones.json` y `docs/marca/nombres.json`; si cambia una decisión, hay que
   actualizar este documento, `marca-joyas.md` y esos archivos, y regenerar con
   `python docs/generar_dashboard.py`.
+
+- **2026-10-19 — Modo oscuro propio en el tablero (vigente).** En celulares con modo oscuro,
+  el navegador oscurecía la página a su manera y los colores de las barras dejaban de
+  coincidir con la leyenda. El tablero ahora trae su propia paleta oscura y aclara los colores
+  de cada marca sobre fondo oscuro; el modo claro no cambió.

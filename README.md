@@ -21,4 +21,4 @@ Este repositorio es la fuente central de información compartida. Las conversaci
 5. Si se trabaja desde otro entorno, vuelve a sincronizar antes de editar.
 
 ## Estado
-El proyecto está en desarrollo inicial. Los temas pendientes están enumerados en `marca-joyas.md` y `docs/estado-proyecto.md`.
+El proyecto está en etapa de definiciones: CLAF es el proveedor más probable, los socios definen los 6 diseños de partida y el siguiente paso es elegir el nombre de la marca. Para retomar, leer la sección **Punto de retorno** de `docs/estado-proyecto.md`.
