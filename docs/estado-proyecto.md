@@ -40,7 +40,9 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
 - **2026-10-18 — Formato estándar para estudiar competidores (vigente).** Cada competidor
   tiene una carpeta en `docs/referentes/` con los mismos archivos, y un tablero común
   (`docs/referentes/dashboard.html`) con una hoja de resumen comparativo y una hoja por
-  empresa. Por ahora están Co Rivera e Igna Valverde. Las conclusiones de ese tablero son
+  empresa. Están Co Rivera e Igna Valverde (desde el 18-10) y CBC Jewelry y Milagritos de
+  María (desde el 19-10). El tablero es un solo archivo, con los datos adentro, que se puede
+  mandar por WhatsApp o correo. Las conclusiones de ese tablero son
   hipótesis: no hay datos de ventas ni costos de los competidores. Detalle en
   `docs/referentes/README.md`.
 

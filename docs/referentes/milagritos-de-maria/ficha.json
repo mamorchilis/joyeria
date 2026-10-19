@@ -1,0 +1,43 @@
+{
+  "nombre": "Milagritos de María",
+  "orden": 4,
+  "color": "#8a5a83",
+  "sitio": "https://milagritosdemaria.cl/",
+  "captura_catalogo": "2026-10-19",
+  "revision_cualitativa": "2026-10-19",
+  "metodo": "Catálogo leído recorriendo las páginas públicas de /productos/ (Tiendanube), que robots.txt permite consultar. De cada producto se tomaron precio, disponibilidad y stock por variante. Solo lectura: sin carro, cuentas ni pagos.",
+  "excluir": ["Home Spray – Aroma Milagritos de María (250 ml)"],
+  "titular": "Medallas devocionales a precio de entrada: el 91% del catálogo es religioso y la mitad cuesta entre $50 y $79 mil.",
+  "bajada": "Orfebrería sacra en plata 950 y bronce dorado. Es la marca más barata y más especializada de las cuatro. Rediseñó su portada desde septiembre y ahora se ve mucho más cuidada.",
+  "nota": "Se mencionó que CLAF fabrica para esta marca, pero el sitio dice “taller propio en Chile”. No está verificado. Su producto se parece mucho a las medallas de Co Rivera.",
+  "ficha": [
+    {"tema": "Propuesta", "texto": "“Orfebrería sacra”: medallas con alma antigua, hechas a mano, que valoran la imperfección. Se apoya en la fe, la memoria y el regalo con sentido."},
+    {"tema": "Quién está detrás", "texto": "Silvana Amoresano, que se presenta como artista plástica argentina radicada en Chile y amante del arte sacro. La portada destaca su taller propio."},
+    {"tema": "Lenguaje de producto", "texto": "Vírgenes, santos, querubines y sagrados corazones. Desde septiembre les puso nombres poéticos (“Fátima, la de los tres pastorcitos”). Las cadenas se venden aparte."},
+    {"tema": "Escalera de precio", "texto": "En 24 piezas que se venden en las dos versiones, la de plata cuesta unas 1,5 veces lo que la de bronce. Es una diferencia menor que en Co Rivera y CBC (2,1 veces)."},
+    {"tema": "Experiencia web", "texto": "Portada nueva con buscador por devoción, filtro de material, guía “Ayúdame a elegir” y preguntas frecuentes. Sigue sin tienda física y algunas páginas internas están descuidadas."},
+    {"tema": "Línea complementaria", "texto": "Vende un aroma para el hogar (home spray), que quedó fuera de las estadísticas de joyas."}
+  ],
+  "modelo": {
+    "produccion": "Con stock chico y encargos: 99 de 118 joyas disponibles. El stock publicado suma 285 unidades, casi siempre entre 1 y 6 por pieza.",
+    "plazo_entrega": "Los encargos toman cerca de una semana de elaboración. El despacho tarda de 3 a 7 días hábiles desde el pago.",
+    "despacho": "Rappi, Starken, Chilexpress y Blue Express. A todo Chile; la portada dice que también envía al extranjero.",
+    "envio_gratis": "No: el costo se calcula en el checkout según destino y monto.",
+    "cambios": "10 días corridos según la política y 15 días según las preguntas frecuentes (se contradicen). Solo compras online y una sola vez; el envío lo paga el cliente.",
+    "garantia": "Si el producto llega en mal estado, lo reponen. No se vio una garantía por fallas de uso.",
+    "venta_fisica": "No tiene tienda física.",
+    "plataforma": "Tiendanube.",
+    "captacion": "Instagram @milagritosdemaria_, WhatsApp y guía para elegir. No se vio un descuento de bienvenida."
+  },
+  "implicancias": [
+    {"tag": "Precio", "titulo": "El nicho devocional compite abajo", "texto": "Con una mediana de $78 mil y medallas de bronce desde $32 mil, empuja hacia abajo el precio de la medalla religiosa. Si nuestra marca usa vírgenes y santos, va a ser comparada con estos precios."},
+    {"tag": "Marca", "titulo": "Ya no es la marca descuidada", "texto": "En un mes pasó de una web con imágenes rotas a una portada con estética editorial y nombres poéticos. El espacio de “la versión bien hecha” se está achicando."},
+    {"tag": "Confianza", "titulo": "La operación sigue floja", "texto": "Políticas que se contradicen, una página con el texto de ejemplo de la plataforma y medios de pago inconsistentes. Para el ABC1, la confianza al comprar puede marcar la diferencia."}
+  ],
+  "observaciones": [
+    "Precios del 23-09 al 19-10 (comparación aproximada, porque varias medallas cambiaron de nombre): las medallas chicas de bronce bajaron entre 17% y 33% (por ejemplo, Virgen de Luján de $48.000 a $38.000 y Virgen de Lourdes mini de $42.000 a $32.000). Algunas cadenas de plata subieron un poco y las piezas de plata grandes se mantienen.",
+    "El catálogo bajó de unas 140 fichas en septiembre a 119.",
+    "Los medios de pago no cuadran: las preguntas frecuentes dicen solo transferencia, la portada dice Webpay y las fichas muestran Mercado Pago. Las preguntas frecuentes publican los datos bancarios de una persona; no se guardaron.",
+    "Es la única de las cuatro que publica el stock exacto de cada pieza: muestra una producción muy pequeña, de 1 a 6 unidades por diseño."
+  ]
+}

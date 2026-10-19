@@ -1,0 +1,43 @@
+{
+  "nombre": "CBC Jewelry",
+  "orden": 3,
+  "color": "#33456b",
+  "sitio": "https://cbcjewelry.cl/",
+  "captura_catalogo": "2026-10-19",
+  "revision_cualitativa": "2026-10-19",
+  "metodo": "Catálogo leído desde el listado público de productos de la tienda (Shopify), que robots.txt permite consultar. Solo lectura: sin carro, cuentas ni pagos. El material sale del nombre del producto o, si no lo dice, de su descripción.",
+  "excluir": ["GIFT CARD CBC"],
+  "titular": "El catálogo más grande: plata y bronce con símbolos, cuero, colecciones por temporada y liquidación al 50%.",
+  "bajada": "543 piezas entre colgantes, esclavas, aros y anillos, más cinturones de cuero. Mezcla stock con fabricación a pedido y tiene tienda propia en Alonso de Córdova. Es la marca cuyo modelo de fabricación más se parece al que buscamos.",
+  "nota": "Dice fabricar a baja escala con orfebres nacionales, en vez de tener un taller propio. Es una prueba de que una marca de diseño puede crecer encargando la producción afuera. No sabemos con qué talleres trabaja.",
+  "ficha": [
+    {"tema": "Propuesta", "texto": "Se define como joyería de lujo artesanal, nacida en 2017, con la mujer como protagonista. Diseños “salvajes y atrevidos”, inspirados en lo rupestre y lo contemporáneo."},
+    {"tema": "Quiénes están detrás", "texto": "CBC Jewelry SpA. Los términos y condiciones nombran a tres representantes; el diseño lo hacen mujeres en Chile."},
+    {"tema": "Fabricación", "texto": "Producción a baja escala, hecha a mano por orfebres nacionales. Las piezas sin stock entran a una “cola de producción manual” de 15 días hábiles."},
+    {"tema": "Lenguaje de producto", "texto": "Cruces, estrellas, rayos, lunas, corazones, frases (placas “Je t’aime”, “Loved papá”), animales y piedras. Agrupa todo en colecciones con nombre en inglés (The Wild Pieces, The Love Pieces, The Mineral Edit) y tiene una línea para hombre."},
+    {"tema": "Escalera de precio", "texto": "En 164 piezas que se venden en las dos versiones, la de plata cuesta unas 2,1 veces lo que la de bronce, casi lo mismo que Co Rivera."},
+    {"tema": "Venta física", "texto": "“La Casa”, en Alonso de Córdova 2741, Vitacura (mismo domicilio de la empresa). Si la pieza está en stock, se puede retirar ahí en 2 a 24 horas hábiles."}
+  ],
+  "modelo": {
+    "produccion": "Mixta: 418 fichas disponibles, 87 agotadas y 38 a pedido.",
+    "plazo_entrega": "Con stock: 1 a 5 días hábiles en la Región Metropolitana y 3 a 7 en regiones. A pedido: 15 días hábiles de fabricación.",
+    "despacho": "Operadores logísticos de la empresa (no se nombran) y retiro en La Casa.",
+    "envio_gratis": "No se vio un monto desde el cual el envío sea gratis.",
+    "cambios": "30 días con boleta. En Santiago, en la tienda; en regiones, coordinando por correo. No cambia productos SALE ni de otras temporadas, y no devuelve dinero.",
+    "garantia": "No se encontró una política de garantía específica; los términos remiten a la ley del consumidor.",
+    "venta_fisica": "Tienda propia “La Casa”, Alonso de Córdova 2741, Vitacura.",
+    "plataforma": "Shopify.",
+    "captacion": "Newsletter (no se vio descuento), gift card, Archive Sale al 50% y fechas como el Día del Padre. Instagram @cbcjewelry.cl."
+  },
+  "implicancias": [
+    {"tag": "Fabricación", "titulo": "Su modelo es el más parecido al nuestro", "texto": "Diseña y encarga la fabricación a orfebres nacionales, en vez de tener taller propio. Vale la pena estudiar cómo combina stock, pedidos de 15 días y retiro en tienda."},
+    {"tag": "Surtido", "titulo": "Amplitud ordenada en colecciones", "texto": "Con 543 piezas, las colecciones temáticas hacen que el catálogo sea navegable. Lanza seguido: 51 fichas en septiembre de 2026, con su “temporada SS27”."},
+    {"tag": "Precio", "titulo": "La liquidación tiene costo de marca", "texto": "72 piezas están en Archive Sale al 50% (32 de ellas agotadas). Sirve para mover stock viejo, pero acostumbra al cliente a esperar descuentos."}
+  ],
+  "observaciones": [
+    "La mediana de $120 mil incluye las piezas en liquidación. Sin ellas, la mediana es $135 mil.",
+    "Tiene el techo de precio más alto de las cuatro marcas: cadenas y esclavas de plata maciza entre $600 mil y $960 mil.",
+    "Vende cinturones y pulseras de cuero con herrajes de metal. Es el único competidor que se sale de las joyas hacia accesorios.",
+    "El sitio no muestra un envío gratis ni una garantía propia. La página de envíos de la tienda da error 404."
+  ]
+}

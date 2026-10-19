@@ -1,11 +1,14 @@
 {
-  "titular": "Dos formas de vender plata al mismo público: símbolo a pedido o diseño con stock.",
-  "bajada": "Co Rivera y Igna Valverde comparten tramo de precio (medianas de $150 mil y $135 mil) y el sector oriente de Santiago, pero difieren en casi todo lo demás: material, categorías, motivos y forma de operar.",
-  "nota": "Son lecturas de catálogos públicos para formular hipótesis. No hay datos de ventas, costos ni márgenes de ninguna de las dos marcas.",
+  "titular": "Cuatro marcas, un mismo público: el bronce abre la puerta, la plata sube el precio y la historia hace la diferencia.",
+  "bajada": "Co Rivera, Igna Valverde, CBC Jewelry y Milagritos de María venden plata (y tres de ellas, bronce) al sector oriente de Santiago. Sus medianas van de $78 mil a $150 mil. Se diferencian en especialización, tamaño del catálogo, forma de operar y en cómo cuentan su marca.",
+  "nota": "Son lecturas de catálogos públicos para formular hipótesis. No hay datos de ventas, costos ni márgenes de ninguna de las cuatro marcas.",
   "conclusiones": [
-    {"tag": "Precio", "titulo": "El rango de $80 a $220 mil es el terreno común", "texto": "Más de la mitad de ambos catálogos cae entre $80.000 y $219.999. Igna agrega un escalón bajo $50 mil; Co Rivera estira el techo hasta $650 mil con plata maciza."},
-    {"tag": "Operación", "titulo": "A pedido o con stock es una decisión de marca", "texto": "A pedido (Co Rivera) baja el inventario, pero exige 15 a 20 días de espera. Con stock (Igna) despacha en 2 a 3 días, pero inmoviliza capital. Depende de qué ofrezca el taller."},
-    {"tag": "Espacio libre", "titulo": "Nadie ofrece oro en serio", "texto": "Ninguna vende oro macizo en su tienda. Igna tiene solo 8 piezas con baño de oro. Sigue siendo una hipótesis abierta para la marca, pendiente de costos."}
+    {"tag": "Precio", "titulo": "El centro está entre $80 y $220 mil", "texto": "Ahí cae más de la mitad de los catálogos de Co Rivera, Igna y CBC. Milagritos juega más abajo: la mitad de sus piezas cuesta entre $50 y $79 mil."},
+    {"tag": "Escalera", "titulo": "El bronce es la puerta de entrada", "texto": "El mismo diseño en plata cuesta unas 2,1 veces lo que en bronce en Co Rivera y CBC, y 1,5 veces en Milagritos. Permite tener precio de entrada y precio alto sin diseñar el doble."},
+    {"tag": "Símbolos", "titulo": "Lo religioso está saturado", "texto": "Vírgenes, San Benito y cruces aparecen en Co Rivera, CBC y en el 91% de Milagritos. Usarlos sin una mirada propia nos pone a competir por precio."},
+    {"tag": "Operación", "titulo": "Lo mejor es la mezcla", "texto": "Co Rivera trabaja a pedido (15 a 20 días); Igna, con stock. CBC combina las dos cosas, con retiro en tienda en horas para lo que está en stock y 15 días para lo que se fabrica. Depende de lo que ofrezca el taller."},
+    {"tag": "Fabricación", "titulo": "Encargar afuera funciona", "texto": "CBC diseña y fabrica con orfebres nacionales, a baja escala. Es la referencia más cercana al modelo que buscamos con un taller aliado."},
+    {"tag": "Espacio libre", "titulo": "Nadie ofrece oro en serio", "texto": "Ninguna vende oro macizo. Solo hay unas pocas piezas con baño de oro (8 en Igna y 2 en CBC). Sigue siendo una hipótesis abierta, pendiente de costos."}
   ],
   "temas_modelo": [
     ["produccion", "Producción"],
