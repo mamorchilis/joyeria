@@ -6,7 +6,7 @@ Repositorio compartido para desarrollar una marca propia de joyería artesanal e
 - [Contexto de la marca y fabricación](marca-joyas.md)
 - [Instrucciones para Codex y asistentes](AGENTS.md)
 - [Estado y próximas decisiones](docs/estado-proyecto.md)
-- [Investigación de Co Rivera](docs/referentes/co-rivera/README.md)
+- [Investigación de competencia](docs/referentes/README.md): tablero comparativo y una carpeta por competidor ([Co Rivera](docs/referentes/co-rivera/README.md), [Igna Valverde](docs/referentes/igna-valverde/README.md))
 - [Probador virtual de joyas (realidad aumentada)](docs/probador-virtual.md)
 
 ## Flujo entre ChatGPT y Codex

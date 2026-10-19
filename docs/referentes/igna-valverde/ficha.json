@@ -1,0 +1,42 @@
+{
+  "nombre": "Igna Valverde",
+  "orden": 2,
+  "color": "#4f7a6a",
+  "sitio": "https://mariaignaciavalverde.cl/",
+  "captura_catalogo": "2026-10-18",
+  "revision_cualitativa": "2026-10-18",
+  "metodo": "Catálogo leído desde el listado público de productos de la tienda (Shopify), que robots.txt permite consultar. Solo lectura: sin carro, cuentas ni pagos. El material se tomó de la descripción de cada ficha.",
+  "excluir": ["Pago en línea", "Devolución", "Kit de Limpieza"],
+  "titular": "Joyería de plata con firma de diseñadora: más collares y aros, y piezas de entrada bajo $50 mil.",
+  "bajada": "Catálogo casi todo en plata, con un 38% de piezas que mencionan piedras o perlas y una línea chica bañada en oro. Vende con stock, despacha en pocos días y tiene vitrina en dos tiendas de diseño del sector oriente.",
+  "nota": "Es la referencia de producto que más les gusta, pero no de marca. Ojo: el sitio habla de “nuestro taller”; que CLAF fabrique sus piezas es algo que se conversó con el orfebre y no está verificado.",
+  "ficha": [
+    {"tema": "Propuesta", "texto": "Se presenta como boutique de joyas de diseño. El argumento central es que detrás de cada pieza hay una diseñadora y no una fábrica. Tono emocional: “cada pieza cuenta una historia”."},
+    {"tema": "Quiénes están detrás", "texto": "María Ignacia Valverde (diseñadora, U. de Valparaíso) y su socio Oscar Acuña (diseñador, magíster en diseño estratégico), que lleva la marca. La página “Igna” muestra un equipo de unas 9 personas: diseño, posventa, web y ventas."},
+    {"tema": "Lenguaje de producto", "texto": "Formas suaves, “básicos elevados” y piezas para combinar en capas. Pone nombres propios a las líneas (Biarritz, Furniture, Octavia, Agatha) en vez de nombrar símbolos."},
+    {"tema": "Empresa", "texto": "Los términos y condiciones dan como razón social Valverde y Acuña Limitada, con domicilio en Av. Kennedy 9001, Las Condes (el mismo edificio del mall Alto Las Condes)."},
+    {"tema": "Comunicación", "texto": "Instagram @igna_valverde. Newsletter con 5% de descuento en la próxima compra. Barra fija con envío gratis desde $150.000."}
+  ],
+  "modelo": {
+    "produccion": "Con stock: 124 de 141 fichas aparecen disponibles. Hay preventas puntuales.",
+    "plazo_entrega": "Prepara el pedido en 2 a 3 días hábiles (3 en regiones), más el courier.",
+    "despacho": "FedEx, con seguimiento por Envíame. A todo Chile, salvo regiones extremas.",
+    "envio_gratis": "Desde $150.000.",
+    "cambios": "30 días si el producto está en perfecto estado. En compras web, el cliente paga el envío del cambio.",
+    "garantia": "3 meses por fallas de fabricación. Excluye cortes de cadena y piedras.",
+    "venta_fisica": "Alto Diseño (Cenco Alto Las Condes, 3.er piso) y vitrina en Mundano (MUT).",
+    "plataforma": "Shopify.",
+    "captacion": "Newsletter con 5% de descuento."
+  },
+  "implicancias": [
+    {"tag": "Surtido", "titulo": "El cuello y las orejas mandan", "texto": "Collares y aros suman el 70% del catálogo; los anillos, solo el 8%. En Co Rivera es casi al revés. Es una pista de qué categorías mueven la plata de diseño."},
+    {"tag": "Precio", "titulo": "Hay escalón de entrada", "texto": "El 13% del catálogo cuesta menos de $50 mil (aros chicos, cadenas). Sirve para que alguien compre por primera vez o regale sin gastar mucho, algo que Co Rivera no tiene."},
+    {"tag": "Marca", "titulo": "La firma vende, pero es genérica", "texto": "Apoyarse en “la diseñadora” funciona, pero el tono (“unidas por las joyas y el buen gusto”) podría ser de cualquier marca. Hay espacio para una historia más propia."}
+  ],
+  "observaciones": [
+    "Lanzamientos: 44 fichas publicadas en abril de 2026 y 24 entre julio y agosto. Parece trabajar con colecciones por temporada. La fecha publicada puede incluir republicaciones.",
+    "Precios del 23-09 al 18-10: de 12 piezas de la portada, 8 mantienen el precio, el Collar Soft Fume Petit subió de $135.000 a $145.000 (7%) y 3 ya no aparecen con ese nombre (Collar Cinta Gold, Collar Malla Gold y Square Granate).",
+    "La tienda permite ordenar por “Más vendidos”. Puede ser una pista de lo que más se vende, pero no se usó: robots.txt excluye esa forma de ordenar.",
+    "25 fichas no mencionan el material en la descripción. Probablemente son de plata, pero quedan como “No indicado”."
+  ]
+}

@@ -6,6 +6,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8123", "--bind", "127.0.0.1", "--directory", "Realidad_aumentada"],
       "port": 8123
+    },
+    {
+      "name": "referentes",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8124", "--bind", "127.0.0.1", "--directory", "docs/referentes"],
+      "port": 8124
     }
   ]
 }

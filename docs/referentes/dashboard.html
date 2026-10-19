@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Lectura de competencia</title>
+  <style>
+    :root {
+      --paper: #eef0ec;
+      --surface: #fbfcfa;
+      --ink: #1d2c27;
+      --muted: #69756f;
+      --line: #d8ded9;
+      --forest: #203a31;
+      --forest-2: #355448;
+      --bronze: #a66543;
+      --gold: #b4935a;
+      --shadow: 0 14px 40px rgba(27, 43, 36, .07);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Aptos", "Segoe UI", system-ui, sans-serif;
+      --mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 14px; line-height: 1.5; }
+    button, input, select { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--bronze); outline-offset: 3px; }
+    .shell { min-height: 100vh; display: grid; grid-template-columns: 228px minmax(0,1fr); }
+    .rail { position: sticky; top: 0; height: 100vh; padding: 25px 17px; display: flex; flex-direction: column; background: var(--forest); color: #f3f5f1; }
+    .brand { display: flex; gap: 11px; align-items: center; padding: 4px 9px 27px; border-bottom: 1px solid rgba(255,255,255,.17); }
+    .seal { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(225,235,227,.65); border-radius: 50%; color: #d8c9a9; font-family: var(--serif); font-size: 18px; }
+    .brand strong { display: block; font-family: var(--serif); font-size: 17px; font-weight: 500; letter-spacing: .02em; }
+    .brand small { display: block; margin-top: 1px; color: #aebdb4; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+    .rail-label { margin: 27px 10px 9px; color: #91a69b; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .rail nav { display: grid; gap: 4px; }
+    .nav-link { display: flex; align-items: center; gap: 11px; padding: 10px 11px; border-radius: 7px; color: #d6dfd9; text-decoration: none; font-size: 13px; transition: background .18s ease, color .18s ease; }
+    .nav-link:hover, .nav-link.active { background: rgba(255,255,255,.11); color: white; }
+    .nav-mark { width: 9px; height: 9px; border-radius: 50%; border: 1px solid #b8c6bc; }
+    .nav-sub { display: grid; gap: 1px; margin: 2px 0 6px 31px; }
+    .nav-sub button { padding: 4px 8px; border: 0; border-radius: 5px; background: none; color: #a9bab0; font-size: 11px; text-align: left; }
+    .nav-sub button:hover { background: rgba(255,255,255,.08); color: white; }
+    .rail-bottom { margin-top: auto; padding: 15px 10px 4px; border-top: 1px solid rgba(255,255,255,.16); color: #b4c2ba; font-size: 11px; }
+    main { min-width: 0; max-width: 1600px; padding: 28px clamp(22px, 4vw, 58px) 62px; }
+    .topline { display: flex; justify-content: space-between; gap: 20px; align-items: center; margin-bottom: 28px; }
+    .crumb { color: var(--muted); font-size: 12px; }
+    .crumb b { color: var(--ink); font-weight: 600; }
+    .top-actions { display: flex; gap: 9px; align-items: center; flex-wrap: wrap; }
+    .date-pill { padding: 7px 10px; border: 1px solid var(--line); border-radius: 99px; background: rgba(255,255,255,.48); color: #56645d; font-family: var(--mono); font-size: 10px; }
+    .button { min-height: 36px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 7px 13px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); font-size: 12px; font-weight: 650; text-decoration: none; transition: transform .18s ease, background .18s ease; }
+    .button:hover { transform: translateY(-1px); background: white; }
+    .eyebrow { color: var(--bronze); font-size: 10px; font-weight: 750; letter-spacing: .18em; text-transform: uppercase; }
+    .hero { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0,1.4fr) minmax(240px,.6fr); gap: 32px; align-items: end; padding: clamp(24px,4vw,43px); border-radius: 8px; background: var(--forest); color: #f4f5f0; box-shadow: var(--shadow); }
+    .hero:after { content: ""; position: absolute; width: 300px; height: 300px; right: 18%; top: -240px; border: 1px solid rgba(229,220,198,.2); border-radius: 50%; box-shadow: 0 0 0 35px rgba(255,255,255,.025),0 0 0 70px rgba(255,255,255,.025); pointer-events: none; }
+    .hero h1 { position: relative; z-index: 1; max-width: 760px; margin: 11px 0 12px; font-family: var(--serif); font-size: clamp(28px,3.6vw,46px); font-weight: 400; line-height: 1.08; letter-spacing: -.03em; text-wrap: pretty; }
+    .hero p { position: relative; z-index: 1; max-width: 680px; margin: 0; color: #c9d3cc; font-size: 13px; }
+    .hero .eyebrow { position: relative; z-index: 1; color: #d9c28f; }
+    .hero-note { position: relative; z-index: 1; padding: 16px 17px 16px 19px; border-left: 1px solid var(--gold); background: rgba(255,255,255,.055); color: #dce4dd; font-size: 12px; }
+    .hero-note strong { display: block; margin-bottom: 5px; color: #d9c28f; font-size: 10px; letter-spacing: .13em; text-transform: uppercase; }
+    .hero-link { position: relative; z-index: 1; display: inline-block; margin-top: 14px; color: #e3d6b6; font-size: 12px; }
+    .kpis { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); margin: 18px 0 30px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); }
+    .kpi { min-height: 99px; padding: 18px 22px; border-right: 1px solid var(--line); }
+    .kpi:last-child { border-right: 0; }
+    .kpi-label { color: var(--muted); font-size: 11px; }
+    .kpi-value { margin-top: 7px; font-family: var(--serif); font-size: 28px; line-height: 1; }
+    .kpi-detail { margin-top: 7px; color: #85918a; font-size: 10px; }
+    .section { margin-top: 34px; scroll-margin-top: 24px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 18px; margin-bottom: 14px; }
+    .section-head h2 { margin: 4px 0 0; font-family: var(--serif); font-size: 27px; font-weight: 400; letter-spacing: -.02em; }
+    .section-head p { max-width: 480px; margin: 0; color: var(--muted); font-size: 11px; text-align: right; }
+    .grid-two { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(310px,.9fr); gap: 15px; }
+    .panel { min-width: 0; padding: 20px 21px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); }
+    .panel-head { display: flex; justify-content: space-between; gap: 12px; align-items: start; margin-bottom: 17px; }
+    .panel-head h3 { margin: 0; font-size: 13px; font-weight: 700; }
+    .panel-head p { margin: 4px 0 0; color: var(--muted); font-size: 10px; }
+    .panel-kicker { color: #8d9992; font-family: var(--mono); font-size: 10px; white-space: nowrap; }
+    .bars { display: grid; gap: 11px; }
+    .bar-row { display: grid; grid-template-columns: minmax(96px,.8fr) minmax(70px,1.6fr) 44px; gap: 10px; align-items: center; font-size: 10px; color: #58675f; }
+    .bar-track { height: 11px; overflow: hidden; border-radius: 2px; background: #edf0ed; }
+    .bar-fill { height: 100%; min-width: 2px; background: var(--forest-2); }
+    .bar-value { color: var(--ink); font-family: var(--mono); text-align: right; }
+    .group { display: grid; grid-template-columns: minmax(96px,.8fr) minmax(70px,1.6fr); gap: 10px; align-items: center; padding: 6px 0; border-top: 1px solid #eef1ee; font-size: 10px; color: #58675f; }
+    .group:first-child { border-top: 0; }
+    .group-bars { display: grid; gap: 4px; }
+    .group-bar { display: grid; grid-template-columns: minmax(40px,1fr) 38px; gap: 8px; align-items: center; }
+    .group-bar .bar-track { height: 9px; }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px; color: var(--muted); font-size: 11px; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
+    .chart-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 17px; padding-top: 11px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 10px; }
+    .card { padding: 16px 17px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+    .card strong { display: block; margin-bottom: 5px; color: var(--forest-2); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .card p { margin: 0; color: #46544d; font-size: 12px; }
+    .material-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); gap: 10px; }
+    .material-card { padding: 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+    .swatch { width: 21px; height: 21px; margin-bottom: 11px; border-radius: 50%; background: repeating-linear-gradient(135deg,#dfe4e0 0 3px,#aeb8b2 3px 5px); }
+    .swatch.plata { background: linear-gradient(145deg,#e2e6e3,#a8b1ad); }
+    .swatch.bronce { background: linear-gradient(145deg,#a66b49,#6f4936); }
+    .swatch.plata-bronce { background: linear-gradient(135deg,#ac714d 0 48%,#dce1de 49%); }
+    .swatch.plata-oro { background: linear-gradient(135deg,#d6b25e 0 48%,#dce1de 49%); }
+    .material-card strong { display: block; font-size: 11px; }
+    .material-count { display: block; margin-top: 4px; color: var(--forest); font-family: var(--serif); font-size: 23px; }
+    .material-card small { color: var(--muted); font-size: 9px; }
+    .decision-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: 7px; background: var(--line); }
+    .decision { min-height: 124px; padding: 19px 21px; background: var(--surface); }
+    .tag { display: inline-flex; padding: 3px 7px; border-radius: 99px; background: #edf2ed; color: #466254; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .decision:nth-child(2) .tag { background: #f4ece6; color: #905638; }
+    .decision:nth-child(3) .tag { background: #f2f0e8; color: #8a7448; }
+    .decision h3 { margin: 9px 0 5px; font-family: var(--serif); font-size: 18px; font-weight: 400; }
+    .decision p { margin: 0; color: var(--muted); font-size: 11px; }
+    .notes { margin: 0; padding: 0; list-style: none; }
+    .notes li { padding: 10px 0 10px 18px; border-top: 1px solid var(--line); color: #46544d; font-size: 11px; position: relative; }
+    .notes li:first-child { border-top: 0; padding-top: 0; }
+    .notes li:before { content: ""; position: absolute; left: 2px; top: 16px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    .notes li:first-child:before { top: 6px; }
+    .premium-item { display: grid; grid-template-columns: 28px minmax(0,1fr) auto; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+    .premium-item:first-child { border-top: 0; }
+    .premium-index { color: #9aa59e; font-family: var(--mono); font-size: 10px; }
+    .premium-name { font-size: 11px; }
+    .premium-name a { display: block; margin-top: 2px; color: #8a958e; font-size: 9px; }
+    .premium-price { font-family: var(--serif); font-size: 17px; white-space: nowrap; }
+    .months { display: flex; align-items: end; gap: 3px; height: 120px; padding-top: 8px; }
+    .month { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: end; align-items: center; height: 100%; }
+    .month-bar { width: 100%; min-height: 1px; border-radius: 2px 2px 0 0; }
+    .month-axis { display: flex; justify-content: space-between; margin-top: 6px; color: var(--muted); font-family: var(--mono); font-size: 9px; }
+    .table-panel { padding: 0; overflow: hidden; }
+    .table-tools { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 11px; padding: 15px 17px; border-bottom: 1px solid var(--line); }
+    .filters { display: flex; flex: 1 1 auto; flex-wrap: wrap; gap: 7px; }
+    .control { min-height: 34px; padding: 6px 9px; border: 1px solid var(--line); border-radius: 4px; background: white; color: #43534a; font-size: 11px; }
+    .control.search { width: min(245px,100%); }
+    .table-wrap { overflow: auto; max-height: 580px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th { position: sticky; top: 0; z-index: 1; padding: 10px 15px; background: #f4f6f3; color: #758079; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    td { padding: 10px 15px; border-top: 1px solid #e9ede9; font-size: 11px; vertical-align: top; }
+    tbody tr:hover { background: #f7f9f6; }
+    td.num { font-family: var(--mono); font-size: 10px; white-space: nowrap; }
+    td a { color: var(--forest-2); text-underline-offset: 2px; }
+    .compare th:first-child, .compare td:first-child { width: 190px; color: var(--muted); }
+    .compare td { font-size: 12px; }
+    .compare th { position: static; }
+    .pill { display: inline-flex; padding: 3px 7px; border-radius: 99px; background: #eef3ee; color: #4e6e5a; font-size: 9px; white-space: nowrap; }
+    .pill.out { background: #f4e9e6; color: #925a4c; }
+    .muted-row td { color: #9aa59e; }
+    .table-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    .empty { padding: 35px 15px; color: var(--muted); text-align: center; }
+    .method-note { margin-top: 21px; padding-top: 13px; border-top: 1px solid var(--line); color: #7a867f; font-size: 10px; }
+    .error { padding: 30px; border: 1px dashed var(--bronze); border-radius: 7px; background: var(--surface); }
+    @media (max-width: 1050px) {
+      .shell { grid-template-columns: 190px minmax(0,1fr); }
+      .hero { grid-template-columns: 1fr; gap: 16px; }
+      .grid-two { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .shell { display: block; }
+      .rail { position: static; height: auto; padding: 12px 16px; }
+      .brand { padding: 0 3px 11px; border: 0; }
+      .rail-label, .rail-bottom, .nav-sub { display: none; }
+      .rail nav { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+      .rail nav::-webkit-scrollbar { display: none; }
+      .nav-link { flex: 0 0 auto; padding: 8px 10px; font-size: 12px; }
+      main { padding: 18px 16px 42px; }
+      .topline { align-items: start; flex-direction: column; margin-bottom: 18px; }
+      .hero { padding: 23px 20px; }
+      .kpis { grid-template-columns: repeat(2,1fr); }
+      .kpi:nth-child(2) { border-right: 0; }
+      .kpi:nth-child(n+3) { border-top: 1px solid var(--line); }
+      .section-head { align-items: start; flex-direction: column; }
+      .section-head p { text-align: left; }
+      .decision-strip { grid-template-columns: 1fr; }
+      .filters { display: grid; grid-template-columns: 1fr 1fr; }
+      .control.search { width: 100%; grid-column: 1 / -1; }
+      .table-tools > .button { width: 100%; }
+      th, td { padding: 9px 11px; }
+      .compare th:first-child, .compare td:first-child { width: 110px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *:before, *:after { transition-duration: .01ms !important; } }
+    @media print {
+      body { background: white; }
+      .shell { display: block; }
+      .rail, .top-actions, .table-tools { display: none !important; }
+      main { max-width: none; padding: 0; }
+      .panel, .kpis, .decision-strip, .hero { break-inside: avoid; box-shadow: none; }
+      .table-wrap { max-height: none; overflow: visible; }
+      th { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="rail" aria-label="Hojas del tablero">
+      <div class="brand"><span class="seal" aria-hidden="true">J</span><div><strong>Lectura de competencia</strong><small>Joyería · Chile</small></div></div>
+      <div class="rail-label">Hojas</div>
+      <nav id="sheet-nav"></nav>
+      <div class="rail-bottom" id="rail-bottom"></div>
+    </aside>
+    <main>
+      <div class="topline">
+        <div class="crumb" id="crumb"></div>
+        <div class="top-actions" id="top-actions"></div>
+      </div>
+      <div id="sheet"></div>
+    </main>
+  </div>
+  <script src="datos.js"></script>
+  <script>
+    const DATA = window.REFERENTES;
+    const el = id => document.getElementById(id);
+    const money = v => new Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP',maximumFractionDigits:0}).format(v);
+    const norm = v => String(v ?? '').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+    const esc = v => String(v ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const pct = (n,total) => total ? Math.round(n/total*100) : 0;
+    const fecha = iso => iso ? iso.split('-').reverse().join('.') : '—';
+    const median = xs => { if(!xs.length) return 0; const s=[...xs].sort((a,b)=>a-b), m=Math.floor(s.length/2); return s.length%2?s[m]:(s[m-1]+s[m])/2; };
+    const quantile = (xs,q) => { const s=[...xs].sort((a,b)=>a-b); if(!s.length) return 0; const pos=(s.length-1)*q, lo=Math.floor(pos), hi=Math.ceil(pos); return s[lo]+(s[hi]-s[lo])*(pos-lo); };
+    const countBy = (items,key) => items.reduce((o,p)=>(o[p[key]]=(o[p[key]]||0)+1,o),{});
+    const sorted = counts => Object.entries(counts).map(([name,count])=>({name,count})).sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name,'es'));
+
+    // Escalones de precio estándar para todas las hojas.
+    const BANDS = [
+      {name:'Menos de $50 mil',min:0,max:49999},{name:'$50–79 mil',min:50000,max:79999},{name:'$80–109 mil',min:80000,max:109999},
+      {name:'$110–149 mil',min:110000,max:149999},{name:'$150–219 mil',min:150000,max:219999},{name:'$220–399 mil',min:220000,max:399999},{name:'$400 mil o más',min:400000,max:Infinity}
+    ];
+    const CATEGORIES = ['Anillos','Aros','Collares y cadenas','Colgantes y medallas','Pulseras y esclavas','Otros'];
+    const swatchClass = m => ({'Plata':'plata','Bronce':'bronce','Plata + bronce':'plata-bronce','Plata + oro (enchape)':'plata-oro'}[m]||'');
+
+    // Cifras derivadas de cada competidor, calculadas una vez.
+    function stats(c) {
+      const items = c.productos.filter(p=>p.incluido);
+      const states = sorted(countBy(c.productos,'estado'));
+      const cats = countBy(items,'categoria');
+      const catMedian = Object.fromEntries(Object.keys(cats).map(k=>[k,median(items.filter(p=>p.categoria===k).map(p=>p.precio))]));
+      return {
+        items, total: items.length, excluded: c.productos.length-items.length,
+        prices: items.map(p=>p.precio), median: median(items.map(p=>p.precio)),
+        p25: quantile(items.map(p=>p.precio),.25), p75: quantile(items.map(p=>p.precio),.75),
+        min: Math.min(...items.map(p=>p.precio)), max: Math.max(...items.map(p=>p.precio)),
+        bands: BANDS.map(b=>({name:b.name,count:items.filter(p=>p.precio>=b.min&&p.precio<=b.max).length})),
+        cats, catMedian, mats: countBy(items,'material'), motifs: countBy(items,'motivo'),
+        stones: items.filter(p=>p.piedra).length, states
+      };
+    }
+
+    // Componentes
+    const bars = (entries,total,color,suffix='') => `<div class="bars">${entries.map(x=>`<div class="bar-row"><span>${esc(x.name)}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.max(1,x.count/Math.max(1,...entries.map(e=>e.count))*100)}%;background:${color}"></div></div><span class="bar-value">${x.count}${suffix}</span></div>`).join('')}</div>`;
+    const legend = () => `<div class="legend">${DATA.competidores.map(c=>`<span><i class="dot" style="background:${c.color}"></i>${esc(c.nombre)}</span>`).join('')}</div>`;
+    function grouped(labels, valueOf) {
+      const all = labels.flatMap(l=>DATA.competidores.map(c=>valueOf(c,l)));
+      const max = Math.max(1,...all);
+      return legend()+labels.map(l=>`<div class="group"><span>${esc(l)}</span><div class="group-bars">${DATA.competidores.map(c=>{const v=valueOf(c,l);return `<div class="group-bar" title="${esc(c.nombre)}: ${v}%"><div class="bar-track"><div class="bar-fill" style="width:${Math.max(1,v/max*100)}%;background:${c.color}"></div></div><span class="bar-value">${v}%</span></div>`;}).join('')}</div></div>`).join('');
+    }
+    const sectionHead = (eyebrow,title,text,id='') => `<div class="section-head"${id?` id="${id}"`:''}><div><div class="eyebrow">${esc(eyebrow)}</div><h2>${esc(title)}</h2></div><p>${esc(text)}</p></div>`;
+    const decisions = list => `<div class="decision-strip">${list.map(d=>`<article class="decision"><span class="tag">${esc(d.tag)}</span><h3>${esc(d.titulo)}</h3><p>${esc(d.texto)}</p></article>`).join('')}</div>`;
+    const hero = (eyebrow,title,text,noteTitle,note,link='') => `<section class="hero"><div><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(title)}</h1><p>${esc(text)}</p>${link}</div><div class="hero-note"><strong>${esc(noteTitle)}</strong>${esc(note)}</div></section>`;
+
+    // Hoja de resumen
+    function renderSummary() {
+      const r = DATA.resumen, cs = DATA.competidores;
+      const row = (label, f) => `<tr><td>${esc(label)}</td>${cs.map(c=>`<td>${f(c)}</td>`).join('')}</tr>`;
+      const top = (counts,total) => { const t=sorted(counts)[0]; return t?`${esc(t.name)} <span class="pill">${pct(t.count,total)}%</span>`:'—'; };
+      const allMats = [...new Set(cs.flatMap(c=>Object.keys(c.s.mats)))];
+      const allMotifs = [...new Set(cs.flatMap(c=>Object.keys(c.s.motifs)))].sort((a,b)=>a==='Sin motivo evidente'?1:b==='Sin motivo evidente'?-1:a.localeCompare(b,'es'));
+      return `
+        ${hero('Comparación de referentes', r.titular, r.bajada, 'Antes de decidir', r.nota)}
+        <section class="section" id="s-cifras">
+          ${sectionHead('Cifras lado a lado','Los catálogos comparados','Mismas reglas de clasificación para todas las marcas. Cada cifra cuenta productos publicados, no ventas.')}
+          <div class="panel table-panel"><div class="table-wrap"><table class="compare">
+            <thead><tr><th>Indicador</th>${cs.map(c=>`<th><i class="dot" style="background:${c.color}"></i> ${esc(c.nombre)}</th>`).join('')}</tr></thead>
+            <tbody>
+              ${row('Productos analizados', c=>`${c.s.total}${c.s.excluded?` <span class="pill">${c.s.excluded} ${c.s.excluded===1?'excluido':'excluidos'}</span>`:''}`)}
+              ${row('Mediana de precio', c=>`<b>${money(c.s.median)}</b>`)}
+              ${row('Rango central (P25–P75)', c=>`${money(c.s.p25)} – ${money(c.s.p75)}`)}
+              ${row('Mínimo – máximo', c=>`${money(c.s.min)} – ${money(c.s.max)}`)}
+              ${row('Bajo $50 mil', c=>`${pct(c.s.items.filter(p=>p.precio<50000).length,c.s.total)}%`)}
+              ${row('Desde $220 mil', c=>`${pct(c.s.items.filter(p=>p.precio>=220000).length,c.s.total)}%`)}
+              ${row('Categoría principal', c=>top(c.s.cats,c.s.total))}
+              ${row('Material principal', c=>top(c.s.mats,c.s.total))}
+              ${row('Con piedra o perla', c=>`${pct(c.s.stones,c.s.total)}%`)}
+              ${row('Estado más común', c=>{const t=c.s.states[0];return `${esc(t.name)} <span class="pill">${t.count} de ${c.productos.length}</span>`;})}
+              ${row('Captura del catálogo', c=>fecha(c.captura_catalogo))}
+            </tbody></table></div></div>
+        </section>
+        <section class="section" id="s-precios">
+          ${sectionHead('Posicionamiento','El mapa de precios comparado','Porcentaje del catálogo de cada marca en cada escalón. Permite comparar marcas de distinto tamaño.')}
+          <div class="grid-two">
+            <article class="panel"><div class="panel-head"><div><h3>Escalones de precio</h3><p>% de productos de cada marca</p></div><span class="panel-kicker">CLP</span></div>${grouped(BANDS.map(b=>b.name),(c,l)=>pct(c.s.bands.find(b=>b.name===l).count,c.s.total))}</article>
+            <article class="panel"><div class="panel-head"><div><h3>Mix de categorías</h3><p>% de productos de cada marca</p></div><span class="panel-kicker">SKU</span></div>${grouped(CATEGORIES.filter(k=>cs.some(c=>c.s.cats[k])),(c,l)=>pct(c.s.cats[l]||0,c.s.total))}</article>
+          </div>
+        </section>
+        <section class="section" id="s-mix">
+          ${sectionHead('Construcción del surtido','Material y motivo','El material sale de la ficha o del nombre; el motivo, del nombre. Son etiquetas para orientarse, revisables.')}
+          <div class="grid-two">
+            <article class="panel"><div class="panel-head"><div><h3>Material</h3><p>% de productos de cada marca</p></div><span class="panel-kicker">INFERIDO</span></div>${grouped(allMats,(c,l)=>pct(c.s.mats[l]||0,c.s.total))}</article>
+            <article class="panel"><div class="panel-head"><div><h3>Familias de motivo</h3><p>% de productos de cada marca</p></div><span class="panel-kicker">POR NOMBRE</span></div>${grouped(allMotifs,(c,l)=>pct(c.s.motifs[l]||0,c.s.total))}</article>
+          </div>
+        </section>
+        <section class="section" id="s-modelo">
+          ${sectionHead('Operación','Cómo venden y entregan','Lo que declara cada sitio en sus políticas y portada.')}
+          <div class="panel table-panel"><div class="table-wrap"><table class="compare">
+            <thead><tr><th>Tema</th>${cs.map(c=>`<th><i class="dot" style="background:${c.color}"></i> ${esc(c.nombre)}</th>`).join('')}</tr></thead>
+            <tbody>${r.temas_modelo.map(([k,label])=>row(label,c=>esc((c.modelo||{})[k]||'Sin revisar'))).join('')}</tbody>
+          </table></div></div>
+        </section>
+        <section class="section" id="s-conclusiones">
+          ${sectionHead('Implicancias','Qué sacamos para nuestra marca','Hipótesis para validar con clientes, costos del taller y datos propios.')}
+          ${decisions(r.conclusiones)}
+        </section>
+        <div class="method-note"><strong>Base analítica:</strong> ${cs.map(c=>`${esc(c.nombre)}, catálogo del ${fecha(c.captura_catalogo)}`).join(' · ')}. Se excluyen del análisis las fichas con precio $0 y las que no son joyas (pagos, devoluciones, accesorios de limpieza). Sin datos de ventas ni costos.</div>`;
+    }
+    const SUMMARY_SECTIONS = [['s-cifras','Cifras'],['s-precios','Precios'],['s-mix','Material y motivo'],['s-modelo','Operación'],['s-conclusiones','Implicancias']];
+
+    // Hoja de un competidor
+    function renderCompetitor(c) {
+      const s = c.s, color = c.color;
+      const topState = s.states[0];
+      const catEntries = sorted(s.cats);
+      const months = (() => {
+        const dated = s.items.filter(p=>p.publicado); if(!dated.length) return '';
+        const counts = countBy(dated.map(p=>({m:p.publicado.slice(0,7)})),'m');
+        const last = new Date(c.captura_catalogo+'T12:00:00'), keys=[];
+        for(let i=17;i>=0;i--){const d=new Date(last.getFullYear(),last.getMonth()-i,1);keys.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`);}
+        const max=Math.max(1,...keys.map(k=>counts[k]||0)), older=dated.filter(p=>p.publicado.slice(0,7)<keys[0]).length;
+        return `<article class="panel"><div class="panel-head"><div><h3>Publicaciones por mes</h3><p>Fichas vigentes según su fecha de publicación · últimos 18 meses</p></div><span class="panel-kicker">${older} ANTERIORES</span></div>
+          <div class="months">${keys.map(k=>`<div class="month" title="${k}: ${counts[k]||0} fichas"><div class="month-bar" style="height:${(counts[k]||0)/max*100}%;background:${color}"></div></div>`).join('')}</div>
+          <div class="month-axis"><span>${keys[0]}</span><span>${keys[keys.length-1]}</span></div></article>`;
+      })();
+      const premium = [...s.items].sort((a,b)=>b.precio-a.precio).slice(0,6);
+      return `
+        ${hero(`Ficha de competidor · ${c.nombre}`, c.titular, c.bajada, 'Lectura para decidir', c.nota, `<a class="hero-link" href="${esc(c.sitio)}" target="_blank" rel="noopener">${esc(c.sitio.replace(/^https?:\/\//,'').replace(/\/$/,''))} ↗</a>`)}
+        <section class="kpis" aria-label="Indicadores principales">
+          <div class="kpi"><div class="kpi-label">Productos analizados</div><div class="kpi-value">${s.total}</div><div class="kpi-detail">${c.productos.length} fichas · ${s.excluded} ${s.excluded===1?'excluida':'excluidas'}</div></div>
+          <div class="kpi"><div class="kpi-label">Mediana de precio</div><div class="kpi-value">${money(s.median)}</div><div class="kpi-detail">central: ${money(s.p25)}–${money(s.p75)}</div></div>
+          <div class="kpi"><div class="kpi-label">${esc(topState.name.charAt(0)+topState.name.slice(1).toLowerCase())}</div><div class="kpi-value">${pct(topState.count,c.productos.length)}%</div><div class="kpi-detail">estado publicado más común</div></div>
+          <div class="kpi"><div class="kpi-label">Categoría principal</div><div class="kpi-value">${pct(catEntries[0].count,s.total)}%</div><div class="kpi-detail">${esc(catEntries[0].name)}</div></div>
+        </section>
+        <section class="section" id="c-marca">
+          ${sectionHead('Marca','Quién es y cómo se presenta',`Observaciones del sitio, revisado el ${fecha(c.revision_cualitativa)}.`)}
+          <div class="card-grid">${c.ficha.map(f=>`<div class="card"><strong>${esc(f.tema)}</strong><p>${esc(f.texto)}</p></div>`).join('')}</div>
+        </section>
+        <section class="section" id="c-precios">
+          ${sectionHead('Posicionamiento','El mapa de precios','Cantidad de productos por escalón, no volumen vendido.')}
+          <div class="grid-two">
+            <article class="panel"><div class="panel-head"><div><h3>Distribución del catálogo</h3><p>Precio publicado más bajo de cada ficha</p></div><span class="panel-kicker">${s.total} CON PRECIO</span></div>${bars(s.bands,s.total,color)}<div class="chart-foot"><span>Rango central: ${money(s.p25)}–${money(s.p75)}</span><span>${money(s.min)}–${money(s.max)}</span></div></article>
+            <article class="panel"><div class="panel-head"><div><h3>Mix de categorías</h3><p>Entre paréntesis, mediana de precio de la categoría</p></div><span class="panel-kicker">SKU</span></div>${bars(catEntries.map(x=>({name:`${x.name} (${money(s.catMedian[x.name])})`,count:x.count})),s.total,color)}</article>
+          </div>
+        </section>
+        <section class="section" id="c-mix">
+          ${sectionHead('Construcción del surtido','Materiales y motivos','Etiquetas deducidas; no reemplazan la ficha técnica.')}
+          <div class="grid-two">
+            <article class="panel"><div class="panel-head"><div><h3>Material</h3><p>${pct(s.stones,s.total)}% de los productos menciona piedra o perla</p></div><span class="panel-kicker">INFERIDO</span></div>
+              <div class="material-grid">${sorted(s.mats).map(m=>`<div class="material-card"><span class="swatch ${swatchClass(m.name)}" aria-hidden="true"></span><strong>${esc(m.name)}</strong><span class="material-count">${m.count}</span><small>${pct(m.count,s.total)}% del catálogo</small></div>`).join('')}</div></article>
+            <article class="panel"><div class="panel-head"><div><h3>Familias de motivo</h3><p>Según palabras del nombre del producto</p></div><span class="panel-kicker">POR NOMBRE</span></div>${bars(sorted(s.motifs),s.total,color)}</article>
+          </div>
+        </section>
+        <section class="section" id="c-operacion">
+          ${sectionHead('Operación','Cómo vende y entrega','Lo declarado en políticas y portada.')}
+          <div class="panel table-panel"><div class="table-wrap"><table class="compare"><tbody>${DATA.resumen.temas_modelo.map(([k,label])=>`<tr><td>${esc(label)}</td><td>${esc((c.modelo||{})[k]||'Sin revisar')}</td></tr>`).join('')}</tbody></table></div></div>
+        </section>
+        <section class="section" id="c-implicancias">
+          ${sectionHead('Implicancias','Qué puede orientar una decisión','Hipótesis; valida con clientes, costos y datos propios.')}
+          ${decisions(c.implicancias)}
+        </section>
+        <section class="section">
+          ${sectionHead('Más señales','Techo de precio y observaciones','Los precios más altos muestran hasta dónde llega la marca; no son los más vendidos.')}
+          <div class="grid-two">
+            <article class="panel"><div class="panel-head"><div><h3>Productos de mayor precio</h3><p>Top 6 por precio publicado</p></div><span class="panel-kicker">NO ES RANKING DE VENTAS</span></div>
+              ${premium.map((p,i)=>`<div class="premium-item"><span class="premium-index">${String(i+1).padStart(2,'0')}</span><div class="premium-name">${esc(p.producto)}<a href="${esc(p.url)}" target="_blank" rel="noopener">Abrir ficha pública</a></div><span class="premium-price" style="color:${color}">${money(p.precio)}</span></div>`).join('')}</article>
+            <div style="display:grid;gap:15px;align-content:start">
+              ${months}
+              <article class="panel"><div class="panel-head"><div><h3>Observaciones</h3><p>Datos sueltos que vale la pena recordar</p></div></div><ul class="notes">${(c.observaciones||[]).map(o=>`<li>${esc(o)}</li>`).join('')}</ul></article>
+            </div>
+          </div>
+        </section>
+        <section class="section" id="c-productos">
+          ${sectionHead('Explorador','Catálogo producto a producto','Filtra y ordena. Las filas en gris quedaron fuera del análisis.')}
+          <div class="panel table-panel">
+            <div class="table-tools">
+              <div class="filters">
+                <input class="control search" id="f-search" type="search" placeholder="Buscar producto o motivo" aria-label="Buscar producto">
+                <select class="control" id="f-cat" aria-label="Categoría"></select>
+                <select class="control" id="f-mat" aria-label="Material"></select>
+                <select class="control" id="f-state" aria-label="Estado"></select>
+                <select class="control" id="f-sort" aria-label="Orden"><option value="name">Nombre A–Z</option><option value="asc">Precio menor a mayor</option><option value="desc">Precio mayor a menor</option><option value="date">Más recientes</option></select>
+              </div>
+              <button class="button" id="f-export" type="button">Exportar selección CSV</button>
+            </div>
+            <div class="table-wrap"><table><thead><tr><th>Producto</th><th>Categoría</th><th>Material</th><th>Motivo</th><th>Estado</th><th>Precio</th><th>Fuente</th></tr></thead><tbody id="f-rows"></tbody></table></div>
+            <div class="table-foot"><span id="f-count"></span><span>Precios y disponibilidad pueden cambiar.</span></div>
+          </div>
+        </section>
+        <div class="method-note"><strong>Método:</strong> ${esc(c.metodo)} Catálogo capturado el ${fecha(c.captura_catalogo)}. Categoría, material y motivo se clasifican con reglas comunes a todas las hojas (ver generar_datos.py).</div>`;
+    }
+    const COMPETITOR_SECTIONS = [['c-marca','Marca'],['c-precios','Precios'],['c-mix','Material y motivo'],['c-operacion','Operación'],['c-implicancias','Implicancias'],['c-productos','Productos']];
+
+    function setupExplorer(c) {
+      const options = (id,key,label) => { const vals=[...new Set(c.productos.map(p=>p[key]))].sort((a,b)=>a.localeCompare(b,'es')); el(id).innerHTML=`<option value="">${label}</option>`+vals.map(v=>`<option>${esc(v)}</option>`).join(''); };
+      options('f-cat','categoria','Todas las categorías'); options('f-mat','material','Todos los materiales'); options('f-state','estado','Todos los estados');
+      let list = [];
+      const update = () => {
+        const q=norm(el('f-search').value), cat=el('f-cat').value, mat=el('f-mat').value, st=el('f-state').value, sort=el('f-sort').value;
+        list = c.productos.filter(p=>(!q||norm(`${p.producto} ${p.motivo}`).includes(q))&&(!cat||p.categoria===cat)&&(!mat||p.material===mat)&&(!st||p.estado===st));
+        const by = {asc:(a,b)=>a.precio-b.precio, desc:(a,b)=>b.precio-a.precio, date:(a,b)=>(b.publicado||'').localeCompare(a.publicado||''), name:(a,b)=>a.producto.localeCompare(b.producto,'es')}[sort];
+        list.sort(by);
+        el('f-rows').innerHTML = list.length ? list.map(p=>`<tr class="${p.incluido?'':'muted-row'}"><td>${esc(p.producto)}</td><td>${esc(p.categoria)}</td><td>${esc(p.material)}${p.piedra?' · piedra/perla':''}</td><td>${esc(p.motivo)}</td><td><span class="pill ${/agotado/i.test(p.estado)?'out':''}">${esc(p.estado)}</span></td><td class="num">${p.precio?money(p.precio):'—'}${p.precio_max>p.precio?`–${money(p.precio_max)}`:''}</td><td>${p.url?`<a href="${esc(p.url)}" target="_blank" rel="noopener">Ver ficha</a>`:''}</td></tr>`).join('') : `<tr><td class="empty" colspan="7">No hay productos con estos filtros.</td></tr>`;
+        el('f-count').textContent = `${list.length} de ${c.productos.length} fichas`;
+      };
+      ['f-search','f-cat','f-mat','f-state','f-sort'].forEach(id=>el(id).addEventListener(id==='f-search'?'input':'change',update));
+      el('f-export').addEventListener('click',()=>{
+        const rows=[['producto','precio_clp','precio_max_clp','estado','categoria','material','piedra_o_perla','motivo','incluido_en_analisis','url'],...list.map(p=>[p.producto,p.precio,p.precio_max,p.estado,p.categoria,p.material,p.piedra?'si':'no',p.motivo,p.incluido?'si':'no',p.url])];
+        const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(',')).join('\r\n');
+        const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'})); a.download=`${c.slug}-seleccion.csv`; a.click(); URL.revokeObjectURL(a.href);
+      });
+      update();
+    }
+
+    // Navegación entre hojas por el hash de la URL (#resumen, #co-rivera, ...).
+    function route() {
+      const slug = location.hash.slice(1) || 'resumen';
+      const comp = DATA.competidores.find(c=>c.slug===slug);
+      const current = comp ? comp.slug : 'resumen';
+      const sections = comp ? COMPETITOR_SECTIONS : SUMMARY_SECTIONS;
+      const sheets = [{slug:'resumen',nombre:'Resumen comparativo',color:'#d3b882'},...DATA.competidores];
+      el('sheet-nav').innerHTML = sheets.map(s=>`<a class="nav-link ${s.slug===current?'active':''}" href="#${s.slug}"><span class="nav-mark" style="${s.slug===current?`background:${s.color};border-color:${s.color}`:''}"></span>${esc(s.nombre)}</a>${s.slug===current?`<div class="nav-sub">${sections.map(([id,label])=>`<button type="button" data-scroll="${id}">${esc(label)}</button>`).join('')}</div>`:''}`).join('');
+      el('crumb').innerHTML = `Investigación de referentes <span aria-hidden="true">/</span> <b>${esc(comp?comp.nombre:'Resumen comparativo')}</b>`;
+      el('top-actions').innerHTML = comp
+        ? `<span class="date-pill">CAPTURA · ${fecha(comp.captura_catalogo)}</span><a class="button" href="${esc(comp.slug)}/catalogo_publico.csv" download>Descargar catálogo CSV</a>`
+        : `<span class="date-pill">DATOS GENERADOS · ${fecha(DATA.generado)}</span>`;
+      el('sheet').innerHTML = comp ? renderCompetitor(comp) : renderSummary();
+      if (comp) setupExplorer(comp);
+      document.title = `${comp?comp.nombre:'Resumen'} | Lectura de competencia`;
+      window.scrollTo(0,0);
+    }
+    document.addEventListener('click',e=>{const b=e.target.closest('[data-scroll]');if(b)el(b.dataset.scroll)?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
+
+    if (!DATA) {
+      el('sheet').innerHTML = '<div class="error"><strong>Faltan los datos.</strong> No se encontró datos.js. Ejecuta <code>python docs/referentes/generar_datos.py</code> y vuelve a abrir este archivo.</div>';
+    } else {
+      DATA.competidores.forEach(c=>c.s=stats(c));
+      el('rail-bottom').innerHTML = `${DATA.competidores.length} competidores · datos del ${fecha(DATA.generado)}<br>Todo se procesa en este navegador`;
+      window.addEventListener('hashchange',route);
+      route();
+    }
+  </script>
+</body>
+</html>

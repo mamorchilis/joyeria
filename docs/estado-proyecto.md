@@ -37,3 +37,10 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   choker y un anillo). Es un prototipo: no está probado en una tablet y el realismo aún no es
   el definitivo. Detalle en `docs/probador-virtual.md`.
 
+- **2026-10-18 — Formato estándar para estudiar competidores (vigente).** Cada competidor
+  tiene una carpeta en `docs/referentes/` con los mismos archivos, y un tablero común
+  (`docs/referentes/dashboard.html`) con una hoja de resumen comparativo y una hoja por
+  empresa. Por ahora están Co Rivera e Igna Valverde. Las conclusiones de ese tablero son
+  hipótesis: no hay datos de ventas ni costos de los competidores. Detalle en
+  `docs/referentes/README.md`.
+

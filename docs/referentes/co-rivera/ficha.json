@@ -1,0 +1,41 @@
+{
+  "nombre": "Co Rivera",
+  "orden": 1,
+  "color": "#a66543",
+  "sitio": "https://corivera.cl/",
+  "captura_catalogo": "2026-10-11",
+  "revision_cualitativa": "2026-10-18",
+  "metodo": "Catálogo recorrido página por página en la colección pública (las consultas directas al listado JSON dieron 403 y no se intentó eludirlas). Material deducido del nombre del producto. Detalle en fuentes-y-limites.md.",
+  "excluir": ["Co Rivera"],
+  "titular": "La densidad está en el tramo medio; la diferencia se juega en la propuesta.",
+  "bajada": "El catálogo público concentra muchas piezas entre $80.000 y $219.999. Trabaja plata, bronce y combinaciones de ambos, con símbolos religiosos, animales y celestiales, y casi todo se hace a pedido.",
+  "nota": "Es la referencia de marca número uno del proyecto. Usa este rango como referencia competitiva, no como prueba de demanda ni de margen: la captura no incluye ventas ni costos.",
+  "ficha": [
+    {"tema": "Propuesta", "texto": "Joyas y accesorios hechos a mano en Chile, en bronce y plata. La portada separa las piezas que están en stock de las que se hacen a pedido en su taller."},
+    {"tema": "Lenguaje de producto", "texto": "Símbolos con significado: vírgenes, San Benito, cruces, pumas, águilas, leones, estrellas y herraduras. Muchas piezas existen en bronce y en plata, y también hay combinaciones de ambos."},
+    {"tema": "Escalera de precio", "texto": "En 30 piezas que se venden en las dos versiones, la de plata cuesta unas dos veces lo que la de bronce (mediana: 2,1 veces). El bronce funciona como puerta de entrada al mismo diseño."},
+    {"tema": "Venta física", "texto": "Tienda propia en el mall Casa Costanera (Av. Nueva Costanera 3900, Vitacura, primer piso). Ahí se retiran pedidos y se hacen los cambios."},
+    {"tema": "Comunicación", "texto": "Instagram, Facebook y TikTok @coriverajoyas. Campañas con descuento por volumen: por ejemplo, el Cyber de octubre daba hasta 15% en la segunda joya."}
+  ],
+  "modelo": {
+    "produccion": "Mayormente a pedido: 195 de 199 fichas dicen “A PEDIDO”. Hay una sección de piezas en stock.",
+    "plazo_entrega": "15 a 20 días hábiles de fabricación, más el courier. En regiones, hasta 30 días hábiles.",
+    "despacho": "Flapp, al día siguiente de terminar la joya. A todo Chile, sin despachos en fines de semana.",
+    "envio_gratis": "No se vio un monto desde el cual el envío sea gratis. El despacho se cobra al comprar.",
+    "cambios": "Solo compras web marcadas como regalo, dentro de 30 días y en persona en Casa Costanera. Los aros no tienen cambio.",
+    "garantia": "No se encontró una política de garantía específica en las páginas revisadas.",
+    "venta_fisica": "Tienda propia en Casa Costanera, Vitacura.",
+    "plataforma": "Shopify.",
+    "captacion": "Pop-up con descuento en la primera compra (visto el 23-09, pedía la fecha de cumpleaños) y campañas como el Cyber."
+  },
+  "implicancias": [
+    {"tag": "Mix", "titulo": "Probar foco antes de amplitud", "texto": "El referente mantiene cerca de 200 fichas. Para un lanzamiento pequeño, un surtido acotado puede reducir el inventario y la complejidad de fabricación."},
+    {"tag": "Precio", "titulo": "Usar el material como escalera", "texto": "El mismo diseño en bronce y en plata permite tener precio de entrada y precio alto sin diseñar el doble. Hay que validarlo con los costos del taller."},
+    {"tag": "Diferenciación", "titulo": "Elegir códigos propios", "texto": "La plata, el bronce y los símbolos religiosos son códigos compartidos, incluso con Milagritos de María. La oportunidad está en una historia, forma o experiencia que la marca pueda sostener."}
+  ],
+  "observaciones": [
+    "A pedido no significa que se venda mucho: los 3 agotados solo muestran el estado publicado.",
+    "El plazo de 15 a 20 días hábiles es una debilidad frente a una marca con stock, sobre todo para regalos de último minuto. Co Rivera lo compensa con su tienda física y la nueva sección “en stock”.",
+    "Los cambios solo se aceptan para regalos y en persona, lo que obliga a ir a Vitacura. Es una política poco amable con clientes de regiones."
+  ]
+}
