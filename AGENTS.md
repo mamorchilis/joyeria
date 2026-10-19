@@ -26,5 +26,5 @@
 - El proyecto busca desarrollar una marca propia de joyería artesanal en Chile.
 - El concepto inicial contempla plata y bronce; existe interés adicional en explorar oro.
 - Se busca un taller fabricante que produzca a pedido para la marca, idealmente sin vender diseños propios que compitan directamente.
-- CLAF Goldsmith está en evaluación, no debe describirse como proveedor confirmado.
+- CLAF Goldsmith es el proveedor más probable para partir, pero no debe describirse como proveedor confirmado mientras no haya acuerdo formal.
 - Consulta `marca-joyas.md` para el contexto disponible y los asuntos aún por definir.

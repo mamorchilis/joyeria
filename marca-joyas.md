@@ -12,7 +12,7 @@ Resumen del contexto disponible sobre el emprendimiento de joyería artesanal.
 - Se busca un taller de fabricación (no un distribuidor ni mayorista) que haga joyas a pedido y forme una alianza con la marca.
 - Debe ser un fabricante dedicado a maquila para terceros.
 - No se quiere trabajar con un orfebre o taller que venda diseños propios que compitan directamente con la marca (criterio precisado el 2026-10-19).
-- Posible aliado en evaluación: CLAF Goldsmith (taller de fundición en Santiago).
+- Proveedor más probable para partir: CLAF Goldsmith (taller de fundición en Santiago). Ya hubo reuniones; todavía no hay confirmación formal ni contrato.
 
 ### Lo que ofrece CLAF (según las reuniones con el taller; falta dejarlo por escrito)
 
@@ -23,9 +23,18 @@ Resumen del contexto disponible sobre el emprendimiento de joyería artesanal.
 - Muestra diseños base. Los socios ya vieron varios en persona; cuánto ajustarlos lo decide la marca.
 - Por su cuenta vende solo diseños que no tiene con ninguna marca cliente, casi siempre de alta joyería (anillos de compromiso, argollas). Los socios no lo consideran competencia directa, así que CLAF cumple el criterio de fabricación.
 
+## Acuerdos de partida (2026-10-19)
+
+- Colección inicial: **6 diseños**, que los socios están definiendo.
+- Orden de los próximos pasos: primero el **nombre de la marca**; con él, **constituir la empresa**; después, **crear la marca, la web y las redes sociales**.
+- También pendiente: definir el **packaging** (caja, bolsa, decoración, carta con mensaje y cuidados de la joya, y aroma).
+
 ## Información que falta
 
-- Nombre de la marca
+- Nombre de la marca (siguiente paso; de él depende constituir la empresa)
+- Constitución de la empresa
+- Marca, web y redes sociales
+- Packaging: caja, bolsa, decoración, carta con mensaje y cuidados, aroma
 - Diferenciación: sobre todo de marca y, en parte, de diseño (cuánto diseño propio aún no se decide)
 - Público objetivo y posicionamiento
 - Precios y márgenes

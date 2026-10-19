@@ -10,17 +10,20 @@ Desarrollar una marca propia de joyería artesanal en Chile y definir su propues
 - También existe interés en explorar piezas en oro.
 - Referencia de estilo por estudiar: Co Rivera.
 - Se busca un taller que fabrique a pedido para terceros y pueda actuar como aliado de producción.
-- CLAF Goldsmith es una alternativa en evaluación; no hay que tratarla como proveedor confirmado. Lo que ofrece, según las reuniones, está en `marca-joyas.md`.
+- CLAF Goldsmith es el proveedor más probable para partir (ya hubo reuniones), pero todavía no hay confirmación formal ni contrato. Lo que ofrece, según las reuniones, está en `marca-joyas.md`.
 
 ## Decisiones pendientes
-1. Nombre e identidad de marca.
+1. Nombre e identidad de marca. **Siguiente paso:** definir el nombre; de él depende constituir la empresa.
 2. Público objetivo y posicionamiento.
-3. Catálogo inicial y materiales.
-4. Búsqueda, evaluación y selección de fabricante.
+3. Catálogo inicial y materiales. **En curso:** los socios están definiendo los 6 diseños de partida.
+4. Búsqueda, evaluación y selección de fabricante. **En curso:** CLAF es el más probable; falta formalizar.
 5. Costos, precios, márgenes y presupuesto.
 6. Canales de venta y distribución.
 7. Calendario y fecha tentativa de lanzamiento.
 8. Reparto de responsabilidades entre las personas que llevan el proyecto.
+9. Constitución de la empresa, una vez definido el nombre de la marca.
+10. Crear la marca, la web y las redes sociales, después de constituir la empresa.
+11. Packaging: caja, bolsa, decoración, carta con mensaje y cuidados de la joya, y aroma.
 
 ## Lista de inicio de sesión
 - [ ] Consultar los cambios recientes del repositorio.
@@ -67,4 +70,14 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   con la marca. CLAF vende por su cuenta solo diseños que no tiene con ninguna marca cliente,
   casi siempre de alta joyería (anillos de compromiso, argollas), así que cumple el criterio.
   CLAF sigue en evaluación como proveedor: faltan costos, plazos y condiciones por escrito.
+
+- **2026-10-19 — Acuerdos tras las reuniones con CLAF (confirmado por los socios).** CLAF
+  será, muy probablemente, el primer proveedor; no hay contrato todavía. Lo acordado:
+  1. Los socios están definiendo **6 diseños** para comenzar.
+  2. Está pendiente definir el **nombre de la marca**.
+  3. Con el nombre definido, se **constituirá la empresa**.
+  4. Después: **crear la marca, la web y las redes sociales**.
+  5. También pendiente: definir el **packaging** (caja, bolsa, decoración, carta con mensaje
+     y cuidados de la joya, y aroma).
+  El orden importa: nombre, luego empresa, luego marca, web y redes.
 
