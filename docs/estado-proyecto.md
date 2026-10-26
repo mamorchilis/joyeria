@@ -23,7 +23,7 @@ Resumen para retomar el trabajo en una sesión nueva. Al final de cada sesión, 
 1. **Confirmar el nombre** (Pili Trespalacios) con un abogado de marcas y solicitar el registro en INAPI (clases 14 y 35).
 2. **Constituir la empresa.** Al hacerlo, traspasarle el dominio y la cuenta de Instagram.
 3. **Tienda y correo:** diseñar el tema en `tienda/` (portada, producto, historia de la marca y contacto), cargar productos, elegir medio de pago y despacho, conectar `pilitrespalacios.cl` a Shopify desde Cloudflare (y borrar la redirección a Instagram) y definir el correo con el dominio.
-4. **Identidad visual:** logo, colores y tipografía.
+4. **Identidad visual:** logo, colores y tipografía. La está desarrollando Pili por su cuenta (2026-10-26); la web espera su propuesta. El brief con las respuestas de los socios está en `docs/marca/brief-marca.md`.
 5. **En paralelo:** cerrar los 6 diseños de partida (elegir la opción de la medalla de Covadonga y llevar sus preguntas a CLAF), definir el packaging y llevar a CLAF las preguntas pendientes (condiciones por escrito, costos por material, mínimos, plazos, esquema mixto de stock y pedidos, y si también fabrica para CBC).
 
 **Cómo mantener el tablero**
