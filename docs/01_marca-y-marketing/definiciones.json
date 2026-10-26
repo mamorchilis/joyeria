@@ -2,7 +2,7 @@
   "actualizado": "2026-10-26",
   "titular": "La marca se llama Pili Trespalacios. Siguen la empresa, la identidad y la web.",
   "bajada": "El 26-10 los socios eligieron el nombre, tomaron @pilitrespalacios en Instagram y registraron pilitrespalacios.cl. Falta confirmarlo con un abogado de marcas, registrarlo en INAPI y constituir la empresa. CLAF sigue siendo el proveedor más probable y los socios definen los 6 diseños de partida.",
-  "nota": "Esta hoja resume lo que está en docs/estado-proyecto.md y marca-joyas.md. Si una decisión cambia, hay que actualizar esos documentos y esta hoja.",
+  "nota": "Esta hoja resume lo que está en docs/estado-proyecto.md, docs/01_marca-y-marketing/marca.md y docs/04_operaciones/fabricacion.md. Si una decisión cambia, hay que actualizar esos documentos y esta hoja.",
   "ruta": [
     {"paso": "Nombre de la marca", "estado": "acordado", "detalle": "Pili Trespalacios (26-10). Ya están @pilitrespalacios en Instagram y pilitrespalacios.cl. Falta el abogado de marcas y el registro en INAPI (clases 14 y 35).", "hoja": "nombre"},
     {"paso": "Constituir la empresa", "estado": "pendiente", "detalle": "Siguiente paso, ya con el nombre. La razón social puede ser distinta de la marca. Al constituirla, conviene traspasarle el dominio y la cuenta de Instagram."},

@@ -10,7 +10,7 @@ Respuestas de los socios del 2026-10-26, base para la identidad visual y la web.
 
 ## Público y precio
 - Personas de **30 a 65 años**.
-- Precios en el rango de Co Rivera, Igna Valverde y CBC Jewelry (ver `docs/referentes/`).
+- Precios en el rango de Co Rivera, Igna Valverde y CBC Jewelry (ver `docs/03_mercado/competencia/`).
 - Lo religioso (medallas, vírgenes, cruces) es **una línea más**, y también sirve para partir. No es el corazón de la marca.
 
 ## Lo visual

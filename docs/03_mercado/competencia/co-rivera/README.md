@@ -23,7 +23,7 @@ Estos son observaciones del sitio, no conclusiones sobre sus ventas, costos, fab
 
 ## Archivos
 
-- `ficha.json`: textos y datos de la hoja "Co Rivera" del [tablero del proyecto](../../dashboard.html), con el formato estándar de `docs/referentes/README.md`. Incluye la revisión de políticas y portada del 18-10-2026 (a pedido en 15 a 20 días hábiles, despacho por Flapp, tienda en Casa Costanera y cambios solo para regalos).
+- `ficha.json`: textos y datos de la hoja "Co Rivera" del [tablero del proyecto](../../../00_tablero/dashboard.html), con el formato estándar de `docs/03_mercado/competencia/README.md`. Incluye la revisión de políticas y portada del 18-10-2026 (a pedido en 15 a 20 días hábiles, despacho por Flapp, tienda en Casa Costanera y cambios solo para regalos).
 - `dashboard.html`: tablero estratégico local con la captura integrada, análisis de precios y mix, filtros y carga opcional de ventas.
 - `catalogo_publico.csv`: 199 productos visibles en la colección general, sin imágenes ni reseñas.
 - `fuentes-y-limites.md`: enlaces consultados, condiciones relevantes y limitaciones.

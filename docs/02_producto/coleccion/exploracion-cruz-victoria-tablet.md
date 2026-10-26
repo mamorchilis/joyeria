@@ -15,7 +15,7 @@ Exploración visual, sin modelo final aprobado ni especificaciones de fabricaci�
 ## Medalla de Covadonga: seguimiento de variantes
 - En la misma sesión se pidió retomar las propuestas de medalla de la Virgen de Covadonga en plata y bronce, **retirando los circones sin cambiar los demás elementos**.
 - Estas solicitudes son iteraciones visuales, no una selección definitiva de diseño.
-- La documentación principal de la medalla permanece en `docs/coleccion/medalla-covadonga.md`; este registro no la sustituye.
+- La documentación principal de la medalla permanece en `docs/02_producto/coleccion/medalla-covadonga.md`; este registro no la sustituye.
 
 ## Pendientes
 - Elegir una variante final por pieza y material.

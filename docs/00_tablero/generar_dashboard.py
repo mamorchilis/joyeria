@@ -1,23 +1,23 @@
-"""Mete los datos del proyecto dentro de docs/dashboard.html.
+"""Mete los datos del proyecto dentro de docs/00_tablero/dashboard.html.
 
 Los datos quedan en el mismo archivo del tablero, para que funcione aunque se
 envíe solo (por ejemplo, por WhatsApp o correo). El tablero tiene tres secciones:
 
-Análisis de competencia (docs/referentes/):
+Análisis de competencia (docs/03_mercado/competencia/):
   - resumen.json: conclusiones comparativas.
   - una carpeta por competidor (por ejemplo co-rivera/) con ficha.json y
     catalogo_publico.csv (columnas mínimas: producto, precio_clp, estado y url).
 
-Definiciones de marca (docs/marca/):
+Definiciones de marca (docs/01_marca-y-marketing/):
   - definiciones.json: hoja de ruta, temas por definir y lo acordado con el taller.
   - nombres.json: candidatos de nombre y su análisis.
 
-Colección inicial (docs/coleccion/):
+Colección inicial (docs/02_producto/coleccion/):
   - un JSON por diseño (por ejemplo medalla-covadonga.json) con sus opciones,
     precios de referencia y pendientes. Cada uno es una hoja del tablero.
 
 Uso, desde la raíz del repositorio:
-  python docs/generar_dashboard.py
+  python docs/00_tablero/generar_dashboard.py
 """
 
 import csv
@@ -27,10 +27,11 @@ import unicodedata
 from datetime import date
 from pathlib import Path
 
-DOCS = Path(__file__).resolve().parent
-BASE = DOCS / "referentes"
-MARCA = DOCS / "marca"
-COLECCION = DOCS / "coleccion"
+TABLERO = Path(__file__).resolve().parent
+DOCS = TABLERO.parent
+BASE = DOCS / "03_mercado" / "competencia"
+MARCA = DOCS / "01_marca-y-marketing"
+COLECCION = DOCS / "02_producto" / "coleccion"
 
 
 def norm(texto):
@@ -165,7 +166,7 @@ def main():
     coleccion.sort(key=lambda d: d.get("orden", 99))
     datos = {"generado": date.today().isoformat(), "resumen": resumen, "competidores": competidores,
              "definiciones": definiciones, "nombres": nombres, "coleccion": coleccion}
-    salida = DOCS / "dashboard.html"
+    salida = TABLERO / "dashboard.html"
     html = salida.read_text(encoding="utf-8")
     # "<\/" evita que un texto con "</script>" cierre el bloque antes de tiempo.
     json_datos = json.dumps(datos, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")

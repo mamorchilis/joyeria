@@ -1,7 +1,7 @@
 # Medalla de la Virgen de Covadonga: opciones de diseño
 
 Revisión: 2026-10-19. Es una de las 6 piezas de la colección de partida. Se hará en **bronce y plata** (decidido por los socios).
-Los datos van también en `medalla-covadonga.json`, que alimenta la hoja *Medalla de Covadonga* del tablero (`docs/dashboard.html`).
+Los datos van también en `medalla-covadonga.json`, que alimenta la hoja *Medalla de Covadonga* del tablero (`docs/00_tablero/dashboard.html`).
 
 **Estado: en análisis.** Son propuestas para conversar entre los socios y llevar a CLAF. No hay diseño elegido ni costos del taller.
 
@@ -44,7 +44,7 @@ Los diseños y fotos son de cada joyería: sirven para entender el mercado, no p
 
 ### Precios
 
-**Medallas religiosas de la competencia en Chile** (de `docs/referentes/`, catálogos capturados entre el 11 y el 19 de octubre de 2026):
+**Medallas religiosas de la competencia en Chile** (de `docs/03_mercado/competencia/`, catálogos capturados entre el 11 y el 19 de octubre de 2026):
 
 | Marca | Pieza | Bronce | Plata |
 |---|---|---|---|

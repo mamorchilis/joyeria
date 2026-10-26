@@ -7,29 +7,31 @@
 Resumen para retomar el trabajo en una sesión nueva. Al final de cada sesión, actualizar esta sección.
 
 **Dónde quedó cada cosa**
-- **Tablero del proyecto:** `docs/dashboard.html`. Es un solo archivo, con los datos adentro: se abre con doble clic o se manda por WhatsApp, y tiene modo claro y modo oscuro propio. Tiene tres secciones:
+- **Organización de carpetas:** desde el 2026-10-26 la documentación está en `docs/`, separada por área y numerada (`00_tablero`, `01_marca-y-marketing`, `02_producto`, `03_mercado`, `04_operaciones`, `05_ventas`, `06_finanzas`; `07_legal` se crea cuando tenga contenido). El mapa está en `docs/README.md`.
+- **Tablero del proyecto:** `docs/00_tablero/dashboard.html`. Es un solo archivo, con los datos adentro: se abre con doble clic o se manda por WhatsApp, y tiene modo claro y modo oscuro propio. Tiene tres secciones:
   - *Análisis de competencia:* resumen comparativo y una hoja por cada uno de los 4 competidores (Co Rivera, Igna Valverde, CBC Jewelry y Milagritos de María).
   - *Definiciones de marca:* hoja de ruta (lo acordado, en curso y por definir) y nombre de la marca.
   - *Colección inicial:* una hoja por diseño. Por ahora, la medalla de la Virgen de Covadonga.
-- **Competencia:** `docs/referentes/`, con una carpeta por marca (`ficha.json`, `catalogo_publico.csv`, `README.md` y `fuentes-y-limites.md`), las conclusiones comparativas en `resumen.json` y el formato estándar explicado en `docs/referentes/README.md`.
-- **Definiciones de marca:** `docs/marca/definiciones.json` (hoja de ruta) y `docs/marca/nombres.json` (datos del análisis de nombres; el texto completo está en `docs/marca/nombres.md`).
-- **Contexto de negocio y CLAF:** `marca-joyas.md`.
-- **Gastos:** `docs/gastos/gastos.csv`, una fila por pago, con quién pagó. El resumen por socio y los vencimientos están en `docs/gastos/README.md`.
+- **Competencia:** `docs/03_mercado/competencia/`, con una carpeta por marca (`ficha.json`, `catalogo_publico.csv`, `README.md` y `fuentes-y-limites.md`), las conclusiones comparativas en `resumen.json` y el formato estándar explicado en `docs/03_mercado/competencia/README.md`.
+- **Definiciones de marca:** `docs/01_marca-y-marketing/definiciones.json` (hoja de ruta) y `docs/01_marca-y-marketing/nombres.json` (datos del análisis de nombres; el texto completo está en `docs/01_marca-y-marketing/nombres.md`).
+- **Contexto de negocio y CLAF:** `docs/01_marca-y-marketing/marca.md` (concepto y nombre) y `docs/04_operaciones/fabricacion.md` (criterios de taller y lo que ofrece CLAF).
+- **Gastos:** `docs/06_finanzas/gastos/gastos.csv`, una fila por pago, con quién pagó. El resumen por socio y los vencimientos están en `docs/06_finanzas/gastos/README.md`.
 - **Dominio y DNS:** `pilitrespalacios.cl` está en NIC Chile y vence el 2028-10-26. Su DNS está en Cloudflare (plan gratuito, servidores `adi` y `yisroel.ns.cloudflare.com`). Cloudflare confirmó la zona como activa el 2026-10-26, y ese día se comprobó que los servidores ya responden y que ambas direcciones llevan a Instagram. Todavía no hay web ni correo con el dominio. Mientras tanto, Cloudflare redirige `pilitrespalacios.cl` y `www` a Instagram: dos registros A de relleno (`192.0.2.1`, con proxy) y la regla "Redirigir a Instagram (temporal, mientras no hay web)", con código 302. Al tener web, se borran los dos registros y la regla.
 - **Tienda online:** se decidió vender por la web con Shopify y diseñar un tema propio desde este repositorio (2026-10-26). La tienda es `qe0efu-mp.myshopify.com` y por ahora se llama "My Store". Está en prueba gratis, sin plan pagado y protegida con contraseña. Está a nombre de la cuenta personal de un socio, la misma de Cloudflare, y hay que traspasarla a la empresa cuando exista. El tema está en `tienda/` y parte de Horizon, el tema gratuito de Shopify (versión del 2026-10-13). Para verlo en vivo: `shopify theme dev --store qe0efu-mp` desde `tienda/`, en una terminal interactiva porque pide la contraseña de la tienda, y abrir `http://127.0.0.1:9292`. Pendiente: medio de pago (la app de Webpay estaba solo en piloto; Mercado Pago sí funciona; confirmar la comisión extra de Shopify por usar pasarela externa), despachos, conectar el dominio y elegir un plan antes de abrir.
-- **Colección inicial:** `docs/coleccion/`, un `.md` y un `.json` por diseño. La medalla de Covadonga tiene 5 opciones, precios de referencia y una recomendación (sin decisión).
+- **Modelos virtuales:** tres modelos ficticias aprobadas el 2026-10-26 (Antonia, 30; Inés, 45; Teresa, 60) para mostrar las joyas. Decisiones en `docs/01_marca-y-marketing/modelos/modelos.md`, photobooks en `modelos/imagenes/` y las instrucciones para otra IA en `modelos/brief-para-ia.md`. Falta la imagen del casting conjunto.
+- **Colección inicial:** `docs/02_producto/coleccion/`, un `.md` y un `.json` por diseño. La medalla de Covadonga tiene 5 opciones, precios de referencia y una recomendación (sin decisión).
 
 **Próximos pasos concretos**
 1. **Confirmar el nombre** (Pili Trespalacios) con un abogado de marcas y solicitar el registro en INAPI (clases 14 y 35).
 2. **Constituir la empresa.** Al hacerlo, traspasarle el dominio y la cuenta de Instagram.
 3. **Tienda y correo:** diseñar el tema en `tienda/` (portada, producto, historia de la marca y contacto), cargar productos, elegir medio de pago y despacho, conectar `pilitrespalacios.cl` a Shopify desde Cloudflare (y borrar la redirección a Instagram) y definir el correo con el dominio.
-4. **Identidad visual:** logo, colores y tipografía. La está desarrollando Pili por su cuenta (2026-10-26); la web espera su propuesta. El brief con las respuestas de los socios está en `docs/marca/brief-marca.md`.
+4. **Identidad visual:** logo, colores y tipografía. La está desarrollando Pili por su cuenta (2026-10-26); la web espera su propuesta. El brief con las respuestas de los socios está en `docs/01_marca-y-marketing/brief-marca.md`.
 5. **En paralelo:** cerrar los 6 diseños de partida (elegir la opción de la medalla de Covadonga y llevar sus preguntas a CLAF), definir el packaging y llevar a CLAF las preguntas pendientes (condiciones por escrito, costos por material, mínimos, plazos, esquema mixto de stock y pedidos, y si también fabrica para CBC).
 
 **Cómo mantener el tablero**
-- Si cambia una decisión, actualizar este documento y `marca-joyas.md`, después los JSON de `docs/marca/`, `docs/coleccion/` o `docs/referentes/`, y regenerar con `python docs/generar_dashboard.py` (desde la raíz del repositorio).
-- Para sumar un competidor, seguir `docs/referentes/README.md`.
-- Para verlo en el navegador: `python -m http.server 8124 --directory docs` y abrir `http://localhost:8124/dashboard.html`, o simplemente abrir el archivo.
+- Si cambia una decisión, actualizar este documento y el del área correspondiente (`docs/01_marca-y-marketing/marca.md`, `docs/04_operaciones/fabricacion.md`, etc.), después los JSON de `docs/01_marca-y-marketing/`, `docs/02_producto/coleccion/` o `docs/03_mercado/competencia/`, y regenerar con `python docs/00_tablero/generar_dashboard.py` (desde la raíz del repositorio).
+- Para sumar un competidor, seguir `docs/03_mercado/competencia/README.md`.
+- Para verlo en el navegador: `python -m http.server 8124 --directory docs/00_tablero` y abrir `http://localhost:8124/dashboard.html`, o simplemente abrir el archivo.
 - Antes de subir cambios, revisar que el tablero cargue sin errores en computador y en celular, en modo claro y oscuro.
 - No guardar datos personales de terceros (por ejemplo, titulares de dominios o de marcas, o datos bancarios publicados por competidores).
 
@@ -39,14 +41,14 @@ Desarrollar una marca propia de joyería artesanal en Chile y definir su propues
 ## Base conocida
 - Categoría inicial: joyería artesanal en plata y bronce.
 - También existe interés en explorar piezas en oro.
-- Referencias estudiadas: Co Rivera (la principal), Igna Valverde, CBC Jewelry y Milagritos de María (ver `docs/referentes/`).
+- Referencias estudiadas: Co Rivera (la principal), Igna Valverde, CBC Jewelry y Milagritos de María (ver `docs/03_mercado/competencia/`).
 - Se busca un taller que fabrique a pedido para terceros y pueda actuar como aliado de producción.
-- CLAF Goldsmith es el proveedor más probable para partir (ya hubo reuniones), pero todavía no hay confirmación formal ni contrato. Lo que ofrece, según las reuniones, está en `marca-joyas.md`.
+- CLAF Goldsmith es el proveedor más probable para partir (ya hubo reuniones), pero todavía no hay confirmación formal ni contrato. Lo que ofrece, según las reuniones, está en `docs/04_operaciones/fabricacion.md`.
 
 ## Decisiones pendientes
 1. Identidad de marca. El nombre ya está elegido (Pili Trespalacios, 26-10); falta confirmarlo con un abogado de marcas, registrarlo en INAPI y definir la identidad visual.
-2. Público objetivo y posicionamiento.
-3. Catálogo inicial y materiales. **En curso:** los socios están definiendo los 6 diseños de partida. Uno será la medalla de la Virgen de Covadonga en bronce y plata (opciones en `docs/coleccion/medalla-covadonga.md`).
+2. Público objetivo, posicionamiento y diferenciación (sobre todo de marca y, en parte, de diseño). En el casting de modelos (2026-10-26), Juan Antonio indicó el segmento ABC1 chileno.
+3. Catálogo inicial y materiales. **En curso:** los socios están definiendo los 6 diseños de partida. Uno será la medalla de la Virgen de Covadonga en bronce y plata (opciones en `docs/02_producto/coleccion/medalla-covadonga.md`).
 4. Búsqueda, evaluación y selección de fabricante. **En curso:** CLAF es el más probable; falta formalizar.
 5. Costos, precios, márgenes y presupuesto.
 6. Canales de venta y distribución.
@@ -58,8 +60,8 @@ Desarrollar una marca propia de joyería artesanal en Chile y definir su propues
 
 ## Lista de inicio de sesión
 - [ ] Consultar los cambios recientes del repositorio.
-- [ ] Leer `AGENTS.md`, `README.md` y `marca-joyas.md`.
-- [ ] Leer la sección **Punto de retorno** de este documento y abrir `docs/dashboard.html`.
+- [ ] Leer `AGENTS.md`, `README.md` y `docs/README.md` (mapa de carpetas).
+- [ ] Leer la sección **Punto de retorno** de este documento y abrir `docs/00_tablero/dashboard.html`.
 - [ ] Confirmar si hay decisiones nuevas que incorporar a la documentación.
 - [ ] Identificar el próximo asunto prioritario.
 
@@ -70,16 +72,16 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   muestra con la cámara cómo se ve la persona con una joya puesta, pensada primero para una
   tablet en un punto de venta y después para la tienda en línea. Hay dos joyas de prueba (un
   choker y un anillo). Es un prototipo: no está probado en una tablet y el realismo aún no es
-  el definitivo. Detalle en `docs/probador-virtual.md`.
+  el definitivo. Detalle en `docs/05_ventas/probador-virtual.md`.
 
 - **2026-10-18 — Formato estándar para estudiar competidores (vigente).** Cada competidor
-  tiene una carpeta en `docs/referentes/` con los mismos archivos, y un tablero común
-  (hoy en `docs/dashboard.html`) con una hoja de resumen comparativo y una hoja por
+  tiene una carpeta en `docs/03_mercado/competencia/` con los mismos archivos, y un tablero común
+  (hoy en `docs/00_tablero/dashboard.html`) con una hoja de resumen comparativo y una hoja por
   empresa. Están Co Rivera e Igna Valverde (desde el 18-10) y CBC Jewelry y Milagritos de
   María (desde el 19-10). El tablero es un solo archivo, con los datos adentro, que se puede
   mandar por WhatsApp o correo. Las conclusiones de ese tablero son
   hipótesis: no hay datos de ventas ni costos de los competidores. Detalle en
-  `docs/referentes/README.md`.
+  `docs/03_mercado/competencia/README.md`.
 
 - **2026-10-19 — Lo que contó CLAF sobre sus clientes (información de la reunión, no un
   acuerdo).** CLAF dijo que fabrica para varias marcas y que no repite diseños: los ajusta,
@@ -119,15 +121,15 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   dominios, uso visible en la web, encaje con el segmento y registro en INAPI. En INAPI,
   Parpaglione y Pili Trespalacios están despejados en joyería; del Pilar choca con "Maria
   Pilar" y "EL PILAR", y San Salvatore con "Salvatore Ferragamo" (clase 14). Faltan
-  Instagram y una prueba con clientes. Análisis y pendientes en `docs/marca/nombres.md`.
+  Instagram y una prueba con clientes. Análisis y pendientes en `docs/01_marca-y-marketing/nombres.md`.
 
 - **2026-10-19 — El tablero pasa a ser del proyecto completo (vigente).** Se movió a
-  `docs/dashboard.html` y tiene dos secciones: *Análisis de competencia* (resumen y una hoja
+  `docs/00_tablero/dashboard.html` y tiene dos secciones: *Análisis de competencia* (resumen y una hoja
   por competidor) y *Definiciones de marca* (hoja de ruta con lo acordado, en curso y por
   definir, y el análisis del nombre). Los datos de la segunda sección están en
-  `docs/marca/definiciones.json` y `docs/marca/nombres.json`; si cambia una decisión, hay que
-  actualizar este documento, `marca-joyas.md` y esos archivos, y regenerar con
-  `python docs/generar_dashboard.py`.
+  `docs/01_marca-y-marketing/definiciones.json` y `docs/01_marca-y-marketing/nombres.json`; si cambia una decisión, hay que
+  actualizar este documento, `marca-joyas.md` (hoy repartido en `docs/01_marca-y-marketing/marca.md` y `docs/04_operaciones/fabricacion.md`) y esos archivos, y regenerar con
+  `python docs/00_tablero/generar_dashboard.py`.
 
 - **2026-10-19 — Modo oscuro propio en el tablero (vigente).** En celulares con modo oscuro,
   el navegador oscurecía la página a su manera y los colores de las barras dejaban de
@@ -142,7 +144,7 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   La Santa Cueva y Bicolor. La recomendación (no decidida) es la Clásica redibujada, con la
   Cruz de la Victoria en el reverso y con cadena o cinta de terciopelo azul. El precio
   sugerido es una hipótesis tomada de la competencia (clásica: $55–65 mil en bronce y $85–99
-  mil en plata) y espera los costos de CLAF. Detalle en `docs/coleccion/medalla-covadonga.md`
+  mil en plata) y espera los costos de CLAF. Detalle en `docs/02_producto/coleccion/medalla-covadonga.md`
   y en la hoja *Colección inicial* del tablero.
 
 - **2026-10-26 — Nombre de la marca: Pili Trespalacios (decidido por los socios).** Se
@@ -154,4 +156,16 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   empresa porque son baratos y evitan que otro los tome. Se recomienda traspasarlos a la
   empresa cuando se constituya (recomendación, no decidida). Pendiente: abogado de marcas, registro en INAPI y evaluar también
   `pilartrespalacios.cl` y `pilitrespalacios.com`. Los gastos se registran desde ahora
-  en `docs/gastos/`.
+  en `docs/06_finanzas/gastos/`.
+
+- **2026-10-26 — Modelos virtuales aprobadas (decidido por Juan Antonio).** Tres mujeres
+  ficticias para mostrar las joyas: Antonia (30), Inés (45) y Teresa (60), generadas con
+  ChatGPT, con photobooks sin joyas (verano, invierno, traje de baño y detalles de manos, orejas
+  y cuello). Son referencias generadas, no medidas reales: revisar continuidad y fidelidad de
+  la joya en cada foto. Detalle en `docs/01_marca-y-marketing/modelos/`.
+
+- **2026-10-26 — Documentación ordenada por área (vigente).** `docs/` se separó en carpetas
+  numeradas por área. `marca-joyas.md` se repartió en `docs/01_marca-y-marketing/marca.md`
+  (concepto y nombre) y `docs/04_operaciones/fabricacion.md` (taller y CLAF); sus acuerdos y
+  pendientes ya estaban en este documento. El tablero pasó a `docs/00_tablero/`. Las rutas
+  citadas en las entradas anteriores se actualizaron a la estructura nueva.

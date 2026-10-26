@@ -4,7 +4,7 @@
 **Sitio:** https://mariaignaciavalverde.cl/
 **Uso previsto:** análisis interno del proyecto. Este material no autoriza a copiar fotografías, diseños, textos de producto ni identidad visual.
 
-Para ver los gráficos, abrir la hoja "Igna Valverde" del [tablero del proyecto](../../dashboard.html).
+Para ver los gráficos, abrir la hoja "Igna Valverde" del [tablero del proyecto](../../../00_tablero/dashboard.html).
 
 ## Por qué la estudiamos
 

@@ -2,7 +2,7 @@
 
 Estudio de las marcas que compiten con el proyecto o le sirven de referencia. Todas siguen el mismo formato, para poder compararlas en un solo tablero.
 
-**Tablero:** abrir [`docs/dashboard.html`](../dashboard.html) con doble clic. En su sección **Análisis de competencia** hay una hoja de resumen comparativo y una hoja por cada competidor. La otra sección, **Definiciones de marca**, se alimenta de `docs/marca/`.
+**Tablero:** abrir [`docs/00_tablero/dashboard.html`](../../00_tablero/dashboard.html) con doble clic. En su sección **Análisis de competencia** hay una hoja de resumen comparativo y una hoja por cada competidor. La otra sección, **Definiciones de marca**, se alimenta de `docs/01_marca-y-marketing/`.
 
 | Competidor | Carpeta | Catálogo | Revisión del sitio |
 |---|---|---|---|
@@ -27,15 +27,15 @@ Los temas de la sección "Cómo opera" (`modelo` en `ficha.json`) son siempre lo
 ## Cómo agregar un competidor o actualizar uno
 
 1. Crear o actualizar la carpeta con los cuatro archivos. Se puede copiar `igna-valverde/ficha.json` como plantilla.
-2. Desde la raíz del repositorio, ejecutar `python docs/generar_dashboard.py`. Esto actualiza los datos que van dentro de `docs/dashboard.html`.
-3. Abrir `docs/dashboard.html` y revisar la nueva hoja.
-4. Si cambian las conclusiones generales, editar `resumen.json` y volver a ejecutar el script. Los próximos pasos, las preguntas para el taller y lo que falta validar están ahora en `docs/marca/definiciones.json`.
+2. Desde la raíz del repositorio, ejecutar `python docs/00_tablero/generar_dashboard.py`. Esto actualiza los datos que van dentro de `docs/00_tablero/dashboard.html`.
+3. Abrir `docs/00_tablero/dashboard.html` y revisar la nueva hoja.
+4. Si cambian las conclusiones generales, editar `resumen.json` y volver a ejecutar el script. Los próximos pasos, las preguntas para el taller y lo que falta validar están ahora en `docs/01_marca-y-marketing/definiciones.json`.
 
-Los datos quedan dentro del mismo `docs/dashboard.html`, así que el archivo se puede mandar solo (por WhatsApp o correo) y abre igual. El bloque entre `DATOS:INICIO` y `DATOS:FIN` lo escribe el script: no hay que editarlo a mano.
+Los datos quedan dentro del mismo `docs/00_tablero/dashboard.html`, así que el archivo se puede mandar solo (por WhatsApp o correo) y abre igual. El bloque entre `DATOS:INICIO` y `DATOS:FIN` lo escribe el script: no hay que editarlo a mano.
 
 ## Reglas comunes
 
-- **Clasificación.** La categoría, el material y el motivo se asignan con las mismas reglas para todas las marcas (ver `docs/generar_dashboard.py`). Si el CSV trae el tipo de producto de la tienda o el material declarado en la ficha, se usan esos datos. Si no, se deducen del nombre. Son etiquetas para orientarse y conviene revisarlas.
+- **Clasificación.** La categoría, el material y el motivo se asignan con las mismas reglas para todas las marcas (ver `docs/00_tablero/generar_dashboard.py`). Si el CSV trae el tipo de producto de la tienda o el material declarado en la ficha, se usan esos datos. Si no, se deducen del nombre. Son etiquetas para orientarse y conviene revisarlas.
 - **Exclusiones.** Las fichas con precio $0 y las que no son joyas ni accesorios (pagos, devoluciones, kits de limpieza, gift cards, aromas) quedan fuera de las estadísticas, pero siguen visibles en gris en el explorador.
 - **Escalones de precio** (iguales en todas las hojas): menos de $50 mil, $50–79 mil, $80–109 mil, $110–149 mil, $150–219 mil, $220–399 mil y $400 mil o más.
 - **Precio de cada ficha.** Se usa el precio publicado más bajo de sus variantes.
