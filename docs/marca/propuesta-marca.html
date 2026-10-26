@@ -1,0 +1,538 @@
+<title>Marca Pili Trespalacios</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=EB+Garamond:ital,wght@0,400;1,400&family=Tenor+Sans&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: a quiet neutral frame (the "mesa de trabajo") that presents three full-bleed brand panels, each in its own fixed palette. */
+:root{
+  --bg:#F4F3F0; --fg:#1B1A18; --muted:#6C6862; --line:#DCD8D1; --card:#FFFFFF;
+  --f-ui:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --f-bodoni:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-garamond:"EB Garamond",Garamond,Georgia,serif;
+  --f-tenor:"Tenor Sans","Gill Sans","Optima",sans-serif;
+  --f-news:"Newsreader",Georgia,serif;
+  --f-instr:"Instrument Serif",Georgia,serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141312;--fg:#ECE9E4;--muted:#A29D95;--line:#2F2D2A;--card:#1D1C1A;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141312;--fg:#ECE9E4;--muted:#A29D95;--line:#2F2D2A;--card:#1D1C1A;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-ui);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+
+/* ---------- Portada del documento ---------- */
+.intro{padding-block:56px 40px}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.intro h1{font-family:var(--f-tenor);font-weight:400;font-size:clamp(30px,5.4vw,58px);letter-spacing:.14em;text-transform:uppercase;line-height:1.1;margin-top:18px}
+.intro .lede{max-width:62ch;margin-top:22px;font-size:18px;color:var(--fg)}
+.intro .lede + .lede{margin-top:12px;color:var(--muted);font-size:16px}
+.toc{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.toc a{display:flex;gap:10px;align-items:baseline;text-decoration:none;border:1px solid var(--line);background:var(--card);padding:10px 16px;border-radius:999px;font-size:14px}
+.toc a span{color:var(--muted);font-size:12px;letter-spacing:.08em}
+.brief{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:36px}
+.brief div{background:var(--bg);padding:16px 18px}
+.brief dt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.brief dd{margin:6px 0 0;font-size:15px}
+
+/* ---------- Paneles de cada camino (paleta fija, no dependen del tema) ---------- */
+.terr{background:var(--t-bg);color:var(--t-fg);padding-block:64px 72px;border-top:1px solid var(--line)}
+.t-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:end}
+.t-num{font-family:var(--f-ui);font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.7}
+.t-name{font-family:var(--t-display);font-weight:400;font-size:clamp(40px,7vw,84px);line-height:1;margin-top:10px;letter-spacing:var(--t-name-track,0)}
+.t-idea{font-family:var(--t-body);font-size:clamp(20px,2.3vw,26px);line-height:1.3;margin-top:14px;font-style:var(--t-idea-style,normal)}
+.t-story{font-family:var(--f-ui);font-size:16px;max-width:60ch;opacity:.9}
+.t-story p + p{margin-top:10px}
+.sub{font-family:var(--f-ui);font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.65;margin:52px 0 16px;display:flex;align-items:center;gap:14px}
+.sub::after{content:"";flex:1;height:1px;background:currentColor;opacity:.25}
+
+/* Logos */
+.logos{display:grid;grid-template-columns:1.25fr .75fr 1fr;gap:12px}
+.lcard{background:var(--t-paper);color:var(--t-fg);min-height:220px;display:grid;place-items:center;position:relative;padding:28px 20px 40px}
+.lcard.inv{background:var(--t-ink);color:var(--t-paper)}
+.lcard .cap{position:absolute;left:14px;bottom:12px;font-family:var(--f-ui);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.logos-dark{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.logos-dark .lcard{min-height:130px}
+
+/* Logotipos (texto) */
+.lt-herencia{font-family:var(--f-bodoni);font-weight:400;text-align:center;line-height:1}
+.lt-herencia .n{font-size:clamp(22px,3vw,34px);letter-spacing:.14em}
+.lt-herencia .s{display:block;font-family:var(--f-garamond);font-style:italic;font-size:.5em;letter-spacing:.06em;margin-top:.55em;opacity:.8}
+.lt-casas{font-family:var(--f-tenor);text-align:center;line-height:1}
+.lt-casas .n{font-size:clamp(17px,2.2vw,24px);letter-spacing:.34em;padding-left:.34em}
+.lt-casas .s{display:block;font-size:.42em;letter-spacing:.5em;margin-top:1.1em;opacity:.7;padding-left:.5em}
+.lt-atelier{text-align:center;line-height:.9}
+.lt-atelier .n{font-family:var(--f-instr);font-style:italic;font-size:clamp(46px,6vw,70px);letter-spacing:-.01em}
+.lt-atelier .s{display:block;font-family:var(--f-ui);font-weight:500;font-size:clamp(10px,1.1vw,12px);letter-spacing:.42em;margin-top:.7em;padding-left:.42em}
+.lcard.small .n{font-size:.78em}
+
+.iso{width:96px;height:auto;color:currentColor}
+.imago{display:grid;justify-items:center;gap:16px}
+.imago .iso{width:58px}
+.logos-dark .iso{width:56px}
+.logos-dark .imago .iso{width:36px}
+.logos-dark .imago{gap:10px}
+
+/* Paleta */
+.palette{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.sw{display:grid;grid-template-rows:96px auto}
+.sw i{display:block;border:1px solid rgba(0,0,0,.08)}
+.sw b{font-family:var(--f-ui);font-weight:500;font-size:14px;margin-top:10px;display:block}
+.sw small{font-family:var(--f-mono);font-size:12px;opacity:.7}
+.sw em{display:block;font-family:var(--f-ui);font-style:normal;font-size:12.5px;opacity:.75;margin-top:2px}
+
+/* Tipografía y voz */
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.panel{background:var(--t-paper);padding:24px;min-width:0}
+.panel .meta{font-family:var(--f-ui);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-bottom:14px}
+.type-a{font-family:var(--t-display);font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:var(--t-disp-track,0)}
+.type-b{font-family:var(--t-body);font-size:18px;line-height:1.5;margin-top:16px;max-width:46ch}
+.voice{display:grid;gap:16px}
+.voice div{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:baseline}
+.voice span{font-family:var(--f-mono);font-size:11px;opacity:.6}
+.voice p{font-family:var(--t-body);font-size:18px;line-height:1.35}
+.colls{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.colls b{font-family:var(--f-ui);font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;border:1px solid currentColor;padding:6px 10px;opacity:.85}
+
+/* Mock web */
+.mock{background:var(--t-paper);border:1px solid rgba(0,0,0,.1);overflow:hidden;font-size:clamp(11px,1.15vw,14px)}
+.mock .bar{display:flex;gap:6px;padding:9px 12px;background:rgba(127,127,127,.12)}
+.mock .bar i{width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.22}
+.mock .bar span{margin-left:10px;font-family:var(--f-mono);font-size:11px;opacity:.55}
+.mock .ann{font-family:var(--f-ui);text-align:center;font-size:.72em;letter-spacing:.2em;text-transform:uppercase;padding:.7em;background:var(--t-ink);color:var(--t-paper)}
+.mock nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:1.3em 2em;font-family:var(--f-ui);font-size:.74em;letter-spacing:.16em;text-transform:uppercase}
+.mock nav .l,.mock nav .r{display:flex;gap:2em}
+.mock nav .r{justify-content:flex-end}
+.mock .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:30em}
+.mock .hero .copy{display:flex;flex-direction:column;justify-content:flex-end;gap:1.1em;padding:3em 2.4em}
+.mock .eyebrow{font-family:var(--f-ui);font-size:.72em;letter-spacing:.22em;text-transform:uppercase;opacity:.7}
+.mock .hl{font-family:var(--t-display);font-weight:400;font-size:2.9em;line-height:1.02;letter-spacing:var(--t-disp-track,0)}
+.mock .cta{align-self:flex-start;font-family:var(--f-ui);font-size:.72em;letter-spacing:.2em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:.35em}
+.mock .visual{background:var(--t-stage);display:grid;place-items:center;overflow:hidden;position:relative}
+.mock .visual svg{width:62%;max-width:270px;height:auto;margin-bottom:2em}
+.mock .visual .tag{position:absolute;left:1.4em;bottom:1.2em;font-family:var(--f-ui);font-size:.68em;letter-spacing:.16em;text-transform:uppercase;color:var(--t-stage-fg)}
+.mock .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1em;padding:2em}
+.mock .grid div{display:grid;gap:.5em}
+.mock .grid i{display:block;aspect-ratio:4/5;background:var(--t-soft)}
+.mock .grid b{font-family:var(--f-ui);font-weight:500;font-size:.68em;letter-spacing:.14em;text-transform:uppercase}
+.mock .grid small{font-family:var(--f-ui);font-size:.68em;opacity:.7}
+
+/* Aplicaciones */
+.apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.app{background:var(--t-paper);display:grid;grid-template-rows:1fr auto;min-height:260px}
+.app .stage{display:grid;place-items:center;padding:22px}
+.app .cap{font-family:var(--f-ui);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;padding:0 16px 14px}
+.ig{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;width:100%;max-width:300px}
+.ig .av{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;background:var(--t-ink);color:var(--t-paper)}
+.ig .av .iso{width:42px}
+.ig b{font-family:var(--f-ui);font-weight:600;font-size:14px;display:block}
+.ig small{font-family:var(--f-ui);font-size:13px;opacity:.75;line-height:1.35;display:block;margin-top:4px}
+.ig .posts{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:6px}
+.ig .posts i{aspect-ratio:1;display:grid;place-items:center;background:var(--t-soft);font-style:normal}
+.ig .posts i:nth-child(2){background:var(--t-ink);color:var(--t-paper)}
+.ig .posts i:nth-child(3){background:var(--t-stage)}
+.ig .posts .iso{width:44%}
+.box{width:min(190px,80%);aspect-ratio:1;background:var(--t-box);color:var(--t-box-fg);display:grid;place-items:center;position:relative;box-shadow:0 18px 30px -18px rgba(0,0,0,.45),inset 0 0 0 7px rgba(255,255,255,.05)}
+.box .iso{width:34%}
+.box::after{content:"";position:absolute;inset:auto 0 18% 0;height:9%;background:var(--t-ribbon);opacity:var(--t-ribbon-op,1)}
+.stamp svg{width:min(200px,86%);height:auto}
+
+/* Pros / riesgos */
+.pr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pr .panel ul{margin:0;padding-left:18px;font-family:var(--f-ui);font-size:15px;display:grid;gap:8px}
+
+/* Recomendación */
+.reco{padding-block:64px 40px}
+.reco h2{font-family:var(--f-tenor);font-weight:400;font-size:clamp(26px,3.8vw,40px);letter-spacing:.06em;margin-top:12px}
+.reco .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px}
+.reco .cols div{background:var(--card);border:1px solid var(--line);padding:20px}
+.reco .cols b{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:500}
+.reco .lede{max-width:66ch;margin-top:16px;font-size:17px}
+.next{padding-block:8px 72px}
+.next ol{margin:16px 0 0;padding-left:20px;display:grid;gap:10px;max-width:70ch}
+.next h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.foot{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-block:20px 40px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .t-head,.duo,.pr{grid-template-columns:1fr}
+  .logos{grid-template-columns:1fr 1fr}
+  .logos .lcard:first-child{grid-column:1/-1}
+  .apps,.reco .cols{grid-template-columns:1fr}
+  .palette{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mock{font-size:12px}
+  .mock .hero{grid-template-columns:1fr;min-height:0}
+  .mock .hero .visual{order:-1;min-height:20em}
+  .mock nav .l{display:none}
+  .mock nav{grid-template-columns:auto 1fr;padding:1.1em 1.2em}
+  .mock nav .c{justify-self:start}
+  .mock .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:520px){
+  .logos-dark{grid-template-columns:1fr}
+  .palette{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mock nav .r span:not(:last-child){display:none}
+}
+
+/* ---------- Paletas de cada camino ---------- */
+#herencia{--t-bg:#EAE4DA;--t-fg:#211D19;--t-paper:#F4F0E9;--t-ink:#2A3341;--t-soft:#DCD3C6;--t-stage:#2A3341;--t-stage-fg:#E9E3D8;--t-box:#2A3341;--t-box-fg:#C9A57E;--t-ribbon:#8C6D4E;
+  --t-display:var(--f-bodoni);--t-body:var(--f-garamond);--t-idea-style:italic;--metal:url(#g-bronce)}
+#casas{--t-bg:#F2F1EE;--t-fg:#141414;--t-paper:#FBFAF8;--t-ink:#141414;--t-soft:#D6D1C9;--t-stage:#1B1B1A;--t-stage-fg:#D6D1C9;--t-box:#141414;--t-box-fg:#E8E4DD;--t-ribbon:#D6D1C9;--t-ribbon-op:0;
+  --t-display:var(--f-tenor);--t-body:var(--f-news);--t-name-track:.12em;--t-disp-track:.04em;--metal:url(#g-plata)}
+#atelier{--t-bg:#EDE3DC;--t-fg:#2B2725;--t-paper:#F8F3EF;--t-ink:#2B2725;--t-soft:#D8C3BA;--t-stage:#D6CBBE;--t-stage-fg:#2B2725;--t-box:#C8AFA4;--t-box-fg:#2B2725;--t-ribbon:#8E9480;
+  --t-display:var(--f-instr);--t-body:var(--f-instr);--metal:url(#g-plata-rosa)}
+#atelier .t-name{font-style:italic}
+#atelier .mock .hl{font-style:italic;font-size:3.3em}
+#atelier .type-a{font-style:italic;font-size:clamp(38px,5vw,58px)}
+#atelier .type-b,#atelier .voice p{font-family:var(--f-ui);font-size:16.5px}
+#casas .t-name{text-transform:uppercase}
+#casas .mock .hl{text-transform:uppercase;font-size:2.3em;line-height:1.15}
+#casas .type-a{text-transform:uppercase}
+#casas .lcard.feature{background:#141414;color:#E8E4DD}
+</style>
+
+<!-- Símbolos y degradados compartidos -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="g-bronce" cx="38%" cy="32%" r="75%">
+      <stop offset="0" stop-color="#F1D3A8"/><stop offset=".45" stop-color="#B98A5A"/><stop offset="1" stop-color="#6E4E31"/>
+    </radialGradient>
+    <radialGradient id="g-plata" cx="36%" cy="30%" r="78%">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#C9C8C4"/><stop offset="1" stop-color="#7D7C78"/>
+    </radialGradient>
+    <radialGradient id="g-plata-rosa" cx="36%" cy="30%" r="78%">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#D9CFC9"/><stop offset="1" stop-color="#8F847E"/>
+    </radialGradient>
+    <path id="arco-texto" d="M50,50 m-41.5,0 a41.5,41.5 0 1,1 83,0 a41.5,41.5 0 1,1 -83,0"/>
+    <mask id="m-b" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="100"><rect width="120" height="100" fill="#fff"/><circle cx="60" cy="37" r="5" fill="#000"/></mask>
+    <mask id="m-a" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="100"><rect width="120" height="100" fill="#fff"/><circle cx="60" cy="63" r="5" fill="#000"/></mask>
+  </defs>
+
+  <!-- Camino 1: la medalla / sello -->
+  <symbol id="iso-medalla" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width=".8"/>
+    <text font-family="'EB Garamond',Georgia,serif" font-size="6.6" letter-spacing="1.6" fill="currentColor"><textPath href="#arco-texto" startOffset="0">PILI TRESPALACIOS · ITALIA · ASTURIAS · CHILE ·</textPath></text>
+    <text x="50" y="62" text-anchor="middle" font-family="'Bodoni Moda',Didot,serif" font-size="33" fill="currentColor" letter-spacing="-3">PT</text>
+  </symbol>
+
+  <!-- Camino 2: tres arcos = tres casas -->
+  <symbol id="iso-arcos" viewBox="0 0 120 100">
+    <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square">
+      <path d="M12,88 V48 A13,13 0 0 1 38,48 V88"/>
+      <path d="M46,88 V34 A14,14 0 0 1 74,34 V88"/>
+      <path d="M82,88 V48 A13,13 0 0 1 108,48 V88"/>
+      <path d="M4,94 H116" stroke-width="2"/>
+    </g>
+  </symbol>
+
+  <!-- Camino 3: dos eslabones entrelazados -->
+  <symbol id="iso-eslabones" viewBox="0 0 120 100">
+    <g fill="none" stroke="currentColor" stroke-width="3.4" transform="rotate(-14 60 50)">
+      <ellipse cx="42" cy="50" rx="26" ry="18" mask="url(#m-a)"/>
+      <ellipse cx="78" cy="50" rx="26" ry="18" mask="url(#m-b)"/>
+    </g>
+  </symbol>
+
+  <!-- Colgante (medalla con cadena) -->
+  <symbol id="colgante" viewBox="0 0 200 250">
+    <path d="M18,0 Q60,52 100,74 Q140,52 182,0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-dasharray=".1 4.2" stroke-linecap="round" opacity=".9"/>
+    <rect x="92" y="70" width="16" height="22" rx="8" style="fill:var(--metal)" stroke="rgba(0,0,0,.25)"/>
+    <circle cx="100" cy="158" r="66" style="fill:var(--metal)"/>
+    <circle cx="100" cy="158" r="66" fill="none" stroke="rgba(0,0,0,.28)" stroke-width="1"/>
+    <circle cx="100" cy="158" r="57" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="1"/>
+    <ellipse cx="78" cy="130" rx="22" ry="12" fill="#fff" opacity=".28" transform="rotate(-30 78 130)"/>
+  </symbol>
+</svg>
+
+<header class="intro wrap">
+  <p class="kicker">Propuesta de marca · 26 de octubre de 2026</p>
+  <h1>Pili Trespalacios</h1>
+  <p class="lede">Tres caminos para la misma marca. Cada uno tiene su idea, su logo en tres versiones (logotipo, isotipo e imagotipo), colores, tipografías, tono de voz y cómo se vería en la web, en Instagram y en la caja.</p>
+  <p class="lede">Elijan uno, o tomen partes de varios. Al final está mi recomendación. Los logos son una primera versión: se afinan después de elegir.</p>
+  <nav class="toc" aria-label="Caminos">
+    <a href="#herencia"><span>1</span>Herencia</a>
+    <a href="#casas"><span>2</span>Tres Casas</a>
+    <a href="#atelier"><span>3</span>Atelier</a>
+    <a href="#reco"><span>→</span>Recomendación</a>
+  </nav>
+  <dl class="brief">
+    <div><dt>Queremos que digan</dt><dd>Calidad, exclusividad, diseño</dd></div>
+    <div><dt>Nunca</dt><dd>Masiva, "charcha"</dd></div>
+    <div><dt>Para</dt><dd>Personas de 30 a 65 años</dd></div>
+    <div><dt>Colores</dt><dd>Neutros y suaves; nada brillante</dd></div>
+    <div><dt>Idiomas</dt><dd>Español, con italiano e inglés</dd></div>
+    <div><dt>Meta</dt><dd>Vender en la web para Navidad</dd></div>
+  </dl>
+</header>
+
+<!-- ==================== CAMINO 1 ==================== -->
+<section class="terr" id="herencia" aria-labelledby="h-herencia">
+  <div class="wrap">
+    <div class="t-head">
+      <div>
+        <p class="t-num">Camino 1</p>
+        <h2 class="t-name" id="h-herencia">Herencia</h2>
+        <p class="t-idea">Joyas para quedarse en la familia.</p>
+      </div>
+      <div class="t-story">
+        <p>La marca como una medalla de familia. El símbolo es un sello acuñado, como las monedas y medallas antiguas, con el monograma PT al centro y las tres raíces escritas alrededor: Italia, Asturias y Chile.</p>
+        <p>Es el camino más cálido y el que mejor conversa con la medalla de Covadonga y con el regalo que pasa de madre a hija.</p>
+      </div>
+    </div>
+
+    <p class="sub">Logo</p>
+    <div class="logos">
+      <div class="lcard"><div class="lt-herencia"><span class="n">PILI TRESPALACIOS</span><span class="s">joyería de autor · Santiago de Chile</span></div><span class="cap">Logotipo</span></div>
+      <div class="lcard"><svg class="iso" viewBox="0 0 100 100" role="img" aria-label="Isotipo: medalla con monograma PT"><use href="#iso-medalla"/></svg><span class="cap">Isotipo</span></div>
+      <div class="lcard"><div class="imago"><svg class="iso" viewBox="0 0 100 100" aria-hidden="true"><use href="#iso-medalla"/></svg><div class="lt-herencia"><span class="n" style="font-size:20px">PILI TRESPALACIOS</span></div></div><span class="cap">Imagotipo</span></div>
+    </div>
+    <div class="logos-dark">
+      <div class="lcard inv small"><div class="lt-herencia"><span class="n" style="font-size:18px">PILI TRESPALACIOS</span></div><span class="cap">Sobre azul</span></div>
+      <div class="lcard inv"><svg class="iso" viewBox="0 0 100 100" aria-hidden="true"><use href="#iso-medalla"/></svg><span class="cap">Sobre azul</span></div>
+      <div class="lcard inv"><div class="imago"><svg class="iso" viewBox="0 0 100 100" aria-hidden="true"><use href="#iso-medalla"/></svg><div class="lt-herencia"><span class="n" style="font-size:14px">PILI TRESPALACIOS</span></div></div><span class="cap">Sobre azul</span></div>
+    </div>
+
+    <p class="sub">Colores</p>
+    <div class="palette">
+      <div class="sw"><i style="background:#F4F0E9"></i><b>Lino</b><small>#F4F0E9</small><em>Fondo principal</em></div>
+      <div class="sw"><i style="background:#211D19"></i><b>Tinta</b><small>#211D19</small><em>Textos</em></div>
+      <div class="sw"><i style="background:#2A3341"></i><b>Azul Santina</b><small>#2A3341</small><em>Como el terciopelo de la cinta</em></div>
+      <div class="sw"><i style="background:#8C6D4E"></i><b>Bronce viejo</b><small>#8C6D4E</small><em>Detalles y sello</em></div>
+      <div class="sw"><i style="background:#DCD3C6"></i><b>Piedra</b><small>#DCD3C6</small><em>Fondos de producto</em></div>
+    </div>
+
+    <p class="sub">Tipografía y voz</p>
+    <div class="duo">
+      <div class="panel">
+        <p class="meta">Bodoni Moda · EB Garamond</p>
+        <p class="type-a">Hecho para quedarse.</p>
+        <p class="type-b">Cada pieza lleva nuestro sello por dentro. Por fuera, tu historia: la del bautizo, la del primer trabajo, la que le vas a pasar a tu hija.</p>
+      </div>
+      <div class="panel">
+        <p class="meta">Cómo habla la marca</p>
+        <div class="voice">
+          <div><span>ES</span><p>Una medalla para tu madrina, grabada con la fecha que nunca quieres olvidar.</p></div>
+          <div><span>IT</span><p><i>Radici</i>: la colección que nace del pueblo del nonno.</p></div>
+          <div><span>EN</span><p><i>Heirloom</i> — pensadas para durar más que nosotros.</p></div>
+        </div>
+        <div class="colls"><b>Santina</b><b>Radici</b><b>Heirloom</b></div>
+      </div>
+    </div>
+
+    <p class="sub">Así se vería la web</p>
+    <div class="mock" aria-label="Maqueta de la portada web, camino Herencia">
+      <div class="bar"><i></i><i></i><i></i><span>pilitrespalacios.cl</span></div>
+      <div class="ann">Despacho gratis a todo Chile sobre $80.000</div>
+      <nav><div class="l"><span>Joyas</span><span>Colecciones</span><span>Historia</span></div><div class="c lt-herencia"><span class="n" style="font-size:1.25em">PILI TRESPALACIOS</span></div><div class="r"><span>Buscar</span><span>Cuenta</span><span>Bolsa (0)</span></div></nav>
+      <div class="hero">
+        <div class="copy"><p class="eyebrow">Colección Santina</p><p class="hl">Hecho para quedarse en la familia.</p><span class="cta">Ver la colección</span></div>
+        <div class="visual"><svg viewBox="0 0 200 250" aria-hidden="true" style="color:#C9A57E"><use href="#colgante"/><g transform="translate(64 122) scale(.72)" style="color:rgba(60,40,22,.55)"><use href="#iso-medalla" width="100" height="100"/></g></svg><span class="tag">Medalla Santina · bronce</span></div>
+      </div>
+      <div class="grid"><div><i></i><b>Medalla Santina</b><small>Bronce · $68.000</small></div><div><i></i><b>Medalla Santina</b><small>Plata 925 · $142.000</small></div><div><i></i><b>Sello Radici</b><small>Plata 925 · $118.000</small></div><div><i></i><b>Cadena Nonna</b><small>Bronce · $45.000</small></div></div>
+    </div>
+
+    <div class="apps">
+      <div class="app"><div class="stage"><div class="ig"><div class="av"><svg class="iso" viewBox="0 0 100 100" aria-hidden="true"><use href="#iso-medalla"/></svg></div><div><b>pilitrespalacios</b><small>Joyería de autor. Diseñada por Pili en Santiago. Plata y bronce.</small></div><div class="posts"><i></i><i><svg class="iso" viewBox="0 0 100 100" aria-hidden="true"><use href="#iso-medalla"/></svg></i><i></i></div></div></div><p class="cap">Instagram</p></div>
+      <div class="app"><div class="stage"><div class="box"><svg class="iso" viewBox="0 0 100 100" aria-hidden="true"><use href="#iso-medalla"/></svg></div></div><p class="cap">Caja</p></div>
+      <div class="app"><div class="stage stamp"><svg viewBox="0 0 200 250" aria-hidden="true" style="color:#8C6D4E"><use href="#colgante"/><text x="100" y="200" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="rgba(50,30,15,.6)">BRONCE</text><g transform="translate(76 128) scale(.48)" style="color:rgba(50,30,15,.6)"><use href="#iso-medalla" width="100" height="100"/></g></svg></div><p class="cap">Sello grabado al reverso</p></div>
+    </div>
+
+    <p class="sub">A favor y en contra</p>
+    <div class="pr">
+      <div class="panel"><p class="meta">A favor</p><ul><li>La historia familiar se entiende al tiro.</li><li>Calza con la medalla de Covadonga y con el regalo entre generaciones.</li><li>Cálido y con oficio: se siente artesanal.</li></ul></div>
+      <div class="panel"><p class="meta">En contra</p><ul><li>Puede verse antiguo o demasiado religioso, cuando lo religioso es solo una línea.</li><li>Las letras alrededor del sello no se leen en tamaños chicos (foto de perfil, grabado).</li><li>Es el más lejano al estilo de CBC.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CAMINO 2 ==================== -->
+<section class="terr" id="casas" aria-labelledby="h-casas">
+  <div class="wrap">
+    <div class="t-head">
+      <div>
+        <p class="t-num">Camino 2</p>
+        <h2 class="t-name" id="h-casas">Tres Casas</h2>
+        <p class="t-idea">Tres orígenes. Una sola mano.</p>
+      </div>
+      <div class="t-story">
+        <p>El apellido dice "tres palacios", y Pili tiene tres casas: Italia, Asturias y Chile. El símbolo son tres arcos, uno por cada origen, con el de Chile al centro y más alto, porque ahí es donde ella diseña.</p>
+        <p>Es sobrio, contemporáneo y del nivel de CBC, pero con una historia que es solo nuestra. Los tres arcos se graban en cada joya como sello de la casa.</p>
+      </div>
+    </div>
+
+    <p class="sub">Logo</p>
+    <div class="logos">
+      <div class="lcard"><div class="lt-casas"><span class="n">PILI TRESPALACIOS</span><span class="s">SANTIAGO · CHILE</span></div><span class="cap">Logotipo</span></div>
+      <div class="lcard"><svg class="iso" viewBox="0 0 120 100" role="img" aria-label="Isotipo: tres arcos"><use href="#iso-arcos"/></svg><span class="cap">Isotipo</span></div>
+      <div class="lcard"><div class="imago"><svg class="iso" viewBox="0 0 120 100" aria-hidden="true"><use href="#iso-arcos"/></svg><div class="lt-casas"><span class="n" style="font-size:16px">PILI TRESPALACIOS</span></div></div><span class="cap">Imagotipo</span></div>
+    </div>
+    <div class="logos-dark">
+      <div class="lcard inv small"><div class="lt-casas"><span class="n" style="font-size:14px">PILI TRESPALACIOS</span></div><span class="cap">Sobre negro</span></div>
+      <div class="lcard inv"><svg class="iso" viewBox="0 0 120 100" aria-hidden="true"><use href="#iso-arcos"/></svg><span class="cap">Sobre negro</span></div>
+      <div class="lcard inv"><div class="imago"><svg class="iso" viewBox="0 0 120 100" aria-hidden="true"><use href="#iso-arcos"/></svg><div class="lt-casas"><span class="n" style="font-size:11px">PILI TRESPALACIOS</span></div></div><span class="cap">Sobre negro</span></div>
+    </div>
+
+    <p class="sub">Colores</p>
+    <div class="palette">
+      <div class="sw"><i style="background:#FBFAF8"></i><b>Cal</b><small>#FBFAF8</small><em>Fondo principal</em></div>
+      <div class="sw"><i style="background:#141414"></i><b>Negro</b><small>#141414</small><em>Textos, logo y caja</em></div>
+      <div class="sw"><i style="background:#D6D1C9"></i><b>Piedra</b><small>#D6D1C9</small><em>Fondos de producto</em></div>
+      <div class="sw"><i style="background:#8B857C"></i><b>Muro</b><small>#8B857C</small><em>Textos secundarios</em></div>
+      <div class="sw"><i style="background:#A88B6A"></i><b>Bronce</b><small>#A88B6A</small><em>Solo en detalles mínimos</em></div>
+    </div>
+
+    <p class="sub">Tipografía y voz</p>
+    <div class="duo">
+      <div class="panel">
+        <p class="meta">Tenor Sans · Newsreader</p>
+        <p class="type-a">Tres orígenes</p>
+        <p class="type-b">Diseñada por Pili en Santiago y hecha a mano, pieza por pieza, en plata 925 y bronce. Cada joya lleva grabados los tres arcos de la casa.</p>
+      </div>
+      <div class="panel">
+        <p class="meta">Cómo habla la marca</p>
+        <div class="voice">
+          <div><span>ES</span><p>Una joya simple, para usar todos los días y que igual se note.</p></div>
+          <div><span>IT</span><p><i>San Salvatore</i>: piezas que nacen del pueblo de mi nonno.</p></div>
+          <div><span>EN</span><p><i>First Light</i>: la primera colección de la casa.</p></div>
+        </div>
+        <div class="colls"><b>Covadonga</b><b>San Salvatore</b><b>First Light</b></div>
+      </div>
+    </div>
+
+    <p class="sub">Así se vería la web</p>
+    <div class="mock" aria-label="Maqueta de la portada web, camino Tres Casas">
+      <div class="bar"><i></i><i></i><i></i><span>pilitrespalacios.cl</span></div>
+      <div class="ann">Despacho gratis a todo Chile sobre $80.000</div>
+      <nav><div class="l"><span>Joyas</span><span>Colecciones</span><span>La casa</span></div><div class="c lt-casas"><span class="n" style="font-size:1.05em">PILI TRESPALACIOS</span></div><div class="r"><span>Buscar</span><span>Cuenta</span><span>Bolsa (0)</span></div></nav>
+      <div class="hero">
+        <div class="copy"><p class="eyebrow">First Light · Navidad 2026</p><p class="hl">Tres orígenes. Una sola mano.</p><span class="cta">Descubrir</span></div>
+        <div class="visual"><svg viewBox="0 0 200 250" aria-hidden="true" style="color:#BDBAB4"><use href="#colgante"/><g transform="translate(66 128) scale(.57)" style="color:rgba(30,30,30,.5)"><use href="#iso-arcos" width="120" height="100"/></g></svg><span class="tag">Medalla Tres Casas · plata 925</span></div>
+      </div>
+      <div class="grid"><div><i></i><b>Medalla Tres Casas</b><small>Plata 925 · $128.000</small></div><div><i></i><b>Anillo Arco</b><small>Bronce · $62.000</small></div><div><i></i><b>Aros Portal</b><small>Plata 925 · $96.000</small></div><div><i></i><b>Santina</b><small>Bronce · $68.000</small></div></div>
+    </div>
+
+    <div class="apps">
+      <div class="app"><div class="stage"><div class="ig"><div class="av"><svg class="iso" viewBox="0 0 120 100" aria-hidden="true"><use href="#iso-arcos"/></svg></div><div><b>pilitrespalacios</b><small>Tres orígenes, una sola mano. Joyería diseñada por Pili en Santiago.</small></div><div class="posts"><i></i><i><svg class="iso" viewBox="0 0 120 100" aria-hidden="true"><use href="#iso-arcos"/></svg></i><i></i></div></div></div><p class="cap">Instagram</p></div>
+      <div class="app"><div class="stage"><div class="box"><svg class="iso" viewBox="0 0 120 100" aria-hidden="true"><use href="#iso-arcos"/></svg></div></div><p class="cap">Caja</p></div>
+      <div class="app"><div class="stage stamp"><svg viewBox="0 0 200 250" aria-hidden="true" style="color:#8B857C"><use href="#colgante"/><text x="100" y="196" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" letter-spacing="2" fill="rgba(30,30,30,.55)">925</text><g transform="translate(79 132) scale(.35)" style="color:rgba(30,30,30,.55)"><use href="#iso-arcos" width="120" height="100"/></g></svg></div><p class="cap">Sello grabado al reverso</p></div>
+    </div>
+
+    <p class="sub">A favor y en contra</p>
+    <div class="pr">
+      <div class="panel"><p class="meta">A favor</p><ul><li>Un símbolo propio y simple: se lee igual en la foto de perfil, en la caja y grabado en una joya de 2 cm.</li><li>Nivel CBC en sobriedad, con una historia que nadie más puede contar.</li><li>Une las tres raíces y los tres idiomas en una sola idea.</li><li>Aguanta crecer: oro, hombre, nuevas líneas.</li></ul></div>
+      <div class="panel"><p class="meta">En contra</p><ul><li>Lo sobrio puede sentirse frío si las fotos no aportan calidez.</li><li>Los arcos se usan en arquitectura y hotelería: al registrar en INAPI hay que revisar que no se parezca a otra marca.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CAMINO 3 ==================== -->
+<section class="terr" id="atelier" aria-labelledby="h-atelier">
+  <div class="wrap">
+    <div class="t-head">
+      <div>
+        <p class="t-num">Camino 3</p>
+        <h2 class="t-name" id="h-atelier">Atelier</h2>
+        <p class="t-idea">Diseñadas por Pili, para tus días de siempre.</p>
+      </div>
+      <div class="t-story">
+        <p>Pili al frente, como la firma en un boceto. El logo pone su nombre en grande y en cursiva. El símbolo son dos eslabones entrelazados: sus dos raíces unidas, y también la cadena, la pieza más básica de la joyería.</p>
+        <p>Es el camino más cercano y el que más se diferencia del tono frío de CBC.</p>
+      </div>
+    </div>
+
+    <p class="sub">Logo</p>
+    <div class="logos">
+      <div class="lcard"><div class="lt-atelier"><span class="n">Pili</span><span class="s">TRESPALACIOS</span></div><span class="cap">Logotipo</span></div>
+      <div class="lcard"><svg class="iso" viewBox="0 0 120 100" role="img" aria-label="Isotipo: dos eslabones entrelazados"><use href="#iso-eslabones"/></svg><span class="cap">Isotipo</span></div>
+      <div class="lcard"><div class="imago"><svg class="iso" viewBox="0 0 120 100" aria-hidden="true"><use href="#iso-eslabones"/></svg><div class="lt-atelier"><span class="n" style="font-size:40px">Pili</span><span class="s" style="font-size:9px">TRESPALACIOS</span></div></div><span class="cap">Imagotipo</span></div>
+    </div>
+    <div class="logos-dark">
+      <div class="lcard inv small"><div class="lt-atelier"><span class="n" style="font-size:40px">Pili</span><span class="s" style="font-size:9px">TRESPALACIOS</span></div><span class="cap">Sobre carbón</span></div>
+      <div class="lcard inv"><svg class="iso" viewBox="0 0 120 100" aria-hidden="true"><use href="#iso-eslabones"/></svg><span class="cap">Sobre carbón</span></div>
+      <div class="lcard inv"><div class="imago"><svg class="iso" viewBox="0 0 120 100" aria-hidden="true"><use href="#iso-eslabones"/></svg><div class="lt-atelier"><span class="n" style="font-size:28px">Pili</span><span class="s" style="font-size:8px">TRESPALACIOS</span></div></div><span class="cap">Sobre carbón</span></div>
+    </div>
+
+    <p class="sub">Colores</p>
+    <div class="palette">
+      <div class="sw"><i style="background:#F8F3EF"></i><b>Hueso</b><small>#F8F3EF</small><em>Fondo principal</em></div>
+      <div class="sw"><i style="background:#2B2725"></i><b>Carbón</b><small>#2B2725</small><em>Textos</em></div>
+      <div class="sw"><i style="background:#C8AFA4"></i><b>Rosa empolvado</b><small>#C8AFA4</small><em>Caja y detalles</em></div>
+      <div class="sw"><i style="background:#8E9480"></i><b>Salvia</b><small>#8E9480</small><em>Cinta y acentos</em></div>
+      <div class="sw"><i style="background:#D6CBBE"></i><b>Arena</b><small>#D6CBBE</small><em>Fondos de producto</em></div>
+    </div>
+
+    <p class="sub">Tipografía y voz</p>
+    <div class="duo">
+      <div class="panel">
+        <p class="meta">Instrument Serif · Hanken Grotesk</p>
+        <p class="type-a">Para tus días de siempre</p>
+        <p class="type-b">Esta medalla la dibujé pensando en mi abuela, que nunca se sacaba la suya. Es de plata 925, hecha a mano en Santiago.</p>
+      </div>
+      <div class="panel">
+        <p class="meta">Cómo habla la marca</p>
+        <div class="voice">
+          <div><span>ES</span><p>Te la mandamos envuelta y con una carta escrita por mí.</p></div>
+          <div><span>IT</span><p><i>Dolce</i>: piezas chicas para regalar sin motivo.</p></div>
+          <div><span>EN</span><p><i>Everyday</i>: las que no te vas a querer sacar.</p></div>
+        </div>
+        <div class="colls"><b>Mi Santina</b><b>Dolce</b><b>Everyday</b></div>
+      </div>
+    </div>
+
+    <p class="sub">Así se vería la web</p>
+    <div class="mock" aria-label="Maqueta de la portada web, camino Atelier">
+      <div class="bar"><i></i><i></i><i></i><span>pilitrespalacios.cl</span></div>
+      <div class="ann">Despacho gratis a todo Chile sobre $80.000</div>
+      <nav><div class="l"><span>Joyas</span><span>Colecciones</span><span>Sobre Pili</span></div><div class="c lt-atelier"><span class="n" style="font-size:2.3em">Pili</span></div><div class="r"><span>Buscar</span><span>Cuenta</span><span>Bolsa (0)</span></div></nav>
+      <div class="hero">
+        <div class="copy"><p class="eyebrow">Nueva colección · Everyday</p><p class="hl">Para tus días de siempre.</p><span class="cta">Ver joyas</span></div>
+        <div class="visual"><svg viewBox="0 0 200 250" aria-hidden="true" style="color:#8F847E"><use href="#colgante"/><g transform="translate(70 135) scale(.5)" style="color:rgba(60,45,40,.5)"><use href="#iso-eslabones" width="120" height="100"/></g></svg><span class="tag">Medalla Dolce · plata 925</span></div>
+      </div>
+      <div class="grid"><div><i></i><b>Medalla Dolce</b><small>Plata 925 · $98.000</small></div><div><i></i><b>Cadena Eslabón</b><small>Bronce · $52.000</small></div><div><i></i><b>Mi Santina</b><small>Plata 925 · $142.000</small></div><div><i></i><b>Aros Nonna</b><small>Bronce · $48.000</small></div></div>
+    </div>
+
+    <div class="apps">
+      <div class="app"><div class="stage"><div class="ig"><div class="av"><svg class="iso" viewBox="0 0 120 100" aria-hidden="true"><use href="#iso-eslabones"/></svg></div><div><b>pilitrespalacios</b><small>Joyas que diseño para tus días de siempre. Plata y bronce, hechas a mano en Santiago.</small></div><div class="posts"><i></i><i><svg class="iso" viewBox="0 0 120 100" aria-hidden="true"><use href="#iso-eslabones"/></svg></i><i></i></div></div></div><p class="cap">Instagram</p></div>
+      <div class="app"><div class="stage"><div class="box"><svg class="iso" viewBox="0 0 120 100" aria-hidden="true"><use href="#iso-eslabones"/></svg></div></div><p class="cap">Caja</p></div>
+      <div class="app"><div class="stage stamp"><svg viewBox="0 0 200 250" aria-hidden="true" style="color:#8F847E"><use href="#colgante"/><text x="100" y="198" text-anchor="middle" font-family="'Instrument Serif',serif" font-style="italic" font-size="15" fill="rgba(60,45,40,.55)">Pili</text><g transform="translate(76 128) scale(.4)" style="color:rgba(60,45,40,.55)"><use href="#iso-eslabones" width="120" height="100"/></g></svg></div><p class="cap">Sello grabado al reverso</p></div>
+    </div>
+
+    <p class="sub">A favor y en contra</p>
+    <div class="pr">
+      <div class="panel"><p class="meta">A favor</p><ul><li>Cercano y humano: se diferencia claramente de CBC.</li><li>Fluye en redes: Pili hablando en primera persona.</li><li>La carta escrita por ella se vuelve parte del producto.</li></ul></div>
+      <div class="panel"><p class="meta">En contra</p><ul><li>Lo cercano puede leerse menos exclusivo, y la exclusividad es una de las tres palabras.</li><li>"Pili" en cursiva tiende a verse como marca de accesorios o de estilo de vida.</li><li>Depende de que Pili quiera ser la cara visible.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RECOMENDACIÓN ==================== -->
+<section class="reco wrap" id="reco" aria-labelledby="h-reco">
+  <p class="kicker">Recomendación</p>
+  <h2 id="h-reco">Tres Casas como base, con dos préstamos</h2>
+  <p class="lede">Es el que mejor cumple las tres palabras: calidad, exclusividad y diseño. Tiene el nivel de sobriedad de CBC sin parecerse, y un símbolo que funciona en todos los tamaños, sobre todo grabado en la joya. Además, ordena la historia de Pili y los tres idiomas en una sola idea.</p>
+  <div class="cols">
+    <div><b>De Tres Casas</b>Logo, símbolo de los tres arcos, colores blanco, negro y piedra, y tipografías.</div>
+    <div><b>De Herencia</b>El sello tipo medalla, solo para la línea religiosa (Covadonga), y el azul Santina como color de esa colección.</div>
+    <div><b>De Atelier</b>La voz en primera persona de Pili en la página "La casa", en redes y en la carta que va en la caja.</div>
+  </div>
+</section>
+
+<section class="next wrap" aria-labelledby="h-next">
+  <h3 id="h-next">Para seguir</h3>
+  <ol>
+    <li>Revísenlo juntos. Pili tiene la última palabra.</li>
+    <li>Díganme qué camino eligen, o qué partes de cada uno.</li>
+    <li>Con eso afino el logo definitivo (proporciones, versiones, tamaño mínimo) y armo las reglas de uso.</li>
+    <li>Después, la web completa en Shopify con ese sistema.</li>
+  </ol>
+</section>
+
+<footer class="foot wrap">
+  <p>Precios y nombres de productos son ejemplos para mostrar el diseño. Antes de registrar el logo en INAPI hay que revisar que no se parezca a otra marca inscrita.</p>
+</footer>
