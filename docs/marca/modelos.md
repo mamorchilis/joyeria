@@ -2,23 +2,25 @@
 
 ## Decisiones confirmadas - 2026-10-26
 
-Juan Antonio aprob� el casting de tres mujeres ficticias para mostrar las joyas. Los nombres se usan internamente.
+Juan Antonio aprobó el casting de tres mujeres ficticias para mostrar las joyas. Los nombres se usan internamente.
 
-- **Antonia, 30 a�os:** pelo rubio oscuro con reflejos naturales, largo y liso; silueta delgada, con un ajuste leve respecto del primer casting. Referencia aprobada: top negro y pantal�n marfil.
-- **In�s, 45 a�os:** pelo casta�o a los hombros con ondas suaves; silueta marcadamente m�s delgada que la propuesta inicial. Referencia aprobada: blusa y pantal�n azul marino.
-- **Teresa, 60 a�os:** pelo casta�o, sin canas; conservar su apariencia madura aprobada. Referencia aprobada: camisa blanca y blazer camel.
+- **Antonia, 30 años:** pelo rubio oscuro con reflejos naturales, largo y liso; silueta delgada, con un ajuste leve respecto del primer casting. Referencia aprobada: top negro y pantalón marfil.
+- **Inés, 45 años:** pelo castaño a los hombros con ondas suaves; silueta marcadamente más delgada que la propuesta inicial. Referencia aprobada: blusa y pantalón azul marino.
+- **Teresa, 60 años:** pelo castaño, sin canas; conservar su apariencia madura aprobada. Referencia aprobada: camisa blanca y blazer camel.
 
-## Direcci�n y uso
+## Dirección y uso
 
-- P�blico indicado por Juan Antonio: segmento ABC1 chileno. Expresar la direcci�n mediante vestuario, arreglo, fotograf�a y actitud; no asumir una apariencia f�sica �nica para un segmento o nacionalidad.
-- Mujeres reconocibles y distintas entre s�: evitar que parezcan familiares o versiones de un mismo rostro.
-- Mantener textura de piel, asimetr�as y detalles propios de cada edad; evitar una perfecci�n artificial evidente.
-- Se solicitaron photobooks individuales con ropa de invierno, verano y traje de ba�o, vistas de cuerpo completo y referencias de cuello, orejas, manos y extremidades.
+- Público indicado por Juan Antonio: segmento ABC1 chileno. Expresar la dirección mediante vestuario, arreglo, fotografía y actitud; no asumir una apariencia física única para un segmento o nacionalidad.
+- Mujeres reconocibles y distintas entre sí: evitar que parezcan familiares o versiones de un mismo rostro.
+- Mantener textura de piel, asimetrías y detalles propios de cada edad; evitar una perfección artificial evidente.
+- Se solicitaron photobooks individuales con ropa de invierno, verano y traje de baño, vistas de cuerpo completo y referencias de cuello, orejas, manos y extremidades.
 - Las referencias se producen sin joyas para facilitar su uso con distintas piezas.
 
 ## Control de continuidad
 
-El casting aprobado es la referencia principal de identidad. Las vistas nuevas de perfiles, espalda y detalles son propuestas generadas, no medidas anat�micas verificadas. Revisar identidad, anatom�a y fidelidad de cada joya antes de publicar. Una l�mina de referencia no garantiza continuidad autom�tica.
+El casting aprobado es la referencia principal de identidad. Las vistas nuevas de perfiles, espalda y detalles son propuestas generadas, no medidas anatómicas verificadas. Revisar identidad, anatomía y fidelidad de cada joya antes de publicar. Una lámina de referencia no garantiza continuidad automática.
 
-Las im�genes se generaron en la conversaci�n; este documento registra las decisiones, no contiene copias de esas im�genes. Una primera l�mina rotulada Teresa reprodujo por error a Antonia: se descarta como referencia de Teresa.
+Las imágenes se generaron en la conversación; este documento registra las decisiones, no contiene copias de esas imágenes. Una primera lámina rotulada Teresa reprodujo por error a Antonia: se descarta como referencia de Teresa.
 
+
+Los photobooks y el casting aprobados están enlazados en [photobooks.md](photobooks.md).
