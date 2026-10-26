@@ -1,8 +1,8 @@
 # Estado del proyecto
 
-Última revisión documental: 2026-10-19.
+Última revisión documental: 2026-10-26.
 
-## Punto de retorno (2026-10-19)
+## Punto de retorno (2026-10-26)
 
 Resumen para retomar el trabajo en una sesión nueva. Al final de cada sesión, actualizar esta sección.
 
@@ -14,13 +14,16 @@ Resumen para retomar el trabajo en una sesión nueva. Al final de cada sesión, 
 - **Competencia:** `docs/referentes/`, con una carpeta por marca (`ficha.json`, `catalogo_publico.csv`, `README.md` y `fuentes-y-limites.md`), las conclusiones comparativas en `resumen.json` y el formato estándar explicado en `docs/referentes/README.md`.
 - **Definiciones de marca:** `docs/marca/definiciones.json` (hoja de ruta) y `docs/marca/nombres.json` (datos del análisis de nombres; el texto completo está en `docs/marca/nombres.md`).
 - **Contexto de negocio y CLAF:** `marca-joyas.md`.
+- **Gastos:** `docs/gastos/gastos.csv`, una fila por pago, con quién pagó. El resumen por socio y los vencimientos están en `docs/gastos/README.md`.
+- **Dominio y DNS:** `pilitrespalacios.cl` está en NIC Chile y vence el 2028-10-26. Su DNS está en Cloudflare (plan gratuito, servidores `adi` y `yisroel.ns.cloudflare.com`). Todavía no hay web ni correo con el dominio.
 - **Colección inicial:** `docs/coleccion/`, un `.md` y un `.json` por diseño. La medalla de Covadonga tiene 5 opciones, precios de referencia y una recomendación (sin decisión).
 
 **Próximos pasos concretos**
-1. **Elegir el nombre.** Antes, revisar en Instagram (desde una cuenta) si están libres `@pilitrespalacios`, `@delpilarjoyas`, `@joyasdelpilar` y `@parpaglione`; precisar de cuál San Salvatore es el nonno; y probar los 2 o 3 finalistas con 5 a 10 personas del público objetivo. Con el nombre elegido, confirmarlo con un abogado de marcas y registrar los dominios.
-2. **Constituir la empresa**, con el nombre definido.
-3. **Crear la marca, la web y las redes sociales**, después de la empresa.
-4. **En paralelo:** cerrar los 6 diseños de partida (elegir la opción de la medalla de Covadonga y llevar sus preguntas a CLAF), definir el packaging y llevar a CLAF las preguntas pendientes (condiciones por escrito, costos por material, mínimos, plazos, esquema mixto de stock y pedidos, y si también fabrica para CBC).
+1. **Confirmar el nombre** (Pili Trespalacios) con un abogado de marcas y solicitar el registro en INAPI (clases 14 y 35).
+2. **Constituir la empresa.** Al hacerlo, traspasarle el dominio y la cuenta de Instagram.
+3. **Web y correo:** elegir la plataforma (tienda o página de presentación) y el correo con el dominio, y conectarlos desde Cloudflare. Mientras no haya web, se puede redirigir el dominio a Instagram desde Cloudflare.
+4. **Identidad visual:** logo, colores y tipografía.
+5. **En paralelo:** cerrar los 6 diseños de partida (elegir la opción de la medalla de Covadonga y llevar sus preguntas a CLAF), definir el packaging y llevar a CLAF las preguntas pendientes (condiciones por escrito, costos por material, mínimos, plazos, esquema mixto de stock y pedidos, y si también fabrica para CBC).
 
 **Cómo mantener el tablero**
 - Si cambia una decisión, actualizar este documento y `marca-joyas.md`, después los JSON de `docs/marca/`, `docs/coleccion/` o `docs/referentes/`, y regenerar con `python docs/generar_dashboard.py` (desde la raíz del repositorio).
@@ -40,7 +43,7 @@ Desarrollar una marca propia de joyería artesanal en Chile y definir su propues
 - CLAF Goldsmith es el proveedor más probable para partir (ya hubo reuniones), pero todavía no hay confirmación formal ni contrato. Lo que ofrece, según las reuniones, está en `marca-joyas.md`.
 
 ## Decisiones pendientes
-1. Nombre e identidad de marca. **Siguiente paso:** definir el nombre; de él depende constituir la empresa. Hay 5 candidatos analizados en `docs/marca/nombres.md`.
+1. Identidad de marca. El nombre ya está elegido (Pili Trespalacios, 26-10); falta confirmarlo con un abogado de marcas, registrarlo en INAPI y definir la identidad visual.
 2. Público objetivo y posicionamiento.
 3. Catálogo inicial y materiales. **En curso:** los socios están definiendo los 6 diseños de partida. Uno será la medalla de la Virgen de Covadonga en bronce y plata (opciones en `docs/coleccion/medalla-covadonga.md`).
 4. Búsqueda, evaluación y selección de fabricante. **En curso:** CLAF es el más probable; falta formalizar.
@@ -48,8 +51,8 @@ Desarrollar una marca propia de joyería artesanal en Chile y definir su propues
 6. Canales de venta y distribución.
 7. Calendario y fecha tentativa de lanzamiento.
 8. Reparto de responsabilidades entre las personas que llevan el proyecto.
-9. Constitución de la empresa, una vez definido el nombre de la marca.
-10. Crear la marca, la web y las redes sociales, después de constituir la empresa.
+9. Constitución de la empresa. Ya se puede hacer, porque el nombre está elegido.
+10. Web y correo con el dominio: plataforma y forma de venta. El dominio y el Instagram ya existen.
 11. Packaging: caja, bolsa, decoración, carta con mensaje y cuidados de la joya, y aroma.
 
 ## Lista de inicio de sesión
@@ -140,3 +143,14 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   sugerido es una hipótesis tomada de la competencia (clásica: $55–65 mil en bronce y $85–99
   mil en plata) y espera los costos de CLAF. Detalle en `docs/coleccion/medalla-covadonga.md`
   y en la hoja *Colección inicial* del tablero.
+
+- **2026-10-26 — Nombre de la marca: Pili Trespalacios (decidido por los socios).** Se
+  consideró primero del Pilar Joyas y se cambió el mismo día; no se registró el motivo. Ese
+  mismo día se tomó `@pilitrespalacios` en Instagram y se registró `pilitrespalacios.cl` en
+  NIC Chile, por 2 años ($19.980, pagado por Juan Antonio; vence el 2028-10-26). El DNS
+  quedó en Cloudflare, en su plan gratuito, para conectar después la web y el correo sin
+  depender de una plataforma. El dominio y la cuenta de Instagram se adelantaron a la
+  empresa porque son baratos y evitan que otro los tome. Se recomienda traspasarlos a la
+  empresa cuando se constituya (recomendación, no decidida). Pendiente: abogado de marcas, registro en INAPI y evaluar también
+  `pilartrespalacios.cl` y `pilitrespalacios.com`. Los gastos se registran desde ahora
+  en `docs/gastos/`.

@@ -1,12 +1,12 @@
 {
-  "actualizado": "2026-10-19",
-  "titular": "Primero el nombre; con él, la empresa; después, la marca, la web y las redes.",
-  "bajada": "CLAF es el proveedor más probable y los socios están definiendo los 6 diseños de partida. El siguiente paso es elegir el nombre: de él depende constituir la empresa, y de la empresa, crear la marca, la web y las redes sociales.",
+  "actualizado": "2026-10-26",
+  "titular": "La marca se llama Pili Trespalacios. Siguen la empresa, la identidad y la web.",
+  "bajada": "El 26-10 los socios eligieron el nombre, tomaron @pilitrespalacios en Instagram y registraron pilitrespalacios.cl. Falta confirmarlo con un abogado de marcas, registrarlo en INAPI y constituir la empresa. CLAF sigue siendo el proveedor más probable y los socios definen los 6 diseños de partida.",
   "nota": "Esta hoja resume lo que está en docs/estado-proyecto.md y marca-joyas.md. Si una decisión cambia, hay que actualizar esos documentos y esta hoja.",
   "ruta": [
-    {"paso": "Nombre de la marca", "estado": "en-analisis", "detalle": "5 candidatos analizados. Los socios prefieren del Pilar Joyas y Pili Trespalacios.", "hoja": "nombre"},
-    {"paso": "Constituir la empresa", "estado": "pendiente", "detalle": "Cuando el nombre esté definido. La razón social puede ser distinta de la marca."},
-    {"paso": "Marca, web y redes sociales", "estado": "pendiente", "detalle": "Después de constituir la empresa: identidad, sitio y cuentas."}
+    {"paso": "Nombre de la marca", "estado": "acordado", "detalle": "Pili Trespalacios (26-10). Ya están @pilitrespalacios en Instagram y pilitrespalacios.cl. Falta el abogado de marcas y el registro en INAPI (clases 14 y 35).", "hoja": "nombre"},
+    {"paso": "Constituir la empresa", "estado": "pendiente", "detalle": "Siguiente paso, ya con el nombre. La razón social puede ser distinta de la marca. Al constituirla, conviene traspasarle el dominio y la cuenta de Instagram."},
+    {"paso": "Marca, web y redes sociales", "estado": "en-curso", "detalle": "Adelantado: el dominio está en NIC Chile y su DNS en Cloudflare, sin web todavía. Falta elegir la plataforma de la web (tienda o página de presentación), el correo con el dominio y la identidad visual."}
   ],
   "paralelo": [
     {"paso": "Proveedor: CLAF Goldsmith", "estado": "en-curso", "detalle": "Proveedor más probable. Falta formalizar condiciones, costos y plazos."},

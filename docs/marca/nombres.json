@@ -1,7 +1,7 @@
 {
-  "actualizado": "2026-10-19",
-  "estado": "En análisis: ningún nombre está elegido.",
-  "titular": "Cinco candidatos, dos favoritos: Pili Trespalacios es el más fácil de proteger; del Pilar Joyas, el más cálido.",
+  "actualizado": "2026-10-26",
+  "estado": "Elegido el 26-10: Pili Trespalacios. Falta confirmarlo con un abogado de marcas.",
+  "titular": "Elegimos Pili Trespalacios: el candidato más fácil de proteger.",
   "bajada": "Se revisaron dominios (.cl y .com), uso del nombre en la web, registro en INAPI (clases 14 de joyería y 35 de venta) y encaje con el segmento. El análisis completo está en docs/marca/nombres.md.",
   "nota": "Las notas de 1 a 5 son una opinión para comparar. La búsqueda en INAPI es preliminar y no reemplaza la revisión de un abogado de marcas.",
   "criterios": ["Distintivo y fácil de proteger", "Disponible en dominios", "Fácil de decir y recordar en Chile", "Encaje con lujo artesanal ABC1", "Historia propia", "Se distingue de los competidores"],
@@ -95,10 +95,10 @@
     "La razón social de la empresa y la marca pueden ser distintas."
   ],
   "pendientes": [
-    "Revisar en Instagram, desde una cuenta, si están libres @pilitrespalacios, @delpilarjoyas, @joyasdelpilar y @parpaglione.",
-    "Precisar de cuál San Salvatore es el nonno.",
-    "Decir los 2 o 3 finalistas a 5 a 10 personas del público objetivo: cuál recuerdan y cómo lo escriben.",
-    "Con el nombre elegido, confirmar con un abogado de marcas y registrar en INAPI (clases 14 y 35).",
-    "Registrar los dominios del nombre elegido apenas se decida."
+    "Hecho (26-10): @pilitrespalacios en Instagram.",
+    "Hecho (26-10): pilitrespalacios.cl registrado en NIC Chile por 2 años, con DNS en Cloudflare.",
+    "Confirmar el nombre con un abogado de marcas y registrarlo en INAPI (clases 14 y 35).",
+    "Evaluar registrar también pilartrespalacios.cl y pilitrespalacios.com, que estaban libres.",
+    "Acordar entre los socios que el nombre, el dominio y las cuentas serán de la empresa, ya que la marca es el nombre de una persona."
   ]
 }

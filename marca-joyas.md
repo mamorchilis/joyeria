@@ -30,11 +30,17 @@ Resumen del contexto disponible sobre el emprendimiento de joyería artesanal.
 - Orden de los próximos pasos: primero el **nombre de la marca**; con él, **constituir la empresa**; después, **crear la marca, la web y las redes sociales**.
 - También pendiente: definir el **packaging** (caja, bolsa, decoración, carta con mensaje y cuidados de la joya, y aroma).
 
+## Nombre de la marca (2026-10-26)
+
+- La marca se llama **Pili Trespalacios** (decidido por los socios). El análisis de los candidatos está en `docs/marca/nombres.md`.
+- Ya existen la cuenta `@pilitrespalacios` en Instagram y el dominio `pilitrespalacios.cl` (NIC Chile, DNS en Cloudflare, vence el 2028-10-26).
+- Falta confirmarlo con un abogado de marcas y registrarlo en INAPI (clases 14 y 35).
+
 ## Información que falta
 
-- Nombre de la marca (siguiente paso; de él depende constituir la empresa). Candidatos: del Pilar Joyas, Pili Trespalacios, San Salvatore, Parpaglione y Trespalacios; los socios prefieren los dos primeros. Análisis en `docs/marca/nombres.md`.
+- Registro de la marca en INAPI
 - Constitución de la empresa
-- Marca, web y redes sociales
+- Identidad visual, web y correo con el dominio
 - Packaging: caja, bolsa, decoración, carta con mensaje y cuidados, aroma
 - Diferenciación: sobre todo de marca y, en parte, de diseño (cuánto diseño propio aún no se decide)
 - Público objetivo y posicionamiento

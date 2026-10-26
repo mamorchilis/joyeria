@@ -8,6 +8,7 @@ Repositorio compartido para desarrollar una marca propia de joyería artesanal e
 - [Instrucciones para Codex y asistentes](AGENTS.md)
 - [Estado y próximas decisiones](docs/estado-proyecto.md)
 - [Nombre de la marca: análisis de candidatos](docs/marca/nombres.md)
+- [Gastos del proyecto](docs/gastos/README.md): quién pagó qué y vencimientos por renovar.
 - [Medalla de la Virgen de Covadonga: opciones de diseño](docs/coleccion/medalla-covadonga.md)
 - [Investigación de competencia](docs/referentes/README.md): tablero comparativo y una carpeta por competidor ([Co Rivera](docs/referentes/co-rivera/README.md), [Igna Valverde](docs/referentes/igna-valverde/README.md), [CBC Jewelry](docs/referentes/cbc-jewelry/README.md), [Milagritos de María](docs/referentes/milagritos-de-maria/README.md))
 - [Probador virtual de joyas (realidad aumentada)](docs/probador-virtual.md)
@@ -22,4 +23,4 @@ Este repositorio es la fuente central de información compartida. Las conversaci
 5. Si se trabaja desde otro entorno, vuelve a sincronizar antes de editar.
 
 ## Estado
-El proyecto está en etapa de definiciones: CLAF es el proveedor más probable, los socios definen los 6 diseños de partida y el siguiente paso es elegir el nombre de la marca. Para retomar, leer la sección **Punto de retorno** de `docs/estado-proyecto.md`.
+El proyecto está en etapa de definiciones: CLAF es el proveedor más probable, los socios definen los 6 diseños de partida y la marca ya tiene nombre: **Pili Trespalacios**, con `@pilitrespalacios` en Instagram y `pilitrespalacios.cl`. Sigue constituir la empresa. Para retomar, leer la sección **Punto de retorno** de `docs/estado-proyecto.md`.
