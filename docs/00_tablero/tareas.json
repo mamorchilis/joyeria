@@ -13,17 +13,6 @@
   ],
   "tareas": [
     {
-      "id": "t1",
-      "titulo": "Reunión con abogado de marcas para confirmar el nombre Pili Trespalacios (y la autorización escrita de Pili para usar su nombre)",
-      "fecha": "2026-11-06",
-      "responsable": null,
-      "area": "Marca y legal",
-      "origen": "claude",
-      "hecha": false,
-      "creada": "2026-10-27",
-      "por": "Claude"
-    },
-    {
       "id": "t2",
       "titulo": "Solicitar registro de la marca en INAPI (clases 14 y 35)",
       "fecha": "2026-11-20",
@@ -32,40 +21,32 @@
       "origen": "claude",
       "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "aprobada": true
     },
     {
       "id": "t3",
       "titulo": "Constituir la empresa",
-      "fecha": "2026-11-27",
+      "fecha": "2026-10-30",
       "responsable": null,
       "area": "Marca y legal",
       "origen": "claude",
       "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude"
-    },
-    {
-      "id": "t4",
-      "titulo": "Traspasar a la empresa el dominio, el Instagram y la tienda de Shopify",
-      "fecha": null,
-      "responsable": null,
-      "area": "Marca y legal",
-      "origen": "claude",
-      "hecha": false,
-      "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "aprobada": true
     },
     {
       "id": "t5",
       "titulo": "Propuesta de identidad visual: logo, colores y tipografía",
-      "fecha": "2026-11-13",
+      "fecha": "2026-10-29",
       "responsable": "Pili",
       "area": "Marca y legal",
       "origen": "claude",
       "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "aprobada": true
     },
     {
       "id": "t6",
@@ -74,9 +55,12 @@
       "responsable": null,
       "area": "Producto y taller",
       "origen": "claude",
-      "hecha": false,
+      "hecha": true,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "completada": "2026-10-27",
+      "completada_por": "Juan Antonio",
+      "aprobada": true
     },
     {
       "id": "t7",
@@ -85,9 +69,12 @@
       "responsable": null,
       "area": "Producto y taller",
       "origen": "claude",
-      "hecha": false,
+      "hecha": true,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "completada": "2026-10-27",
+      "completada_por": "Juan Antonio",
+      "aprobada": true
     },
     {
       "id": "t8",
@@ -96,31 +83,36 @@
       "responsable": null,
       "area": "Producto y taller",
       "origen": "claude",
-      "hecha": false,
+      "hecha": true,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "completada": "2026-10-27",
+      "completada_por": "Juan Antonio",
+      "aprobada": true
     },
     {
       "id": "t9",
       "titulo": "Definir el packaging: caja, bolsa, decoración, carta y aroma",
-      "fecha": "2026-11-27",
+      "fecha": "2026-10-30",
       "responsable": null,
       "area": "Producto y taller",
       "origen": "claude",
       "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "aprobada": true
     },
     {
       "id": "t10",
-      "titulo": "Elegir medio de pago y confirmar la comisión extra de Shopify por pasarela externa",
+      "titulo": "Elegir el medio de pago dentro de Shopify y confirmar su comisión",
       "fecha": "2026-11-06",
       "responsable": null,
       "area": "Tienda y correo",
       "origen": "claude",
       "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "aprobada": true
     },
     {
       "id": "t11",
@@ -129,97 +121,94 @@
       "responsable": null,
       "area": "Tienda y correo",
       "origen": "claude",
-      "hecha": false,
+      "hecha": true,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "completada": "2026-10-27",
+      "completada_por": "Juan Antonio",
+      "aprobada": true
     },
     {
       "id": "t12",
       "titulo": "Definir el correo con el dominio pilitrespalacios.cl",
-      "fecha": "2026-11-20",
+      "fecha": "2026-10-30",
       "responsable": null,
       "area": "Tienda y correo",
       "origen": "claude",
       "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "aprobada": true
     },
     {
       "id": "t13",
       "titulo": "Diseñar el tema de la tienda: portada, producto, historia y contacto (espera la identidad visual)",
-      "fecha": null,
+      "fecha": "2026-11-02",
       "responsable": null,
       "area": "Tienda y correo",
       "origen": "claude",
       "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "aprobada": true
     },
     {
       "id": "t14",
       "titulo": "Conectar pilitrespalacios.cl a Shopify y borrar la redirección a Instagram",
-      "fecha": null,
+      "fecha": "2026-11-02",
       "responsable": null,
       "area": "Tienda y correo",
       "origen": "claude",
       "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "aprobada": true
     },
     {
       "id": "t15",
       "titulo": "Elegir plan de Shopify antes de abrir",
-      "fecha": null,
+      "fecha": "2026-11-02",
       "responsable": null,
       "area": "Tienda y correo",
       "origen": "claude",
       "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "aprobada": true
     },
     {
       "id": "t16",
       "titulo": "Repartir responsabilidades entre los socios",
-      "fecha": "2026-11-06",
+      "fecha": "2026-10-28",
       "responsable": null,
       "area": "Organización",
       "origen": "claude",
       "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Claude",
+      "aprobada": true
     },
     {
-      "id": "t17",
-      "titulo": "Fijar calendario y fecha tentativa de lanzamiento",
-      "fecha": "2026-11-13",
-      "responsable": null,
-      "area": "Organización",
-      "origen": "claude",
-      "hecha": false,
-      "creada": "2026-10-27",
-      "por": "Claude"
-    },
-    {
-      "id": "t18",
-      "titulo": "Imagen del casting conjunto de las modelos virtuales",
+      "id": "t20",
+      "titulo": "Cargar en el repositorio los diseños con fotos, descripción y demás datos",
       "fecha": null,
       "responsable": null,
-      "area": "Organización",
-      "origen": "claude",
+      "area": "Producto y taller",
+      "origen": "socios",
       "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Juan Antonio"
     },
     {
-      "id": "t19",
-      "titulo": "Revisar en el panel de Shopify cuándo vence la prueba gratis",
-      "fecha": "2026-10-30",
-      "responsable": "Juan Antonio",
+      "id": "t21",
+      "titulo": "Armar una estructura de carga de productos que sirva para cruzar con Shopify y que la web identifique cada producto",
+      "fecha": null,
+      "responsable": null,
       "area": "Tienda y correo",
-      "origen": "claude",
+      "origen": "socios",
       "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude"
+      "por": "Juan Antonio"
     }
   ]
 }

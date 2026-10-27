@@ -179,3 +179,9 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   usar GitHub, las tareas se editan en una app web publicada gratis en Cloudflare Workers. Un
   "portero" revisa la contraseña y guarda los cambios en el repositorio con un token que nadie
   más ve. La lista pasó de `tareas.md` a `tareas.json`. Detalle en `tareas-app/README.md`.
+- **2026-10-27 — Avances informados por Juan Antonio al revisar las tareas.** Los 6 diseños de
+  partida están cerrados y la opción de la medalla de Covadonga está elegida (falta registrar
+  cuál en `docs/02_producto/coleccion/`). Ya se pidió a CLAF la cotización de todos los diseños.
+  Los despachos, por ahora, los hacen los socios. El pago será sí o sí dentro de Shopify; falta
+  elegir el medio y confirmar su comisión. La prueba gratis de Shopify vencería en unos dos días
+  (dato aproximado; Shopify avisará).
