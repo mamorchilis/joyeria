@@ -30,13 +30,11 @@
       "fecha": "2026-10-30",
       "responsable": null,
       "area": "Marca y legal",
-      "estado": "en_progreso",
+      "estado": "por_hacer",
       "origen": "claude",
       "creada": "2026-10-27",
       "por": "Claude",
-      "aprobada": true,
-      "iniciada": "2026-10-27",
-      "iniciada_por": "Juan Antonio"
+      "aprobada": true
     },
     {
       "id": "t5",
