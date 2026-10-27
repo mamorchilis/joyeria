@@ -217,11 +217,9 @@
       "responsable": "Juan Antonio",
       "area": "Tienda y correo",
       "origen": "claude",
-      "hecha": true,
+      "hecha": false,
       "creada": "2026-10-27",
-      "por": "Claude",
-      "completada": "2026-10-27",
-      "completada_por": "Juan Antonio"
+      "por": "Claude"
     }
   ]
 }
