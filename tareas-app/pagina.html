@@ -159,6 +159,10 @@
   .acciones .principal { background: var(--acento); border-color: var(--acento); color: var(--sobre-acento); }
   .secundarias { display: flex; justify-content: space-between; gap: 12px; margin-top: 14px; }
   .secundarias button { background: none; border: 0; padding: 6px 0; font-size: 14px; }
+  .opciones-quien { display: grid; gap: 8px; margin-top: 18px; }
+  .opciones-quien button { padding: 13px; border-radius: 10px; border: 1px solid var(--linea); background: var(--fondo); font-weight: 600; }
+  .opciones-quien .principal { background: var(--acento); border-color: var(--acento); color: var(--sobre-acento); }
+  #quien .acciones { margin-top: 10px; }
   .borrar { color: var(--rojo); }
   .aceptar { color: var(--morado); font-weight: 600; }
 
@@ -205,6 +209,15 @@
 </div>
 
 <div class="guardando" id="guardando" hidden></div>
+
+<dialog id="quien" aria-labelledby="quien-titulo">
+  <form method="dialog">
+    <h3 id="quien-titulo">¿Quién la toma?</h3>
+    <div class="origen" id="quien-tarea"></div>
+    <div class="opciones-quien" id="quien-opciones"></div>
+    <div class="acciones"><button type="submit">Cancelar</button></div>
+  </form>
+</dialog>
 
 <dialog id="editor" aria-labelledby="editor-titulo">
   <form method="dialog" id="form-editor">
@@ -479,13 +492,42 @@ document.addEventListener("click", (e) => {
   if (e.target.closest(".cuerpo")) abrirEditor(t);
 });
 
-function moverA(t, destino) {
+// responsable: undefined = no cambiarlo; null o un nombre = dejarlo así.
+async function moverA(t, destino, responsable) {
   const antes = estadoDe(t);
   if (antes === destino) return;
+  if (destino === "en_progreso" && !t.responsable && responsable === undefined) {
+    responsable = await preguntarQuien(t);
+    if (responsable === undefined) return; // canceló
+  }
   const texto = { en_progreso: "Movida a En progreso", lista: "¡Lista! 🎉", por_hacer: antes === "lista" ? "Tarea reabierta" : "Devuelta a Por hacer" }[destino];
-  enviar({ accion: "estado", id: t.id, campos: { estado: destino } },
-    () => { t.estado = destino; t.aprobada = true; if (destino === "lista") t.completada_por = sesion.usuario; },
-    texto, () => moverA(t, antes));
+  const campos = { estado: destino };
+  const respAntes = t.responsable ?? null;
+  if (responsable !== undefined) campos.responsable = responsable;
+  enviar({ accion: "estado", id: t.id, campos },
+    () => { t.estado = destino; t.aprobada = true; if (destino === "lista") t.completada_por = sesion.usuario;
+      if (responsable !== undefined) t.responsable = responsable; },
+    responsable ? `${texto} · ${responsable}` : texto,
+    () => moverA(t, antes, responsable !== undefined ? respAntes : undefined));
+}
+
+// Ventana "¿Quién la toma?": devuelve el nombre elegido, o undefined si se cancela.
+function preguntarQuien(t) {
+  const dq = $("#quien");
+  $("#quien-tarea").textContent = t.titulo;
+  const nombres = [...datos.responsables].sort((a, b) => (b === sesion.usuario) - (a === sesion.usuario));
+  $("#quien-opciones").innerHTML = nombres.map((n) =>
+    `<button type="button" class="${n === sesion.usuario ? "principal" : ""}" data-nombre="${esc(n)}">${esc(n === sesion.usuario ? `Yo (${n})` : n)}</button>`).join("");
+  return new Promise((resolver) => {
+    let listo = false;
+    const terminar = (valor) => { if (!listo) { listo = true; resolver(valor); } };
+    $("#quien-opciones").onclick = (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      terminar(b.dataset.nombre); dq.close();
+    };
+    dq.onclose = () => terminar(undefined); // Cancelar, Escape o tocar fuera
+    dq.showModal();
+  });
 }
 
 // Arrastrar y soltar entre columnas (solo computador con mouse).
@@ -570,6 +612,7 @@ $("#atajos").addEventListener("click", (e) => { const b = e.target.closest("butt
 $("#sin-fecha").addEventListener("click", () => ($("#e-fecha").value = ""));
 $("#cancelar").addEventListener("click", () => ed.close());
 ed.addEventListener("click", (e) => { if (e.target === ed) ed.close(); });
+$("#quien").addEventListener("click", (e) => { if (e.target === $("#quien")) $("#quien").close(); });
 $("#nueva").addEventListener("click", () => abrirEditor(null));
 
 $("#form-editor").addEventListener("submit", async (e) => {

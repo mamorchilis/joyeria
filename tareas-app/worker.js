@@ -217,9 +217,11 @@ function aplicar(datos, { accion, id, campos = {} }, usuario) {
       const antes = estadoDe(tarea);
       fijarEstado(tarea, campos.estado, usuario);
       tarea.aprobada = true;
+      // Al empezar una tarea sin responsable, la app pregunta quién la toma.
+      if ("responsable" in limpio) tarea.responsable = limpio.responsable;
       const verbo = { por_hacer: antes === "lista" ? "volvió a abrir" : "devolvió a por hacer",
         en_progreso: "empezó", lista: "marcó como lista" }[campos.estado];
-      return `${verbo} ${nombre(tarea)}`;
+      return `${verbo} ${nombre(tarea)}${limpio.responsable ? ` (responsable: ${limpio.responsable})` : ""}`;
     }
     case "eliminar":
       // No se borra: queda en "Eliminadas" y se puede recuperar.

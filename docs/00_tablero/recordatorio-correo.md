@@ -27,7 +27,8 @@ cobra por mensaje.
 La app es un tablero Kanban con tres columnas: **Por hacer**, **En progreso** y **Listas**. En
 el computador se ven lado a lado y las tarjetas se pueden arrastrar; en el celular son tres
 pestañas y cada tarjeta tiene un botón para pasarla a la siguiente (Empezar, Lista, Reabrir).
-Eliminar no borra: la tarea queda en "Eliminadas", al pie del tablero, y se puede recuperar.
+Al empezar una tarea sin responsable, la app pregunta quién la toma. Eliminar no borra: la tarea
+queda en "Eliminadas", al pie del tablero, y se puede recuperar.
 
 Cada tarea tiene texto, estado, fecha límite (o sin fecha), responsable (Pili, Juan Antonio,
 Ambos o sin responsable) y área. Las que propuso Claude llevan la etiqueta **Propuesta de
