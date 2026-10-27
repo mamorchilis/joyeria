@@ -12,7 +12,7 @@ Resumen para retomar el trabajo en una sesión nueva. Al final de cada sesión, 
   - *Análisis de competencia:* resumen comparativo y una hoja por cada uno de los 4 competidores (Co Rivera, Igna Valverde, CBC Jewelry y Milagritos de María).
   - *Definiciones de marca:* hoja de ruta (lo acordado, en curso y por definir) y nombre de la marca.
   - *Colección inicial:* una hoja por diseño. Por ahora, la medalla de la Virgen de Covadonga.
-- **Tareas y recordatorio:** la lista de tareas está en `docs/00_tablero/tareas.md` (borrador del 2026-10-27, con fechas y responsables por ajustar). De lunes a viernes a las 9:00 llega un correo con lo atrasado, lo de hoy y lo de los próximos 7 días, enviado por GitHub Actions desde Gmail (gratis). Falta configurar la contraseña de aplicación de Gmail y los secretos en GitHub; los pasos están en `docs/00_tablero/recordatorio-correo.md`.
+- **Tareas y recordatorio:** las tareas se ven y se editan en la app de tareas (`tareas-app/`, con usuario y contraseña para Pili y Juan Antonio) y quedan en `docs/00_tablero/tareas.json`. La lista parte de un borrador de Claude (2026-10-27): esas tareas llevan la etiqueta "Propuesta de Claude" hasta que los socios las aceptan o editan. De lunes a viernes a las 9:00 llega un correo con lo atrasado, lo de hoy y lo de los próximos 7 días (GitHub Actions + Gmail, gratis). Detalle en `docs/00_tablero/recordatorio-correo.md`.
 - **Competencia:** `docs/03_mercado/competencia/`, con una carpeta por marca (`ficha.json`, `catalogo_publico.csv`, `README.md` y `fuentes-y-limites.md`), las conclusiones comparativas en `resumen.json` y el formato estándar explicado en `docs/03_mercado/competencia/README.md`.
 - **Definiciones de marca:** `docs/01_marca-y-marketing/definiciones.json` (hoja de ruta) y `docs/01_marca-y-marketing/nombres.json` (datos del análisis de nombres; el texto completo está en `docs/01_marca-y-marketing/nombres.md`).
 - **Contexto de negocio y CLAF:** `docs/01_marca-y-marketing/marca.md` (concepto y nombre) y `docs/04_operaciones/fabricacion.md` (criterios de taller y lo que ofrece CLAF).
@@ -173,5 +173,9 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
 - **2026-10-27 — Recordatorio diario de tareas por correo (vigente).** Se eligió un correo de
   lunes a viernes a las 9:00, enviado por GitHub Actions desde Gmail, porque es gratis y no
   depende de tener un computador encendido. WhatsApp se descartó por el costo de su API. La
-  lista vive en `docs/00_tablero/tareas.md`; sus fechas y responsables son un borrador que los
+  lista vive en `docs/00_tablero/tareas.json`; sus fechas y responsables son un borrador que los
   socios van a ajustar. Detalle y configuración en `docs/00_tablero/recordatorio-correo.md`.
+- **2026-10-27 — App de tareas con usuario y contraseña (vigente).** Para que Pili no tenga que
+  usar GitHub, las tareas se editan en una app web publicada gratis en Cloudflare Workers. Un
+  "portero" revisa la contraseña y guarda los cambios en el repositorio con un token que nadie
+  más ve. La lista pasó de `tareas.md` a `tareas.json`. Detalle en `tareas-app/README.md`.

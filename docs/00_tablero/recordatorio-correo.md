@@ -1,46 +1,55 @@
-# Recordatorio de tareas por correo
+# Tareas: app y recordatorio por correo
 
-Decidido el 2026-10-27: de lunes a viernes, a las 9:00 de Chile, llega un correo con las tareas
-**atrasadas**, las que vencen **hoy** y las de los **próximos 7 días**. Es gratis: lo corre GitHub
-Actions con el computador apagado y se envía desde Gmail. Se descartó WhatsApp porque su API
+Decidido el 2026-10-27:
+
+- Las tareas del proyecto se ven y se editan en una **app web con usuario y contraseña**, pensada
+  para el celular. Ahí se cambian fechas y responsables, se marcan como listas y se agregan
+  tareas nuevas. Cada cambio se guarda solo en el repositorio, con el nombre de quien lo hizo.
+- De lunes a viernes, a las 9:00 de Chile, llega un correo con las tareas **atrasadas**, las
+  que vencen **hoy** y las de los **próximos 7 días**.
+
+Las dos cosas son gratis: la app corre en Cloudflare Workers (plan gratuito) y el correo lo
+manda GitHub Actions desde Gmail, con el computador apagado. Se descartó WhatsApp porque su API
 cobra por mensaje.
 
 ## Piezas
 
-- `tareas.md`: la lista de tareas. Es lo único que hay que mantener al día.
-- `recordatorio_tareas.py`: lee la lista y arma el correo.
-- `.github/workflows/recordatorio-tareas.yml`: lo programa de lunes a viernes.
+- `docs/00_tablero/tareas.json`: la lista de tareas. Se edita con la app, no a mano.
+- `tareas-app/`: la app (`pagina.html`) y el "portero" (`worker.js`), que revisa la contraseña
+  y guarda en el repositorio. Su instalación está en `tareas-app/README.md`.
+- `docs/00_tablero/recordatorio_tareas.py`: lee la lista y arma el correo.
+- `.github/workflows/recordatorio-tareas.yml`: programa el correo de lunes a viernes.
 
-## Configuración (una sola vez)
+## Cómo se ve cada tarea
+
+Cada tarea tiene texto, fecha límite (o sin fecha), responsable (Pili, Juan Antonio, Ambos o
+sin responsable) y área. Las que propuso Claude llevan la etiqueta **Propuesta de Claude** hasta
+que alguien las acepta o las edita. En el correo aparecen con "(propuesta)".
+
+## Configuración del correo (hecha el 2026-10-27)
 
 El repositorio es **público**, así que la clave y los correos van como secretos de GitHub, nunca
 en un archivo.
 
 1. Los correos salen de la cuenta de Gmail compartida del proyecto, la misma dueña del
-   repositorio en GitHub (decidido el 2026-10-27). En esa cuenta, activar la verificación en dos pasos y crear
-   una contraseña de aplicación en <https://myaccount.google.com/apppasswords> (nombre:
-   "Recordatorio tareas"). Google muestra 16 letras una sola vez.
-2. En GitHub, en el repositorio, ir a *Settings → Secrets and variables → Actions → New
-   repository secret* y crear tres secretos:
-   - `GMAIL_USUARIO`: el correo que envía.
-   - `GMAIL_CLAVE_APP`: las 16 letras del paso 1.
-   - `CORREOS_DESTINO`: los destinatarios, separados por coma.
-3. Probar en *Actions → Recordatorio de tareas → Run workflow*. Con este botón se envía de
-   inmediato, a cualquier hora.
+   repositorio en GitHub. En esa cuenta se activó la verificación en dos pasos y se creó una
+   contraseña de aplicación en <https://myaccount.google.com/apppasswords> (nombre:
+   "Recordatorio tareas").
+2. En GitHub, en *Settings → Secrets and variables → Actions*, están los secretos
+   `GMAIL_USUARIO`, `GMAIL_CLAVE_APP` y `CORREOS_DESTINO` (destinatarios separados por coma).
+3. Para probar: *Actions → Recordatorio de tareas → Run workflow*. Envía de inmediato.
 
-## Uso diario
-
-- Para marcar una tarea como hecha, cambiar `[ ]` por `[x]` en `tareas.md` y subirlo al
-  repositorio. Se puede editar desde el celular en github.com, con el lápiz.
-- Para ver cómo saldría el correo sin enviarlo:
-  `python docs/00_tablero/recordatorio_tareas.py --prueba` (o con `--fecha 2026-11-10`).
+Para ver cómo saldría el correo sin enviarlo:
+`python docs/00_tablero/recordatorio_tareas.py --prueba` (o con `--fecha 2026-11-10`).
 
 ## A tener en cuenta
 
+- Cada cambio en la app es un commit en `main`. Antes de trabajar en una copia local, hacer
+  `git pull` para traer lo que se cambió desde la app.
 - GitHub puede atrasar las tareas programadas unos minutos, a veces más.
-- Chile cambia de hora. Por eso la tarea corre a las 12:00 y a las 13:00 UTC, y envía solo en
-  la que coincide con las 9 en Chile.
+- Chile cambia de hora. Por eso el correo se programa a las 12:00 y a las 13:00 UTC, y se envía
+  solo en la que coincide con las 9 en Chile.
 - GitHub pausa las tareas programadas si el repositorio pasa 60 días sin cambios. Si deja de
   llegar el correo, revisar la pestaña *Actions*.
-- Si la contraseña de aplicación se filtra o deja de servir, borrarla en la cuenta de Google y
-  crear otra.
+- Si la contraseña de aplicación de Gmail o el token de GitHub se filtran o dejan de servir,
+  borrarlos y crear otros (ver `tareas-app/README.md`).

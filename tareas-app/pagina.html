@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16140f" media="(prefers-color-scheme: dark)">
+<title>Tareas · Joyería</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238a6d3b'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11.5' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --fondo: #f6f3ee; --tarjeta: #ffffff; --texto: #1f1b16; --suave: #6f675c; --linea: #e6e0d6;
+    --acento: #8a6d3b; --acento-fondo: #f1e9da; --rojo: #b42318; --rojo-fondo: #fdecea;
+    --azul: #1d4ed8; --azul-fondo: #e8eefc; --verde: #2f7d4f; --verde-fondo: #e6f3eb;
+    --morado: #6b46c1; --morado-fondo: #efe9fb; --sombra: 0 1px 2px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.04);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fondo: #16140f; --tarjeta: #211e18; --texto: #f1ece4; --suave: #a59c8e; --linea: #36312a;
+      --acento: #d1b07a; --acento-fondo: #3a3021; --rojo: #f2867b; --rojo-fondo: #3d1d1a;
+      --azul: #8fb0ff; --azul-fondo: #1d2740; --verde: #7fcf9f; --verde-fondo: #183324;
+      --morado: #b9a0f2; --morado-fondo: #2c2442; --sombra: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--fondo); color: var(--texto);
+    font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  .envoltura { max-width: 640px; margin: 0 auto; padding: 16px 16px calc(96px + env(safe-area-inset-bottom)); }
+  [hidden] { display: none !important; }
+
+  /* Entrada */
+  .entrada { min-height: 100vh; display: grid; place-items: center; padding: 16px; }
+  .entrada form { width: 100%; max-width: 360px; background: var(--tarjeta); border: 1px solid var(--linea);
+    border-radius: 16px; padding: 24px; box-shadow: var(--sombra); }
+  .entrada h1 { margin: 0 0 4px; font-size: 24px; }
+  .entrada p { margin: 0 0 20px; color: var(--suave); }
+  label { display: block; font-size: 14px; color: var(--suave); margin: 14px 0 6px; }
+  input, select, textarea { width: 100%; padding: 12px; border: 1px solid var(--linea); border-radius: 10px;
+    background: var(--fondo); }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--acento); outline-offset: 1px; }
+  .boton { width: 100%; margin-top: 20px; padding: 13px; border: 0; border-radius: 10px;
+    background: var(--acento); color: #fff; font-weight: 600; }
+  @media (prefers-color-scheme: dark) { .boton { color: #16140f; } }
+  .error { color: var(--rojo); font-size: 14px; margin-top: 12px; min-height: 1em; }
+
+  /* Encabezado */
+  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+  header h1 { margin: 0; font-size: 26px; }
+  header .hola { color: var(--suave); font-size: 14px; }
+  .enlace { background: none; border: 0; color: var(--suave); text-decoration: underline; padding: 6px; font-size: 14px; }
+  .aviso-prueba { background: var(--morado-fondo); color: var(--morado); border-radius: 10px; padding: 8px 12px;
+    font-size: 14px; margin-bottom: 12px; }
+
+  /* Filtros */
+  .filtros { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 8px; scrollbar-width: none; }
+  .filtros button { flex: none; border: 1px solid var(--linea); background: var(--tarjeta); border-radius: 999px;
+    padding: 7px 14px; font-size: 14px; }
+  .filtros button[aria-pressed="true"] { background: var(--texto); color: var(--fondo); border-color: var(--texto); }
+  .resumen { color: var(--suave); font-size: 14px; margin: 6px 0 4px; }
+
+  /* Grupos y tarjetas */
+  h2 { font-size: 15px; margin: 22px 0 8px; display: flex; align-items: center; gap: 8px; }
+  h2 .cuenta { font-weight: 500; color: var(--suave); }
+  h2.atrasadas { color: var(--rojo); } h2.hoy { color: var(--azul); }
+  .lista { display: grid; gap: 8px; }
+  .tarea { display: flex; gap: 12px; align-items: flex-start; background: var(--tarjeta); border: 1px solid var(--linea);
+    border-radius: 12px; padding: 12px; box-shadow: var(--sombra); }
+  .tarea.atrasada { border-left: 4px solid var(--rojo); }
+  .tarea.de-hoy { border-left: 4px solid var(--azul); }
+  .check { flex: none; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--suave); background: none;
+    display: grid; place-items: center; padding: 0; margin-top: 1px; }
+  .check svg { width: 16px; height: 16px; opacity: 0; }
+  .tarea.hecha .check { background: var(--verde); border-color: var(--verde); }
+  .tarea.hecha .check svg { opacity: 1; }
+  .tarea.hecha .titulo { text-decoration: line-through; color: var(--suave); }
+  .cuerpo { flex: 1; min-width: 0; background: none; border: 0; text-align: left; padding: 0; }
+  .titulo { display: block; overflow-wrap: anywhere; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
+  .chip { font-size: 12.5px; padding: 2px 8px; border-radius: 999px; background: var(--fondo); color: var(--suave);
+    border: 1px solid var(--linea); white-space: nowrap; }
+  .chip.fecha-atrasada { background: var(--rojo-fondo); color: var(--rojo); border-color: transparent; }
+  .chip.fecha-hoy { background: var(--azul-fondo); color: var(--azul); border-color: transparent; }
+  .chip.persona { background: var(--acento-fondo); color: var(--acento); border-color: transparent; }
+  .chip.propuesta { background: var(--morado-fondo); color: var(--morado); border-color: transparent; }
+  .vacio { color: var(--suave); font-size: 14px; padding: 4px 2px; }
+  details summary { cursor: pointer; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  details summary h2::after { content: "▸"; color: var(--suave); }
+  details[open] summary h2::after { content: "▾"; }
+
+  /* Botón nueva tarea */
+  .nueva { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(18px + env(safe-area-inset-bottom));
+    border: 0; border-radius: 999px; background: var(--acento); color: #fff; font-weight: 600; padding: 14px 22px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.18); }
+  @media (prefers-color-scheme: dark) { .nueva { color: #16140f; } }
+
+  /* Ventana de edición */
+  dialog { border: 0; padding: 0; width: min(560px, 100%); max-width: 100%; max-height: 92vh; border-radius: 18px 18px 0 0;
+    margin: auto auto 0; background: var(--tarjeta); color: var(--texto); }
+  @media (min-width: 600px) { dialog { border-radius: 18px; margin: auto; } }
+  dialog::backdrop { background: rgba(0,0,0,.4); }
+  dialog form { padding: 20px 18px calc(18px + env(safe-area-inset-bottom)); }
+  dialog h3 { margin: 0; font-size: 18px; }
+  .origen { font-size: 13px; color: var(--suave); margin-top: 4px; }
+  .fila-fecha { display: flex; gap: 8px; }
+  .fila-fecha input { flex: 1; }
+  .fila-fecha button { flex: none; border: 1px solid var(--linea); background: var(--fondo); border-radius: 10px; padding: 0 12px; font-size: 14px; }
+  .atajos { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .atajos button { border: 1px solid var(--linea); background: var(--fondo); border-radius: 999px; padding: 4px 10px; font-size: 13px; }
+  .acciones { display: flex; gap: 8px; margin-top: 22px; }
+  .acciones button { flex: 1; padding: 12px; border-radius: 10px; border: 1px solid var(--linea); background: var(--fondo); font-weight: 600; }
+  .acciones .principal { background: var(--acento); border-color: var(--acento); color: #fff; }
+  @media (prefers-color-scheme: dark) { .acciones .principal { color: #16140f; } }
+  .secundarias { display: flex; justify-content: space-between; margin-top: 14px; }
+  .secundarias button { background: none; border: 0; padding: 6px 0; font-size: 14px; }
+  .borrar { color: var(--rojo); }
+  .aceptar { color: var(--morado); font-weight: 600; }
+
+  .aviso { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(84px + env(safe-area-inset-bottom));
+    background: var(--texto); color: var(--fondo); padding: 10px 16px; border-radius: 10px; font-size: 14px;
+    max-width: calc(100% - 32px); z-index: 10; }
+  .aviso.mal { background: var(--rojo); color: #fff; }
+  .cargando { opacity: .55; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<div class="entrada" id="vista-entrada" hidden>
+  <form id="form-entrada">
+    <h1>Tareas</h1>
+    <p>Proyecto de joyería</p>
+    <label for="usuario">Nombre</label>
+    <select id="usuario" required></select>
+    <label for="clave">Contraseña</label>
+    <input id="clave" type="password" autocomplete="current-password" required>
+    <button class="boton" type="submit">Entrar</button>
+    <div class="error" id="error-entrada" role="alert"></div>
+  </form>
+</div>
+
+<div class="envoltura" id="vista-app" hidden>
+  <header>
+    <div>
+      <h1>Tareas</h1>
+      <div class="hola" id="hola"></div>
+    </div>
+    <button class="enlace" id="salir" type="button">Salir</button>
+  </header>
+  <div class="aviso-prueba" id="aviso-prueba" hidden>Modo prueba: los cambios no se guardan en el repositorio.</div>
+  <div class="filtros" id="filtros" role="group" aria-label="Filtrar"></div>
+  <div class="resumen" id="resumen"></div>
+  <main id="grupos"></main>
+</div>
+
+<button class="nueva" id="nueva" type="button" hidden>+ Nueva tarea</button>
+
+<dialog id="editor">
+  <form method="dialog" id="form-editor">
+    <h3 id="editor-titulo">Editar tarea</h3>
+    <div class="origen" id="editor-origen"></div>
+    <label for="e-titulo">Qué hay que hacer</label>
+    <textarea id="e-titulo" rows="3" maxlength="300" required></textarea>
+    <label for="e-fecha">Fecha límite</label>
+    <div class="fila-fecha">
+      <input id="e-fecha" type="date">
+      <button type="button" id="sin-fecha">Sin fecha</button>
+    </div>
+    <div class="atajos" id="atajos"></div>
+    <label for="e-responsable">Responsable</label>
+    <select id="e-responsable"></select>
+    <label for="e-area">Área</label>
+    <select id="e-area"></select>
+    <div class="acciones">
+      <button type="button" id="cancelar">Cancelar</button>
+      <button type="submit" class="principal" id="guardar">Guardar</button>
+    </div>
+    <div class="secundarias">
+      <button type="button" class="borrar" id="borrar">Eliminar tarea</button>
+      <button type="button" class="aceptar" id="aceptar">Aceptar propuesta tal cual</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="aviso" id="aviso" role="status" hidden></div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const DIAS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
+const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const CHECK = '<svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg>';
+
+let sesion = leerSesion();
+let datos = null;
+let filtro = guardado("filtro") || "todas";
+let editando = null;
+
+function guardado(clave, valor) {
+  try {
+    if (valor === undefined) return localStorage.getItem(clave);
+    if (valor === null) localStorage.removeItem(clave); else localStorage.setItem(clave, valor);
+  } catch { return null; }
+}
+function leerSesion() { try { return JSON.parse(guardado("sesion")) || null; } catch { return null; } }
+
+async function api(ruta, cuerpo) {
+  const r = await fetch(ruta, {
+    method: cuerpo ? "POST" : "GET",
+    headers: { "content-type": "application/json", ...(sesion ? { authorization: `Bearer ${sesion.token}` } : {}) },
+    body: cuerpo ? JSON.stringify(cuerpo) : undefined,
+  });
+  const j = await r.json().catch(() => ({ error: "Sin respuesta del servidor." }));
+  if (r.status === 401 && ruta !== "/api/entrar") { cerrarSesion(); throw new Error(j.error); }
+  if (!r.ok) throw new Error(j.error || "Algo falló.");
+  return j;
+}
+
+function aviso(texto, mal = false) {
+  const a = $("#aviso");
+  a.textContent = texto; a.className = "aviso" + (mal ? " mal" : ""); a.hidden = false;
+  clearTimeout(aviso.t); aviso.t = setTimeout(() => (a.hidden = true), mal ? 5000 : 2200);
+}
+
+// ---------- Fechas ----------
+function hoyISO() { const d = new Date(); return iso(d); }
+function iso(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; }
+function aFecha(s) { const [a, m, d] = s.split("-").map(Number); return new Date(a, m - 1, d); }
+function diasHasta(s) { return Math.round((aFecha(s) - aFecha(hoyISO())) / 864e5); }
+function fechaCorta(s) { const d = aFecha(s); return `${DIAS[d.getDay()]} ${d.getDate()} ${MESES[d.getMonth()]}`; }
+function sumarDias(n) { const d = new Date(); d.setDate(d.getDate() + n); return iso(d); }
+function proximoDia(dow) { const d = new Date(); do d.setDate(d.getDate() + 1); while (d.getDay() !== dow); return iso(d); }
+
+function textoFecha(t) {
+  if (!t.fecha) return null;
+  const n = diasHasta(t.fecha);
+  if (t.hecha) return { texto: fechaCorta(t.fecha), clase: "" };
+  if (n < 0) return { texto: `${fechaCorta(t.fecha)} · hace ${-n} ${n === -1 ? "día" : "días"}`, clase: "fecha-atrasada" };
+  if (n === 0) return { texto: "Hoy", clase: "fecha-hoy" };
+  if (n === 1) return { texto: `Mañana · ${fechaCorta(t.fecha)}`, clase: "" };
+  return { texto: `${fechaCorta(t.fecha)} · en ${n} días`, clase: "" };
+}
+
+// ---------- Pantallas ----------
+async function iniciar() {
+  const config = await api("/api/config").catch(() => ({ usuarios: [], prueba: false }));
+  $("#aviso-prueba").hidden = !config.prueba;
+  $("#usuario").innerHTML = config.usuarios.map((u) => `<option>${esc(u)}</option>`).join("");
+  if (!sesion) return mostrarEntrada();
+  mostrarApp();
+  await cargar();
+}
+
+function mostrarEntrada() {
+  $("#vista-entrada").hidden = false; $("#vista-app").hidden = true; $("#nueva").hidden = true;
+  const ultimo = guardado("ultimo-usuario");
+  if (ultimo) $("#usuario").value = ultimo;
+}
+function mostrarApp() {
+  $("#vista-entrada").hidden = true; $("#vista-app").hidden = false; $("#nueva").hidden = false;
+  $("#hola").textContent = `Hola, ${sesion.usuario}`;
+}
+function cerrarSesion() { sesion = null; guardado("sesion", null); mostrarEntrada(); }
+
+$("#form-entrada").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  $("#error-entrada").textContent = "";
+  const boton = e.target.querySelector("button"); boton.disabled = true;
+  try {
+    const usuario = $("#usuario").value;
+    const r = await api("/api/entrar", { usuario, clave: $("#clave").value });
+    sesion = { token: r.token, usuario: r.usuario };
+    guardado("sesion", JSON.stringify(sesion)); guardado("ultimo-usuario", r.usuario);
+    $("#clave").value = "";
+    mostrarApp(); await cargar();
+  } catch (err) { $("#error-entrada").textContent = err.message; }
+  boton.disabled = false;
+});
+$("#salir").addEventListener("click", cerrarSesion);
+
+async function cargar() {
+  try { datos = (await api("/api/tareas")).datos; pintar(); }
+  catch (err) { if (sesion) aviso(err.message, true); }
+}
+
+// ---------- Lista ----------
+function esc(s) { return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+function esPropuesta(t) { return t.origen === "claude" && !t.aprobada; }
+
+function pasaFiltro(t) {
+  if (filtro === "todas") return true;
+  if (filtro === "propuestas") return esPropuesta(t);
+  if (filtro === "sin-asignar") return !t.responsable;
+  return t.responsable === filtro || t.responsable === "Ambos";
+}
+
+function pintarFiltros() {
+  const propuestas = datos.tareas.filter((t) => !t.hecha && esPropuesta(t)).length;
+  const opciones = [["todas", "Todas"], ...datos.responsables.filter((r) => r !== "Ambos").map((r) => [r, r === sesion.usuario ? `Mías` : r]),
+    ["sin-asignar", "Sin responsable"]];
+  if (propuestas) opciones.push(["propuestas", `Propuestas de Claude (${propuestas})`]);
+  if (!opciones.some(([v]) => v === filtro)) filtro = "todas";
+  $("#filtros").innerHTML = opciones.map(([v, t]) => `<button type="button" data-filtro="${esc(v)}" aria-pressed="${v === filtro}">${esc(t)}</button>`).join("");
+}
+$("#filtros").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  filtro = b.dataset.filtro; guardado("filtro", filtro); pintar();
+});
+
+function tarjeta(t) {
+  const f = textoFecha(t);
+  const n = t.fecha ? diasHasta(t.fecha) : null;
+  const clase = t.hecha ? "hecha" : n !== null && n < 0 ? "atrasada" : n === 0 ? "de-hoy" : "";
+  const chips = [
+    f && `<span class="chip ${f.clase}">${esc(f.texto)}</span>`,
+    `<span class="chip ${t.responsable ? "persona" : ""}">${esc(t.responsable || "Sin responsable")}</span>`,
+    t.area && `<span class="chip">${esc(t.area)}</span>`,
+    esPropuesta(t) && `<span class="chip propuesta">Propuesta de Claude</span>`,
+    t.hecha && t.completada_por && `<span class="chip">Lista · ${esc(t.completada_por)}</span>`,
+  ].filter(Boolean).join("");
+  return `<div class="tarea ${clase}" data-id="${esc(t.id)}">
+    <button type="button" class="check" aria-label="${t.hecha ? "Volver a abrir" : "Marcar como lista"}">${CHECK}</button>
+    <button type="button" class="cuerpo"><span class="titulo">${esc(t.titulo)}</span><span class="meta">${chips}</span></button>
+  </div>`;
+}
+
+function grupo(titulo, lista, clase = "", vacio = "") {
+  if (!lista.length && !vacio) return "";
+  return `<h2 class="${clase}">${titulo} <span class="cuenta">${lista.length}</span></h2>
+    <div class="lista">${lista.length ? lista.map(tarjeta).join("") : `<div class="vacio">${vacio}</div>`}</div>`;
+}
+
+function pintar() {
+  pintarFiltros();
+  const visibles = datos.tareas.filter(pasaFiltro);
+  const abiertas = visibles.filter((t) => !t.hecha);
+  const conFecha = abiertas.filter((t) => t.fecha).sort((a, b) => a.fecha.localeCompare(b.fecha));
+  const atrasadas = conFecha.filter((t) => diasHasta(t.fecha) < 0);
+  const hoy = conFecha.filter((t) => diasHasta(t.fecha) === 0);
+  const semana = conFecha.filter((t) => diasHasta(t.fecha) > 0 && diasHasta(t.fecha) <= 7);
+  const despues = conFecha.filter((t) => diasHasta(t.fecha) > 7);
+  const sinFecha = abiertas.filter((t) => !t.fecha);
+  const listas = visibles.filter((t) => t.hecha).sort((a, b) => (b.completada || "").localeCompare(a.completada || ""));
+
+  $("#resumen").textContent = `${abiertas.length} pendientes` + (atrasadas.length ? ` · ${atrasadas.length} atrasadas` : "");
+  $("#grupos").innerHTML =
+    grupo("Atrasadas", atrasadas, "atrasadas") +
+    grupo("Hoy", hoy, "hoy", "Nada para hoy.") +
+    grupo("Próximos 7 días", semana, "", "Nada en los próximos 7 días.") +
+    grupo("Más adelante", despues) +
+    grupo("Sin fecha", sinFecha) +
+    (listas.length ? `<details><summary>${grupo("Listas", listas)}</summary></details>` : "");
+  // el resumen de <details> solo debe tener el título
+  const det = $("#grupos details");
+  if (det) { const lista = det.querySelector(".lista"); det.appendChild(lista); }
+}
+
+$("#grupos").addEventListener("click", (e) => {
+  const caja = e.target.closest(".tarea"); if (!caja) return;
+  const t = datos.tareas.find((x) => x.id === caja.dataset.id);
+  if (e.target.closest(".check")) {
+    enviar({ accion: "hecha", id: t.id, campos: { hecha: !t.hecha } }, () => { t.hecha = !t.hecha; if (t.hecha) t.completada_por = sesion.usuario; },
+      t.hecha ? "Tarea abierta de nuevo" : "¡Lista!");
+  } else if (e.target.closest(".cuerpo")) abrirEditor(t);
+});
+
+async function enviar(cambio, optimista, texto) {
+  const respaldo = structuredClone(datos);
+  if (optimista) { optimista(); pintar(); }
+  document.body.classList.add("cargando");
+  try {
+    const r = await api("/api/cambio", cambio);
+    datos = r.datos; pintar(); aviso(texto || "Guardado");
+    return true;
+  } catch (err) {
+    datos = respaldo; pintar(); aviso(err.message, true);
+    return false;
+  } finally { document.body.classList.remove("cargando"); }
+}
+
+// ---------- Editor ----------
+const ed = $("#editor");
+function opciones(sel, lista, vacio, valor) {
+  sel.innerHTML = `<option value="">${vacio}</option>` + lista.map((v) => `<option>${esc(v)}</option>`).join("");
+  sel.value = valor || "";
+}
+
+function abrirEditor(t) {
+  editando = t || null;
+  $("#editor-titulo").textContent = t ? "Editar tarea" : "Nueva tarea";
+  $("#editor-origen").textContent = !t ? "" : esPropuesta(t)
+    ? "Propuesta de Claude, todavía sin revisar. Al guardar cambios queda aceptada."
+    : t.origen === "claude" ? "Propuesta de Claude, aceptada." : `Agregada por ${t.por || "los socios"}.`;
+  $("#e-titulo").value = t?.titulo || "";
+  $("#e-fecha").value = t?.fecha || "";
+  opciones($("#e-responsable"), datos.responsables, "Sin responsable", t ? t.responsable : (filtro !== "todas" && datos.responsables.includes(filtro) ? filtro : ""));
+  opciones($("#e-area"), datos.areas, "Sin área", t?.area);
+  $("#borrar").hidden = !t;
+  $("#aceptar").hidden = !(t && esPropuesta(t));
+  ed.showModal();
+  if (!t) $("#e-titulo").focus();
+}
+
+const ATAJOS = [["Hoy", () => hoyISO()], ["Mañana", () => sumarDias(1)], ["Este viernes", () => (new Date().getDay() === 5 ? hoyISO() : proximoDia(5))],
+  ["Próximo lunes", () => proximoDia(1)], ["+1 semana", () => sumarDias(7)]];
+$("#atajos").innerHTML = ATAJOS.map(([t], i) => `<button type="button" data-i="${i}">${t}</button>`).join("");
+$("#atajos").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) $("#e-fecha").value = ATAJOS[b.dataset.i][1](); });
+$("#sin-fecha").addEventListener("click", () => ($("#e-fecha").value = ""));
+$("#cancelar").addEventListener("click", () => ed.close());
+ed.addEventListener("click", (e) => { if (e.target === ed) ed.close(); });
+$("#nueva").addEventListener("click", () => abrirEditor(null));
+
+$("#form-editor").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const campos = { titulo: $("#e-titulo").value, fecha: $("#e-fecha").value || null,
+    responsable: $("#e-responsable").value || null, area: $("#e-area").value || null };
+  if (!campos.titulo.trim()) return $("#e-titulo").focus();
+  ed.close();
+  if (editando) {
+    const t = editando;
+    await enviar({ accion: "editar", id: t.id, campos }, () => Object.assign(t, campos, { aprobada: true }));
+  } else {
+    await enviar({ accion: "crear", campos }, null, "Tarea agregada");
+  }
+});
+$("#borrar").addEventListener("click", async () => {
+  const t = editando;
+  if (!confirm(`¿Eliminar «${t.titulo}»?\n\nSi solo está terminada, mejor márcala como lista.`)) return;
+  ed.close();
+  await enviar({ accion: "eliminar", id: t.id }, () => datos.tareas.splice(datos.tareas.indexOf(t), 1), "Tarea eliminada");
+});
+$("#aceptar").addEventListener("click", async () => {
+  const t = editando; ed.close();
+  await enviar({ accion: "aprobar", id: t.id }, () => (t.aprobada = true), "Propuesta aceptada");
+});
+
+// Al volver a la app (por ejemplo, desde otra pestaña del celular) se trae lo último.
+document.addEventListener("visibilitychange", () => { if (!document.hidden && sesion && !ed.open) cargar(); });
+
+iniciar();
+</script>
+</body>
+</html>

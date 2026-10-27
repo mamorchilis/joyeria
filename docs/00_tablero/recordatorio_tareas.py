@@ -1,4 +1,6 @@
-"""Manda por correo el recordatorio diario de tareas (docs/00_tablero/tareas.md).
+"""Manda por correo el recordatorio diario de tareas (docs/00_tablero/tareas.json).
+
+La lista se edita con la app de tareas (tareas-app/), no a mano.
 
 El correo tiene tres bloques: lo atrasado, lo que vence hoy y lo de los próximos
 7 días. Lo corre GitHub Actions de lunes a viernes (.github/workflows/recordatorio-tareas.yml).
@@ -18,31 +20,23 @@ Uso, desde la raíz del repositorio:
 
 import argparse
 import html
+import json
 import os
-import re
 import smtplib
 import sys
 from datetime import date, datetime, timedelta
 from email.message import EmailMessage
 from pathlib import Path
 
-TAREAS = Path(__file__).resolve().parent / "tareas.md"
+TAREAS = Path(__file__).resolve().parent / "tareas.json"
 REPO = os.environ.get("GITHUB_REPOSITORY", "mamorchilis/joyeria")
-ENLACE = f"https://github.com/{REPO}/blob/main/docs/00_tablero/tareas.md"
+# Enlace al pie del correo: la app si está configurada, si no el archivo en GitHub.
+ENLACE = os.environ.get("APP_TAREAS_URL") or f"https://github.com/{REPO}/blob/main/docs/00_tablero/tareas.json"
 DIAS_SEMANA = 7
 
 DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
          "septiembre", "octubre", "noviembre", "diciembre"]
-
-# - [ ] 2026-11-06 · Responsable · Tarea   (también "sin fecha" y separador "|")
-LINEA = re.compile(
-    r"^\s*[-*]\s*\[(?P<hecha>[ xX])\]\s*"
-    r"(?P<fecha>\d{4}-\d{2}-\d{2}|sin fecha)\s*[·|]\s*"
-    r"(?P<quien>[^·|]+?)\s*[·|]\s*(?P<que>.+?)\s*$",
-    re.IGNORECASE,
-)
-
 
 def ahora_en_chile():
     try:
@@ -53,21 +47,18 @@ def ahora_en_chile():
 
 
 def leer_tareas(texto):
+    """Devuelve las tareas pendientes y las líneas con problemas (por ahora, fechas malas)."""
     tareas, raras = [], []
-    en_codigo = False  # los ejemplos dentro de ``` no son tareas
-    for n, linea in enumerate(texto.splitlines(), 1):
-        if linea.strip().startswith("```"):
-            en_codigo = not en_codigo
-        if en_codigo or not re.match(r"^\s*[-*]\s*\[[ xX]\]", linea):
+    for t in json.loads(texto)["tareas"]:
+        if t.get("hecha"):
             continue
-        m = LINEA.match(linea)
-        if not m:
-            raras.append((n, linea.strip()))
+        try:
+            fecha = date.fromisoformat(t["fecha"]) if t.get("fecha") else None
+        except ValueError:
+            raras.append((t["id"], t["titulo"]))
             continue
-        if m["hecha"].lower() == "x":
-            continue
-        fecha = None if m["fecha"].lower() == "sin fecha" else date.fromisoformat(m["fecha"])
-        tareas.append({"fecha": fecha, "quien": m["quien"], "que": m["que"]})
+        que = t["titulo"] + (" (propuesta)" if t.get("origen") == "claude" and not t.get("aprobada") else "")
+        tareas.append({"fecha": fecha, "quien": t.get("responsable") or "sin responsable", "que": que})
     return tareas, raras
 
 
@@ -124,15 +115,15 @@ def armar_correo(tareas, raras, hoy):
     if sin_fecha:
         pie.append(f"Hay {len(sin_fecha)} tarea{'s' if len(sin_fecha) > 1 else ''} sin fecha.")
     if raras:
-        pie.append(f"{len(raras)} línea(s) de tareas.md no tienen el formato esperado "
-                   f"(líneas {', '.join(str(n) for n, _ in raras)}).")
-    pie.append(f"Para marcar una tarea como hecha o cambiar fechas, editar tareas.md: {ENLACE}")
+        pie.append(f"{len(raras)} tarea(s) tienen una fecha que no se entiende "
+                   f"({', '.join(str(n) for n, _ in raras)}).")
+    pie.append(f"Para marcar una tarea como lista o cambiar fechas, entrar a la app de tareas: {ENLACE}")
     texto += pie
     cuerpo.append('<hr style="border:none;border-top:1px solid #e5e7eb;margin:20px 0 10px">')
     cuerpo += [f'<p style="color:#6b7280;font-size:13px;margin:4px 0">{html.escape(p)}</p>'
                for p in pie[:-1]]
     cuerpo.append(f'<p style="color:#6b7280;font-size:13px;margin:4px 0">Para marcar una tarea como '
-                  f'hecha o cambiar fechas, editar <a href="{ENLACE}">tareas.md</a>.</p>')
+                  f'lista o cambiar fechas, entrar a la <a href="{ENLACE}">app de tareas</a>.</p>')
 
     html_final = ('<div style="font-family:Arial,sans-serif;color:#111827;max-width:600px">'
                   + "\n".join(cuerpo) + "</div>")

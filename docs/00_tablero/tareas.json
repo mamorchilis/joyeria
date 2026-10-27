@@ -1,0 +1,225 @@
+{
+  "actualizado": "2026-10-27",
+  "responsables": [
+    "Pili",
+    "Juan Antonio",
+    "Ambos"
+  ],
+  "areas": [
+    "Marca y legal",
+    "Producto y taller",
+    "Tienda y correo",
+    "Organización"
+  ],
+  "tareas": [
+    {
+      "id": "t1",
+      "titulo": "Reunión con abogado de marcas para confirmar el nombre Pili Trespalacios (y la autorización escrita de Pili para usar su nombre)",
+      "fecha": "2026-11-06",
+      "responsable": null,
+      "area": "Marca y legal",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t2",
+      "titulo": "Solicitar registro de la marca en INAPI (clases 14 y 35)",
+      "fecha": "2026-11-20",
+      "responsable": null,
+      "area": "Marca y legal",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t3",
+      "titulo": "Constituir la empresa",
+      "fecha": "2026-11-27",
+      "responsable": null,
+      "area": "Marca y legal",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t4",
+      "titulo": "Traspasar a la empresa el dominio, el Instagram y la tienda de Shopify",
+      "fecha": null,
+      "responsable": null,
+      "area": "Marca y legal",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t5",
+      "titulo": "Propuesta de identidad visual: logo, colores y tipografía",
+      "fecha": "2026-11-13",
+      "responsable": "Pili",
+      "area": "Marca y legal",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t6",
+      "titulo": "Elegir la opción de la medalla de Covadonga",
+      "fecha": "2026-11-06",
+      "responsable": null,
+      "area": "Producto y taller",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t7",
+      "titulo": "Llevar a CLAF las preguntas pendientes: condiciones por escrito, costos por material, mínimos, plazos, stock y pedidos, y si fabrica para CBC",
+      "fecha": "2026-11-13",
+      "responsable": null,
+      "area": "Producto y taller",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t8",
+      "titulo": "Cerrar los 6 diseños de partida",
+      "fecha": "2026-11-20",
+      "responsable": null,
+      "area": "Producto y taller",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t9",
+      "titulo": "Definir el packaging: caja, bolsa, decoración, carta y aroma",
+      "fecha": "2026-11-27",
+      "responsable": null,
+      "area": "Producto y taller",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t10",
+      "titulo": "Elegir medio de pago y confirmar la comisión extra de Shopify por pasarela externa",
+      "fecha": "2026-11-06",
+      "responsable": null,
+      "area": "Tienda y correo",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t11",
+      "titulo": "Definir cómo se hacen los despachos",
+      "fecha": "2026-11-13",
+      "responsable": null,
+      "area": "Tienda y correo",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t12",
+      "titulo": "Definir el correo con el dominio pilitrespalacios.cl",
+      "fecha": "2026-11-20",
+      "responsable": null,
+      "area": "Tienda y correo",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t13",
+      "titulo": "Diseñar el tema de la tienda: portada, producto, historia y contacto (espera la identidad visual)",
+      "fecha": null,
+      "responsable": null,
+      "area": "Tienda y correo",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t14",
+      "titulo": "Conectar pilitrespalacios.cl a Shopify y borrar la redirección a Instagram",
+      "fecha": null,
+      "responsable": null,
+      "area": "Tienda y correo",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t15",
+      "titulo": "Elegir plan de Shopify antes de abrir",
+      "fecha": null,
+      "responsable": null,
+      "area": "Tienda y correo",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t16",
+      "titulo": "Repartir responsabilidades entre los socios",
+      "fecha": "2026-11-06",
+      "responsable": null,
+      "area": "Organización",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t17",
+      "titulo": "Fijar calendario y fecha tentativa de lanzamiento",
+      "fecha": "2026-11-13",
+      "responsable": null,
+      "area": "Organización",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t18",
+      "titulo": "Imagen del casting conjunto de las modelos virtuales",
+      "fecha": null,
+      "responsable": null,
+      "area": "Organización",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    },
+    {
+      "id": "t19",
+      "titulo": "Revisar en el panel de Shopify cuándo vence la prueba gratis",
+      "fecha": "2026-10-30",
+      "responsable": "Juan Antonio",
+      "area": "Tienda y correo",
+      "origen": "claude",
+      "hecha": false,
+      "creada": "2026-10-27",
+      "por": "Claude"
+    }
+  ]
+}
