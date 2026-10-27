@@ -8,6 +8,8 @@ Decidido el 2026-10-27:
 - De lunes a viernes, a las 9:00 de Chile, llega un correo con las tareas **atrasadas**, las
   que vencen **hoy** y las de los **próximos 7 días**.
 
+Decidido después, el mismo día: la app se ve como tablero Kanban.
+
 Las dos cosas son gratis: la app corre en Cloudflare Workers (plan gratuito) y el correo lo
 manda GitHub Actions desde Gmail, con el computador apagado. Se descartó WhatsApp porque su API
 cobra por mensaje.
@@ -22,9 +24,15 @@ cobra por mensaje.
 
 ## Cómo se ve cada tarea
 
-Cada tarea tiene texto, fecha límite (o sin fecha), responsable (Pili, Juan Antonio, Ambos o
-sin responsable) y área. Las que propuso Claude llevan la etiqueta **Propuesta de Claude** hasta
-que alguien las acepta o las edita. En el correo aparecen con "(propuesta)".
+La app es un tablero Kanban con tres columnas: **Por hacer**, **En progreso** y **Listas**. En
+el computador se ven lado a lado y las tarjetas se pueden arrastrar; en el celular son tres
+pestañas y cada tarjeta tiene un botón para pasarla a la siguiente (Empezar, Lista, Reabrir).
+Eliminar no borra: la tarea queda en "Eliminadas", al pie del tablero, y se puede recuperar.
+
+Cada tarea tiene texto, estado, fecha límite (o sin fecha), responsable (Pili, Juan Antonio,
+Ambos o sin responsable) y área. Las que propuso Claude llevan la etiqueta **Propuesta de
+Claude** hasta que alguien las acepta o las edita. En el correo, las tareas en progreso salen
+con "[en progreso]" y las propuestas con "(propuesta)"; las listas y eliminadas no salen.
 
 ## Configuración del correo (hecha el 2026-10-27)
 

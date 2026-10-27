@@ -9,16 +9,20 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238a6d3b'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11.5' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
   :root {
-    --fondo: #f6f3ee; --tarjeta: #ffffff; --texto: #1f1b16; --suave: #6f675c; --linea: #e6e0d6;
-    --acento: #8a6d3b; --acento-fondo: #f1e9da; --rojo: #b42318; --rojo-fondo: #fdecea;
-    --azul: #1d4ed8; --azul-fondo: #e8eefc; --verde: #2f7d4f; --verde-fondo: #e6f3eb;
-    --morado: #6b46c1; --morado-fondo: #efe9fb; --sombra: 0 1px 2px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.04);
+    color-scheme: light dark;
+    --fondo: #f6f3ee; --columna: #efeae2; --tarjeta: #ffffff; --texto: #1f1b16; --suave: #6f675c; --linea: #e3dcd0;
+    --acento: #8a6d3b; --sobre-acento: #ffffff; --acento-fondo: #f1e9da;
+    --rojo: #b42318; --rojo-fondo: #fdecea; --azul: #1d4ed8; --azul-fondo: #e8eefc;
+    --verde: #2f7d4f; --verde-fondo: #e3f2e8; --ambar: #a15c07; --ambar-fondo: #fdf0dc;
+    --morado: #6b46c1; --morado-fondo: #efe9fb;
+    --sombra: 0 1px 2px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.04);
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --fondo: #16140f; --tarjeta: #211e18; --texto: #f1ece4; --suave: #a59c8e; --linea: #36312a;
-      --acento: #d1b07a; --acento-fondo: #3a3021; --rojo: #f2867b; --rojo-fondo: #3d1d1a;
-      --azul: #8fb0ff; --azul-fondo: #1d2740; --verde: #7fcf9f; --verde-fondo: #183324;
+      --fondo: #16140f; --columna: #1c1a15; --tarjeta: #26221b; --texto: #f1ece4; --suave: #a59c8e; --linea: #3a342b;
+      --acento: #d1b07a; --sobre-acento: #16140f; --acento-fondo: #3a3021;
+      --rojo: #f2867b; --rojo-fondo: #3d1d1a; --azul: #8fb0ff; --azul-fondo: #1d2740;
+      --verde: #7fcf9f; --verde-fondo: #183324; --ambar: #f0b45c; --ambar-fondo: #3a2a12;
       --morado: #b9a0f2; --morado-fondo: #2c2442; --sombra: none;
     }
   }
@@ -27,103 +31,146 @@
   body { margin: 0; background: var(--fondo); color: var(--texto);
     font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
   button, input, select, textarea { font: inherit; color: inherit; }
-  button { cursor: pointer; }
-  .envoltura { max-width: 640px; margin: 0 auto; padding: 16px 16px calc(96px + env(safe-area-inset-bottom)); }
+  button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  :focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
   [hidden] { display: none !important; }
+  .envoltura { max-width: 1240px; margin: 0 auto; padding: 16px 16px calc(40px + env(safe-area-inset-bottom)); }
 
   /* Entrada */
   .entrada { min-height: 100vh; display: grid; place-items: center; padding: 16px; }
   .entrada form { width: 100%; max-width: 360px; background: var(--tarjeta); border: 1px solid var(--linea);
     border-radius: 16px; padding: 24px; box-shadow: var(--sombra); }
   .entrada h1 { margin: 0 0 4px; font-size: 24px; }
-  .entrada p { margin: 0 0 20px; color: var(--suave); }
+  .entrada p { margin: 0 0 8px; color: var(--suave); }
   label { display: block; font-size: 14px; color: var(--suave); margin: 14px 0 6px; }
   input, select, textarea { width: 100%; padding: 12px; border: 1px solid var(--linea); border-radius: 10px;
     background: var(--fondo); }
-  input:focus, select:focus, textarea:focus { outline: 2px solid var(--acento); outline-offset: 1px; }
+  textarea { resize: vertical; }
   .boton { width: 100%; margin-top: 20px; padding: 13px; border: 0; border-radius: 10px;
-    background: var(--acento); color: #fff; font-weight: 600; }
-  @media (prefers-color-scheme: dark) { .boton { color: #16140f; } }
+    background: var(--acento); color: var(--sobre-acento); font-weight: 600; }
   .error { color: var(--rojo); font-size: 14px; margin-top: 12px; min-height: 1em; }
 
   /* Encabezado */
-  header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+  header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
   header h1 { margin: 0; font-size: 26px; }
-  header .hola { color: var(--suave); font-size: 14px; }
-  .enlace { background: none; border: 0; color: var(--suave); text-decoration: underline; padding: 6px; font-size: 14px; }
+  .hola { color: var(--suave); font-size: 14px; }
+  .enlace { background: none; border: 0; color: var(--suave); text-decoration: underline; padding: 8px 2px; font-size: 14px; }
   .aviso-prueba { background: var(--morado-fondo); color: var(--morado); border-radius: 10px; padding: 8px 12px;
     font-size: 14px; margin-bottom: 12px; }
+  .alerta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; font-size: 14px; }
+  .alerta span { padding: 4px 10px; border-radius: 999px; }
+  .alerta .rojo { background: var(--rojo-fondo); color: var(--rojo); }
+  .alerta .azul { background: var(--azul-fondo); color: var(--azul); }
 
-  /* Filtros */
-  .filtros { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 8px; scrollbar-width: none; }
+  /* Filtro por persona */
+  .filtros { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 6px; margin: 0 -2px 6px; scrollbar-width: none; }
+  .filtros::-webkit-scrollbar { display: none; }
   .filtros button { flex: none; border: 1px solid var(--linea); background: var(--tarjeta); border-radius: 999px;
     padding: 7px 14px; font-size: 14px; }
   .filtros button[aria-pressed="true"] { background: var(--texto); color: var(--fondo); border-color: var(--texto); }
-  .resumen { color: var(--suave); font-size: 14px; margin: 6px 0 4px; }
 
-  /* Grupos y tarjetas */
-  h2 { font-size: 15px; margin: 22px 0 8px; display: flex; align-items: center; gap: 8px; }
-  h2 .cuenta { font-weight: 500; color: var(--suave); }
-  h2.atrasadas { color: var(--rojo); } h2.hoy { color: var(--azul); }
+  /* Pestañas (solo celular) */
+  .pestanas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; background: var(--columna);
+    border: 1px solid var(--linea); border-radius: 12px; padding: 4px; margin-bottom: 12px;
+    position: sticky; top: 0; z-index: 3; }
+  .pestanas button { border: 0; background: none; border-radius: 9px; padding: 9px 4px; font-size: 14px; font-weight: 600;
+    color: var(--suave); display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
+  .pestanas button[aria-selected="true"] { background: var(--tarjeta); color: var(--texto); box-shadow: var(--sombra); }
+  @media (max-width: 380px) { .pestanas button { font-size: 13px; gap: 4px; padding: 9px 2px; } .segmentos label { font-size: 13px; } }
+  .num { font-size: 12px; font-weight: 600; min-width: 20px; padding: 1px 6px; border-radius: 999px; background: var(--linea); color: var(--texto); }
+
+  /* Tablero */
+  .tablero { display: block; }
+  .columna { display: none; }
+  .columna.activa { display: block; }
+  .columna-titulo { display: none; }
   .lista { display: grid; gap: 8px; }
-  .tarea { display: flex; gap: 12px; align-items: flex-start; background: var(--tarjeta); border: 1px solid var(--linea);
-    border-radius: 12px; padding: 12px; box-shadow: var(--sombra); }
-  .tarea.atrasada { border-left: 4px solid var(--rojo); }
-  .tarea.de-hoy { border-left: 4px solid var(--azul); }
-  .check { flex: none; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--suave); background: none;
-    display: grid; place-items: center; padding: 0; margin-top: 1px; }
-  .check svg { width: 16px; height: 16px; opacity: 0; }
-  .tarea.hecha .check { background: var(--verde); border-color: var(--verde); }
-  .tarea.hecha .check svg { opacity: 1; }
-  .tarea.hecha .titulo { text-decoration: line-through; color: var(--suave); }
-  .cuerpo { flex: 1; min-width: 0; background: none; border: 0; text-align: left; padding: 0; }
+  .vacio { color: var(--suave); font-size: 14px; padding: 18px 8px; text-align: center; border: 1px dashed var(--linea); border-radius: 12px; }
+  .separador { font-size: 13px; font-weight: 600; color: var(--suave); margin: 10px 2px 0; }
+  .separador.rojo { color: var(--rojo); }
+
+  @media (min-width: 900px) {
+    .pestanas { display: none; }
+    .tablero { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; }
+    .columna { display: block; background: var(--columna); border: 1px solid var(--linea); border-radius: 14px;
+      padding: 12px; min-height: 240px; transition: background .15s, border-color .15s; }
+    .columna.destino { background: var(--acento-fondo); border-color: var(--acento); border-style: dashed; }
+    .columna-titulo { display: flex; align-items: center; gap: 8px; margin: 2px 2px 12px; font-size: 15px; }
+    .columna-titulo .punto { width: 10px; height: 10px; border-radius: 50%; }
+    .vacio { background: transparent; }
+  }
+
+  /* Tarjetas */
+  .tarea { background: var(--tarjeta); border: 1px solid var(--linea); border-radius: 12px; box-shadow: var(--sombra);
+    position: relative; overflow: hidden; }
+  .tarea::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: transparent; }
+  .tarea.atrasada::before { background: var(--rojo); }
+  .tarea.de-hoy::before { background: var(--azul); }
+  .tarea[draggable="true"] { cursor: grab; }
+  .tarea.arrastrando { opacity: .4; }
+  .cuerpo { display: block; width: 100%; background: none; border: 0; text-align: left; padding: 12px 12px 8px 16px; }
   .titulo { display: block; overflow-wrap: anywhere; }
-  .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
+  .tarea.es-lista .titulo { color: var(--suave); }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
   .chip { font-size: 12.5px; padding: 2px 8px; border-radius: 999px; background: var(--fondo); color: var(--suave);
     border: 1px solid var(--linea); white-space: nowrap; }
-  .chip.fecha-atrasada { background: var(--rojo-fondo); color: var(--rojo); border-color: transparent; }
-  .chip.fecha-hoy { background: var(--azul-fondo); color: var(--azul); border-color: transparent; }
+  .chip.rojo { background: var(--rojo-fondo); color: var(--rojo); border-color: transparent; }
+  .chip.azul { background: var(--azul-fondo); color: var(--azul); border-color: transparent; }
   .chip.persona { background: var(--acento-fondo); color: var(--acento); border-color: transparent; }
   .chip.propuesta { background: var(--morado-fondo); color: var(--morado); border-color: transparent; }
-  .vacio { color: var(--suave); font-size: 14px; padding: 4px 2px; }
-  details summary { cursor: pointer; list-style: none; }
-  details summary::-webkit-details-marker { display: none; }
-  details summary h2::after { content: "▸"; color: var(--suave); }
-  details[open] summary h2::after { content: "▾"; }
+  .pie-tarjeta { display: flex; justify-content: flex-end; gap: 6px; padding: 0 10px 10px 16px; }
+  .mover { border: 1px solid var(--linea); background: var(--fondo); border-radius: 999px; padding: 6px 12px;
+    font-size: 13.5px; font-weight: 600; min-height: 34px; }
+  .mover.empezar { color: var(--ambar); border-color: var(--ambar); background: var(--ambar-fondo); }
+  .mover.terminar { color: var(--verde); border-color: var(--verde); background: var(--verde-fondo); }
+  .mover.atras { color: var(--suave); font-weight: 500; }
+
+  .eliminadas { margin-top: 28px; text-align: center; }
+  .eliminadas .lista { text-align: left; margin-top: 10px; max-width: 640px; margin-left: auto; margin-right: auto; }
 
   /* Botón nueva tarea */
-  .nueva { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(18px + env(safe-area-inset-bottom));
-    border: 0; border-radius: 999px; background: var(--acento); color: #fff; font-weight: 600; padding: 14px 22px;
-    box-shadow: 0 6px 20px rgba(0,0,0,.18); }
-  @media (prefers-color-scheme: dark) { .nueva { color: #16140f; } }
+  .nueva { flex: none; border: 0; border-radius: 999px; background: var(--acento); color: var(--sobre-acento);
+    font-weight: 600; padding: 11px 16px; margin-top: 2px; }
 
   /* Ventana de edición */
   dialog { border: 0; padding: 0; width: min(560px, 100%); max-width: 100%; max-height: 92vh; border-radius: 18px 18px 0 0;
     margin: auto auto 0; background: var(--tarjeta); color: var(--texto); }
   @media (min-width: 600px) { dialog { border-radius: 18px; margin: auto; } }
-  dialog::backdrop { background: rgba(0,0,0,.4); }
+  dialog::backdrop { background: rgba(0,0,0,.45); }
   dialog form { padding: 20px 18px calc(18px + env(safe-area-inset-bottom)); }
   dialog h3 { margin: 0; font-size: 18px; }
   .origen { font-size: 13px; color: var(--suave); margin-top: 4px; }
+  .segmentos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; background: var(--columna);
+    border: 1px solid var(--linea); border-radius: 10px; padding: 4px; }
+  .segmentos label { margin: 0; text-align: center; padding: 8px 4px; border-radius: 7px; font-size: 14px; font-weight: 600;
+    color: var(--suave); cursor: pointer; }
+  .segmentos input { position: absolute; opacity: 0; pointer-events: none; width: 1px; }
+  .segmentos input:checked + span { color: var(--texto); }
+  .segmentos label:has(input:checked) { background: var(--tarjeta); box-shadow: var(--sombra); color: var(--texto); }
+  .segmentos label:has(input:focus-visible) { outline: 2px solid var(--acento); }
   .fila-fecha { display: flex; gap: 8px; }
-  .fila-fecha input { flex: 1; }
+  .fila-fecha input { flex: 1; min-width: 0; }
   .fila-fecha button { flex: none; border: 1px solid var(--linea); background: var(--fondo); border-radius: 10px; padding: 0 12px; font-size: 14px; }
   .atajos { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-  .atajos button { border: 1px solid var(--linea); background: var(--fondo); border-radius: 999px; padding: 4px 10px; font-size: 13px; }
+  .atajos button { border: 1px solid var(--linea); background: var(--fondo); border-radius: 999px; padding: 5px 10px; font-size: 13px; }
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .acciones { display: flex; gap: 8px; margin-top: 22px; }
   .acciones button { flex: 1; padding: 12px; border-radius: 10px; border: 1px solid var(--linea); background: var(--fondo); font-weight: 600; }
-  .acciones .principal { background: var(--acento); border-color: var(--acento); color: #fff; }
-  @media (prefers-color-scheme: dark) { .acciones .principal { color: #16140f; } }
-  .secundarias { display: flex; justify-content: space-between; margin-top: 14px; }
+  .acciones .principal { background: var(--acento); border-color: var(--acento); color: var(--sobre-acento); }
+  .secundarias { display: flex; justify-content: space-between; gap: 12px; margin-top: 14px; }
   .secundarias button { background: none; border: 0; padding: 6px 0; font-size: 14px; }
   .borrar { color: var(--rojo); }
   .aceptar { color: var(--morado); font-weight: 600; }
 
-  .aviso { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(84px + env(safe-area-inset-bottom));
+  .aviso { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(20px + env(safe-area-inset-bottom));
     background: var(--texto); color: var(--fondo); padding: 10px 16px; border-radius: 10px; font-size: 14px;
-    max-width: calc(100% - 32px); z-index: 10; }
+    max-width: calc(100% - 32px); z-index: 10; display: flex; gap: 14px; align-items: center; }
   .aviso.mal { background: var(--rojo); color: #fff; }
-  .cargando { opacity: .55; pointer-events: none; }
+  .aviso button { background: none; border: 0; color: inherit; font-weight: 700; text-decoration: underline; padding: 0; }
+  .guardando { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: var(--acento); z-index: 20;
+    animation: carga 1s ease-in-out infinite; transform-origin: left; }
+  @keyframes carga { 0% { transform: scaleX(.1); } 50% { transform: scaleX(.7); } 100% { transform: scaleX(1); opacity: .3; } }
+  @media (prefers-reduced-motion: reduce) { .guardando { animation: none; } .columna { transition: none; } }
 </style>
 </head>
 <body>
@@ -145,34 +192,38 @@
   <header>
     <div>
       <h1>Tareas</h1>
-      <div class="hola" id="hola"></div>
+      <div class="hola"><span id="hola"></span> · <button class="enlace" id="salir" type="button">Salir</button></div>
     </div>
-    <button class="enlace" id="salir" type="button">Salir</button>
+    <button class="nueva" id="nueva" type="button">+ Nueva tarea</button>
   </header>
   <div class="aviso-prueba" id="aviso-prueba" hidden>Modo prueba: los cambios no se guardan en el repositorio.</div>
-  <div class="filtros" id="filtros" role="group" aria-label="Filtrar"></div>
-  <div class="resumen" id="resumen"></div>
-  <main id="grupos"></main>
+  <div class="alerta" id="alerta"></div>
+  <div class="filtros" id="filtros" role="group" aria-label="Filtrar por persona"></div>
+  <div class="pestanas" id="pestanas" role="tablist" aria-label="Estado"></div>
+  <main class="tablero" id="tablero"></main>
+  <section class="eliminadas" id="eliminadas"></section>
 </div>
 
-<button class="nueva" id="nueva" type="button" hidden>+ Nueva tarea</button>
+<div class="guardando" id="guardando" hidden></div>
 
-<dialog id="editor">
+<dialog id="editor" aria-labelledby="editor-titulo">
   <form method="dialog" id="form-editor">
     <h3 id="editor-titulo">Editar tarea</h3>
     <div class="origen" id="editor-origen"></div>
     <label for="e-titulo">Qué hay que hacer</label>
     <textarea id="e-titulo" rows="3" maxlength="300" required></textarea>
+    <label>Estado</label>
+    <div class="segmentos" id="e-estado" role="radiogroup" aria-label="Estado"></div>
     <label for="e-fecha">Fecha límite</label>
     <div class="fila-fecha">
       <input id="e-fecha" type="date">
       <button type="button" id="sin-fecha">Sin fecha</button>
     </div>
     <div class="atajos" id="atajos"></div>
-    <label for="e-responsable">Responsable</label>
-    <select id="e-responsable"></select>
-    <label for="e-area">Área</label>
-    <select id="e-area"></select>
+    <div class="dos">
+      <div><label for="e-responsable">Responsable</label><select id="e-responsable"></select></div>
+      <div><label for="e-area">Área</label><select id="e-area"></select></div>
+    </div>
     <div class="acciones">
       <button type="button" id="cancelar">Cancelar</button>
       <button type="submit" class="principal" id="guardar">Guardar</button>
@@ -190,11 +241,24 @@
 const $ = (s) => document.querySelector(s);
 const DIAS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
 const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
-const CHECK = '<svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg>';
+const COLUMNAS = [
+  { id: "por_hacer", nombre: "Por hacer", corto: "Por hacer", estado: "Por hacer", color: "var(--suave)" },
+  { id: "en_progreso", nombre: "En progreso", corto: "En progreso", estado: "En progreso", color: "var(--ambar)" },
+  { id: "lista", nombre: "Listas", corto: "Listas", estado: "Lista", color: "var(--verde)" },
+];
+const MOVER = {
+  por_hacer: [["en_progreso", "Empezar ▸", "empezar"]],
+  en_progreso: [["por_hacer", "◂ Por hacer", "atras"], ["lista", "✓ Lista", "terminar"]],
+  lista: [["por_hacer", "↺ Reabrir", "atras"]],
+};
+const escritorio = matchMedia("(min-width: 900px)");
+const arrastrable = matchMedia("(min-width: 900px) and (pointer: fine)");
 
 let sesion = leerSesion();
 let datos = null;
 let filtro = guardado("filtro") || "todas";
+let pestana = guardado("pestana") || "por_hacer";
+let verEliminadas = false;
 let editando = null;
 
 function guardado(clave, valor) {
@@ -204,6 +268,7 @@ function guardado(clave, valor) {
   } catch { return null; }
 }
 function leerSesion() { try { return JSON.parse(guardado("sesion")) || null; } catch { return null; } }
+function esc(s) { return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
 
 async function api(ruta, cuerpo) {
   const r = await fetch(ruta, {
@@ -211,38 +276,47 @@ async function api(ruta, cuerpo) {
     headers: { "content-type": "application/json", ...(sesion ? { authorization: `Bearer ${sesion.token}` } : {}) },
     body: cuerpo ? JSON.stringify(cuerpo) : undefined,
   });
-  const j = await r.json().catch(() => ({ error: "Sin respuesta del servidor." }));
+  const j = await r.json().catch(() => ({ error: "Sin respuesta del servidor. Revisa tu conexión." }));
   if (r.status === 401 && ruta !== "/api/entrar") { cerrarSesion(); throw new Error(j.error); }
   if (!r.ok) throw new Error(j.error || "Algo falló.");
   return j;
 }
 
-function aviso(texto, mal = false) {
+function aviso(texto, { mal = false, deshacer = null } = {}) {
   const a = $("#aviso");
-  a.textContent = texto; a.className = "aviso" + (mal ? " mal" : ""); a.hidden = false;
-  clearTimeout(aviso.t); aviso.t = setTimeout(() => (a.hidden = true), mal ? 5000 : 2200);
+  a.innerHTML = `<span>${esc(texto)}</span>` + (deshacer ? `<button type="button">Deshacer</button>` : "");
+  a.className = "aviso" + (mal ? " mal" : ""); a.hidden = false;
+  if (deshacer) a.querySelector("button").onclick = () => { a.hidden = true; deshacer(); };
+  clearTimeout(aviso.t); aviso.t = setTimeout(() => (a.hidden = true), mal ? 6000 : deshacer ? 5000 : 2200);
 }
 
 // ---------- Fechas ----------
-function hoyISO() { const d = new Date(); return iso(d); }
 function iso(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; }
+function hoyISO() { return iso(new Date()); }
 function aFecha(s) { const [a, m, d] = s.split("-").map(Number); return new Date(a, m - 1, d); }
 function diasHasta(s) { return Math.round((aFecha(s) - aFecha(hoyISO())) / 864e5); }
 function fechaCorta(s) { const d = aFecha(s); return `${DIAS[d.getDay()]} ${d.getDate()} ${MESES[d.getMonth()]}`; }
 function sumarDias(n) { const d = new Date(); d.setDate(d.getDate() + n); return iso(d); }
 function proximoDia(dow) { const d = new Date(); do d.setDate(d.getDate() + 1); while (d.getDay() !== dow); return iso(d); }
 
-function textoFecha(t) {
-  if (!t.fecha) return null;
+function estadoDe(t) { return t.estado || (t.hecha ? "lista" : "por_hacer"); }
+function esPropuesta(t) { return t.origen === "claude" && !t.aprobada; }
+function urgencia(t) {
+  if (!t.fecha || estadoDe(t) === "lista") return null;
   const n = diasHasta(t.fecha);
-  if (t.hecha) return { texto: fechaCorta(t.fecha), clase: "" };
-  if (n < 0) return { texto: `${fechaCorta(t.fecha)} · hace ${-n} ${n === -1 ? "día" : "días"}`, clase: "fecha-atrasada" };
-  if (n === 0) return { texto: "Hoy", clase: "fecha-hoy" };
-  if (n === 1) return { texto: `Mañana · ${fechaCorta(t.fecha)}`, clase: "" };
-  return { texto: `${fechaCorta(t.fecha)} · en ${n} días`, clase: "" };
+  return n < 0 ? "atrasada" : n === 0 ? "hoy" : null;
+}
+function chipFecha(t) {
+  if (!t.fecha) return "";
+  const n = diasHasta(t.fecha);
+  if (estadoDe(t) === "lista") return `<span class="chip">${fechaCorta(t.fecha)}</span>`;
+  if (n < 0) return `<span class="chip rojo">${fechaCorta(t.fecha)} · atrasada ${-n} ${n === -1 ? "día" : "días"}</span>`;
+  if (n === 0) return `<span class="chip azul">Hoy</span>`;
+  if (n === 1) return `<span class="chip">Mañana · ${fechaCorta(t.fecha)}</span>`;
+  return `<span class="chip">${fechaCorta(t.fecha)} · en ${n} días</span>`;
 }
 
-// ---------- Pantallas ----------
+// ---------- Entrada ----------
 async function iniciar() {
   const config = await api("/api/config").catch(() => ({ usuarios: [], prueba: false }));
   $("#aviso-prueba").hidden = !config.prueba;
@@ -251,14 +325,13 @@ async function iniciar() {
   mostrarApp();
   await cargar();
 }
-
 function mostrarEntrada() {
-  $("#vista-entrada").hidden = false; $("#vista-app").hidden = true; $("#nueva").hidden = true;
+  $("#vista-entrada").hidden = false; $("#vista-app").hidden = true;
   const ultimo = guardado("ultimo-usuario");
   if (ultimo) $("#usuario").value = ultimo;
 }
 function mostrarApp() {
-  $("#vista-entrada").hidden = true; $("#vista-app").hidden = false; $("#nueva").hidden = false;
+  $("#vista-entrada").hidden = true; $("#vista-app").hidden = false;
   $("#hola").textContent = `Hola, ${sesion.usuario}`;
 }
 function cerrarSesion() { sesion = null; guardado("sesion", null); mostrarEntrada(); }
@@ -266,28 +339,24 @@ function cerrarSesion() { sesion = null; guardado("sesion", null); mostrarEntrad
 $("#form-entrada").addEventListener("submit", async (e) => {
   e.preventDefault();
   $("#error-entrada").textContent = "";
-  const boton = e.target.querySelector("button"); boton.disabled = true;
+  const boton = e.target.querySelector("button"); boton.disabled = true; boton.textContent = "Entrando…";
   try {
-    const usuario = $("#usuario").value;
-    const r = await api("/api/entrar", { usuario, clave: $("#clave").value });
+    const r = await api("/api/entrar", { usuario: $("#usuario").value, clave: $("#clave").value });
     sesion = { token: r.token, usuario: r.usuario };
     guardado("sesion", JSON.stringify(sesion)); guardado("ultimo-usuario", r.usuario);
     $("#clave").value = "";
     mostrarApp(); await cargar();
   } catch (err) { $("#error-entrada").textContent = err.message; }
-  boton.disabled = false;
+  boton.disabled = false; boton.textContent = "Entrar";
 });
 $("#salir").addEventListener("click", cerrarSesion);
 
 async function cargar() {
   try { datos = (await api("/api/tareas")).datos; pintar(); }
-  catch (err) { if (sesion) aviso(err.message, true); }
+  catch (err) { if (sesion) aviso(err.message, { mal: true }); }
 }
 
-// ---------- Lista ----------
-function esc(s) { return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
-function esPropuesta(t) { return t.origen === "claude" && !t.aprobada; }
-
+// ---------- Tablero ----------
 function pasaFiltro(t) {
   if (filtro === "todas") return true;
   if (filtro === "propuestas") return esPropuesta(t);
@@ -296,87 +365,173 @@ function pasaFiltro(t) {
 }
 
 function pintarFiltros() {
-  const propuestas = datos.tareas.filter((t) => !t.hecha && esPropuesta(t)).length;
-  const opciones = [["todas", "Todas"], ...datos.responsables.filter((r) => r !== "Ambos").map((r) => [r, r === sesion.usuario ? `Mías` : r]),
-    ["sin-asignar", "Sin responsable"]];
+  const vivas = datos.tareas.filter((t) => estadoDe(t) !== "eliminada" && estadoDe(t) !== "lista");
+  const propuestas = vivas.filter(esPropuesta).length;
+  const opciones = [["todas", "Todas"]];
+  if (datos.responsables.includes(sesion.usuario)) opciones.push([sesion.usuario, "Mías"]);
+  for (const r of datos.responsables) if (r !== "Ambos" && r !== sesion.usuario) opciones.push([r, r]);
+  opciones.push(["sin-asignar", "Sin responsable"]);
   if (propuestas) opciones.push(["propuestas", `Propuestas de Claude (${propuestas})`]);
   if (!opciones.some(([v]) => v === filtro)) filtro = "todas";
-  $("#filtros").innerHTML = opciones.map(([v, t]) => `<button type="button" data-filtro="${esc(v)}" aria-pressed="${v === filtro}">${esc(t)}</button>`).join("");
+  $("#filtros").innerHTML = opciones.map(([v, t]) =>
+    `<button type="button" data-filtro="${esc(v)}" aria-pressed="${v === filtro}">${esc(t)}</button>`).join("");
 }
 $("#filtros").addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b) return;
   filtro = b.dataset.filtro; guardado("filtro", filtro); pintar();
 });
 
+function ordenar(lista, estado) {
+  if (estado === "lista") return lista.sort((a, b) => (b.completada || "").localeCompare(a.completada || ""));
+  return lista.sort((a, b) => (a.fecha || "9999").localeCompare(b.fecha || "9999") || a.titulo.localeCompare(b.titulo));
+}
+
 function tarjeta(t) {
-  const f = textoFecha(t);
-  const n = t.fecha ? diasHasta(t.fecha) : null;
-  const clase = t.hecha ? "hecha" : n !== null && n < 0 ? "atrasada" : n === 0 ? "de-hoy" : "";
+  const estado = estadoDe(t);
+  const u = urgencia(t);
   const chips = [
-    f && `<span class="chip ${f.clase}">${esc(f.texto)}</span>`,
+    chipFecha(t),
     `<span class="chip ${t.responsable ? "persona" : ""}">${esc(t.responsable || "Sin responsable")}</span>`,
     t.area && `<span class="chip">${esc(t.area)}</span>`,
     esPropuesta(t) && `<span class="chip propuesta">Propuesta de Claude</span>`,
-    t.hecha && t.completada_por && `<span class="chip">Lista · ${esc(t.completada_por)}</span>`,
+    estado === "lista" && t.completada_por && `<span class="chip">✓ ${esc(t.completada_por)}</span>`,
   ].filter(Boolean).join("");
-  return `<div class="tarea ${clase}" data-id="${esc(t.id)}">
-    <button type="button" class="check" aria-label="${t.hecha ? "Volver a abrir" : "Marcar como lista"}">${CHECK}</button>
-    <button type="button" class="cuerpo"><span class="titulo">${esc(t.titulo)}</span><span class="meta">${chips}</span></button>
-  </div>`;
+  const botones = estado === "eliminada"
+    ? `<button type="button" class="mover" data-accion="recuperar">Recuperar</button>`
+    : MOVER[estado].map(([destino, texto, clase]) =>
+        `<button type="button" class="mover ${clase}" data-mover="${destino}">${texto}</button>`).join("");
+  return `<article class="tarea ${u === "atrasada" ? "atrasada" : u === "hoy" ? "de-hoy" : ""} ${estado === "lista" ? "es-lista" : ""}"
+      data-id="${esc(t.id)}" ${arrastrable.matches && estado !== "eliminada" ? 'draggable="true"' : ""}>
+    <button type="button" class="cuerpo" ${estado === "eliminada" ? "disabled" : ""} aria-label="Editar: ${esc(t.titulo)}">
+      <span class="titulo">${esc(t.titulo)}</span><span class="meta">${chips}</span>
+    </button>
+    <div class="pie-tarjeta">${botones}</div>
+  </article>`;
 }
 
-function grupo(titulo, lista, clase = "", vacio = "") {
-  if (!lista.length && !vacio) return "";
-  return `<h2 class="${clase}">${titulo} <span class="cuenta">${lista.length}</span></h2>
-    <div class="lista">${lista.length ? lista.map(tarjeta).join("") : `<div class="vacio">${vacio}</div>`}</div>`;
+function contenidoColumna(lista, estado) {
+  if (!lista.length) {
+    const vacio = { por_hacer: "Nada por hacer. 🎉", en_progreso: "Nada en progreso. Usa «Empezar» en una tarea.",
+      lista: "Todavía no hay tareas listas." }[estado];
+    return `<div class="vacio">${vacio}</div>`;
+  }
+  if (estado === "lista") return lista.map(tarjeta).join("");
+  // En "Por hacer" y "En progreso", las atrasadas y las de hoy van primero con un rótulo.
+  const atrasadas = lista.filter((t) => urgencia(t) === "atrasada");
+  const resto = lista.filter((t) => urgencia(t) !== "atrasada");
+  return (atrasadas.length ? `<div class="separador rojo">Atrasadas</div>` + atrasadas.map(tarjeta).join("") +
+    (resto.length ? `<div class="separador">Siguientes</div>` : "") : "") + resto.map(tarjeta).join("");
 }
 
 function pintar() {
+  if (!datos) return;
   pintarFiltros();
   const visibles = datos.tareas.filter(pasaFiltro);
-  const abiertas = visibles.filter((t) => !t.hecha);
-  const conFecha = abiertas.filter((t) => t.fecha).sort((a, b) => a.fecha.localeCompare(b.fecha));
-  const atrasadas = conFecha.filter((t) => diasHasta(t.fecha) < 0);
-  const hoy = conFecha.filter((t) => diasHasta(t.fecha) === 0);
-  const semana = conFecha.filter((t) => diasHasta(t.fecha) > 0 && diasHasta(t.fecha) <= 7);
-  const despues = conFecha.filter((t) => diasHasta(t.fecha) > 7);
-  const sinFecha = abiertas.filter((t) => !t.fecha);
-  const listas = visibles.filter((t) => t.hecha).sort((a, b) => (b.completada || "").localeCompare(a.completada || ""));
+  const por = Object.fromEntries(COLUMNAS.map((c) => [c.id, ordenar(visibles.filter((t) => estadoDe(t) === c.id), c.id)]));
 
-  $("#resumen").textContent = `${abiertas.length} pendientes` + (atrasadas.length ? ` · ${atrasadas.length} atrasadas` : "");
-  $("#grupos").innerHTML =
-    grupo("Atrasadas", atrasadas, "atrasadas") +
-    grupo("Hoy", hoy, "hoy", "Nada para hoy.") +
-    grupo("Próximos 7 días", semana, "", "Nada en los próximos 7 días.") +
-    grupo("Más adelante", despues) +
-    grupo("Sin fecha", sinFecha) +
-    (listas.length ? `<details><summary>${grupo("Listas", listas)}</summary></details>` : "");
-  // el resumen de <details> solo debe tener el título
-  const det = $("#grupos details");
-  if (det) { const lista = det.querySelector(".lista"); det.appendChild(lista); }
+  const abiertas = [...por.por_hacer, ...por.en_progreso];
+  const atrasadas = abiertas.filter((t) => urgencia(t) === "atrasada").length;
+  const hoy = abiertas.filter((t) => urgencia(t) === "hoy").length;
+  $("#alerta").innerHTML = (atrasadas ? `<span class="rojo">${atrasadas} atrasada${atrasadas > 1 ? "s" : ""}</span>` : "") +
+    (hoy ? `<span class="azul">${hoy} para hoy</span>` : "");
+
+  $("#pestanas").innerHTML = COLUMNAS.map((c) =>
+    `<button type="button" role="tab" id="tab-${c.id}" aria-controls="col-${c.id}" data-pestana="${c.id}" aria-selected="${c.id === pestana}">
+      ${c.corto} <span class="num">${por[c.id].length}</span></button>`).join("");
+
+  $("#tablero").innerHTML = COLUMNAS.map((c) =>
+    `<section class="columna ${c.id === pestana ? "activa" : ""}" id="col-${c.id}" data-estado="${c.id}" role="tabpanel" aria-labelledby="tab-${c.id}">
+      <h2 class="columna-titulo"><span class="punto" style="background:${c.color}"></span>${c.nombre} <span class="num">${por[c.id].length}</span></h2>
+      <div class="lista">${contenidoColumna(por[c.id], c.id)}</div>
+    </section>`).join("");
+
+  const eliminadas = datos.tareas.filter((t) => estadoDe(t) === "eliminada")
+    .sort((a, b) => (b.eliminada || "").localeCompare(a.eliminada || ""));
+  $("#eliminadas").innerHTML = !eliminadas.length ? "" :
+    `<button type="button" class="enlace" id="ver-eliminadas">${verEliminadas ? "Ocultar" : "Ver"} eliminadas (${eliminadas.length})</button>` +
+    (verEliminadas ? `<div class="lista">${eliminadas.map(tarjeta).join("")}</div>` : "");
 }
 
-$("#grupos").addEventListener("click", (e) => {
-  const caja = e.target.closest(".tarea"); if (!caja) return;
-  const t = datos.tareas.find((x) => x.id === caja.dataset.id);
-  if (e.target.closest(".check")) {
-    enviar({ accion: "hecha", id: t.id, campos: { hecha: !t.hecha } }, () => { t.hecha = !t.hecha; if (t.hecha) t.completada_por = sesion.usuario; },
-      t.hecha ? "Tarea abierta de nuevo" : "¡Lista!");
-  } else if (e.target.closest(".cuerpo")) abrirEditor(t);
+$("#pestanas").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  pestana = b.dataset.pestana; guardado("pestana", pestana); pintar();
+});
+$("#pestanas").addEventListener("keydown", (e) => {
+  if (!["ArrowLeft", "ArrowRight"].includes(e.key)) return;
+  const i = COLUMNAS.findIndex((c) => c.id === pestana);
+  pestana = COLUMNAS[(i + (e.key === "ArrowRight" ? 1 : COLUMNAS.length - 1)) % COLUMNAS.length].id;
+  guardado("pestana", pestana); pintar(); $(`#tab-${pestana}`).focus();
+});
+$("#eliminadas").addEventListener("click", (e) => {
+  if (e.target.id === "ver-eliminadas") { verEliminadas = !verEliminadas; pintar(); }
 });
 
-async function enviar(cambio, optimista, texto) {
+function tareaDe(el) { const c = el.closest(".tarea"); return c && datos.tareas.find((x) => x.id === c.dataset.id); }
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest("#tablero, #eliminadas")) return;
+  const t = tareaDe(e.target); if (!t) return;
+  const mover = e.target.closest("[data-mover]");
+  if (mover) return moverA(t, mover.dataset.mover);
+  if (e.target.closest('[data-accion="recuperar"]')) {
+    return enviar({ accion: "recuperar", id: t.id }, () => { t.estado = t.estado_previo || "por_hacer"; }, "Tarea recuperada");
+  }
+  if (e.target.closest(".cuerpo")) abrirEditor(t);
+});
+
+function moverA(t, destino) {
+  const antes = estadoDe(t);
+  if (antes === destino) return;
+  const texto = { en_progreso: "Movida a En progreso", lista: "¡Lista! 🎉", por_hacer: antes === "lista" ? "Tarea reabierta" : "Devuelta a Por hacer" }[destino];
+  enviar({ accion: "estado", id: t.id, campos: { estado: destino } },
+    () => { t.estado = destino; t.aprobada = true; if (destino === "lista") t.completada_por = sesion.usuario; },
+    texto, () => moverA(t, antes));
+}
+
+// Arrastrar y soltar entre columnas (solo computador con mouse).
+let arrastrada = null;
+document.addEventListener("dragstart", (e) => {
+  const c = e.target.closest?.(".tarea[draggable]"); if (!c) return;
+  arrastrada = c.dataset.id; c.classList.add("arrastrando");
+  e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", arrastrada);
+});
+document.addEventListener("dragend", () => {
+  arrastrada = null;
+  document.querySelectorAll(".arrastrando, .destino").forEach((n) => n.classList.remove("arrastrando", "destino"));
+});
+$("#tablero").addEventListener("dragover", (e) => {
+  const col = e.target.closest(".columna"); if (!arrastrada || !col) return;
+  e.preventDefault();
+  document.querySelectorAll(".destino").forEach((n) => n !== col && n.classList.remove("destino"));
+  col.classList.add("destino");
+});
+$("#tablero").addEventListener("dragleave", (e) => {
+  const col = e.target.closest(".columna");
+  if (col && !col.contains(e.relatedTarget)) col.classList.remove("destino");
+});
+$("#tablero").addEventListener("drop", (e) => {
+  const col = e.target.closest(".columna"); if (!arrastrada || !col) return;
+  e.preventDefault();
+  const t = datos.tareas.find((x) => x.id === arrastrada);
+  col.classList.remove("destino");
+  if (t) moverA(t, col.dataset.estado);
+});
+
+let pendientes = 0;
+async function enviar(cambio, optimista, texto, deshacer) {
   const respaldo = structuredClone(datos);
   if (optimista) { optimista(); pintar(); }
-  document.body.classList.add("cargando");
+  pendientes++; $("#guardando").hidden = false;
   try {
     const r = await api("/api/cambio", cambio);
-    datos = r.datos; pintar(); aviso(texto || "Guardado");
+    datos = r.datos; pintar(); aviso(texto || "Guardado", { deshacer });
     return true;
   } catch (err) {
-    datos = respaldo; pintar(); aviso(err.message, true);
+    datos = respaldo; pintar(); aviso(err.message, { mal: true });
     return false;
-  } finally { document.body.classList.remove("cargando"); }
+  } finally {
+    if (--pendientes === 0) $("#guardando").hidden = true;
+  }
 }
 
 // ---------- Editor ----------
@@ -385,25 +540,31 @@ function opciones(sel, lista, vacio, valor) {
   sel.innerHTML = `<option value="">${vacio}</option>` + lista.map((v) => `<option>${esc(v)}</option>`).join("");
   sel.value = valor || "";
 }
+$("#e-estado").innerHTML = COLUMNAS.map((c) =>
+  `<label><input type="radio" name="estado" value="${c.id}"><span>${c.estado}</span></label>`).join("");
 
 function abrirEditor(t) {
   editando = t || null;
   $("#editor-titulo").textContent = t ? "Editar tarea" : "Nueva tarea";
   $("#editor-origen").textContent = !t ? "" : esPropuesta(t)
-    ? "Propuesta de Claude, todavía sin revisar. Al guardar cambios queda aceptada."
+    ? "Propuesta de Claude, todavía sin revisar. Al guardar queda aceptada."
     : t.origen === "claude" ? "Propuesta de Claude, aceptada." : `Agregada por ${t.por || "los socios"}.`;
   $("#e-titulo").value = t?.titulo || "";
   $("#e-fecha").value = t?.fecha || "";
-  opciones($("#e-responsable"), datos.responsables, "Sin responsable", t ? t.responsable : (filtro !== "todas" && datos.responsables.includes(filtro) ? filtro : ""));
+  const estado = t ? estadoDe(t) : (escritorio.matches || pestana === "lista" ? "por_hacer" : pestana);
+  ed.querySelector(`input[name="estado"][value="${estado}"]`).checked = true;
+  const responsable = t ? t.responsable : (filtro !== "todas" && datos.responsables.includes(filtro) ? filtro : "");
+  opciones($("#e-responsable"), datos.responsables, "Sin responsable", responsable);
   opciones($("#e-area"), datos.areas, "Sin área", t?.area);
   $("#borrar").hidden = !t;
   $("#aceptar").hidden = !(t && esPropuesta(t));
   ed.showModal();
-  if (!t) $("#e-titulo").focus();
+  if (!t) $("#e-titulo").focus(); else $("#e-titulo").blur();
 }
 
-const ATAJOS = [["Hoy", () => hoyISO()], ["Mañana", () => sumarDias(1)], ["Este viernes", () => (new Date().getDay() === 5 ? hoyISO() : proximoDia(5))],
-  ["Próximo lunes", () => proximoDia(1)], ["+1 semana", () => sumarDias(7)]];
+const ATAJOS = [["Hoy", () => hoyISO()], ["Mañana", () => sumarDias(1)],
+  ["Este viernes", () => (new Date().getDay() === 5 ? hoyISO() : proximoDia(5))],
+  ["Próx. lunes", () => proximoDia(1)], ["+1 semana", () => sumarDias(7)]];
 $("#atajos").innerHTML = ATAJOS.map(([t], i) => `<button type="button" data-i="${i}">${t}</button>`).join("");
 $("#atajos").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) $("#e-fecha").value = ATAJOS[b.dataset.i][1](); });
 $("#sin-fecha").addEventListener("click", () => ($("#e-fecha").value = ""));
@@ -413,30 +574,33 @@ $("#nueva").addEventListener("click", () => abrirEditor(null));
 
 $("#form-editor").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const campos = { titulo: $("#e-titulo").value, fecha: $("#e-fecha").value || null,
-    responsable: $("#e-responsable").value || null, area: $("#e-area").value || null };
-  if (!campos.titulo.trim()) return $("#e-titulo").focus();
+  const campos = { titulo: $("#e-titulo").value.trim(), fecha: $("#e-fecha").value || null,
+    responsable: $("#e-responsable").value || null, area: $("#e-area").value || null,
+    estado: ed.querySelector('input[name="estado"]:checked').value };
+  if (!campos.titulo) return $("#e-titulo").focus();
   ed.close();
   if (editando) {
     const t = editando;
     await enviar({ accion: "editar", id: t.id, campos }, () => Object.assign(t, campos, { aprobada: true }));
   } else {
+    if (!escritorio.matches) { pestana = campos.estado; guardado("pestana", pestana); }
     await enviar({ accion: "crear", campos }, null, "Tarea agregada");
   }
 });
 $("#borrar").addEventListener("click", async () => {
-  const t = editando;
-  if (!confirm(`¿Eliminar «${t.titulo}»?\n\nSi solo está terminada, mejor márcala como lista.`)) return;
-  ed.close();
-  await enviar({ accion: "eliminar", id: t.id }, () => datos.tareas.splice(datos.tareas.indexOf(t), 1), "Tarea eliminada");
+  const t = editando; ed.close();
+  await enviar({ accion: "eliminar", id: t.id }, () => { t.estado_previo = estadoDe(t); t.estado = "eliminada"; },
+    "Tarea eliminada", () => enviar({ accion: "recuperar", id: t.id }, () => { t.estado = t.estado_previo || "por_hacer"; }, "Tarea recuperada"));
 });
 $("#aceptar").addEventListener("click", async () => {
   const t = editando; ed.close();
   await enviar({ accion: "aprobar", id: t.id }, () => (t.aprobada = true), "Propuesta aceptada");
 });
 
-// Al volver a la app (por ejemplo, desde otra pestaña del celular) se trae lo último.
+// Al volver a la app se trae lo último; al cambiar el ancho, se ajusta la vista.
 document.addEventListener("visibilitychange", () => { if (!document.hidden && sesion && !ed.open) cargar(); });
+escritorio.addEventListener("change", pintar);
+arrastrable.addEventListener("change", pintar);
 
 iniciar();
 </script>

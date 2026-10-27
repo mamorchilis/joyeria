@@ -50,14 +50,15 @@ def leer_tareas(texto):
     """Devuelve las tareas pendientes y las líneas con problemas (por ahora, fechas malas)."""
     tareas, raras = [], []
     for t in json.loads(texto)["tareas"]:
-        if t.get("hecha"):
+        estado = t.get("estado") or ("lista" if t.get("hecha") else "por_hacer")
+        if estado in ("lista", "eliminada"):
             continue
         try:
             fecha = date.fromisoformat(t["fecha"]) if t.get("fecha") else None
         except ValueError:
             raras.append((t["id"], t["titulo"]))
             continue
-        que = t["titulo"] + (" (propuesta)" if t.get("origen") == "claude" and not t.get("aprobada") else "")
+        que = t["titulo"] + (" [en progreso]" if estado == "en_progreso" else "")             + (" (propuesta)" if t.get("origen") == "claude" and not t.get("aprobada") else "")
         tareas.append({"fecha": fecha, "quien": t.get("responsable") or "sin responsable", "que": que})
     return tareas, raras
 

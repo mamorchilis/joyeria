@@ -193,30 +193,70 @@ function aplicar(datos, { accion, id, campos = {} }, usuario) {
   switch (accion) {
     case "crear": {
       if (!limpio.titulo) error("La tarea necesita un texto.");
+      const estado = ESTADOS.includes(campos.estado) && campos.estado !== "eliminada" ? campos.estado : "por_hacer";
       const n = Math.max(0, ...datos.tareas.map((t) => parseInt(t.id.slice(1)) || 0)) + 1;
       const nueva = { id: `t${n}`, titulo: limpio.titulo, fecha: limpio.fecha ?? null,
-        responsable: limpio.responsable ?? null, area: limpio.area ?? null, origen: "socios",
-        hecha: false, creada: hoyChile(), por: usuario };
+        responsable: limpio.responsable ?? null, area: limpio.area ?? null, estado, origen: "socios",
+        creada: hoyChile(), por: usuario };
+      fijarEstado(nueva, estado, usuario);
       datos.tareas.push(nueva);
       return `agregó ${nombre(nueva)}`;
     }
     case "editar":
       Object.assign(tarea, limpio, { aprobada: true });
+      if (campos.estado && campos.estado !== estadoDe(tarea)) {
+        if (!ESTADOS.includes(campos.estado) || campos.estado === "eliminada") error("Estado no válido.");
+        fijarEstado(tarea, campos.estado, usuario);
+      }
       return `editó ${nombre(tarea)}`;
     case "aprobar":
       tarea.aprobada = true;
       return `aceptó la propuesta ${nombre(tarea)}`;
-    case "hecha":
-      tarea.hecha = Boolean(campos.hecha);
-      if (tarea.hecha) Object.assign(tarea, { completada: hoyChile(), completada_por: usuario });
-      else { delete tarea.completada; delete tarea.completada_por; }
-      return `${tarea.hecha ? "marcó como lista" : "volvió a abrir"} ${nombre(tarea)}`;
+    case "estado": {
+      if (!ESTADOS.includes(campos.estado) || campos.estado === "eliminada") error("Estado no válido.");
+      const antes = estadoDe(tarea);
+      fijarEstado(tarea, campos.estado, usuario);
+      tarea.aprobada = true;
+      const verbo = { por_hacer: antes === "lista" ? "volvió a abrir" : "devolvió a por hacer",
+        en_progreso: "empezó", lista: "marcó como lista" }[campos.estado];
+      return `${verbo} ${nombre(tarea)}`;
+    }
     case "eliminar":
-      datos.tareas.splice(datos.tareas.indexOf(tarea), 1);
+      // No se borra: queda en "Eliminadas" y se puede recuperar.
+      tarea.estado_previo = estadoDe(tarea);
+      fijarEstado(tarea, "eliminada", usuario);
       return `eliminó ${nombre(tarea)}`;
+    case "recuperar":
+      if (estadoDe(tarea) !== "eliminada") error("Esa tarea no está eliminada.");
+      fijarEstado(tarea, tarea.estado_previo && tarea.estado_previo !== "eliminada" ? tarea.estado_previo : "por_hacer", usuario);
+      delete tarea.estado_previo;
+      return `recuperó ${nombre(tarea)}`;
     default:
       error("Acción desconocida.");
   }
+}
+
+const ESTADOS = ["por_hacer", "en_progreso", "lista", "eliminada"];
+
+// Las tareas antiguas tenían "hecha: true/false" en vez de "estado".
+function estadoDe(t) {
+  return t.estado || (t.hecha ? "lista" : "por_hacer");
+}
+
+// Cada estado guarda cuándo y quién lo puso; al cambiar de estado se borran las marcas que
+// ya no corresponden (salvo "iniciada", que se conserva al terminar la tarea).
+const MARCAS = { en_progreso: "iniciada", lista: "completada", eliminada: "eliminada" };
+
+function fijarEstado(t, estado, usuario) {
+  delete t.hecha;
+  for (const [e, campo] of Object.entries(MARCAS)) {
+    if (e === estado || (e === "en_progreso" && estado === "lista")) continue;
+    delete t[campo];
+    delete t[`${campo}_por`];
+  }
+  t.estado = estado;
+  const campo = MARCAS[estado];
+  if (campo && !t[campo]) Object.assign(t, { [campo]: hoyChile(), [`${campo}_por`]: usuario });
 }
 
 // ---------- Utilidades ----------

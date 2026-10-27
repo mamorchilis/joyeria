@@ -185,3 +185,6 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   Los despachos, por ahora, los hacen los socios. El pago será sí o sí dentro de Shopify; falta
   elegir el medio y confirmar su comisión. La prueba gratis de Shopify vencería en unos dos días
   (dato aproximado; Shopify avisará).
+- **2026-10-27 — Tareas como tablero Kanban (vigente).** Cada tarea tiene estado: por hacer,
+  en progreso, lista o eliminada (recuperable). En `tareas.json` el campo `hecha` se reemplazó
+  por `estado`.
