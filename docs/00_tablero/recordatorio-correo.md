@@ -16,7 +16,8 @@ cobra por mensaje.
 El repositorio es **público**, así que la clave y los correos van como secretos de GitHub, nunca
 en un archivo.
 
-1. En la cuenta de Gmail que enviará los correos, activar la verificación en dos pasos y crear
+1. Los correos salen de la cuenta de Gmail compartida del proyecto, la misma dueña del
+   repositorio en GitHub (decidido el 2026-10-27). En esa cuenta, activar la verificación en dos pasos y crear
    una contraseña de aplicación en <https://myaccount.google.com/apppasswords> (nombre:
    "Recordatorio tareas"). Google muestra 16 letras una sola vez.
 2. En GitHub, en el repositorio, ir a *Settings → Secrets and variables → Actions → New
