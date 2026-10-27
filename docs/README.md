@@ -6,7 +6,7 @@ nueva se crea cuando tiene su primer documento; los números reservados evitan r
 | Carpeta | Qué va ahí | Hoy contiene |
 | --- | --- | --- |
 | [`estado-proyecto.md`](estado-proyecto.md) | Punto de retorno, decisiones pendientes y registro de decisiones con fecha. Es el documento para retomar. | — |
-| [`00_tablero/`](00_tablero/) | El tablero del proyecto (`dashboard.html`) y el script que le mete los datos. | Tablero y `generar_dashboard.py` |
+| [`00_tablero/`](00_tablero/) | El tablero del proyecto (`dashboard.html`), la lista de tareas y el recordatorio por correo. | Tablero, [`tareas.md`](00_tablero/tareas.md) y [recordatorio por correo](00_tablero/recordatorio-correo.md) |
 | [`01_marca-y-marketing/`](01_marca-y-marketing/) | Concepto, nombre, identidad visual, modelos y fotos, redes sociales y contenido. | [`marca.md`](01_marca-y-marketing/marca.md), brief, nombres, hoja de ruta (`definiciones.json`), [`modelos/`](01_marca-y-marketing/modelos/) |
 | [`02_producto/`](02_producto/) | Colección, diseños, materiales y fichas de cada pieza. | [`coleccion/`](02_producto/coleccion/) (medalla de Covadonga, Cruz de la Victoria) |
 | [`03_mercado/`](03_mercado/) | Competencia, referentes y estudios de clientes. | [`competencia/`](03_mercado/competencia/README.md) (una carpeta por marca) e investigación inicial |

@@ -1,0 +1,40 @@
+# Recordatorio de tareas por correo, de lunes a viernes a las 9:00 de Chile.
+# Lee docs/00_tablero/tareas.md y lo envía con docs/00_tablero/recordatorio_tareas.py.
+#
+# Chile cambia de hora (UTC-3 en verano, UTC-4 en invierno), así que corre a las
+# 12:00 y a las 13:00 UTC, y el script envía solo en la que coincide con las 9 en Chile.
+# GitHub puede atrasar unos minutos las tareas programadas.
+#
+# Secretos necesarios (Settings > Secrets and variables > Actions):
+#   GMAIL_USUARIO, GMAIL_CLAVE_APP, CORREOS_DESTINO
+
+name: Recordatorio de tareas
+
+on:
+  schedule:
+    - cron: "0 12 * * 1-5"
+    - cron: "0 13 * * 1-5"
+  workflow_dispatch: # botón "Run workflow" para probar; envía a cualquier hora
+
+permissions:
+  contents: read
+
+jobs:
+  enviar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Enviar correo
+        env:
+          GMAIL_USUARIO: ${{ secrets.GMAIL_USUARIO }}
+          GMAIL_CLAVE_APP: ${{ secrets.GMAIL_CLAVE_APP }}
+          CORREOS_DESTINO: ${{ secrets.CORREOS_DESTINO }}
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            python docs/00_tablero/recordatorio_tareas.py --solo-a-las 9
+          else
+            python docs/00_tablero/recordatorio_tareas.py
+          fi
