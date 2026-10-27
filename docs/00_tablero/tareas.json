@@ -192,12 +192,13 @@
       "id": "t20",
       "titulo": "Cargar en el repositorio los diseños con fotos, descripción y demás datos",
       "fecha": null,
-      "responsable": null,
+      "responsable": "Juan Antonio",
       "area": "Producto y taller",
       "estado": "por_hacer",
       "origen": "socios",
       "creada": "2026-10-27",
-      "por": "Juan Antonio"
+      "por": "Juan Antonio",
+      "aprobada": true
     },
     {
       "id": "t21",
