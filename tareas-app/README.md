@@ -15,8 +15,8 @@ celular → pagina.html → worker.js (Cloudflare) → GitHub (tareas.json)
   encima, así no se pisan.
 - `wrangler.toml`: configuración de Cloudflare (nombre de la app, repositorio y archivo).
 
-Está publicada en Cloudflare Workers, en la cuenta que maneja Juan Antonio, con el nombre
-`tareas-joyeria`.
+Está publicada en <https://tareas-joyeria.oyas-delpilar.workers.dev>, en la cuenta de Cloudflare
+que maneja Juan Antonio, con el nombre `tareas-joyeria`.
 
 ## Secretos
 

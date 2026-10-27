@@ -32,6 +32,7 @@ jobs:
           GMAIL_USUARIO: ${{ secrets.GMAIL_USUARIO }}
           GMAIL_CLAVE_APP: ${{ secrets.GMAIL_CLAVE_APP }}
           CORREOS_DESTINO: ${{ secrets.CORREOS_DESTINO }}
+          APP_TAREAS_URL: https://tareas-joyeria.oyas-delpilar.workers.dev
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
             python docs/00_tablero/recordatorio_tareas.py --solo-a-las 9
