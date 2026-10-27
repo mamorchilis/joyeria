@@ -203,12 +203,13 @@
       "id": "t21",
       "titulo": "Armar una estructura de carga de productos que sirva para cruzar con Shopify y que la web identifique cada producto",
       "fecha": null,
-      "responsable": null,
+      "responsable": "Juan Antonio",
       "area": "Tienda y correo",
       "estado": "por_hacer",
       "origen": "socios",
       "creada": "2026-10-27",
-      "por": "Juan Antonio"
+      "por": "Juan Antonio",
+      "aprobada": true
     }
   ]
 }
