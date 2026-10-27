@@ -1,10 +1,10 @@
 # Modelos de Pili Trespalacios
 
-Brief para continuar con otra IA — 26 de octubre de 2026. Entregar este archivo junto con las imágenes de [`imagenes/`](imagenes/).
+Brief para continuar con otra IA — 26 de octubre de 2026. Entregar este archivo junto con las imágenes de [`mujeres/`](mujeres/). Los modelos hombres (Tomás y Rafael, sumados el 2026-10-27) se describen en [`hombres/LEEME.md`](hombres/LEEME.md) y sus imágenes están en [`hombres/`](hombres/).
 
 ## Imágenes
 
-Los photobooks de Antonia, Inés y Teresa están en [`imagenes/`](imagenes/). Falta la imagen del casting conjunto: está enlazada en [photobooks.md](photobooks.md), junto con los originales en ChatGPT. Los enlaces de ChatGPT por sí solos pueden no ser accesibles para otra IA: adjuntar los archivos.
+Los photobooks de Antonia, Inés y Teresa están en [`mujeres/`](mujeres/). Falta la imagen del casting conjunto: está enlazada en [photobooks.md](photobooks.md), junto con los originales en ChatGPT. Los enlaces de ChatGPT por sí solos pueden no ser accesibles para otra IA: adjuntar los archivos.
 
 ## Archivos de referencia que debes descargar
 
@@ -13,7 +13,7 @@ Los photobooks de Antonia, Inés y Teresa están en [`imagenes/`](imagenes/). Fa
 3. Photobook de Inés.
 4. Photobook corregido de Teresa.
 
-Las copias de `imagenes/` y los enlaces de `photobooks.md` corresponden exactamente a esas versiones. No usar la primera lámina de Teresa: representaba a Antonia por error.
+Las copias de `mujeres/` y los enlaces de `photobooks.md` corresponden exactamente a esas versiones. No usar la primera lámina de Teresa: representaba a Antonia por error.
 
 ## Marca y objetivo
 
