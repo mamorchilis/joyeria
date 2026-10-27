@@ -150,7 +150,7 @@ def enviar(asunto, texto, html_cuerpo):
 
     msg = EmailMessage()
     msg["Subject"] = asunto
-    msg["From"] = f"Tareas Pili Trespalacios <{usuario}>"
+    msg["From"] = f"Tareas del proyecto Joyería <{usuario}>"
     msg["To"] = ", ".join(destinos)
     msg.set_content(texto)
     msg.add_alternative(html_cuerpo, subtype="html")
