@@ -182,13 +182,15 @@
       "fecha": "2026-10-28",
       "responsable": "Ambos",
       "area": "Organización",
-      "estado": "en_progreso",
+      "estado": "lista",
       "origen": "claude",
       "creada": "2026-10-27",
       "por": "Claude",
       "aprobada": true,
       "iniciada": "2026-10-29",
-      "iniciada_por": "Juan Antonio"
+      "iniciada_por": "Juan Antonio",
+      "completada": "2026-10-29",
+      "completada_por": "Juan Antonio"
     },
     {
       "id": "t20",
