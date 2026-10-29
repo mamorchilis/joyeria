@@ -45,7 +45,12 @@ def leer_productos(wb):
     return productos
 
 
-def revisar_producto(codigo, filas, listas):
+def fotos_de(codigo, fotos=FOTOS):
+    carpeta = fotos / str(codigo)
+    return sorted(p for p in carpeta.glob("*") if p.suffix.lower() in EXTENSIONES) if carpeta.is_dir() else []
+
+
+def revisar_producto(codigo, filas, listas, fotos=FOTOS):
     problemas = []
     n, principal = filas[0]
     if not codigo:
@@ -70,10 +75,9 @@ def revisar_producto(codigo, filas, listas):
             problemas.append(f"precio_clp no válido en la fila {fila_n}: {precio}")
         if fila_n != n and datos.get("nombre") not in (None, ""):
             problemas.append(f"el código se repite en la fila {fila_n} con otro nombre: si es otro producto, usa otro código")
-    carpeta = FOTOS / str(codigo)
-    fotos = sorted(p.name for p in carpeta.glob("*") if p.suffix.lower() in EXTENSIONES) if carpeta.is_dir() else []
-    if len(fotos) < MINIMO_FOTOS:
-        problemas.append(f"tiene {len(fotos)} foto(s) en catalogo/fotos/{codigo}/; se piden al menos {MINIMO_FOTOS}")
+    cantidad = len(fotos_de(codigo, fotos))
+    if cantidad < MINIMO_FOTOS:
+        problemas.append(f"tiene {cantidad} foto(s) en catalogo/fotos/{codigo}/; se piden al menos {MINIMO_FOTOS}")
     return problemas
 
 

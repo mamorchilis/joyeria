@@ -24,7 +24,15 @@ Si un producto no pertenece a ninguna colección, se marca "Sin colección". Nun
    ```
 
    Muestra, producto por producto, lo que falta. Cuando todo sale con ✓, se puede subir.
-4. Subir a Shopify (pendiente: ver más abajo).
+4. Subir a Shopify:
+
+   ```bash
+   python catalogo/subir_a_shopify.py --simular
+   python catalogo/subir_a_shopify.py
+   ```
+
+   El primero muestra qué haría sin cambiar nada; el segundo sube. Con `--solo CODIGO` se sube
+   un producto. Detalle más abajo.
 
 **Versiones de un mismo producto** (por ejemplo, la medalla con o sin cadena): una fila por
 versión, repitiendo el código y llenando solo *opción* y *precio*.
@@ -50,17 +58,31 @@ menú *Joyas* cuando tiene su primera pieza publicada.
 | descripcion | Descripción |
 | categoria | Tipo de producto. Cada categoría es una colección automática ("tipo es igual a…") y alimenta el menú *Joyas* |
 | coleccion | Etiqueta (por ejemplo `coleccion-astur`). Cada colección es una colección automática por etiqueta y alimenta el menú *Colecciones* |
-| material | Etiqueta y filtro |
-| opcion, precio_clp | Variantes y precio |
-| tamano, peso_g | Campo propio (metacampo) que se muestra en la ficha; el peso sirve para el despacho |
-| estado | Borrador o activo |
-| fotos/<codigo>/ | Imágenes del producto, en orden |
+| material | Etiqueta (por ejemplo `Bronce`) |
+| opcion, precio_clp | Variantes, bajo la opción "Versión" (por ejemplo *Con cadena* / *Sin cadena*), y precio |
+| tamano | Metacampo `custom.tamano`. Falta mostrarlo en la ficha de producto del tema |
+| peso_g | Peso de cada variante, en gramos, para el despacho |
+| estado | *Borrador* queda oculto; *Publicado* queda activo y en la tienda en línea |
+| fotos/<codigo>/ | Imágenes del producto, en orden, con texto alternativo "Nombre, foto N" |
+| — | Marca: Pili Trespalacios. Inventario sin seguimiento, porque se hace a pedido |
 
-## Subida a Shopify (pendiente)
+## Subida a Shopify (`subir_a_shopify.py`)
 
 La importación por CSV de Shopify **no sirve para fotos que están en el computador**: pide un
-enlace público por cada imagen. Por eso la propuesta es un script (`subir_a_shopify.py`, por
-hacer) que lea la planilla y las fotos y cree o actualice cada producto con la API de Shopify.
+enlace público por cada imagen. Por eso el script lee la planilla y las fotos y crea o actualiza
+cada producto con la API de Shopify.
+
+- **Revisa antes de subir:** un producto con pendientes (los mismos de `revisar_catalogo.py`) no
+  se sube.
+- **Crea o actualiza:** si ya existe un producto con ese código, lo actualiza en vez de duplicarlo.
+- **Fotos:** solo sube las nuevas o las que cambiaron. El producto queda con las fotos que hay en la
+  carpeta; quitar una foto de la carpeta debería quitarla del producto (aún no probado).
+- **No borra productos:** si un código desaparece de la planilla, el producto queda en Shopify y se
+  archiva o borra a mano.
+- **Probado el 2026-10-29** con un producto de prueba en borrador, con dos versiones y 3 fotos.
+  Quedó con su tipo, etiquetas, precios, peso, tamaño y fotos, y entró solo a *Colección Astur* y
+  *Colgantes*. Al subirlo otra vez se actualizó sin repetir fotos. Después se borró, junto con sus
+  fotos: la tienda quedó con 0 productos.
 
 ### Acceso a la tienda (listo desde el 2026-10-29)
 
