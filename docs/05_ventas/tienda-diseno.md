@@ -29,9 +29,16 @@ También se pueden comparar dos tipografías y dos colores para la franja de Nue
 - **Fuera de la portada:** "Tres orígenes. Una sola mano."
 - **No se nombra Santiago.** Chile aparece solo en Nuestra historia. El aviso de despacho dice
   "despacho a domicilio" en vez de "a todo Chile".
-- **Supuesto a confirmar:** que la medalla de Covadonga y la Cruz de la Victoria son dos de los
-  4 diseños de la Colección Astur. Faltan los nombres de los otros dos y de las 4 piezas del
-  carrusel.
+
+### Versión 3 (2026-10-29, comentarios de Juan Antonio)
+
+- **Menú:** *Colecciones* (Colección Astur) y *Joyas* (Cadenas y collares, Colgantes). Se abren al
+  pasar el mouse.
+- **Productos reales** en la Colección Astur y en el carrusel (lista en `docs/estado-proyecto.md`
+  y en `catalogo/productos.xlsx`).
+- **La Santina** se ofrece con cadena o sin cadena.
+- **Cómo llega tu joya:** pago en línea con pasarela, 15 a 20 días a pedido y despacho a domicilio
+  con aviso por correo. Ya no se presenta como regalo.
 
 ### Referentes (del brief de marca)
 
@@ -56,4 +63,4 @@ También se pueden comparar dos tipografías y dos colores para la franja de Nue
 - Fotos: cuellos con las medallas puestas, productos sobre fondo piedra y retrato de Pili.
 - Precios, plazo de fabricación a pedido, fecha límite de pedidos para Navidad, medio de pago y
   políticas de la tienda (ver [`politicas-tienda.md`](politicas-tienda.md)).
-- Nombres de los diseños de la Colección Astur y de las otras 4 piezas.
+- Descripciones, tamaños y precios de las 8 piezas; categoría de la Tiara.

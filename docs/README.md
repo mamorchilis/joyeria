@@ -15,7 +15,8 @@ nueva se crea cuando tiene su primer documento; los números reservados evitan r
 | [`06_finanzas/`](06_finanzas/) | Gastos, costos, márgenes, presupuesto y capital. | [`gastos/`](06_finanzas/gastos/README.md) |
 | `07_legal/` (por crear) | Empresa, registro de marca en INAPI, contratos con proveedores. | — |
 
-Fuera de `docs/` están los proyectos con código: `tienda/` (tema de Shopify),
+Fuera de `docs/` están los proyectos con código: `tienda/` (tema de Shopify), `catalogo/`
+(planilla y fotos para cargar productos),
 `Realidad_aumentada/` (probador virtual) y `tareas-app/` (app de tareas). La tienda debe seguir en su propia carpeta para que
 funcione `shopify theme dev`.
 
