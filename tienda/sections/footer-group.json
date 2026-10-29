@@ -51,103 +51,42 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "text_pF6rVi": {
+            "marca_nombre": {
               "type": "text",
-              "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Join our email list</h2>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h3",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "text": "<p>Pili Trespalacios</p>",
+                "type_preset": "custom",
+                "font": "var(--font-subheading--family)",
+                "font_size": "1.125rem",
+                "letter_spacing": "loose",
+                "case": "uppercase"
               },
               "blocks": {}
             },
-            "text_HafH7P": {
+            "marca_bajada": {
               "type": "text",
-              "name": "t:names.text",
               "settings": {
-                "text": "<p>Get exclusive deals and early access to new products.</p>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "email-signup_HafH7P": {
-              "type": "email-signup",
-              "name": "t:names.email_signup",
-              "settings": {
-                "width": "fill",
-                "custom_width": 100,
-                "heading": "",
-                "heading_preset": "h3",
-                "border_style": "all",
-                "input_style": "custom",
-                "border_width": 1,
-                "border_radius": 100,
-                "input_background_color": "{{ settings.color_palette.color1 }}",
-                "input_border_color": "",
-                "input_type_preset": "paragraph",
-                "style_class": "button-secondary",
-                "custom_button_background": "{{ settings.color_palette.foreground }}",
-                "custom_button_text": "{{ settings.color_palette.background }}",
-                "custom_button_border": "{{ settings.color_palette.background }}",
-                "display_type": "text",
-                "label": "Sign up",
-                "integrated_button": false,
-                "button_type_preset": "paragraph",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "text": "<p>Joyas en plata y bronce, diseñadas por Pili.</p>",
+                "type_preset": "rte"
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "text_pF6rVi",
-            "text_HafH7P",
-            "email-signup_HafH7P"
+            "marca_nombre",
+            "marca_bajada"
           ]
         },
         "menu_footer": {
           "type": "menu",
           "settings": {
             "menu": "footer",
-            "heading": "",
+            "heading": "Ayuda",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "plus",
             "accordion_dividers": false,
-            "heading_preset": "paragraph",
+            "heading_preset": "h6",
             "link_preset": "paragraph",
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -159,12 +98,12 @@
           "type": "menu",
           "settings": {
             "menu": "main-menu",
-            "heading": "",
+            "heading": "Tienda",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "plus",
             "accordion_dividers": false,
-            "heading_preset": "paragraph",
+            "heading_preset": "h6",
             "link_preset": "paragraph",
             "padding-block-start": 0,
             "padding-block-end": 0,
@@ -175,8 +114,8 @@
       },
       "block_order": [
         "group_wErUQf",
-        "menu_footer",
-        "menu_main"
+        "menu_main",
+        "menu_footer"
       ],
       "name": "t:names.footer",
       "settings": {
@@ -209,7 +148,7 @@
           "type": "social-links",
           "settings": {
             "facebook_url": "https://www.facebook.com",
-            "instagram_url": "https://www.instagram.com",
+            "instagram_url": "https://www.instagram.com/pilitrespalacios",
             "youtube_url": "https://www.youtube.com",
             "tiktok_url": "https://www.tiktok.com",
             "twitter_url": "https://www.twitter.com"

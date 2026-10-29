@@ -58,6 +58,45 @@ También se pueden comparar dos tipografías y dos colores para la franja de Nue
   4 diseños, medalla de Covadonga, carrusel "Más joyas", nuestra historia (Italia, Asturias y
   Chile), cómo llega tu joya (a pedido), quién diseña (Pili) y pie de página.
 
+## Programado en el tema (2026-10-29)
+
+Se pasó a `tienda/` lo ya decidido, antes del visto bueno de Pili a la maqueta completa. Si ella
+pide cambios, se ajustan ahí mismo.
+
+- **Estilo:** colores de la marca, Newsreader para textos y títulos, Tenor Sans para títulos
+  chicos, menú y botones (`config/settings_data.json` y `snippets/marca.liquid`).
+- **Encabezado:** aviso "Despacho a domicilio", logotipo al centro y menú a la izquierda, sin
+  selector de país ni idioma (`sections/header-group.json`).
+- **Portada** (`templates/index.json`), en este orden: Colección Astur con dos fotos, sus
+  4 diseños, la Santina (con cadena o sin cadena), carrusel "Más joyas" y "Hecha a pedido, para
+  ti" en tres pasos. El plazo dice "entre 15 y 20 días", sin "corridos".
+- **Pie de página:** nombre, una línea sobre la marca, menús "Tienda" y "Ayuda" e Instagram
+  (`sections/footer-group.json`).
+- Quedan fuera por ahora: Nuestra historia y Quién diseña.
+- Se validó con `shopify theme check` sin errores. **No se ha visto en el navegador**: falta
+  correr `shopify theme dev --store qe0efu-mp` desde `tienda/`.
+
+### Tareas en el administrador de Shopify
+
+El tema lee estas cosas desde la tienda, así que hay que crearlas allí:
+
+1. **Nombre de la tienda:** cambiar "My Store" por "Pili Trespalacios" (el logotipo es ese nombre
+   en texto).
+2. **Colecciones**, todas automáticas:
+   - `coleccion-astur`: productos con la etiqueta `coleccion-astur`.
+   - `mas-joyas`: productos cuya etiqueta no es `coleccion-astur`.
+   - `cadenas-y-collares`: tipo de producto igual a "Cadenas y collares".
+   - `colgantes`: tipo de producto igual a "Colgantes".
+3. **Menú principal** (`main-menu`): *Colecciones* con Colección Astur dentro; *Joyas* con
+   Cadenas y collares y Colgantes dentro. Se abren al pasar el mouse.
+4. **Menú del pie** (`footer`): Despachos, Cambios y garantía, Términos y condiciones y Contacto.
+   Las páginas se escriben cuando se decidan las políticas
+   (ver [`politicas-tienda.md`](politicas-tienda.md)).
+5. **Fotos de la portada:** subir los cuellos en el editor del tema (portada y Santina). Hasta
+   entonces se ven recuadros vacíos.
+6. **Productos:** cargarlos con la planilla de `catalogo/`. El botón "Ver la medalla" apunta a
+   `medalla-covadonga-bronce`.
+
 ### Lo que falta para que la portada sea real
 
 - Fotos: cuellos con las medallas puestas, productos sobre fondo piedra y retrato de Pili.

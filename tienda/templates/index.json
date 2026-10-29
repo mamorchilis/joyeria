@@ -9,274 +9,620 @@
  */
 {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
-      "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "{{ settings.color_palette.background }}",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-custom",
-            "custom_button_background": "rgba(0, 0, 0, 0)",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
-      ],
-      "name": "t:names.hero",
+    "astur_portada": {
+      "type": "section",
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
+        "content_direction": "row",
         "horizontal_alignment": "space-between",
         "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
-      }
-    },
-    "product_list_fa6P9H": {
-      "type": "product-list",
+        "gap": 56,
+        "padding-block-start": 72,
+        "padding-block-end": 96
+      },
       "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
+        "texto": {
+          "type": "group",
           "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "align_baseline": true,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
+            "gap": 28,
+            "width": "custom",
+            "custom_width": 42,
             "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "vertical_alignment_flex_direction_column": "flex-end"
           },
           "blocks": {
-            "product_list_text_YFtzcL": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
+            "antetitulo": {
+              "type": "text",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
+                "text": "<p>Colección de lanzamiento</p>",
+                "type_preset": "custom",
+                "font": "var(--font-subheading--family)",
+                "font_size": "0.75rem",
+                "letter_spacing": "loose",
+                "case": "uppercase",
                 "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "text_color": "{{ settings.color_palette.color1 }}"
               },
               "blocks": {}
             },
-            "product_list_button_MWeP9V": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
+            "titulo": {
+              "type": "text",
               "settings": {
-                "label": "View all",
-                "open_in_new_tab": false,
-                "style_class": "button-unstyled",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
+                "text": "<h1>Colección <em>Astur</em></h1>",
+                "type_preset": "h1"
+              },
+              "blocks": {}
+            },
+            "bajada": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Cuatro diseños en plata y en bronce, inspirados en Asturias, la tierra de los Trespalacios.</p>",
+                "type_preset": "rte",
+                "max_width": "narrow"
+              },
+              "blocks": {}
+            },
+            "boton": {
+              "type": "button",
+              "settings": {
+                "label": "Ver la colección",
+                "link": "shopify://collections/coleccion-astur",
+                "style_class": "button"
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
+            "antetitulo",
+            "titulo",
+            "bajada",
+            "boton"
+          ]
+        },
+        "fotos": {
+          "type": "group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "gap": 12,
+            "width": "custom",
+            "custom_width": 54,
+            "width_mobile": "fill",
+            "vertical_alignment": "flex-start"
+          },
+          "blocks": {
+            "foto_1": {
+              "type": "image",
+              "settings": {
+                "image_ratio": "square"
+              },
+              "blocks": {}
+            },
+            "foto_2": {
+              "type": "image",
+              "settings": {
+                "image_ratio": "square"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "foto_1",
+            "foto_2"
+          ]
+        }
+      },
+      "block_order": [
+        "texto",
+        "fotos"
+      ]
+    },
+    "astur_disenos": {
+      "type": "product-list",
+      "settings": {
+        "collection": "coleccion-astur",
+        "layout_type": "grid",
+        "columns": 4,
+        "max_products": 4,
+        "mobile_columns": "2",
+        "columns_gap": 24,
+        "rows_gap": 32,
+        "gap": 40,
+        "padding-block-start": 88,
+        "padding-block-end": 96
+      },
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "gap": 24
+          },
+          "blocks": {
+            "titulos": {
+              "type": "group",
+              "settings": {
+                "gap": 8,
+                "width": "fit-content"
+              },
+              "blocks": {
+                "antetitulo": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Colección Astur</p>",
+                    "type_preset": "custom",
+                    "font": "var(--font-subheading--family)",
+                    "font_size": "0.75rem",
+                    "letter_spacing": "loose",
+                    "case": "uppercase",
+                    "text_color": "{{ settings.color_palette.color1 }}"
+                  },
+                  "blocks": {}
+                },
+                "titulo": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h2>Cuatro diseños de lanzamiento</h2>",
+                    "type_preset": "h2"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "antetitulo",
+                "titulo"
+              ]
+            },
+            "bajada": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Símbolos de Asturias, dibujados por Pili. Cada pieza se hace a pedido para ti.</p>",
+                "type_preset": "rte",
+                "max_width": "narrow"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "titulos",
+            "bajada"
           ]
         },
         "static-product-card": {
           "type": "_product-card",
-          "name": "t:names.product_card",
           "static": true,
           "settings": {
-            "product_card_gap": 4,
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "product_card_gap": 4
           },
           "blocks": {
-            "product_card_gallery_677WP3": {
+            "galeria": {
               "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
               "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "image_ratio": "portrait"
               },
               "blocks": {}
             },
-            "product_title_YXxMTj": {
+            "titulo": {
               "type": "product-title",
-              "name": "t:names.product_title",
               "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
                 "type_preset": "paragraph",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "font_size": "1.125rem"
               },
               "blocks": {}
             },
-            "price_JQzVV4": {
+            "precio": {
               "type": "price",
-              "name": "t:names.product_price",
               "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "type_preset": "paragraph",
+                "font_size": "1rem"
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
+            "galeria",
+            "titulo",
+            "precio"
+          ]
+        }
+      }
+    },
+    "santina": {
+      "type": "section",
+      "settings": {
+        "content_direction": "row",
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "center",
+        "gap": 72,
+        "background_color": "#F1EFEB",
+        "padding-block-start": 96,
+        "padding-block-end": 96
+      },
+      "blocks": {
+        "foto": {
+          "type": "group",
+          "settings": {
+            "width": "custom",
+            "custom_width": 45,
+            "width_mobile": "fill"
+          },
+          "blocks": {
+            "imagen": {
+              "type": "image",
+              "settings": {
+                "image_ratio": "square"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "imagen"
+          ]
+        },
+        "texto": {
+          "type": "group",
+          "settings": {
+            "gap": 24,
+            "width": "custom",
+            "custom_width": 45,
+            "width_mobile": "fill"
+          },
+          "blocks": {
+            "antetitulo": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Colección Astur</p>",
+                "type_preset": "custom",
+                "font": "var(--font-subheading--family)",
+                "font_size": "0.75rem",
+                "letter_spacing": "loose",
+                "case": "uppercase",
+                "alignment": "left",
+                "text_color": "{{ settings.color_palette.color1 }}"
+              },
+              "blocks": {}
+            },
+            "titulo": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>La Santina, <em>en bronce y en plata</em></h2>",
+                "type_preset": "h2"
+              },
+              "blocks": {}
+            },
+            "bajada": {
+              "type": "text",
+              "settings": {
+                "text": "<p>La Virgen de Covadonga, patrona de Asturias. Elige si la quieres con cadena o sin cadena.</p>",
+                "type_preset": "rte",
+                "max_width": "narrow"
+              },
+              "blocks": {}
+            },
+            "boton": {
+              "type": "button",
+              "settings": {
+                "label": "Ver la medalla",
+                "link": "shopify://products/medalla-covadonga-bronce",
+                "style_class": "button"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "antetitulo",
+            "titulo",
+            "bajada",
+            "boton"
           ]
         }
       },
-      "name": "t:names.featured_collection",
+      "block_order": [
+        "foto",
+        "texto"
+      ]
+    },
+    "mas_joyas": {
+      "type": "product-list",
       "settings": {
-        "collection": "all",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
+        "collection": "mas-joyas",
+        "layout_type": "carousel",
+        "columns": 3,
         "max_products": 8,
-        "columns": 4,
         "mobile_columns": "2",
+        "columns_gap": 24,
+        "rows_gap": 32,
+        "gap": 40,
+        "padding-block-start": 96,
+        "padding-block-end": 96,
+        "carousel_on_mobile": true,
         "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 28,
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "icons_style": "chevron",
+        "icons_shape": "square"
+      },
+      "blocks": {
+        "static-header": {
+          "type": "_product-list-content",
+          "static": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "space-between",
+            "vertical_alignment": "flex-end",
+            "gap": 24
+          },
+          "blocks": {
+            "titulos": {
+              "type": "group",
+              "settings": {
+                "gap": 8,
+                "width": "fit-content"
+              },
+              "blocks": {
+                "antetitulo": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>También en la tienda</p>",
+                    "type_preset": "custom",
+                    "font": "var(--font-subheading--family)",
+                    "font_size": "0.75rem",
+                    "letter_spacing": "loose",
+                    "case": "uppercase",
+                    "text_color": "{{ settings.color_palette.color1 }}"
+                  },
+                  "blocks": {}
+                },
+                "titulo": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h2>Más joyas</h2>",
+                    "type_preset": "h2"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "antetitulo",
+                "titulo"
+              ]
+            },
+            "boton": {
+              "type": "_product-list-button",
+              "settings": {
+                "label": "Ver todas las joyas",
+                "style_class": "button-unstyled"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "titulos",
+            "boton"
+          ]
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4
+          },
+          "blocks": {
+            "galeria": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "portrait"
+              },
+              "blocks": {}
+            },
+            "titulo": {
+              "type": "product-title",
+              "settings": {
+                "type_preset": "paragraph",
+                "font_size": "1.125rem"
+              },
+              "blocks": {}
+            },
+            "precio": {
+              "type": "price",
+              "settings": {
+                "type_preset": "paragraph",
+                "font_size": "1rem"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "galeria",
+            "titulo",
+            "precio"
+          ]
+        }
       }
+    },
+    "como_llega": {
+      "type": "section",
+      "settings": {
+        "gap": 12,
+        "padding-block-start": 96,
+        "padding-block-end": 100
+      },
+      "blocks": {
+        "antetitulo": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Cómo llega tu joya</p>",
+            "type_preset": "custom",
+            "font": "var(--font-subheading--family)",
+            "font_size": "0.75rem",
+            "letter_spacing": "loose",
+            "case": "uppercase",
+            "alignment": "left",
+            "text_color": "{{ settings.color_palette.color1 }}"
+          },
+          "blocks": {}
+        },
+        "titulo": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Hecha a pedido, para ti</h2>",
+            "type_preset": "h2"
+          },
+          "blocks": {}
+        },
+        "pasos": {
+          "type": "group",
+          "settings": {
+            "content_direction": "row",
+            "gap": 24,
+            "padding-block-start": 36
+          },
+          "blocks": {
+            "paso_1": {
+              "type": "group",
+              "settings": {
+                "gap": 12
+              },
+              "blocks": {
+                "numero": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>1</p>",
+                    "type_preset": "custom",
+                    "font": "var(--font-subheading--family)",
+                    "font_size": "0.875rem",
+                    "letter_spacing": "loose",
+                    "text_color": "{{ settings.color_palette.color1 }}"
+                  },
+                  "blocks": {}
+                },
+                "titulo": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h3>Eliges tu pieza</h3>",
+                    "type_preset": "h4"
+                  },
+                  "blocks": {}
+                },
+                "texto": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>En plata o en bronce. Pagas en línea, en la misma tienda, con una pasarela de pago segura.</p>",
+                    "type_preset": "rte"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "numero",
+                "titulo",
+                "texto"
+              ]
+            },
+            "paso_2": {
+              "type": "group",
+              "settings": {
+                "gap": 12
+              },
+              "blocks": {
+                "numero": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>2</p>",
+                    "type_preset": "custom",
+                    "font": "var(--font-subheading--family)",
+                    "font_size": "0.875rem",
+                    "letter_spacing": "loose",
+                    "text_color": "{{ settings.color_palette.color1 }}"
+                  },
+                  "blocks": {}
+                },
+                "titulo": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h3>Se hace a mano</h3>",
+                    "type_preset": "h4"
+                  },
+                  "blocks": {}
+                },
+                "texto": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Solo para ti, a pedido. Está lista entre 15 y 20 días.</p>",
+                    "type_preset": "rte"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "numero",
+                "titulo",
+                "texto"
+              ]
+            },
+            "paso_3": {
+              "type": "group",
+              "settings": {
+                "gap": 12
+              },
+              "blocks": {
+                "numero": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>3</p>",
+                    "type_preset": "custom",
+                    "font": "var(--font-subheading--family)",
+                    "font_size": "0.875rem",
+                    "letter_spacing": "loose",
+                    "text_color": "{{ settings.color_palette.color1 }}"
+                  },
+                  "blocks": {}
+                },
+                "titulo": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h3>Te llega a casa</h3>",
+                    "type_preset": "h4"
+                  },
+                  "blocks": {}
+                },
+                "texto": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>La despachamos a tu domicilio y te avisamos por correo cuando va en camino.</p>",
+                    "type_preset": "rte"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "numero",
+                "titulo",
+                "texto"
+              ]
+            }
+          },
+          "block_order": [
+            "paso_1",
+            "paso_2",
+            "paso_3"
+          ]
+        }
+      },
+      "block_order": [
+        "antetitulo",
+        "titulo",
+        "pasos"
+      ]
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "astur_portada",
+    "astur_disenos",
+    "santina",
+    "mas_joyas",
+    "como_llega"
   ]
 }

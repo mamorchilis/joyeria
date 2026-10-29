@@ -11,14 +11,14 @@
   "current": {
     "logo_height": 36,
     "logo_height_mobile": 28,
-    "type_body_font": "inter_n4",
-    "type_subheading_font": "inter_n5",
-    "type_heading_font": "inter_n7",
-    "type_accent_font": "inter_n7",
-    "type_size_paragraph": "14",
+    "type_body_font": "newsreader_n4",
+    "type_subheading_font": "tenor_sans_n4",
+    "type_heading_font": "newsreader_n3",
+    "type_accent_font": "tenor_sans_n4",
+    "type_size_paragraph": "18",
     "type_line_height_paragraph": "body-loose",
     "type_font_h1": "heading",
-    "type_size_h1": "56",
+    "type_size_h1": "72",
     "type_line_height_h1": "display-tight",
     "type_letter_spacing_h1": "heading-normal",
     "type_case_h1": "none",
@@ -77,11 +77,11 @@
     "palette_input_border": "{{ settings.color_palette.color3 }}",
     "palette_variant_border": "{{ settings.color_palette.color3 }}",
     "color_palette": {
-      "background": "#ffffff",
-      "foreground": "#000000",
-      "color1": "#333333",
-      "color2": "#EEF1EA",
-      "color3": "#DFDFDF"
+      "background": "#FBFAF8",
+      "foreground": "#141414",
+      "color1": "#6B665E",
+      "color2": "#D6D1C9",
+      "color3": "#E6E2DC"
     }
   },
   "presets": {
