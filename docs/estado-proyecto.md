@@ -202,12 +202,13 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   **Colección Astur:** Cruz de la Victoria en bronce con circones, Cruz de la Victoria en plata
   lisa, Medalla Virgen de Covadonga en bronce y Medalla Virgen de Covadonga en plata. **Otros 4:**
   Cadena clásica en bronce, Cadena clásica en plata, Tiara en bronce y Colgante de bronce con
-  piedra ónix. La medalla se vende con o sin cadena (no con cinta de terciopelo, que era una
-  recomendación). **Menú:** *Colecciones* (por ahora Colección Astur) y *Joyas*, con las categorías
+  piedra ónix. La Tiara va en *Cadenas y collares*. Las cruces y las medallas se venden con o sin
+  cadena (no con cinta de terciopelo, que era una recomendación). **Menú:** *Colecciones* (por ahora Colección Astur) y *Joyas*, con las categorías
   *Cadenas y collares* y *Colgantes*. **Regla:** todo producto lleva nombre, colección, categoría,
   descripción, tamaño y al menos 3 fotos. Se carga desde `catalogo/` (planilla + fotos + revisor);
   falta el script que sube a Shopify. **Pago:** en línea, con pasarela. **Plazo a pedido:** 15 a 20
-  días (falta confirmar si son hábiles). Pendiente: categoría de la Tiara.
+  días corridos. En la web se dice "entre 15 y 20 días", sin aclarar que son corridos (pedido de
+  Juan Antonio).
 - **2026-10-29 — Políticas de la tienda (análisis, sin decisión).** Las de Co Rivera e Igna
   Valverde no se pueden copiar tal cual: son textos protegidos, describen otro negocio y algunas
   reglas parecen bajo la ley vigente (garantía de 3 meses en vez de 6, sin devolución de dinero,

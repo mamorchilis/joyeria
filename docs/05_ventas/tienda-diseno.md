@@ -63,4 +63,4 @@ También se pueden comparar dos tipografías y dos colores para la franja de Nue
 - Fotos: cuellos con las medallas puestas, productos sobre fondo piedra y retrato de Pili.
 - Precios, plazo de fabricación a pedido, fecha límite de pedidos para Navidad, medio de pago y
   políticas de la tienda (ver [`politicas-tienda.md`](politicas-tienda.md)).
-- Descripciones, tamaños y precios de las 8 piezas; categoría de la Tiara.
+- Descripciones, tamaños y precios de las 8 piezas (cruces y medallas, con y sin cadena).
