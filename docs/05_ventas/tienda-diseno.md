@@ -80,18 +80,21 @@ pide cambios, se ajustan ahí mismo.
 
 El tema lee estas cosas desde la tienda, así que hay que crearlas allí:
 
-1. **Nombre de la tienda:** cambiar "My Store" por "Pili Trespalacios" (el logotipo es ese nombre
-   en texto).
-2. **Colecciones**, todas automáticas:
+1. **Nombre de la tienda (pendiente):** cambiar "My Store" por "Pili Trespalacios" en
+   *Configuración > General* (el logotipo es ese nombre en texto).
+2. **Colecciones (hechas el 2026-10-29)**, todas automáticas:
    - `coleccion-astur`: productos con la etiqueta `coleccion-astur`.
-   - `mas-joyas`: productos cuya etiqueta no es `coleccion-astur`.
+   - `mas-joyas`: productos activos, excluyendo la Colección Astur. Un producto en borrador no
+     aparece hasta publicarlo.
    - `cadenas-y-collares`: tipo de producto igual a "Cadenas y collares".
    - `colgantes`: tipo de producto igual a "Colgantes".
-3. **Menú principal** (`main-menu`): *Colecciones* con Colección Astur dentro; *Joyas* con
-   Cadenas y collares y Colgantes dentro. Se abren al pasar el mouse.
-4. **Menú del pie** (`footer`): Despachos, Cambios y garantía, Términos y condiciones y Contacto.
-   Las páginas se escriben cuando se decidan las políticas
-   (ver [`politicas-tienda.md`](politicas-tienda.md)).
+   - Al cargar un producto, el tipo y la etiqueta deben escribirse exactamente así.
+3. **Menú principal (hecho el 2026-10-29)** (`main-menu`): *Colecciones* (lleva a todas las
+   colecciones) con Colección Astur dentro; *Joyas* (lleva a todos los productos) con Cadenas y
+   collares y Colgantes dentro. Se abren al pasar el mouse.
+4. **Menú del pie** (`footer`): por ahora solo *Contacto*, con la página de contacto que trae
+   Shopify. Despachos, Cambios y garantía y Términos y condiciones se agregan cuando estén escritas
+   las políticas (ver [`politicas-tienda.md`](politicas-tienda.md)), para no enlazar páginas vacías.
 5. **Fotos de la portada:** subir los cuellos en el editor del tema (portada y Santina). Hasta
    entonces se ven recuadros vacíos.
 6. **Productos:** cargarlos con la planilla de `catalogo/`. El botón "Ver la medalla" apunta a
