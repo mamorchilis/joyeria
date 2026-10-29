@@ -6,7 +6,7 @@
   "ruta": [
     {"paso": "Nombre de la marca", "estado": "acordado", "detalle": "Pili Trespalacios (26-10). Ya están @pilitrespalacios en Instagram y pilitrespalacios.cl. Falta el abogado de marcas y el registro en INAPI (clases 14 y 35).", "hoja": "nombre"},
     {"paso": "Constituir la empresa", "estado": "pendiente", "detalle": "Siguiente paso, ya con el nombre. La razón social puede ser distinta de la marca. Al constituirla, conviene traspasarle el dominio y la cuenta de Instagram."},
-    {"paso": "Marca, web y redes sociales", "estado": "en-curso", "detalle": "Adelantado: el dominio está en NIC Chile y su DNS en Cloudflare, sin web todavía. Falta elegir la plataforma de la web (tienda o página de presentación), el correo con el dominio y la identidad visual."}
+    {"paso": "Marca, web y redes sociales", "estado": "en-curso", "detalle": "Adelantado: el dominio está en NIC Chile y su DNS en Cloudflare, sin web todavía. Falta elegir la plataforma de la web (tienda o página de presentación), el correo con el dominio y cerrar la identidad visual. Logo (29-10): solo logotipo, en blanco y negro; falta el visto bueno de Pili."}
   ],
   "paralelo": [
     {"paso": "Proveedor: CLAF Goldsmith", "estado": "en-curso", "detalle": "Proveedor más probable. Falta formalizar condiciones, costos y plazos."},

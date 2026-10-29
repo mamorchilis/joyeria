@@ -18,6 +18,7 @@ Respuestas de los socios del 2026-10-26, base para la identidad visual y la web.
 - **Colores sí:** neutros y suaves, no brillantes; puede ser blanco y negro.
 - **Colores no:** amarillo, fucsia, azul eléctrico, verde limón y otros colores fuertes.
 - **Logo:** se necesita logotipo (solo el nombre), isotipo (solo el símbolo) e imagotipo (los dos juntos).
+  *Cambio del 2026-10-29:* por ahora solo logotipo, en blanco y negro. Ver `identidad-visual.md`.
 - **Tono:** se trata de "tú" a la clienta. Español principalmente, sumando italiano e inglés (por ejemplo, en nombres de colecciones).
 
 ## Lo práctico
