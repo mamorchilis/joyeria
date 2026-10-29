@@ -80,8 +80,8 @@ pide cambios, se ajustan ahí mismo.
 
 El tema lee estas cosas desde la tienda, así que hay que crearlas allí:
 
-1. **Nombre de la tienda (pendiente):** cambiar "My Store" por "Pili Trespalacios" en
-   *Configuración > General* (el logotipo es ese nombre en texto).
+1. **Nombre de la tienda (hecho el 2026-10-29):** "Pili Trespalacios", en *Configuración >
+   General > Datos de contacto de la tienda* (el logotipo es ese nombre en texto).
 2. **Colecciones (hechas el 2026-10-29)**, todas automáticas:
    - `coleccion-astur`: productos con la etiqueta `coleccion-astur`.
    - `mas-joyas`: productos activos, excluyendo la Colección Astur. Un producto en borrador no
