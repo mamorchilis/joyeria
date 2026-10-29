@@ -88,6 +88,8 @@ El tema lee estas cosas desde la tienda, así que hay que crearlas allí:
      aparece hasta publicarlo.
    - `cadenas-y-collares`: tipo de producto igual a "Cadenas y collares".
    - `colgantes`: tipo de producto igual a "Colgantes".
+   - `anillos`, `aros`, `esclavas` y `pulseras`: igual, por tipo de producto. Todavía no tienen
+     piezas y no están en el menú.
    - Al cargar un producto, el tipo y la etiqueta deben escribirse exactamente así.
 3. **Menú principal (hecho el 2026-10-29)** (`main-menu`): *Colecciones* (lleva a todas las
    colecciones) con Colección Astur dentro; *Joyas* (lleva a todos los productos) con Cadenas y

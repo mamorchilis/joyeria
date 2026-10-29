@@ -209,6 +209,11 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
   falta el script que sube a Shopify. **Pago:** en línea, con pasarela. **Plazo a pedido:** 15 a 20
   días corridos. En la web se dice "entre 15 y 20 días", sin aclarar que son corridos (pedido de
   Juan Antonio).
+- **2026-10-29 — Categorías nuevas (dicho por Juan Antonio).** Se suman *Anillos*, *Aros*,
+  *Esclavas* y *Pulseras*. *Cadenas y collares* sigue siendo una sola categoría (se le preguntó al
+  verlas separadas en un referente y eligió mantenerlas juntas). Las nuevas ya existen como
+  colecciones en Shopify y en la planilla, pero entran al menú *Joyas* recién cuando tengan su
+  primera pieza, para no mostrar páginas vacías.
 - **2026-10-29 — Políticas de la tienda (análisis, sin decisión).** Las de Co Rivera e Igna
   Valverde no se pueden copiar tal cual: son textos protegidos, describen otro negocio y algunas
   reglas parecen bajo la ley vigente (garantía de 3 meses en vez de 6, sin devolución de dinero,

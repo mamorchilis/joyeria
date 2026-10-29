@@ -35,8 +35,11 @@ versión, repitiendo el código y llenando solo *opción* y *precio*.
 |---|---|---|
 | Colección | Colección Astur | *Colecciones* |
 | Categoría | Cadenas y collares, Colgantes | *Joyas* |
+| Categoría, aún sin piezas | Anillos, Aros, Esclavas, Pulseras | No, hasta tener la primera pieza |
 
-Para sumar una colección o categoría nueva, se agrega en la hoja *Listas*.
+Para sumar una colección o categoría nueva, se agrega en la hoja *Listas* y se crea su colección
+automática en Shopify (tipo de producto igual al nombre de la categoría). Una categoría entra al
+menú *Joyas* cuando tiene su primera pieza publicada.
 
 ## Cómo calza con Shopify
 
