@@ -18,8 +18,20 @@ Vamos en el paso 3.
 **Estado: propuesta, sin aprobar.** Está en un lienzo de Claude:
 <https://claude.ai/artifact/DcKGJqeLLYCxbU9q8AT7yn> (privado: para que Pili la vea hay que
 compartirla desde el menú *Share* de la página). Trae la versión de escritorio y la de celular.
-También se pueden comparar tres títulos principales, dos tipografías y dos colores para la franja
-de los orígenes.
+También se pueden comparar dos tipografías y dos colores para la franja de Nuestra historia.
+
+### Versión 2 (2026-10-29, comentarios de Juan Antonio)
+
+- **La portada lanza la Colección Astur** (4 diseños). Después viene un carrusel con las otras
+  4 piezas.
+- **Las fotos de arriba son solo cuellos**, para que las modelos no se lleven el protagonismo.
+  Cuando estén las fotos con las medallas puestas, se reemplazan.
+- **Fuera de la portada:** "Tres orígenes. Una sola mano."
+- **No se nombra Santiago.** Chile aparece solo en Nuestra historia. El aviso de despacho dice
+  "despacho a domicilio" en vez de "a todo Chile".
+- **Supuesto a confirmar:** que la medalla de Covadonga y la Cruz de la Victoria son dos de los
+  4 diseños de la Colección Astur. Faltan los nombres de los otros dos y de las 4 piezas del
+  carrusel.
 
 ### Referentes (del brief de marca)
 
@@ -35,16 +47,13 @@ de los orígenes.
   *muro* sobre *cal* no alcanza a leerse bien en letra chica.
 - **Tipografía de los textos:** Newsreader (venía del camino 2), con Tenor Sans para títulos chicos,
   menú y botones. Es propuesta; la alternativa en la maqueta es Spectral.
-- **Secciones, en orden:** aviso de despacho, encabezado, portada con modelos, primeras piezas,
-  medalla de Covadonga, nuestra historia (Italia, Asturias y Chile), cómo llega tu joya (a pedido),
-  quién diseña (Pili) y pie de página.
-- **Títulos para elegir:** "Tres orígenes. Una sola mano." (el lema del camino 2, aún no decidido),
-  "Joyas para quedarse en la familia." y "Diseñadas por Pili. Hechas a mano en Chile."
+- **Secciones, en orden:** aviso de despacho, encabezado, portada de la Colección Astur, sus
+  4 diseños, medalla de Covadonga, carrusel "Más joyas", nuestra historia (Italia, Asturias y
+  Chile), cómo llega tu joya (a pedido), quién diseña (Pili) y pie de página.
 
 ### Lo que falta para que la portada sea real
 
-- Fotos: campaña, productos sobre fondo piedra y retrato de Pili. En la maqueta, las modelos
-  (Inés, Teresa y Antonia) aparecen como referencia, todavía sin joyas.
+- Fotos: cuellos con las medallas puestas, productos sobre fondo piedra y retrato de Pili.
 - Precios, plazo de fabricación a pedido, fecha límite de pedidos para Navidad, medio de pago y
-  política de cambios.
-- Las otras cuatro piezas de la colección de partida.
+  políticas de la tienda (ver [`politicas-tienda.md`](politicas-tienda.md)).
+- Nombres de los diseños de la Colección Astur y de las otras 4 piezas.

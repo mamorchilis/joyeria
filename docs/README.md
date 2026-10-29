@@ -11,7 +11,7 @@ nueva se crea cuando tiene su primer documento; los números reservados evitan r
 | [`02_producto/`](02_producto/) | Colección, diseños, materiales y fichas de cada pieza. | [`coleccion/`](02_producto/coleccion/) (medalla de Covadonga, Cruz de la Victoria) |
 | [`03_mercado/`](03_mercado/) | Competencia, referentes y estudios de clientes. | [`competencia/`](03_mercado/competencia/README.md) (una carpeta por marca) e investigación inicial |
 | [`04_operaciones/`](04_operaciones/) | Taller y proveedores, packaging, despacho, inventario. | [`fabricacion.md`](04_operaciones/fabricacion.md) (criterios y CLAF) |
-| [`05_ventas/`](05_ventas/) | Canales, tienda en línea (decisiones, no el código), precios de venta, punto de venta. | [`probador-virtual.md`](05_ventas/probador-virtual.md), [`tienda-diseno.md`](05_ventas/tienda-diseno.md) |
+| [`05_ventas/`](05_ventas/) | Canales, tienda en línea (decisiones, no el código), precios de venta, punto de venta. | [`probador-virtual.md`](05_ventas/probador-virtual.md), [`tienda-diseno.md`](05_ventas/tienda-diseno.md), [`politicas-tienda.md`](05_ventas/politicas-tienda.md) |
 | [`06_finanzas/`](06_finanzas/) | Gastos, costos, márgenes, presupuesto y capital. | [`gastos/`](06_finanzas/gastos/README.md) |
 | `07_legal/` (por crear) | Empresa, registro de marca en INAPI, contratos con proveedores. | — |
 

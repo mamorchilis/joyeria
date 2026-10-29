@@ -191,3 +191,15 @@ Añadir aquí las decisiones importantes con fecha, contexto y estado. No regist
 - **2026-10-27 — Modelos hombres aprobados (decidido por Juan Antonio).** Se suman Tomás (30) y
   Rafael (45), con la misma dirección que las modelos mujeres. Las imágenes de las mujeres pasaron
   de `modelos/imagenes/` a `modelos/mujeres/` y las de los hombres están en `modelos/hombres/`.
+- **2026-10-29 — Colección Astur de lanzamiento (dicho por Juan Antonio).** La tienda parte con
+  la **Colección Astur, de 4 diseños**, y **4 productos más** que se muestran después (en la
+  portada, en un carrusel). **Diferencia con lo documentado:** el 2026-10-27 se habló de "6 diseños
+  de partida"; ahora serían 8 (4 + 4). Falta confirmar si son los mismos diseños reordenados y qué
+  piezas van en Astur (en la maqueta se supuso que la medalla de Covadonga y la Cruz de la Victoria).
+  También pidió no nombrar Santiago en la web y dejar Chile solo en Nuestra historia. Detalle en
+  `docs/05_ventas/tienda-diseno.md`.
+- **2026-10-29 — Políticas de la tienda (análisis, sin decisión).** Las de Co Rivera e Igna
+  Valverde no se pueden copiar tal cual: son textos protegidos, describen otro negocio y algunas
+  reglas parecen bajo la ley vigente (garantía de 3 meses en vez de 6, sin devolución de dinero,
+  retracto). Se toman la estructura y las buenas ideas para escribir textos propios. Detalle y
+  decisiones pendientes en `docs/05_ventas/politicas-tienda.md`.
