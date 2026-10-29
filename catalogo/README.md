@@ -62,6 +62,21 @@ La importación por CSV de Shopify **no sirve para fotos que están en el comput
 enlace público por cada imagen. Por eso la propuesta es un script (`subir_a_shopify.py`, por
 hacer) que lea la planilla y las fotos y cree o actualice cada producto con la API de Shopify.
 
-Para eso hace falta un **token de acceso** de la tienda, con permiso para productos y archivos.
-Lo crea un socio en Shopify y se guarda **solo en una variable de entorno del computador**
-(`SHOPIFY_ADMIN_TOKEN`), nunca en el repositorio.
+### Acceso a la tienda (listo desde el 2026-10-29)
+
+Desde 2026 Shopify ya no entrega una clave fija. El acceso es una app propia del Dev Dashboard:
+
+- **App:** "Carga de catálogo", en la organización *Pili Trespalacios* del Dev Dashboard
+  (<https://dev.shopify.com/dashboard/243186238/apps/441694846977>), instalada en la tienda.
+- **Permisos:** productos, archivos (fotos), publicación en la tienda e inventario. Nada de
+  pedidos ni clientes.
+- **Credenciales:** el ID y el secreto de la app se guardan **solo en variables de entorno del
+  usuario de Windows** (`SHOPIFY_CLIENT_ID` y `SHOPIFY_CLIENT_SECRET`), nunca en el repositorio.
+  Se cargan desde *Settings* de la app con:
+  `[Environment]::SetEnvironmentVariable("SHOPIFY_CLIENT_SECRET", (Read-Host "Pega el valor"), "User")`
+  y luego hay que reiniciar la terminal o la app que corre el script.
+- **Cómo se usa:** el script pide a Shopify una clave temporal con esas credenciales
+  (`POST https://qe0efu-mp.myshopify.com/admin/oauth/access_token`, `grant_type=client_credentials`).
+  Cada clave dura 24 horas, así que se pide una nueva en cada uso.
+- **Si se filtra el secreto:** se rota desde *Settings* de la app y se vuelve a guardar.
+- Se probó el 2026-10-29: la tienda respondió con su nombre y 0 productos.
