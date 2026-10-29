@@ -7,7 +7,9 @@ Lo que va acordado de la identidad visual. La hoja con el logo para ver e imprim
 
 - **Logo: solo logotipo**, el del camino 2 ("Tres Casas") de la propuesta de Claude del 2026-10-26.
   No se usan isotipo ni imagotipo por ahora.
-- **Colores: principalmente blanco y negro**, como Co Rivera y otras marcas de referencia.
+- **Colores: la paleta completa del camino 2** (cal, negro, piedra, muro y bronce), usada
+  principalmente en blanco y negro, como Co Rivera y otras marcas de referencia.
+- **El logotipo va sin la bajada "SANTIAGO · CHILE"**, solo el nombre.
 
 Esto cambia dos cosas que estaban documentadas:
 
@@ -20,26 +22,25 @@ Esto cambia dos cosas que estaban documentadas:
 
 - Dice **PILI TRESPALACIOS** en mayúsculas, en la tipografía **Tenor Sans** (gratuita, de Google Fonts).
 - Letras muy separadas: espaciado de 0,34 em (34 % del tamaño de la letra).
-- **Versión completa:** debajo lleva **SANTIAGO · CHILE**, más chico (42 % del nombre) y aún más
-  espaciado (0,5 em). Para la web, el packaging y documentos.
-- **Versión corta:** solo el nombre. Para tamaños chicos (avatar, menú del celular, etiquetas) y
-  sobre negro.
-- Va en negro sobre blanco o en blanco sobre negro. Nada de colores, sombras ni degradados.
+- Es solo el nombre: **no lleva "SANTIAGO · CHILE"** debajo (decidido el 2026-10-29), aunque la
+  propuesta original sí la tenía.
+- Va en negro sobre cal o en cal sobre negro. Nada de sombras ni degradados.
 - La propuesta original usaba la tipografía tal cual, sin dibujar. Para imprimir o grabar hay que
   pasarlo a curvas (vector), y ese archivo todavía no existe.
 
 ## Colores
 
+La paleta completa del camino 2. Cal y negro son los principales; los demás acompañan.
+
 | Nombre | Código | Uso |
 |---|---|---|
-| Negro | `#141414` | Logo, textos, fondos oscuros, caja |
-| Blanco | `#FFFFFF` | Fondo principal |
-| Gris claro | `#F2F2F0` | Fondos de foto de producto (apoyo) |
-| Gris medio | `#6E6E6E` | Textos secundarios (apoyo) |
+| Cal | `#FBFAF8` | Fondo principal (un blanco apenas cálido) |
+| Negro | `#141414` | Textos, logo y caja |
+| Piedra | `#D6D1C9` | Fondos de producto |
+| Muro | `#8B857C` | Textos secundarios |
+| Bronce | `#A88B6A` | Solo en detalles mínimos |
 
-El negro es casi negro, no negro puro, igual que en la propuesta. Los dos grises son propuesta de
-Claude para lo que el blanco y negro no alcanza a resolver; falta que los socios los aprueben. El
-bronce y el color "piedra" del camino 2 quedan fuera.
+El negro es casi negro, no negro puro.
 
 ## Por definir
 

@@ -15,8 +15,8 @@ Concepto y nombre de la marca. La fabricación y el taller están en [`docs/04_o
 
 ## Identidad visual (2026-10-29)
 
-- Solo **logotipo** ("PILI TRESPALACIOS" en Tenor Sans, del camino 2 de la propuesta del 26-10), sin isotipo ni imagotipo.
-- Colores: principalmente **blanco y negro**.
+- Solo **logotipo** ("PILI TRESPALACIOS" en Tenor Sans, del camino 2 de la propuesta del 26-10), sin isotipo ni imagotipo y sin la bajada "Santiago · Chile".
+- Colores: la paleta completa del camino 2 (cal, negro, piedra, muro y bronce), principalmente en **blanco y negro**.
 - Falta el visto bueno de Pili. Detalle y pendientes en [`identidad-visual.md`](identidad-visual.md).
 
 ## Otros documentos de esta área

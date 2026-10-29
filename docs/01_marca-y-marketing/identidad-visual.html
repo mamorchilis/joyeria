@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Hanken+Grotesk:wght@400;500&display=swap">
 <style>
 :root{
-  --negro:#141414; --blanco:#FFFFFF; --gris-claro:#F2F2F0; --gris-medio:#6E6E6E;
-  --bg:#F7F7F6; --fg:#141414; --muted:#6E6E6E; --line:#DDDDDA;
+  --negro:#141414; --blanco:#FBFAF8;
+  --bg:#F2F1EE; --fg:#141414; --muted:#6C6862; --line:#DCD8D1;
   --f-logo:"Tenor Sans","Gill Sans","Optima",sans-serif;
   --f-ui:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:light;
@@ -32,14 +32,12 @@ h1{font-family:var(--f-logo);font-weight:400;font-size:clamp(26px,4.4vw,44px);le
 .cap{position:absolute;left:16px;bottom:14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
 .logo{font-family:var(--f-logo);text-align:center;line-height:1;white-space:nowrap}
 .logo .n{display:block;font-size:var(--s,24px);letter-spacing:.34em;padding-left:.34em}
-.logo .s{display:block;font-size:calc(var(--s,24px)*.42);letter-spacing:.5em;padding-left:.5em;margin-top:1.1em;opacity:.75}
 .sizes{display:flex;flex-direction:column;align-items:center;gap:28px}
-.colors{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+.colors{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr))}
 .sw i{display:block;height:96px;border:1px solid var(--line)}
 .sw b{display:block;font-weight:500;font-size:14px;margin-top:10px}
 .sw small{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--muted)}
 .sw em{display:block;font-style:normal;font-size:13px;color:var(--muted)}
-.tag{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);padding:2px 8px;margin-left:6px;vertical-align:middle;color:var(--muted)}
 .notes{margin-top:12px;padding-left:20px;display:grid;gap:6px;max-width:72ch}
 footer{margin-top:56px;font-size:13px;color:var(--muted)}
 @media (max-width:560px){.card.wide .logo{--s:15px!important}}
@@ -49,14 +47,12 @@ footer{margin-top:56px;font-size:13px;color:var(--muted)}
 <main>
   <p class="kicker">Identidad visual · 29-10-2026</p>
   <h1>Pili Trespalacios</h1>
-  <p class="lede">Solo logotipo, en blanco y negro. Es el del camino 2 de la propuesta del 26-10. Sin isotipo ni imagotipo. Falta el visto bueno de Pili.</p>
+  <p class="lede">Solo logotipo, con la paleta completa del camino 2 de la propuesta del 26-10 (principalmente blanco y negro). Sin isotipo ni imagotipo. Falta el visto bueno de Pili.</p>
 
   <p class="sub">Logotipo</p>
   <div class="grid">
-    <div class="card wide"><div class="logo" style="--s:clamp(16px,3.2vw,34px)"><span class="n">PILI TRESPALACIOS</span><span class="s">SANTIAGO · CHILE</span></div><span class="cap">Versión completa</span></div>
-    <div class="card"><div class="logo" style="--s:clamp(14px,2vw,20px)"><span class="n">PILI TRESPALACIOS</span></div><span class="cap">Versión corta</span></div>
-    <div class="card inv"><div class="logo" style="--s:clamp(14px,2vw,20px)"><span class="n">PILI TRESPALACIOS</span></div><span class="cap">Sobre negro</span></div>
-    <div class="card wide inv"><div class="logo" style="--s:clamp(16px,3.2vw,34px)"><span class="n">PILI TRESPALACIOS</span><span class="s">SANTIAGO · CHILE</span></div><span class="cap">Completa sobre negro</span></div>
+    <div class="card wide"><div class="logo" style="--s:clamp(16px,3.2vw,34px)"><span class="n">PILI TRESPALACIOS</span></div><span class="cap">Logotipo</span></div>
+    <div class="card wide inv"><div class="logo" style="--s:clamp(16px,3.2vw,34px)"><span class="n">PILI TRESPALACIOS</span></div><span class="cap">Sobre negro</span></div>
   </div>
 
   <p class="sub">Tamaños</p>
@@ -64,21 +60,22 @@ footer{margin-top:56px;font-size:13px;color:var(--muted)}
     <div class="logo" style="--s:22px"><span class="n">PILI TRESPALACIOS</span></div>
     <div class="logo" style="--s:15px"><span class="n">PILI TRESPALACIOS</span></div>
     <div class="logo" style="--s:11px"><span class="n">PILI TRESPALACIOS</span></div>
-  </div><span class="cap">Bajo 11 px de letra, la versión corta</span></div>
+  </div><span class="cap">Tamaños de uso</span></div>
 
   <p class="sub">Colores</p>
   <div class="colors">
-    <div class="sw"><i style="background:#141414"></i><b>Negro</b><small>#141414</small><em>Logo, textos, fondos oscuros</em></div>
-    <div class="sw"><i style="background:#FFFFFF"></i><b>Blanco</b><small>#FFFFFF</small><em>Fondo principal</em></div>
-    <div class="sw"><i style="background:#F2F2F0"></i><b>Gris claro <span class="tag">Propuesta</span></b><small>#F2F2F0</small><em>Fondos de foto de producto</em></div>
-    <div class="sw"><i style="background:#6E6E6E"></i><b>Gris medio <span class="tag">Propuesta</span></b><small>#6E6E6E</small><em>Textos secundarios</em></div>
+    <div class="sw"><i style="background:#FBFAF8"></i><b>Cal</b><small>#FBFAF8</small><em>Fondo principal</em></div>
+    <div class="sw"><i style="background:#141414"></i><b>Negro</b><small>#141414</small><em>Textos, logo y caja</em></div>
+    <div class="sw"><i style="background:#D6D1C9"></i><b>Piedra</b><small>#D6D1C9</small><em>Fondos de producto</em></div>
+    <div class="sw"><i style="background:#8B857C"></i><b>Muro</b><small>#8B857C</small><em>Textos secundarios</em></div>
+    <div class="sw"><i style="background:#A88B6A"></i><b>Bronce</b><small>#A88B6A</small><em>Solo en detalles mínimos</em></div>
   </div>
 
   <p class="sub">Reglas</p>
   <ul class="notes">
-    <li>Tipografía Tenor Sans, en mayúsculas, con letras espaciadas a 0,34 em.</li>
-    <li>"SANTIAGO · CHILE" va al 42 % del nombre y espaciado a 0,5 em.</li>
-    <li>Solo negro sobre blanco o blanco sobre negro. Sin colores, sombras ni degradados.</li>
+    <li>Tipografía Tenor Sans, en mayúsculas, con letras espaciadas a 0,34 em. Sin bajada: no lleva "Santiago · Chile".</li>
+    <li>El logo va en negro sobre cal o en cal sobre negro. Sin sombras ni degradados.</li>
+    <li>Cal y negro mandan; piedra y muro acompañan; el bronce solo en detalles mínimos.</li>
     <li>Para imprimir o grabar falta pasarlo a curvas (SVG y PDF).</li>
   </ul>
 
