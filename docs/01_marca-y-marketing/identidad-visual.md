@@ -28,6 +28,16 @@ Esto cambia dos cosas que estaban documentadas:
 - La propuesta original usaba la tipografía tal cual, sin dibujar. Para imprimir o grabar hay que
   pasarlo a curvas (vector), y ese archivo todavía no existe.
 
+## Foto de perfil de Instagram (2026-10-29)
+
+Propuesta de Claude, a partir del logotipo; falta elegir una y el visto bueno de Pili.
+
+- [`redes/perfil-instagram-negro.png`](redes/perfil-instagram-negro.png): cal sobre negro.
+- [`redes/perfil-instagram-cal.png`](redes/perfil-instagram-cal.png): negro sobre cal.
+
+Son de 1080 × 1080 px. El nombre va en dos líneas (PILI / TRESPALACIOS) porque en una sola no se lee
+dentro del círculo chico de Instagram. Misma tipografía y espaciado del logotipo; no es un isotipo nuevo.
+
 ## Colores
 
 La paleta completa del camino 2. Cal y negro son los principales; los demás acompañan.
