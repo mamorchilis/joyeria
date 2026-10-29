@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-27",
+  "actualizado": "2026-10-29",
   "responsables": [
     "Pili",
     "Juan Antonio",
@@ -182,11 +182,13 @@
       "fecha": "2026-10-28",
       "responsable": "Ambos",
       "area": "Organización",
-      "estado": "por_hacer",
+      "estado": "en_progreso",
       "origen": "claude",
       "creada": "2026-10-27",
       "por": "Claude",
-      "aprobada": true
+      "aprobada": true,
+      "iniciada": "2026-10-29",
+      "iniciada_por": "Juan Antonio"
     },
     {
       "id": "t20",
