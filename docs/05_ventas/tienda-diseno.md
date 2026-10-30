@@ -164,8 +164,10 @@ más subcategorías, el menú no tapa la página. Si no caben en una fila, pasan
 
 - Está en `tienda/snippets/marca.liquid`. En el celular no cambia nada: el menú lateral sigue igual.
 - Revisado en el navegador a 1024 px: las dos subcategorías actuales quedan en la misma línea y,
-  simulando 8, también caben en una sola fila; la franja mide 71 px de alto. No se pudo sacar
-  captura de pantalla del menú abierto; se midió la posición de cada enlace.
+  simulando 8, también caben en una sola fila. No se pudo sacar captura de pantalla del menú
+  abierto; se midió la posición de cada enlace.
+- Juan Antonio la encontró alta: se le quitó aire arriba y abajo (12 px en vez de 20 px) y la
+  franja pasó de 71 px a 55 px de alto.
 
 ### Tareas en el administrador de Shopify
 
