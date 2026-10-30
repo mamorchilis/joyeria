@@ -126,7 +126,34 @@ Se subió con `catalogo/subir_a_shopify.py` un producto de prueba publicado, "Me
 - Al elegir *Sin cadena* el precio cambia de $45.000 a $30.000, y se agrega al carrito con el
   total correcto. No se probó el pago.
 - El menú *Colecciones* se abre al pasar el mouse.
-- **Hay que borrarlo antes de abrir la tienda**, junto con sus fotos.
+- Ese producto ya se borró, junto con sus fotos.
+
+### Tienda llena con 8 productos de prueba (2026-10-30)
+
+Para ver cómo queda la portada llena, se subieron con el script 8 productos publicados, con
+fotos ficticias dibujadas (una joya simple sobre fondo piedra y la leyenda "FOTO DE PRUEBA"):
+
+| Código | Producto | Colección o categoría | Precio |
+|---|---|---|---|
+| `cruz-victoria-bronce-prueba` | Cruz de la Victoria, bronce | Colección Astur | $38.000 |
+| `cruz-victoria-plata-prueba` | Cruz de la Victoria, plata | Colección Astur | $42.000 |
+| `medalla-covadonga-bronce` | Medalla Virgen de Covadonga, bronce | Colección Astur | $45.000 / $30.000 |
+| `medalla-covadonga-plata-prueba` | Medalla Virgen de Covadonga, plata | Colección Astur | $52.000 / $37.000 |
+| `cadena-clasica-bronce-prueba` | Cadena clásica, bronce | Cadenas y collares | $22.000 |
+| `cadena-clasica-plata-prueba` | Cadena clásica, plata | Cadenas y collares | $28.000 |
+| `colgante-onix-prueba` | Colgante con piedra ónix, bronce | Colgantes | $39.000 |
+| `esclava-lisa-plata-prueba` | Esclava lisa, plata | Esclavas | $46.000 |
+
+- Todos dicen "(prueba)" en el nombre. Los precios son inventados.
+- `medalla-covadonga-bronce` usa el código real, para que la Santina de la portada muestre sus
+  precios. Al subir la medalla real con la planilla, ese producto se actualiza en vez de duplicarse.
+- Las colecciones Colección Astur y Más joyas quedaron ordenadas por fecha de creación (la más
+  antigua primero), para respetar el orden de la maqueta. Al cargar los productos reales, hay que
+  subirlos en el orden en que deben aparecer.
+- **Antes de abrir la tienda hay que borrar los 7 que terminan en `-prueba`**, junto con sus
+  fotos, y reemplazar la medalla de bronce por la real.
+- Revisado en el navegador: las 4 piezas de la Colección Astur, los precios de la Santina, el
+  carrusel con sus flechas y el celular sin desborde.
 
 ### Tareas en el administrador de Shopify
 
