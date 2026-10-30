@@ -170,6 +170,14 @@ más subcategorías, el menú no tapa la página. Si no caben en una fila, pasan
   franja pasó de 71 px a 55 px de alto.
 - La letra del submenú quedó igual a la del menú principal (12 px; Horizon la ponía en 14 px), a
   pedido de Juan Antonio. Con eso la franja mide 53 px.
+- Juan Antonio eligió después la **opción A, "línea bajo la palabra"**, entre tres alternativas
+  (las otras eran una franja color piedra centrada y las subcategorías en la misma línea del menú).
+  Quedó así: sin caja con sombra, solo una línea fina color piedra abajo; las subcategorías en gris
+  piedra (`#6b665e`, negro al pasar el mouse), separadas por puntos bronce, empezando justo bajo la
+  palabra del menú, que se subraya en bronce. Mide 49 px de alto. Un pequeño script en
+  `marca.liquid` calcula dónde empieza cada línea.
+- Revisado en el navegador con el mouse de verdad sobre "Joyas": se abre, queda alineada bajo la
+  palabra y sin sombra; "Colecciones" también queda alineada.
 
 ### Tareas en el administrador de Shopify
 
