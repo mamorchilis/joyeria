@@ -1,0 +1,135 @@
+{%- comment -%}
+  Pie de página copiado de la maqueta: fondo negro, marca y tres columnas (Tienda, Ayuda,
+  Síguenos). "Tienda" muestra los submenús del menú principal.
+{%- endcomment -%}
+<div class="pt pt-pie">
+  <div class="pt-wrap pt-pie__contenido">
+    <div class="pt-pie__columnas">
+      <div class="pt-pie__marca">
+        <span class="pt-pie__nombre">{{ shop.name }}</span>
+        {%- if section.settings.bajada != blank -%}
+          <span class="pt-pie__bajada">{{ section.settings.bajada }}</span>
+        {%- endif -%}
+      </div>
+      <nav class="pt-pie__menu" aria-label="Tienda">
+        <span class="pt-pie__titulo">Tienda</span>
+        {%- for enlace in section.settings.menu_tienda.links -%}
+          {%- if enlace.links.size > 0 -%}
+            {%- for hijo in enlace.links -%}
+              <a href="{{ hijo.url }}">{{ hijo.title }}</a>
+            {%- endfor -%}
+          {%- else -%}
+            <a href="{{ enlace.url }}">{{ enlace.title }}</a>
+          {%- endif -%}
+        {%- endfor -%}
+      </nav>
+      <nav class="pt-pie__menu" aria-label="Ayuda">
+        <span class="pt-pie__titulo">Ayuda</span>
+        {%- for enlace in section.settings.menu_ayuda.links -%}
+          <a href="{{ enlace.url }}">{{ enlace.title }}</a>
+        {%- endfor -%}
+      </nav>
+      {%- if section.settings.instagram != blank -%}
+        <nav class="pt-pie__menu" aria-label="Redes">
+          <span class="pt-pie__titulo">Síguenos</span>
+          <a href="{{ section.settings.instagram }}">Instagram {{ section.settings.instagram_usuario }}</a>
+        </nav>
+      {%- endif -%}
+    </div>
+    <div class="pt-pie__final">© {{ 'now' | date: '%Y' }} {{ shop.name }}</div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .pt-pie {
+    background: #141414;
+    color: #fbfaf8;
+    padding-block: 72px 40px;
+  }
+
+  .pt-pie__contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .pt-pie__columnas {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  .pt-pie__marca,
+  .pt-pie__menu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pt-pie__marca {
+    gap: 16px;
+  }
+
+  .pt-pie__menu {
+    gap: 10px;
+    font-size: 16px;
+  }
+
+  .pt-pie__nombre {
+    font-family: var(--font-subheading--family);
+    font-size: 18px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+  }
+
+  .pt-pie__bajada {
+    font-size: 16px;
+    color: #d6d1c9;
+    max-width: 22em;
+  }
+
+  .pt-pie__titulo {
+    font-family: var(--font-subheading--family);
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #a88b6a;
+  }
+
+  .pt-pie a {
+    color: #fbfaf8;
+    text-decoration: none;
+  }
+
+  .pt-pie a:hover {
+    color: #a88b6a;
+  }
+
+  .pt-pie__final {
+    border-top: 1px solid #3a3732;
+    padding-top: 24px;
+    font-size: 14px;
+    color: #b5afa6;
+  }
+
+  @media (max-width: 900px) {
+    .pt-pie__columnas {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Pie (maqueta)",
+  "tag": "footer",
+  "class": "pt-seccion",
+  "settings": [
+    { "type": "text", "id": "bajada", "label": "Bajada", "default": "Joyas en plata y bronce, diseñadas por Pili." },
+    { "type": "link_list", "id": "menu_tienda", "label": "Menú Tienda", "default": "main-menu" },
+    { "type": "link_list", "id": "menu_ayuda", "label": "Menú Ayuda", "default": "footer" },
+    { "type": "url", "id": "instagram", "label": "Enlace de Instagram" },
+    { "type": "text", "id": "instagram_usuario", "label": "Usuario de Instagram", "default": "@pilitrespalacios" }
+  ],
+  "presets": [{ "name": "Pie (maqueta)" }]
+}
+{% endschema %}

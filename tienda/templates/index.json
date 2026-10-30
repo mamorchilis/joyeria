@@ -1,628 +1,82 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "astur_portada": {
-      "type": "section",
+      "type": "pt-portada",
       "settings": {
-        "content_direction": "row",
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "gap": 56,
-        "padding-block-start": 72,
-        "padding-block-end": 96
-      },
-      "blocks": {
-        "texto": {
-          "type": "group",
-          "settings": {
-            "gap": 28,
-            "width": "custom",
-            "custom_width": 42,
-            "width_mobile": "fill",
-            "vertical_alignment_flex_direction_column": "flex-end"
-          },
-          "blocks": {
-            "antetitulo": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Colección de lanzamiento</p>",
-                "type_preset": "custom",
-                "font": "var(--font-subheading--family)",
-                "font_size": "0.75rem",
-                "letter_spacing": "loose",
-                "case": "uppercase",
-                "alignment": "left",
-                "text_color": "{{ settings.color_palette.color1 }}"
-              },
-              "blocks": {}
-            },
-            "titulo": {
-              "type": "text",
-              "settings": {
-                "text": "<h1>Colección <em>Astur</em></h1>",
-                "type_preset": "h1"
-              },
-              "blocks": {}
-            },
-            "bajada": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Cuatro diseños en plata y en bronce, inspirados en Asturias, la tierra de los Trespalacios.</p>",
-                "type_preset": "rte",
-                "max_width": "narrow"
-              },
-              "blocks": {}
-            },
-            "boton": {
-              "type": "button",
-              "settings": {
-                "label": "Ver la colección",
-                "link": "shopify://collections/coleccion-astur",
-                "style_class": "button"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "antetitulo",
-            "titulo",
-            "bajada",
-            "boton"
-          ]
-        },
-        "fotos": {
-          "type": "group",
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "gap": 12,
-            "width": "custom",
-            "custom_width": 54,
-            "width_mobile": "fill",
-            "vertical_alignment": "flex-start"
-          },
-          "blocks": {
-            "foto_1": {
-              "type": "image",
-              "settings": {
-                "image_ratio": "square"
-              },
-              "blocks": {}
-            },
-            "foto_2": {
-              "type": "image",
-              "settings": {
-                "image_ratio": "square"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "foto_1",
-            "foto_2"
-          ]
-        }
-      },
-      "block_order": [
-        "texto",
-        "fotos"
-      ]
+        "antetitulo": "Colección de lanzamiento",
+        "titulo": "Colección",
+        "titulo_cursiva": "Astur",
+        "texto": "Cuatro diseños en plata y en bronce, inspirados en Asturias, la tierra de los Trespalacios.",
+        "boton": "Ver la colección",
+        "enlace": "shopify://collections/coleccion-astur",
+        "foto_1": "shopify://shop_images/cuello-ines-provisoria.jpg",
+        "foto_2": "shopify://shop_images/cuello-teresa-provisoria.jpg"
+      }
     },
     "astur_disenos": {
-      "type": "product-list",
+      "type": "pt-coleccion",
       "settings": {
-        "collection": "coleccion-astur",
-        "layout_type": "grid",
-        "columns": 4,
-        "max_products": 4,
-        "mobile_columns": "2",
-        "columns_gap": 24,
-        "rows_gap": 32,
-        "gap": 40,
-        "padding-block-start": 88,
-        "padding-block-end": 96
-      },
-      "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "static": true,
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "gap": 24
-          },
-          "blocks": {
-            "titulos": {
-              "type": "group",
-              "settings": {
-                "gap": 8,
-                "width": "fit-content"
-              },
-              "blocks": {
-                "antetitulo": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Colección Astur</p>",
-                    "type_preset": "custom",
-                    "font": "var(--font-subheading--family)",
-                    "font_size": "0.75rem",
-                    "letter_spacing": "loose",
-                    "case": "uppercase",
-                    "text_color": "{{ settings.color_palette.color1 }}"
-                  },
-                  "blocks": {}
-                },
-                "titulo": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<h2>Cuatro diseños de lanzamiento</h2>",
-                    "type_preset": "h2"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "antetitulo",
-                "titulo"
-              ]
-            },
-            "bajada": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Símbolos de Asturias, dibujados por Pili. Cada pieza se hace a pedido para ti.</p>",
-                "type_preset": "rte",
-                "max_width": "narrow"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "titulos",
-            "bajada"
-          ]
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 4
-          },
-          "blocks": {
-            "galeria": {
-              "type": "_product-card-gallery",
-              "settings": {
-                "image_ratio": "portrait"
-              },
-              "blocks": {}
-            },
-            "titulo": {
-              "type": "product-title",
-              "settings": {
-                "type_preset": "paragraph",
-                "font_size": "1.125rem"
-              },
-              "blocks": {}
-            },
-            "precio": {
-              "type": "price",
-              "settings": {
-                "type_preset": "paragraph",
-                "font_size": "1rem"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "galeria",
-            "titulo",
-            "precio"
-          ]
-        }
+        "antetitulo": "Colección Astur",
+        "titulo": "Cuatro diseños de lanzamiento",
+        "texto": "Símbolos de Asturias, dibujados por Pili. Cada pieza se hace a pedido para ti.",
+        "coleccion": "coleccion-astur",
+        "cantidad": 4
       }
     },
     "santina": {
-      "type": "section",
+      "type": "pt-destacado",
       "settings": {
-        "content_direction": "row",
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "center",
-        "gap": 72,
-        "background_color": "#F1EFEB",
-        "padding-block-start": 96,
-        "padding-block-end": 96
-      },
-      "blocks": {
-        "foto": {
-          "type": "group",
-          "settings": {
-            "width": "custom",
-            "custom_width": 45,
-            "width_mobile": "fill"
-          },
-          "blocks": {
-            "imagen": {
-              "type": "image",
-              "settings": {
-                "image_ratio": "square"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "imagen"
-          ]
-        },
-        "texto": {
-          "type": "group",
-          "settings": {
-            "gap": 24,
-            "width": "custom",
-            "custom_width": 45,
-            "width_mobile": "fill"
-          },
-          "blocks": {
-            "antetitulo": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Colección Astur</p>",
-                "type_preset": "custom",
-                "font": "var(--font-subheading--family)",
-                "font_size": "0.75rem",
-                "letter_spacing": "loose",
-                "case": "uppercase",
-                "alignment": "left",
-                "text_color": "{{ settings.color_palette.color1 }}"
-              },
-              "blocks": {}
-            },
-            "titulo": {
-              "type": "text",
-              "settings": {
-                "text": "<h2>La Santina, <em>en bronce y en plata</em></h2>",
-                "type_preset": "h2"
-              },
-              "blocks": {}
-            },
-            "bajada": {
-              "type": "text",
-              "settings": {
-                "text": "<p>La Virgen de Covadonga, patrona de Asturias. Elige si la quieres con cadena o sin cadena.</p>",
-                "type_preset": "rte",
-                "max_width": "narrow"
-              },
-              "blocks": {}
-            },
-            "boton": {
-              "type": "button",
-              "settings": {
-                "label": "Ver la medalla",
-                "link": "shopify://products/medalla-covadonga-bronce",
-                "style_class": "button"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "antetitulo",
-            "titulo",
-            "bajada",
-            "boton"
-          ]
-        }
-      },
-      "block_order": [
-        "foto",
-        "texto"
-      ]
+        "fondo": "#F1EFEB",
+        "foto": "shopify://shop_images/cuello-antonia-provisoria.jpg",
+        "antetitulo": "Colección Astur",
+        "titulo": "La Santina,",
+        "titulo_cursiva": "en bronce y en plata",
+        "texto": "La Virgen de Covadonga, patrona de Asturias. Elige si la quieres con cadena o sin cadena.",
+        "producto": "medalla-covadonga-bronce",
+        "boton": "Ver la medalla"
+      }
     },
     "mas_joyas": {
-      "type": "product-list",
+      "type": "pt-carrusel",
       "settings": {
-        "collection": "mas-joyas",
-        "layout_type": "carousel",
-        "columns": 3,
-        "max_products": 8,
-        "mobile_columns": "2",
-        "columns_gap": 24,
-        "rows_gap": 32,
-        "gap": 40,
-        "padding-block-start": 96,
-        "padding-block-end": 96,
-        "carousel_on_mobile": true,
-        "mobile_card_size": "60cqw",
-        "icons_style": "chevron",
-        "icons_shape": "square"
-      },
-      "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "static": true,
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "gap": 24
-          },
-          "blocks": {
-            "titulos": {
-              "type": "group",
-              "settings": {
-                "gap": 8,
-                "width": "fit-content"
-              },
-              "blocks": {
-                "antetitulo": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>También en la tienda</p>",
-                    "type_preset": "custom",
-                    "font": "var(--font-subheading--family)",
-                    "font_size": "0.75rem",
-                    "letter_spacing": "loose",
-                    "case": "uppercase",
-                    "text_color": "{{ settings.color_palette.color1 }}"
-                  },
-                  "blocks": {}
-                },
-                "titulo": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<h2>Más joyas</h2>",
-                    "type_preset": "h2"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "antetitulo",
-                "titulo"
-              ]
-            },
-            "boton": {
-              "type": "_product-list-button",
-              "settings": {
-                "label": "Ver todas las joyas",
-                "style_class": "button-unstyled"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "titulos",
-            "boton"
-          ]
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 4
-          },
-          "blocks": {
-            "galeria": {
-              "type": "_product-card-gallery",
-              "settings": {
-                "image_ratio": "portrait"
-              },
-              "blocks": {}
-            },
-            "titulo": {
-              "type": "product-title",
-              "settings": {
-                "type_preset": "paragraph",
-                "font_size": "1.125rem"
-              },
-              "blocks": {}
-            },
-            "precio": {
-              "type": "price",
-              "settings": {
-                "type_preset": "paragraph",
-                "font_size": "1rem"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "galeria",
-            "titulo",
-            "precio"
-          ]
-        }
+        "antetitulo": "También en la tienda",
+        "titulo": "Más joyas",
+        "coleccion": "mas-joyas",
+        "enlace_texto": "Ver todas las joyas",
+        "enlace": "shopify://collections/all"
       }
     },
     "como_llega": {
-      "type": "section",
-      "settings": {
-        "gap": 12,
-        "padding-block-start": 96,
-        "padding-block-end": 100
-      },
+      "type": "pt-pasos",
       "blocks": {
-        "antetitulo": {
-          "type": "text",
+        "paso_1": {
+          "type": "paso",
           "settings": {
-            "text": "<p>Cómo llega tu joya</p>",
-            "type_preset": "custom",
-            "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
-            "letter_spacing": "loose",
-            "case": "uppercase",
-            "alignment": "left",
-            "text_color": "{{ settings.color_palette.color1 }}"
-          },
-          "blocks": {}
+            "titulo": "Eliges tu pieza",
+            "texto": "En plata o en bronce. Pagas en línea, en la misma tienda, con una pasarela de pago segura."
+          }
         },
-        "titulo": {
-          "type": "text",
+        "paso_2": {
+          "type": "paso",
           "settings": {
-            "text": "<h2>Hecha a pedido, para ti</h2>",
-            "type_preset": "h2"
-          },
-          "blocks": {}
+            "titulo": "Se hace a mano",
+            "texto": "Solo para ti, a pedido. Está lista entre 15 y 20 días."
+          }
         },
-        "pasos": {
-          "type": "group",
+        "paso_3": {
+          "type": "paso",
           "settings": {
-            "content_direction": "row",
-            "gap": 24,
-            "padding-block-start": 36
-          },
-          "blocks": {
-            "paso_1": {
-              "type": "group",
-              "settings": {
-                "gap": 12
-              },
-              "blocks": {
-                "numero": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>1</p>",
-                    "type_preset": "custom",
-                    "font": "var(--font-subheading--family)",
-                    "font_size": "0.875rem",
-                    "letter_spacing": "loose",
-                    "text_color": "{{ settings.color_palette.color1 }}"
-                  },
-                  "blocks": {}
-                },
-                "titulo": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<h3>Eliges tu pieza</h3>",
-                    "type_preset": "h4"
-                  },
-                  "blocks": {}
-                },
-                "texto": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>En plata o en bronce. Pagas en línea, en la misma tienda, con una pasarela de pago segura.</p>",
-                    "type_preset": "rte"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "numero",
-                "titulo",
-                "texto"
-              ]
-            },
-            "paso_2": {
-              "type": "group",
-              "settings": {
-                "gap": 12
-              },
-              "blocks": {
-                "numero": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>2</p>",
-                    "type_preset": "custom",
-                    "font": "var(--font-subheading--family)",
-                    "font_size": "0.875rem",
-                    "letter_spacing": "loose",
-                    "text_color": "{{ settings.color_palette.color1 }}"
-                  },
-                  "blocks": {}
-                },
-                "titulo": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<h3>Se hace a mano</h3>",
-                    "type_preset": "h4"
-                  },
-                  "blocks": {}
-                },
-                "texto": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Solo para ti, a pedido. Está lista entre 15 y 20 días.</p>",
-                    "type_preset": "rte"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "numero",
-                "titulo",
-                "texto"
-              ]
-            },
-            "paso_3": {
-              "type": "group",
-              "settings": {
-                "gap": 12
-              },
-              "blocks": {
-                "numero": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>3</p>",
-                    "type_preset": "custom",
-                    "font": "var(--font-subheading--family)",
-                    "font_size": "0.875rem",
-                    "letter_spacing": "loose",
-                    "text_color": "{{ settings.color_palette.color1 }}"
-                  },
-                  "blocks": {}
-                },
-                "titulo": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<h3>Te llega a casa</h3>",
-                    "type_preset": "h4"
-                  },
-                  "blocks": {}
-                },
-                "texto": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>La despachamos a tu domicilio y te avisamos por correo cuando va en camino.</p>",
-                    "type_preset": "rte"
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "numero",
-                "titulo",
-                "texto"
-              ]
-            }
-          },
-          "block_order": [
-            "paso_1",
-            "paso_2",
-            "paso_3"
-          ]
+            "titulo": "Te llega a casa",
+            "texto": "La despachamos a tu domicilio y te avisamos por correo cuando va en camino."
+          }
         }
       },
-      "block_order": [
-        "antetitulo",
-        "titulo",
-        "pasos"
-      ]
+      "block_order": ["paso_1", "paso_2", "paso_3"],
+      "settings": {
+        "antetitulo": "Cómo llega tu joya",
+        "titulo": "Hecha a pedido, para ti"
+      }
     }
   },
-  "order": [
-    "astur_portada",
-    "astur_disenos",
-    "santina",
-    "mas_joyas",
-    "como_llega"
-  ]
+  "order": ["astur_portada", "astur_disenos", "santina", "mas_joyas", "como_llega"]
 }

@@ -1,0 +1,129 @@
+{%- comment -%}
+  Producto destacado de la portada (la Santina), copiado de la maqueta: foto a la izquierda;
+  a la derecha textos, una fila por versión con su precio y el botón a la ficha.
+  Si el producto aún no existe en la tienda, se ven los textos sin precios.
+{%- endcomment -%}
+{%- assign producto = section.settings.producto -%}
+<div class="pt pt-destacado" style="background: {{ section.settings.fondo }};">
+  <div class="pt-wrap pt-mitades">
+    <div class="pt-destacado__foto">
+      {%- if section.settings.foto -%}
+        {{
+          section.settings.foto
+          | image_url: width: 1100
+          | image_tag: widths: '400, 600, 800, 1100', sizes: '(min-width: 900px) 40vw, 100vw', alt: section.settings.foto.alt, loading: 'lazy'
+        }}
+      {%- endif -%}
+    </div>
+    <div class="pt-destacado__texto">
+      {%- if section.settings.antetitulo != blank -%}
+        <p class="pt-antetitulo">{{ section.settings.antetitulo }}</p>
+      {%- endif -%}
+      <h2 class="pt-titulo">
+        {{- section.settings.titulo -}}
+        {%- if section.settings.titulo_cursiva != blank %}
+          <em>{{ section.settings.titulo_cursiva }}</em>
+        {%- endif -%}
+      </h2>
+      {%- if section.settings.texto != blank -%}
+        <p class="pt-texto">{{ section.settings.texto }}</p>
+      {%- endif -%}
+      {%- if producto != blank and producto.has_only_default_variant == false -%}
+        <div class="pt-destacado__versiones">
+          {%- for variante in producto.variants -%}
+            <div class="pt-destacado__version">
+              <span>{{ variante.title }}</span>
+              <span class="pt-destacado__precio">{{ variante.price | money }}</span>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      {%- if section.settings.boton != blank -%}
+        <a class="pt-boton" href="{% if producto != blank %}{{ producto.url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}">
+          {{- section.settings.boton -}}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .pt-destacado {
+    padding-block: 96px;
+  }
+
+  .pt-mitades {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 72px;
+    align-items: center;
+  }
+
+  .pt-destacado__foto {
+    width: 100%;
+    max-width: 520px;
+    aspect-ratio: 1 / 1;
+    background: #d6d1c9;
+    overflow: hidden;
+  }
+
+  .pt-destacado__foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pt-destacado__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 34em;
+    align-items: flex-start;
+  }
+
+  .pt-destacado__versiones {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #d6d1c9;
+    align-self: stretch;
+  }
+
+  .pt-destacado__version {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #d6d1c9;
+  }
+
+  .pt-destacado__precio {
+    color: #3a3732;
+  }
+
+  @media (max-width: 900px) {
+    .pt-mitades {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Destacado (maqueta)",
+  "tag": "section",
+  "class": "pt-seccion",
+  "settings": [
+    { "type": "color", "id": "fondo", "label": "Fondo", "default": "#F1EFEB" },
+    { "type": "image_picker", "id": "foto", "label": "Foto" },
+    { "type": "text", "id": "antetitulo", "label": "Antetítulo" },
+    { "type": "text", "id": "titulo", "label": "Título" },
+    { "type": "text", "id": "titulo_cursiva", "label": "Título, parte en cursiva" },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "product", "id": "producto", "label": "Producto" },
+    { "type": "text", "id": "boton", "label": "Texto del botón", "default": "Ver la medalla" }
+  ],
+  "presets": [{ "name": "Destacado (maqueta)" }]
+}
+{% endschema %}

@@ -85,6 +85,38 @@ pide cambios, se ajustan ahí mismo.
   (antes le ganaba el estilo de Horizon) y en celular es más chico, para que el carro no quede
   fuera de la pantalla.
 
+### Portada rehecha igual a la maqueta (2026-10-30)
+
+Juan Antonio vio la portada armada con las piezas de Horizon y pidió que quedara **igual a la
+maqueta**. Las piezas de Horizon no permitían copiarla bien (ancho de página, botones
+redondeados, tarjetas, precios de la Santina, pie de página), así que la portada y el pie se
+hicieron con secciones propias que repiten las medidas de la maqueta:
+
+| Sección | Archivo | Qué hace |
+|---|---|---|
+| Portada | `sections/pt-portada.liquid` | Textos a la izquierda; dos fotos cuadradas, la segunda 72 px más abajo |
+| Colección | `sections/pt-coleccion.liquid` | Título y bajada, y 4 productos de la colección en 4 columnas |
+| Destacado | `sections/pt-destacado.liquid` | La Santina: foto, textos, una fila por versión con su precio y botón |
+| Carrusel | `sections/pt-carrusel.liquid` | "Más joyas", con flechas; no se muestra mientras la colección esté vacía |
+| Pasos | `sections/pt-pasos.liquid` | "Hecha a pedido, para ti" en tres columnas con línea arriba |
+| Pie | `sections/pt-pie.liquid` | Fondo negro, marca, Tienda, Ayuda y Síguenos |
+
+- La tarjeta de producto (`snippets/pt-tarjeta.liquid`) muestra foto 4:5 sobre piedra, nombre,
+  material (la etiqueta del producto que no es de colección) y precio; si hay versiones con
+  distinto precio, dice "Desde".
+- Estilos comunes en `snippets/marca.liquid`: ancho de 1280 px, botones cuadrados, encabezado
+  de 88 px con línea piedra abajo y sin ícono de cuenta; en celular, sin lupa y con el nombre
+  centrado a 15 px, como la maqueta.
+- **Fotos provisorias:** los cuellos de Inés, Teresa y Antonia, recortados de sus fichas de
+  modelo (`docs/01_marca-y-marketing/modelos/mujeres/`), igual que en la maqueta. Están en
+  *Contenido > Archivos* de Shopify (`cuello-…-provisoria.jpg`). Son de baja resolución y hay que
+  cambiarlas por las fotos reales con las medallas puestas.
+- **Diferencias que quedan, a propósito:**
+  - el aviso de arriba no dice la fecha de Navidad, porque está por definir;
+  - no están Nuestra historia ni Quién diseña, que quedaron fuera por ahora;
+  - los precios de la Santina aparecen cuando se cargue `medalla-covadonga-bronce`;
+  - "Más joyas" aparece con el primer producto fuera de la Colección Astur.
+
 ### Prueba completa con un producto (2026-10-30)
 
 Se subió con `catalogo/subir_a_shopify.py` un producto de prueba publicado, "Medalla de prueba

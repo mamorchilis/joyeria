@@ -1,0 +1,35 @@
+{%- comment -%}
+  Tarjeta de producto de la portada, como en la maqueta: foto 4:5 sobre piedra, nombre,
+  material (la etiqueta que no es de colección) y precio.
+  Recibe: producto.
+{%- endcomment -%}
+{%- liquid
+  assign material = ''
+  for etiqueta in producto.tags
+    unless etiqueta contains 'coleccion-'
+      assign material = etiqueta
+      break
+    endunless
+  endfor
+-%}
+<a href="{{ producto.url }}" class="pt-tarjeta">
+  <div class="pt-tarjeta__foto">
+    {%- if producto.featured_media -%}
+      {{
+        producto.featured_media
+        | image_url: width: 900
+        | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 900px) 25vw, 50vw', alt: producto.title, loading: 'lazy'
+      }}
+    {%- endif -%}
+  </div>
+  <div class="pt-tarjeta__datos">
+    <span class="pt-tarjeta__nombre">{{ producto.title }}</span>
+    {%- if material != blank -%}
+      <span class="pt-tarjeta__material">{{ material }}</span>
+    {%- endif -%}
+    <span class="pt-tarjeta__precio">
+      {%- if producto.price_varies -%}Desde {% endif -%}
+      {{- producto.price_min | money -}}
+    </span>
+  </div>
+</a>

@@ -1,0 +1,69 @@
+{%- comment -%}
+  Grilla de una colección en la portada, copiada de la maqueta: encabezado con título a la
+  izquierda y bajada a la derecha, y hasta 4 productos en 4 columnas.
+{%- endcomment -%}
+{%- assign coleccion = section.settings.coleccion -%}
+<div class="pt pt-coleccion">
+  <div class="pt-wrap pt-coleccion__contenido">
+    <div class="pt-encabezado">
+      <div class="pt-encabezado__titulos">
+        {%- if section.settings.antetitulo != blank -%}
+          <p class="pt-antetitulo">{{ section.settings.antetitulo }}</p>
+        {%- endif -%}
+        <h2 class="pt-titulo">{{ section.settings.titulo }}</h2>
+      </div>
+      {%- if section.settings.texto != blank -%}
+        <p class="pt-texto pt-encabezado__bajada">{{ section.settings.texto }}</p>
+      {%- endif -%}
+    </div>
+    <div class="pt-grilla4">
+      {%- if coleccion != blank -%}
+        {%- for producto in coleccion.products limit: section.settings.cantidad -%}
+          {% render 'pt-tarjeta', producto: producto %}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .pt-coleccion {
+    border-top: 1px solid #d6d1c9;
+    padding-block: 88px 96px;
+  }
+
+  .pt-coleccion__contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .pt-grilla4 {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .pt-grilla4 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px 14px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Colección (maqueta)",
+  "tag": "section",
+  "class": "pt-seccion",
+  "settings": [
+    { "type": "text", "id": "antetitulo", "label": "Antetítulo" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Colección" },
+    { "type": "textarea", "id": "texto", "label": "Bajada" },
+    { "type": "collection", "id": "coleccion", "label": "Colección" },
+    { "type": "range", "id": "cantidad", "label": "Productos", "min": 2, "max": 8, "step": 1, "default": 4 }
+  ],
+  "presets": [{ "name": "Colección (maqueta)" }]
+}
+{% endschema %}

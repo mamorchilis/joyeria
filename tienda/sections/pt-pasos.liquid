@@ -1,0 +1,105 @@
+{%- comment -%}
+  "Cómo llega tu joya", copiado de la maqueta: tres pasos numerados en columnas, cada uno con
+  una línea arriba.
+{%- endcomment -%}
+<div class="pt pt-pasos">
+  <div class="pt-wrap pt-pasos__contenido">
+    <div class="pt-encabezado__titulos">
+      {%- if section.settings.antetitulo != blank -%}
+        <p class="pt-antetitulo">{{ section.settings.antetitulo }}</p>
+      {%- endif -%}
+      <h2 class="pt-titulo">{{ section.settings.titulo }}</h2>
+    </div>
+    <ol class="pt-pasos__lista">
+      {%- for bloque in section.blocks -%}
+        <li class="pt-paso" {{ bloque.shopify_attributes }}>
+          <span class="pt-paso__numero">{{ forloop.index }}</span>
+          <span class="pt-paso__titulo">{{ bloque.settings.titulo }}</span>
+          <span class="pt-paso__texto">{{ bloque.settings.texto }}</span>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</div>
+
+{% stylesheet %}
+  .pt-pasos {
+    padding-block: 96px;
+  }
+
+  .pt-pasos__contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .pt-pasos__lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .pt-paso {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-top: 1px solid #141414;
+    padding-top: 24px;
+  }
+
+  .pt-paso__numero {
+    font-family: var(--font-subheading--family);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: #6b665e;
+  }
+
+  .pt-paso__titulo {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+
+  .pt-paso__texto {
+    font-size: 17px;
+    color: #3a3732;
+  }
+
+  @media (max-width: 900px) {
+    .pt-pasos__lista {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 760px) {
+    .pt-pasos__lista {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Pasos (maqueta)",
+  "tag": "section",
+  "class": "pt-seccion",
+  "settings": [
+    { "type": "text", "id": "antetitulo", "label": "Antetítulo" },
+    { "type": "text", "id": "titulo", "label": "Título" }
+  ],
+  "blocks": [
+    {
+      "type": "paso",
+      "name": "Paso",
+      "settings": [
+        { "type": "text", "id": "titulo", "label": "Título" },
+        { "type": "textarea", "id": "texto", "label": "Texto" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Pasos (maqueta)" }]
+}
+{% endschema %}

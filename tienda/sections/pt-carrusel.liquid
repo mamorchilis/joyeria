@@ -1,0 +1,144 @@
+{%- comment -%}
+  Carrusel "Más joyas" de la portada, copiado de la maqueta: 3 productos a la vista, flechas
+  en escritorio y deslizar en celular. Si la colección no tiene productos, no se muestra.
+{%- endcomment -%}
+{%- assign coleccion = section.settings.coleccion -%}
+{%- if coleccion != blank and coleccion.products_count > 0 -%}
+  <div class="pt pt-carrusel">
+    <div class="pt-wrap pt-carrusel__contenido">
+      <div class="pt-encabezado">
+        <div class="pt-encabezado__titulos">
+          {%- if section.settings.antetitulo != blank -%}
+            <p class="pt-antetitulo">{{ section.settings.antetitulo }}</p>
+          {%- endif -%}
+          <h2 class="pt-titulo">{{ section.settings.titulo }}</h2>
+        </div>
+        <div class="pt-carrusel__flechas">
+          <button type="button" class="pt-flecha" data-pt-mover="-1" aria-label="Ver joyas anteriores">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button type="button" class="pt-flecha" data-pt-mover="1" aria-label="Ver más joyas">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="pt-carrusel__pista" role="region" aria-label="{{ section.settings.titulo | escape }}" tabindex="0">
+        {%- for producto in coleccion.products limit: 12 -%}
+          {% render 'pt-tarjeta', producto: producto %}
+        {%- endfor -%}
+      </div>
+      {%- if section.settings.enlace_texto != blank -%}
+        <a class="pt-enlace" href="{{ section.settings.enlace | default: routes.all_products_collection_url }}">
+          {{- section.settings.enlace_texto -}}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% javascript %}
+  document.addEventListener('click', (evento) => {
+    const boton = evento.target.closest('[data-pt-mover]');
+    if (!boton) return;
+    const pista = boton.closest('.pt-carrusel')?.querySelector('.pt-carrusel__pista');
+    if (!pista || !pista.firstElementChild) return;
+    const paso = pista.firstElementChild.getBoundingClientRect().width + 24;
+    pista.scrollBy({ left: Number(boton.dataset.ptMover) * paso });
+  });
+{% endjavascript %}
+
+{% stylesheet %}
+  .pt-carrusel {
+    padding-block: 96px;
+  }
+
+  .pt-carrusel__contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: stretch;
+  }
+
+  .pt-carrusel__flechas {
+    display: flex;
+    gap: 8px;
+  }
+
+  .pt-flecha {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #141414;
+    background: none;
+    color: #141414;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .pt-carrusel__pista {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .pt-carrusel__pista::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pt-carrusel__pista > * {
+    flex: 0 0 calc((100% - 48px) / 3);
+    scroll-snap-align: start;
+  }
+
+  .pt-carrusel .pt-enlace {
+    align-self: flex-start;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .pt-carrusel__pista {
+      scroll-behavior: smooth;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .pt-carrusel__pista > * {
+      flex-basis: 44%;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .pt-carrusel__flechas {
+      display: none;
+    }
+
+    .pt-carrusel__pista {
+      gap: 14px;
+    }
+
+    .pt-carrusel__pista > * {
+      flex-basis: 72%;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Carrusel (maqueta)",
+  "tag": "section",
+  "class": "pt-seccion",
+  "settings": [
+    { "type": "text", "id": "antetitulo", "label": "Antetítulo" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Más joyas" },
+    { "type": "collection", "id": "coleccion", "label": "Colección" },
+    { "type": "text", "id": "enlace_texto", "label": "Texto del enlace", "default": "Ver todas las joyas" },
+    { "type": "url", "id": "enlace", "label": "Enlace" }
+  ],
+  "presets": [{ "name": "Carrusel (maqueta)" }]
+}
+{% endschema %}

@@ -1,0 +1,137 @@
+{%- comment -%}
+  Portada de la Colección Astur, copiada de la maqueta (docs/05_ventas/tienda-diseno.md).
+  Textos a la izquierda; dos fotos cuadradas a la derecha, la segunda más abajo.
+{%- endcomment -%}
+<div class="pt pt-portada">
+  <div class="pt-wrap pt-portada__grilla">
+    <div class="pt-portada__texto">
+      {%- if section.settings.antetitulo != blank -%}
+        <p class="pt-antetitulo">{{ section.settings.antetitulo }}</p>
+      {%- endif -%}
+      <h1 class="pt-portada__titulo">
+        {{- section.settings.titulo -}}
+        {%- if section.settings.titulo_cursiva != blank %}
+          <em>{{ section.settings.titulo_cursiva }}</em>
+        {%- endif -%}
+      </h1>
+      {%- if section.settings.texto != blank -%}
+        <p class="pt-texto">{{ section.settings.texto }}</p>
+      {%- endif -%}
+      {%- if section.settings.boton != blank -%}
+        <div class="pt-portada__acciones">
+          <a class="pt-boton" href="{{ section.settings.enlace | default: routes.all_products_collection_url }}">
+            {{- section.settings.boton -}}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="pt-portada__fotos">
+      {%- for i in (1..2) -%}
+        {%- liquid
+          if i == 1
+            assign foto = section.settings.foto_1
+          else
+            assign foto = section.settings.foto_2
+          endif
+        -%}
+        <div class="pt-portada__foto">
+          {%- if foto -%}
+            {{
+              foto
+              | image_url: width: 1200
+              | image_tag: widths: '400, 600, 800, 1200', sizes: '(min-width: 900px) 30vw, 50vw', alt: foto.alt, fetchpriority: 'high'
+            }}
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .pt-portada {
+    padding-block: 72px 96px;
+  }
+
+  .pt-portada__grilla {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 56px;
+    align-items: end;
+  }
+
+  .pt-portada__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-bottom: 8px;
+  }
+
+  .pt .pt-portada__titulo {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-weight: 300;
+    font-size: clamp(52px, 6.4vw, 92px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .pt-portada__titulo em {
+    display: block;
+    font-style: italic;
+  }
+
+  .pt-portada__acciones {
+    margin-top: 8px;
+  }
+
+  .pt-portada__fotos {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+
+  .pt-portada__foto {
+    aspect-ratio: 1 / 1;
+    background: #d6d1c9;
+    overflow: hidden;
+  }
+
+  .pt-portada__foto + .pt-portada__foto {
+    margin-top: 72px;
+  }
+
+  .pt-portada__foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 900px) {
+    .pt-portada__grilla {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Portada (maqueta)",
+  "tag": "section",
+  "class": "pt-seccion",
+  "settings": [
+    { "type": "text", "id": "antetitulo", "label": "Antetítulo", "default": "Colección de lanzamiento" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Colección" },
+    { "type": "text", "id": "titulo_cursiva", "label": "Título en cursiva (segunda línea)", "default": "Astur" },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "text", "id": "boton", "label": "Texto del botón", "default": "Ver la colección" },
+    { "type": "url", "id": "enlace", "label": "Enlace del botón" },
+    { "type": "image_picker", "id": "foto_1", "label": "Foto 1" },
+    { "type": "image_picker", "id": "foto_2", "label": "Foto 2 (va más abajo)" }
+  ],
+  "presets": [{ "name": "Portada (maqueta)" }]
+}
+{% endschema %}
