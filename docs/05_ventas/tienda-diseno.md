@@ -105,7 +105,8 @@ hicieron con secciones propias que repiten las medidas de la maqueta:
   material (la etiqueta del producto que no es de colección) y precio; si hay versiones con
   distinto precio, dice "Desde".
 - Estilos comunes en `snippets/marca.liquid`: ancho de 1280 px, botones cuadrados, encabezado
-  de 64 px (la maqueta tenía 88; el 2026-10-30 Juan Antonio lo pidió más angosto) con línea piedra abajo y sin ícono de cuenta; en celular, sin lupa y con el nombre
+  de 64 px (la maqueta tenía 88; el 2026-10-30 Juan Antonio lo pidió más angosto, y también el
+  logotipo más pequeño: 18 px en computador en vez de 22) con línea piedra abajo y sin ícono de cuenta; en celular, sin lupa y con el nombre
   centrado a 15 px, como la maqueta.
 - **Fotos provisorias:** los cuellos de Inés, Teresa y Antonia, recortados de sus fichas de
   modelo (`docs/01_marca-y-marketing/modelos/mujeres/`), igual que en la maqueta. Están en
