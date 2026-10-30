@@ -155,6 +155,18 @@ fotos ficticias dibujadas (una joya simple sobre fondo piedra y la leyenda "FOTO
 - Revisado en el navegador: las 4 piezas de la Colección Astur, los precios de la Santina, el
   carrusel con sus flechas y el celular sin desborde.
 
+### Submenú en una fila horizontal (2026-10-30)
+
+A pedido de Juan Antonio, las subcategorías del menú (por ejemplo, Cadenas y collares y Colgantes
+dentro de Joyas) se muestran en el computador una al lado de la otra, en una franja delgada bajo el
+encabezado, en vez de una debajo de otra como venían en Horizon y en la maqueta. Así, cuando haya
+más subcategorías, el menú no tapa la página. Si no caben en una fila, pasan a una segunda.
+
+- Está en `tienda/snippets/marca.liquid`. En el celular no cambia nada: el menú lateral sigue igual.
+- Revisado en el navegador a 1024 px: las dos subcategorías actuales quedan en la misma línea y,
+  simulando 8, también caben en una sola fila; la franja mide 71 px de alto. No se pudo sacar
+  captura de pantalla del menú abierto; se midió la posición de cada enlace.
+
 ### Tareas en el administrador de Shopify
 
 El tema lee estas cosas desde la tienda, así que hay que crearlas allí:

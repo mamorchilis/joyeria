@@ -87,6 +87,31 @@
     display: none;
   }
 
+  /* Submenú del computador en una sola fila horizontal, para que no tape la página
+     cuando haya más subcategorías (Horizon las pone una debajo de otra) */
+  @media screen and (min-width: 750px) {
+    header-component .mega-menu__grid,
+    header-component .mega-menu__list,
+    header-component .mega-menu__column {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 40px;
+      row-gap: 12px;
+    }
+
+    header-component .mega-menu__list,
+    header-component .mega-menu__column {
+      grid-column: auto;
+    }
+
+    header-component .menu-list__submenu-inner {
+      --submenu-padding-block-start: 20px;
+      --submenu-padding-block-end: 20px;
+    }
+  }
+
   /* ---- Secciones de la portada copiadas de la maqueta (sections/pt-*.liquid) ---- */
   .pt {
     font-family: var(--font-body--family);
