@@ -73,8 +73,28 @@ pide cambios, se ajustan ahí mismo.
 - **Pie de página:** nombre, una línea sobre la marca, menús "Tienda" y "Ayuda" e Instagram
   (`sections/footer-group.json`).
 - Quedan fuera por ahora: Nuestra historia y Quién diseña.
-- Se validó con `shopify theme check` sin errores. **No se ha visto en el navegador**: falta
-  correr `shopify theme dev --store qe0efu-mp` desde `tienda/`.
+- Se validó con `shopify theme check` sin errores.
+- **Visto en el navegador el 2026-10-30**, como tema sin publicar "Pili Trespalacios - prueba"
+  (vista previa: <https://qe0efu-mp.myshopify.com?preview_theme_id=165622939905>; pide la
+  contraseña de la tienda). Se subió con
+  `shopify theme push --theme 165622939905 --path tienda --store qe0efu-mp`. El tema publicado
+  sigue siendo el Horizon original hasta que se decida abrir.
+- **Ajustes después de verlo:** los textos fijos que venían en inglés (página de contraseña, 404,
+  carrito, "También te puede gustar") quedaron en español; mientras falten fotos, se ve un
+  recuadro color *piedra* en vez de los dibujos de Shopify; el logotipo usa Tenor Sans de verdad
+  (antes le ganaba el estilo de Horizon) y en celular es más chico, para que el carro no quede
+  fuera de la pantalla.
+
+### Prueba completa con un producto (2026-10-30)
+
+Se subió con `catalogo/subir_a_shopify.py` un producto de prueba publicado, "Medalla de prueba
+(no comprar)" (`medalla-prueba-borrar`), con dos versiones y 3 fotos de relleno. Resultado:
+
+- Aparece en la portada (Cuatro diseños de lanzamiento), en la Colección Astur y en su ficha.
+- Al elegir *Sin cadena* el precio cambia de $45.000 a $30.000, y se agrega al carrito con el
+  total correcto. No se probó el pago.
+- El menú *Colecciones* se abre al pasar el mouse.
+- **Hay que borrarlo antes de abrir la tienda**, junto con sus fotos.
 
 ### Tareas en el administrador de Shopify
 
@@ -98,9 +118,15 @@ El tema lee estas cosas desde la tienda, así que hay que crearlas allí:
    Shopify. Despachos, Cambios y garantía y Términos y condiciones se agregan cuando estén escritas
    las políticas (ver [`politicas-tienda.md`](politicas-tienda.md)), para no enlazar páginas vacías.
 5. **Fotos de la portada:** subir los cuellos en el editor del tema (portada y Santina). Hasta
-   entonces se ven recuadros vacíos.
+   entonces se ven recuadros color piedra.
 6. **Productos:** cargarlos con la planilla de `catalogo/`. El botón "Ver la medalla" apunta a
    `medalla-covadonga-bronce`.
+7. **Idioma (hecho el 2026-10-30):** el español es el idioma principal de la tienda, en
+   *Configuración > Idiomas*. Para agregarlo, Shopify instaló su aplicación gratuita *Translate &
+   Adapt*. El inglés quedó fuera. Con esto, botones, carrito, pago y correos salen en español.
+8. **Formato del precio (hecho el 2026-10-30):** `${{amount_no_decimals_with_comma_separator}}`
+   (y lo mismo con "CLP" al final donde muestra la moneda), en *Configuración > General >
+   Moneda > Cambiar formato*. Así se ve $45.000 y no $45,000.
 
 ### Lo que falta para que la portada sea real
 

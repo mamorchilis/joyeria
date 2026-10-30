@@ -5,10 +5,11 @@
 {%- endcomment -%}
 <style>
   /* Logotipo: el nombre de la tienda en Tenor Sans, mayúsculas y letras separadas */
-  .header-logo {
-    --font-family: var(--font-subheading--family);
-    --font-weight: 400;
-    --font-style: normal;
+  /* "a.header-logo" para ganarle al estilo del bloque de Horizon, que se carga después */
+  a.header-logo {
+    font-family: var(--font-subheading--family);
+    font-weight: 400;
+    font-style: normal;
     text-transform: uppercase;
     letter-spacing: 0.34em;
     padding-inline-start: 0.34em;
@@ -17,8 +18,11 @@
   }
 
   @media screen and (max-width: 749px) {
-    .header-logo {
-      font-size: 0.9375rem;
+    /* Más chico y menos separado para que no saque el carro de la pantalla */
+    a.header-logo {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      padding-inline-start: 0.2em;
     }
   }
 
