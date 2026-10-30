@@ -168,6 +168,8 @@ más subcategorías, el menú no tapa la página. Si no caben en una fila, pasan
   abierto; se midió la posición de cada enlace.
 - Juan Antonio la encontró alta: se le quitó aire arriba y abajo (12 px en vez de 20 px) y la
   franja pasó de 71 px a 55 px de alto.
+- La letra del submenú quedó igual a la del menú principal (12 px; Horizon la ponía en 14 px), a
+  pedido de Juan Antonio. Con eso la franja mide 53 px.
 
 ### Tareas en el administrador de Shopify
 
